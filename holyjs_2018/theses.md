@@ -1,12 +1,12 @@
 - А НАФИГА НУЖНО ЧТО-ТО МЕНЯТЬ?
-  - Swagger vs GraphQL (https://github.com/nodkz/conf_talks/tree/master/particles/swagger)
-  - Что такое GraphQL?
+  - [Swagger vs GraphQL](https://github.com/nodkz/conf_talks/tree/master/particles/swagger)
+  - [Что такое GraphQL?]((https://github.com/nodkz/conf_talks/tree/master/particles/graphql))
 - ЭКОСИСТЕМА
-  - запускаем сервер на NodeJS, что нужно поставить чтоб заработала схема
+  - [запускаем сервер на NodeJS, что нужно поставить чтоб заработала схема](https://github.com/nodkz/conf_talks/tree/master/particles/graphql/ecosystem)
   - пишем простенькую схему
-  - query - stateless
-  - mutation - stateless, расширенное получение данных после мутации
-  - subscribtion - statefull
+    - query - stateless
+    - mutation - stateless, расширенное получение данных после мутации
+    - subscribtion - statefull
 - АВТОРИЗАЦИЯ
   - JWT, cookie
   - почему я использую три токена (user, account, admin)
