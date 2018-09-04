@@ -1,6 +1,6 @@
 - А НАФИГА НУЖНО ЧТО-ТО МЕНЯТЬ?
   - [Swagger vs GraphQL](https://github.com/nodkz/conf_talks/tree/master/particles/swagger)
-  - [Что такое GraphQL?]((https://github.com/nodkz/conf_talks/tree/master/particles/graphql))
+  - [Что такое GraphQL?](https://github.com/nodkz/conf_talks/tree/master/particles/graphql)
 - ЭКОСИСТЕМА
   - [запускаем сервер на NodeJS, что нужно поставить чтоб заработала схема](https://github.com/nodkz/conf_talks/tree/master/particles/graphql/ecosystem)
   - пишем простенькую схему
