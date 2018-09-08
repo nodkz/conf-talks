@@ -67,12 +67,10 @@ export default new GraphQLScalarType({
     }
     return null;
   }, 
-
-  // Чтобы детальнее разобраться в работе методов `serialize`, `parseValue` и `parseLiteral` 
-  // вы можете скопировать следующий файл с тестами и уже погонять на нем свои сценарии:
-  // https://github.com/graphql-compose/graphql-compose/blob/master/src/type/__tests__/parseLiteral-test.js
 });
 ```
+
+Чтобы детальнее разобраться в работе методов `serialize`, `parseValue` и `parseLiteral` вы можете скопировать [следующий файл с тестами](./__tests__/customScalarType-test.js) и уже погонять на нем свои сценарии.
 
 В качестве интересного примера, вы можете посмотреть на реализацию MIXED типа - [GraphQLJSON](https://github.com/taion/graphql-type-json). Он принимает любое значение и также его возвращает, будь то число, строка, массив или сложный объект. Прекрасный лайфхак для передачи или получения значений с неизвестной заранее типом.
 
@@ -91,3 +89,26 @@ export default new GraphQLScalarType({
 ### Interfaces
 
 ### Union types
+
+Когда вам необходимо описать поле, которое может возвращать разного типа значения, то вы можете воспользоваться Union-типом. Для юнион типа, вы можете использовать только сложные типы построенные с помощью GraphQLObjectType. Скалярные типы, инпут типы, интерфейсы использовать нельзя. 
+
+Например, ваш поиск может вернуть три разных объекта - Статью, Комментарий и Профайл пользователя. Объявить такой Union-тип можно следующим образом:
+
+```js
+import { GraphQLUnionType } from 'graphql';
+
+const SearchRowType = new GraphQLUnionType({
+  name: 'SearchRow',
+  description: 'Search item which can be one of the following types: Article, Comment, UserProfile',
+  types: () => ([ ArticleType, CommentType, UserProfileType ]),
+  resolveType: (value) => {
+    if (value instanceof Article) {
+      return ArticleType;
+    } else if (value instanceof Comment) {
+      return CommentType;
+    } else if (value instanceof UserProfile) {
+      return UserProfileType;
+    }
+  },
+});
+```

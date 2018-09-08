@@ -1,0 +1,44 @@
+{
+  "name": "conf_talks",
+  "version": "1.0.0",
+  "description": "Здесь я готовлю тексты к своим выступлениям и презентациям. Лучшем и надежнее я место не нашел.",
+  "main": "index.js",
+  "scripts": {
+    "test": "yarn jest",
+    "watch": "yarn jest --watch",
+    "lint": "eslint --ext .js ./particles"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodkz/conf_talks.git"
+  },
+  "author": "Pavel Chertorogov",
+  "license": "CC-BY-NC-4.0",
+  "bugs": {
+    "url": "https://github.com/nodkz/conf_talks/issues"
+  },
+  "homepage": "https://github.com/nodkz/conf_talks#readme",
+  "dependencies": {
+    "graphql": "^14.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-flow-strip-types": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^9.0.0",
+    "babel-jest": "^23.4.2",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "flow-bin": "^0.80.0",
+    "jest": "^23.5.0",
+    "prettier": "^1.14.2"
+  }
+}
