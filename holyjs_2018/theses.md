@@ -1,3 +1,5 @@
+# Тезисный план для HolyJS Moscow 2018
+
 - А НАФИГА НУЖНО ЧТО-ТО МЕНЯТЬ?
   - [Swagger vs GraphQL](https://github.com/nodkz/conf_talks/tree/master/particles/swagger)
   - [Что такое GraphQL?](https://github.com/nodkz/conf_talks/tree/master/particles/graphql)
