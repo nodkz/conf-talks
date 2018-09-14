@@ -21,7 +21,7 @@ describe('check how works GraphQLInterfaceType', () => {
       }
     }
 
-    // Define our models
+    // Define models
     class ClickEvent extends Event {
       url: string;
       constructor(data) {
@@ -38,7 +38,7 @@ describe('check how works GraphQLInterfaceType', () => {
       }
     }
 
-    // Define out interface
+    // Define interface
     const EventInterface = new GraphQLInterfaceType({
       name: 'EventInterface',
       fields: () => ({
@@ -58,7 +58,7 @@ describe('check how works GraphQLInterfaceType', () => {
       },
     });
 
-    // Define GraphQL types for our models
+    // Define GraphQL types for models
     const ClickEventType = new GraphQLObjectType({
       name: 'ClickEvent',
       interfaces: [EventInterface],
@@ -81,7 +81,7 @@ describe('check how works GraphQLInterfaceType', () => {
 
     // Define some working schema with mock data
     const schema = new GraphQLSchema({
-      types: [ClickEventType, SignedUpEventType],
+      types: [ClickEventType, SignedUpEventType], // <-- хитрый способ передать инстансы типов, о которых схема ничего не знает
       query: new GraphQLObjectType({
         name: 'Query',
         fields: {
