@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/nodkz/conf_talks#readme",
   "dependencies": {
-    "graphql": "^14.0.2"
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0",
+    "graphql": "^14.0.2",
+    "graphql-type-json": "^0.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
