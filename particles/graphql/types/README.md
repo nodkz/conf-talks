@@ -272,7 +272,7 @@ const ArticleInput = new GraphQLInputObjectType({
       // значение по-умолчанию `Draft`
       defaultValue: 'Draft',
       // текстовое описание для документации АПИ:
-      description: 'Article description, by default will be "Draft"', 
+      description: 'Article description, by default will be "Draft"',
     },
     // объявлеяем поле `text`
     text: {
@@ -564,13 +564,13 @@ query {
 - `Mutation` - для операции записи. Если запросили несколько полей, то они выполняются `последовательно` (т.к. вызов предыдущего поля, может повлиять на результат изменения следующего поля).
 - `Subscription` - подписки, особый вид операций позволяющий клиентам `подписаться на события` произошедшие на сервере. Например: клиент подписывается на добавление статьи, и как только будет добавлена статья, то сервер выполнит GraphQL-запрос и полученый ответ отправит клиенту. И это будет происходить для каждой новой статьи, пока клиент не отпишется. Грубо говоря, реальное выполнение GraphQL-запроса инициируется самим сервером на какое-то событие.
 
-В `GraphQLSchema` обязательным параметром является только `Query`, без него схема просто не запустится. Инициализация схемы выглядит следующим образом:
+В `GraphQLSchema` обязательным параметром является только `query`, без него схема просто не запустится. Инициализация схемы выглядит следующим образом:
 
 ```js
 import { GraphQLSchema, GraphQLObjectType, graphql } from 'graphql';
 
 const schema = new GraphQLSchema({
-  query: new GraphQLObjectType({ name: 'Query', fields: { userById, userMany } }),
+  query: new GraphQLObjectType({ name: 'Query', fields: { getUserById, findManyUsers } }),
   mutation: new GraphQLObjectType({ name: 'Mutation', fields: { createUser, removeLastUser } }),
   subscriptions: new GraphQLObjectType({ name: 'Subscription', fields: ... }),
   // ... и ряд других настроек
@@ -584,9 +584,9 @@ const response = await graphql(schema, `query { ... }`);
 
 ```graphql
 query {
-  userById { ... }
-  userMany { ... }
-  # `userById` и `userMany` будут запрошены параллельно
+  getUserById { ... }
+  findManyUsers { ... }
+  # `getUserById` и `findManyUsers` будут запрошены параллельно
 }
 ```
 
@@ -599,7 +599,7 @@ mutation {
 }
 ```
 
-Особо хочется остановиться на состоянии запросов:
+Особо хочется остановиться на состоянии операций:
 
 - `stateless` - должны быть `Query` и `Mutation`, т.е. если у вас в кластере много машин обслуживающих запросы клиентов, то неважно на какой из серверов прелител запрос. Его может выполнить любая нода.
 - `statefull` - должен быть у `Subscription`, т.к. требуется установка постоянного подключения с клиентом, хранения данных о подписках, механизмом переподключения и восстановлением данных о существующих подписках. Пакет `graphql` никак не помогает в решении этих админских проблем.

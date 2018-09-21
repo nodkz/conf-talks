@@ -1,14 +1,13 @@
 # Тезисный план для HolyJS Moscow 2018
 
 - А НАФИГА НУЖНО ЧТО-ТО МЕНЯТЬ?
-  - [Swagger vs GraphQL](https://github.com/nodkz/conf_talks/tree/master/particles/swagger)
-  - [Что такое GraphQL?](https://github.com/nodkz/conf_talks/tree/master/particles/graphql)
+  - [Swagger vs GraphQL](../particles/swagger/README.md)
+  - [Что такое GraphQL?](../particles/graphql/README.md)
 - ЭКОСИСТЕМА
-  - [запускаем сервер на NodeJS, что нужно поставить чтоб заработала схема](https://github.com/nodkz/conf_talks/tree/master/particles/graphql/ecosystem)
-  - пишем простенькую схему
-    - query - stateless
-    - mutation - stateless, расширенное получение данных после мутации
-    - subscribtion - statefull
+  - [GraphQL Schema](../particles/graphql/schema/README.md)
+  - [GraphQL Типы](../particles/graphql/types/README.md)
+  - [GraphQL Сервер](../particles/graphql/server/README.md)
+  - пишем простенькую схему и запускаем сервер на NodeJS
 - АВТОРИЗАЦИЯ
   - JWT, cookie
   - почему я использую три токена (user, account, admin)
@@ -23,11 +22,12 @@
 - ДРУГОЕ
   - как передавать ошибки клиенту
   - генерация схем из моделей
+  - расширенное получение данных после мутации
   - тестирование схем
   - документация
   - версионирование
   - генерим две схемы для админов и для клиентов
-  - фронетнедеры писающие кипятком
+  - [фронетнедеры писающие кипятком](../particles/redux/README.md)
 - КЕЙСЫ
   - кривые схемы
   - оборачивания кучу микросервисов в одну схему

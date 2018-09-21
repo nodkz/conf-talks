@@ -1,4 +1,4 @@
-# GraphQL - Экосистема в NodeJS
+# GraphQL сервер
 
 ## graphql - core package
 
@@ -8,7 +8,6 @@
 - производится парсинг и валидация GraphQL запросов
 - выполняется GraphQL запрос и предоставляется ответ
 - формируется интроспекция схемы в SDL (Schema Definition Language) или json
-- парсится SDL
 
 Этот пакет ничего не знает о сети, правах доступа, базах данных. Всё это дело реализуется на другом уровне абстракции.
 
@@ -35,7 +34,7 @@ const schema = new GraphQLSchema({
 ```js
 import { graphql } from 'graphql';
 
-var query = '{ hello }';
+const query = '{ hello }';
 const result = await graphql(schema, query);
 
 expect(result).toEqual({ data: { hello: "world" } });
@@ -44,7 +43,7 @@ expect(result).toEqual({ data: { hello: "world" } });
 Зная как строится схема и выполняются запросы, уже можно писать тесты.
 А вот чтобы поднять веб-сервер с GraphQL, нужно переходить на следующий уровень абстракции.
 
-## GraphQL сервер
+## Runtime сервер
 
 Каковы обычно требования к серверу? По некому протоколу обслуживать множество запросов от разных клиентов. Это может быть http(s) или websockets, либо вообще что-то экзотическое типа ssh, telnet. Ведь использование GraphQL не ограничено каким-либо сетевым протоколом.
 
