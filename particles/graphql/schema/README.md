@@ -178,5 +178,7 @@ prepareJsonFile();
 
 #### Автоматизируй генерацию схем
 
+- [graphql-cli](https://github.com/graphql-cli/graphql-cli) - настраиваете файл `.graphqlconfig` и запускаете в терминале `graphql get-schema --watch`
 - [webpack-plugin-graphql-schema-hot](https://github.com/nodkz/webpack-plugin-graphql-schema-hot) - плагин для Webpack которому передается путь до файла схемы `schemaPath`, а он уже под капотом следит за этим файлом и всеми его зависимостями. И в случае изменений автоматически генерирует `json` и `graphql` файлы. Этот плагин полезен для изоморфных приложений, или как минимум тем, у кого серверные скрипты собираются через Webpack.
+- [get-graphql-schema](https://github.com/prisma/get-graphql-schema) - запускаете в терминале `get-graphql-schema ENDPOINT_URL > schema.graphql` и на выходе получаете схему
 - Есть что добавить? Откройте Pull Request!
