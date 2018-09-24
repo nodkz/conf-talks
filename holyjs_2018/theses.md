@@ -20,6 +20,7 @@
   - прикручиваем QueryCost (Denial of Service attacks)
   - готовим схему для PRODUCTION
 - ДРУГОЕ
+  - [загрузка файлов](../particles/graphql/fileUploads/README.md)
   - как передавать ошибки клиенту
   - генерация схем из моделей
   - расширенное получение данных после мутации
