@@ -20,12 +20,16 @@
   "homepage": "https://github.com/nodkz/conf_talks#readme",
   "dependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.0.0",
+    "apollo-server": "^2.1.0",
     "graphql": "^14.0.2",
+    "graphql-compose": "^5.2.0",
+    "graphql-tools": "^4.0.0",
     "graphql-type-json": "^0.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
+    "@babel/node": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/plugin-transform-flow-strip-types": "^7.0.0",

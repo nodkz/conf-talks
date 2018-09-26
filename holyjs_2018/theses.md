@@ -7,7 +7,7 @@
   - [GraphQL Schema](../particles/graphql/schema/README.md)
   - [GraphQL Типы](../particles/graphql/types/README.md)
   - [GraphQL Сервер](../particles/graphql/server/README.md)
-  - пишем простенькую схему и запускаем сервер на NodeJS
+  - [пишем простенькую схему и запускаем сервер на NodeJS](../particles/graphql/demo/README.md)
 - АВТОРИЗАЦИЯ
   - JWT, cookie
   - почему я использую три токена (user, account, admin)
