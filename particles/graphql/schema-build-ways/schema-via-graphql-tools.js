@@ -14,6 +14,7 @@ const typeDefs = `
   type Article {
     title: String!
     text: String
+    "Record id from Author table"
     authorId: Int!
     author: Author
   }
@@ -25,18 +26,18 @@ const typeDefs = `
 `;
 
 const resolvers = {
+  Article: {
+    author: source => {
+      const { authorId } = source;
+      return authors.find(o => o.id === authorId);
+    },
+  },
   Query: {
     articles: (_, args) => {
       const { limit } = args;
       return articles.slice(0, limit);
     },
     authors: () => authors,
-  },
-  Article: {
-    author: source => {
-      const { authorId } = source;
-      return authors.find(o => o.id === authorId);
-    },
   },
 };
 

@@ -2,8 +2,8 @@
 
 import { ApolloServer } from 'apollo-server';
 // import schema from './schema-via-graphql';
-// import schema from './schema-via-graphql-tools';
-import schema from './schema-via-graphql-compose';
+import schema from './schema-via-graphql-tools';
+// import schema from './schema-via-graphql-compose';
 
 const server = new ApolloServer({ schema });
 

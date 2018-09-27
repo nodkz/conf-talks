@@ -42,26 +42,28 @@ const ArticleType = new GraphQLObjectType({
   }),
 });
 
-const schema = new GraphQLSchema({
-  query: new GraphQLObjectType({
-    name: 'Query',
-    fields: {
-      articles: {
-        args: {
-          limit: { type: GraphQLInt, defaultValue: 3 },
-        },
-        type: new GraphQLList(ArticleType),
-        resolve: (_, args) => {
-          const { limit } = args;
-          return articles.slice(0, limit);
-        },
+const Query = new GraphQLObjectType({
+  name: 'Query',
+  fields: {
+    articles: {
+      args: {
+        limit: { type: GraphQLInt, defaultValue: 3 },
       },
-      authors: {
-        type: new GraphQLList(AuthorType),
-        resolve: () => authors,
+      type: new GraphQLList(ArticleType),
+      resolve: (_, args) => {
+        const { limit } = args;
+        return articles.slice(0, limit);
       },
     },
-  }),
+    authors: {
+      type: new GraphQLList(AuthorType),
+      resolve: () => authors,
+    },
+  },
+});
+
+const schema = new GraphQLSchema({
+  query: Query,
 });
 
 export default schema;

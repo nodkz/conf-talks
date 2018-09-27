@@ -6,8 +6,9 @@
 - ЭКОСИСТЕМА
   - [GraphQL Schema](../particles/graphql/schema/README.md)
   - [GraphQL Типы](../particles/graphql/types/README.md)
+  - [три подхода к написанию GraphQL-схем](../particles/graphql/schema-build-ways/README.md)
   - [GraphQL Сервер](../particles/graphql/server/README.md)
-  - [пишем простенькую схему и запускаем сервер на NodeJS](../particles/graphql/demo/README.md)
+  - запускаем сервер на NodeJS
 - АВТОРИЗАЦИЯ
   - JWT, cookie
   - почему я использую три токена (user, account, admin)
