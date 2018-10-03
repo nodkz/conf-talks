@@ -31,6 +31,7 @@ const ArticleType = new GraphQLObjectType({
     },
     authorId: {
       type: new GraphQLNonNull(GraphQLInt),
+      description: 'Record id from Author table',
     },
     author: {
       type: AuthorType,

@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css" />
+		<link rel="stylesheet" href="css/theme/black.css" />
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/atom-one-dark.css" />
+
+		<style>
+			.line { display: block; }
+			.line.focus { background: #fdf6e3; color: #657b83; }
+			.line.focus .hljs-comment, .line.focus .hljs-quote { color: #93a1a1; }
+
+			.highlight-bg {
+				visibility: visible !important;
+			}
+			.highlight-bg.current-fragment > * {
+				background: #a79c505c;
+			}
+
+			.slide-menu-button { opacity: 0.1 }
+		</style>
+
+		<!-- Printing and PDF exports -->
+		<!-- <script type="text/javascript">
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script> -->
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-external="slides/00-start/index.html"></section>
+				<section data-external="slides/01-intro/index.html"></section>
+				<section data-external="slides/02-ecosystem/index.html"></section>
+				<section data-external="slides/03-authorization/index.html"></section>
+				<section data-external="slides/04-performance/index.html"></section>
+				<section data-external="slides/05-security/index.html"></section>
+				<section data-external="slides/06-misc/index.html"></section>
+				<!-- <section data-external="slides/07-end/index.html"></section> -->
+
+				<section 
+					data-markdown="slides/07-end/index.md" 
+					data-separator="^\n\n\n"
+					data-separator-vertical="^-----\n" 
+					data-separator-notes="^Note:" 
+				>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				dependencies: [
+					{
+						src: 'plugin/external/external.js',
+						condition: function() {
+							return !!document.querySelector( '[data-external],[data-external-replace]' );
+						}
+					},
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/highlightjs-line-numbers.js', async: true, callback: function() { hljs.initLineNumbersOnLoad(); } },
+					{
+						src: 'node_modules/reveal-code-focus/reveal-code-focus.js',
+						async: true,
+						callback: function() {
+							RevealCodeFocus();
+						}
+					},
+					{ src: 'plugin/elapsed-time-bar.js'},
+					// { src: 'plugin/spotlight.js'},
+					{ src: 'node_modules/reveal.js-menu/menu.js' },
+				],
+				// https://github.com/tkrkt/reveal.js-elapsed-time-bar
+				allottedTime: 50 * 60000,
+				progressBarHeight: 3,
+				barColor: 'rgb(66, 128, 246, 0.6)',
+				// https://github.com/denniskniep/reveal.js-plugin-spotlight
+				spotlight: {
+					size: 60,
+					toggleSpotlightOnMouseDown: true,
+					presentingCursor: "initial", // change to "none"
+					presentingCursorOnlyVisibleWhenSpotlightVisible: false
+				},
+				// https://github.com/denehyg/reveal.js-menu
+				menu: {
+					side: 'left',
+					width: 'normal', 	// 'normal', 'wide', 'third', 'half', 'full', or any valid css length value
+					numbers: false, // Add slide numbers to the titles in the slide list
+					titleSelector: 'h1, h2, h3, h4, h5, h6',
+					useTextContentForMissingTitles: false,
+					hideMissingTitles: false,
+					markers: true,
+					openButton: true,
+					keyboard: true,
+					sticky: false,
+					autoOpen: false,
+					delayInit: false,
+					openOnInit: false,
+					loadIcons: true
+				},
+				// standard options
+				history: true,
+				width: 1280,
+				height: 720,
+				slideNumber: true,
+				showSlideNumber: 'all',
+				keyboard: {
+					13: () => { // pause/resume time when Enter is pressed
+						ElapsedTimeBar.isPaused ? ElapsedTimeBar.resume() : ElapsedTimeBar.pause();
+					},
+					82: () => { // reset timer when 'r' is pressed
+						ElapsedTimeBar.reset();
+					}
+				}
+			});
+
+			// Set 0 index for vertical slide
+			var stateHolder = 0;
+			Reveal.addEventListener('slidechanged', function( event ) {
+				var state = Reveal.getState();
+				if (state.indexh < stateHolder || state.indexh > stateHolder){
+					state.indexv = 0;
+					Reveal.setState(state);
+				}
+				stateHolder = state.indexh;
+			});
+		</script>
+	</body>
+</html>
