@@ -2,25 +2,23 @@
 
 Thank you
 
-<pre><code data-noescape>
+<pre><code data-trim>
 import { makeExecutableSchema } from 'graphql-tools';
 import { authors, articles } from './data';
 
 const typeDefs = `
-  <span class="fragment highlight-bg">
   "Author data"
   type Author {
     id: Int
     name: String
-  }</span>
+  }
 
   "Article data with related Author data"
   type Article {
     title: String!
     text: String
-    <span class="fragment highlight-bg">
     "Record id from Author table"
-    authorId: Int!</span>
+    authorId: Int!
     author: Author
   }
 
@@ -31,8 +29,8 @@ const typeDefs = `
 `;
 </code></pre>
 
-<!-- <span class="fragment" data-code-focus="1" />
-<span class="fragment" data-code-focus="4-5" /> -->
+<span class="fragment" data-code-focus="1" />
+<span class="fragment" data-code-focus="14-15" />
 
 -----
 <!-- .slide: data-background="#ff0000" -->

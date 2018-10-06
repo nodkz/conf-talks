@@ -24,6 +24,29 @@
 				background: #a79c505c;
 			}
 
+			code {
+				counter-reset: line;
+			}
+			code > span {
+				counter-increment: line;
+			}
+			code > span:before {
+				content: counter(line);
+				text-align: right;
+				color: #454f60;
+				/* border-right: 1px solid #555; */
+				width: 40px;
+				padding-right: 8px;
+				margin-right: 8px;
+				display: inline-block;
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-khtml-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none; 
+				user-select: none;
+			}
+
 			.slide-menu-button { opacity: 0.1 }
 		</style>
 
@@ -69,11 +92,10 @@
 							return !!document.querySelector( '[data-external],[data-external-replace]' );
 						}
 					},
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/fixedMarkdown/marked.js' },
+					{ src: 'plugin/fixedMarkdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/highlightjs-line-numbers.js', async: true, callback: function() { hljs.initLineNumbersOnLoad(); } },
+					{ src: 'plugin/highlight.9.12.0.pack.js' },
 					{
 						src: 'node_modules/reveal-code-focus/reveal-code-focus.js',
 						async: true,
@@ -126,7 +148,7 @@
 					82: () => { // reset timer when 'r' is pressed
 						ElapsedTimeBar.reset();
 					}
-				}
+				},
 			});
 
 			// Set 0 index for vertical slide
