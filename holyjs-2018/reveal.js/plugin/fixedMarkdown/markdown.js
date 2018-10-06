@@ -188,10 +188,9 @@
 
         markdownSections += '</section>';
       } else {
-        markdownSections += `<section ${options.attributes} data-markdown>${createMarkdownSlide(
-          sectionStack[i],
-          options
-        )}</section>`;
+        markdownSections += `<section ${options.attributes} data-markdown data-base-url="${
+          options.baseUrl
+        }">${createMarkdownSlide(sectionStack[i], options)}</section>`;
       }
     }
 
