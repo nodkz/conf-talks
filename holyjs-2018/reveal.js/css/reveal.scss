@@ -263,10 +263,10 @@ body {
 	30% {transform: translateY(-5px);}
 }
 
-$controlArrowSize: 3.6em;
-$controlArrowSpacing: 1.4em;
-$controlArrowLength: 2.6em;
-$controlArrowThickness: 0.5em;
+$controlArrowSize: 2.6em;
+$controlArrowSpacing: 0.5em;
+$controlArrowLength: 1em;
+$controlArrowThickness: 0.2em;
 $controlsArrowAngle: 45deg;
 $controlsArrowAngleHover: 40deg;
 $controlsArrowAngleActive: 36deg;
@@ -559,13 +559,14 @@ $controlsArrowAngleActive: 36deg;
 	position: absolute;
 	display: block;
 	right: 8px;
-	bottom: 8px;
+	top: 8px;
 	z-index: 31;
 	font-family: Helvetica, sans-serif;
 	font-size: 12px;
 	line-height: 1;
-	color: #fff;
-	background-color: rgba( 0, 0, 0, 0.4 );
+	color: #8093b3;
+	// color: #fff;
+	// background-color: rgba( 0, 0, 0, 0.4 );
 	padding: 5px;
 }
 

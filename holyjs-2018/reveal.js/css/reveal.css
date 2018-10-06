@@ -238,49 +238,49 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 2.6em;
-    height: 0.5em;
-    border-radius: 0.25em;
+    width: 1em;
+    height: 0.2em;
+    border-radius: 0.1em;
     background-color: currentColor;
     transition: all 0.15s ease, background-color 0.8s ease;
-    transform-origin: 0.2em 50%;
+    transform-origin: 0.1em 50%;
     will-change: transform; }
   .reveal .controls .controls-arrow {
     position: relative;
-    width: 3.6em;
-    height: 3.6em; }
+    width: 2.6em;
+    height: 2.6em; }
     .reveal .controls .controls-arrow:before {
-      transform: translateX(0.5em) translateY(1.55em) rotate(45deg); }
+      transform: translateX(0.8em) translateY(1.2em) rotate(45deg); }
     .reveal .controls .controls-arrow:after {
-      transform: translateX(0.5em) translateY(1.55em) rotate(-45deg); }
+      transform: translateX(0.8em) translateY(1.2em) rotate(-45deg); }
     .reveal .controls .controls-arrow:hover:before {
-      transform: translateX(0.5em) translateY(1.55em) rotate(40deg); }
+      transform: translateX(0.8em) translateY(1.2em) rotate(40deg); }
     .reveal .controls .controls-arrow:hover:after {
-      transform: translateX(0.5em) translateY(1.55em) rotate(-40deg); }
+      transform: translateX(0.8em) translateY(1.2em) rotate(-40deg); }
     .reveal .controls .controls-arrow:active:before {
-      transform: translateX(0.5em) translateY(1.55em) rotate(36deg); }
+      transform: translateX(0.8em) translateY(1.2em) rotate(36deg); }
     .reveal .controls .controls-arrow:active:after {
-      transform: translateX(0.5em) translateY(1.55em) rotate(-36deg); }
+      transform: translateX(0.8em) translateY(1.2em) rotate(-36deg); }
   .reveal .controls .navigate-left {
-    right: 6.4em;
-    bottom: 3.2em;
+    right: 3.6em;
+    bottom: 1.8em;
     transform: translateX(-10px); }
   .reveal .controls .navigate-right {
     right: 0;
-    bottom: 3.2em;
+    bottom: 1.8em;
     transform: translateX(10px); }
     .reveal .controls .navigate-right .controls-arrow {
       transform: rotate(180deg); }
     .reveal .controls .navigate-right.highlight {
       animation: bounce-right 2s 50 both ease-out; }
   .reveal .controls .navigate-up {
-    right: 3.2em;
-    bottom: 6.4em;
+    right: 1.8em;
+    bottom: 3.6em;
     transform: translateY(-10px); }
     .reveal .controls .navigate-up .controls-arrow {
       transform: rotate(90deg); }
   .reveal .controls .navigate-down {
-    right: 3.2em;
+    right: 1.8em;
     bottom: 0;
     transform: translateY(10px); }
     .reveal .controls .navigate-down .controls-arrow {
@@ -309,19 +309,19 @@ body {
     opacity: 1; }
 
 .reveal:not(.has-vertical-slides) .controls .navigate-left {
-  bottom: 1.4em;
-  right: 5.5em; }
+  bottom: 0.5em;
+  right: 3.6em; }
 
 .reveal:not(.has-vertical-slides) .controls .navigate-right {
-  bottom: 1.4em;
+  bottom: 0.5em;
   right: 0.5em; }
 
 .reveal:not(.has-horizontal-slides) .controls .navigate-up {
-  right: 1.4em;
-  bottom: 5em; }
+  right: 0.5em;
+  bottom: 3.1em; }
 
 .reveal:not(.has-horizontal-slides) .controls .navigate-down {
-  right: 1.4em;
+  right: 0.5em;
   bottom: 0.5em; }
 
 .reveal.has-dark-background .controls {
@@ -332,11 +332,11 @@ body {
 
 .reveal.no-hover .controls .controls-arrow:hover:before,
 .reveal.no-hover .controls .controls-arrow:active:before {
-  transform: translateX(0.5em) translateY(1.55em) rotate(45deg); }
+  transform: translateX(0.8em) translateY(1.2em) rotate(45deg); }
 
 .reveal.no-hover .controls .controls-arrow:hover:after,
 .reveal.no-hover .controls .controls-arrow:active:after {
-  transform: translateX(0.5em) translateY(1.55em) rotate(-45deg); }
+  transform: translateX(0.8em) translateY(1.2em) rotate(-45deg); }
 
 @media screen and (min-width: 500px) {
   .reveal .controls[data-controls-layout="edges"] {
@@ -353,19 +353,19 @@ body {
   .reveal .controls[data-controls-layout="edges"] .navigate-left {
     top: 50%;
     left: 8px;
-    margin-top: -1.8em; }
+    margin-top: -1.3em; }
   .reveal .controls[data-controls-layout="edges"] .navigate-right {
     top: 50%;
     right: 8px;
-    margin-top: -1.8em; }
+    margin-top: -1.3em; }
   .reveal .controls[data-controls-layout="edges"] .navigate-up {
     top: 8px;
     left: 50%;
-    margin-left: -1.8em; }
+    margin-left: -1.3em; }
   .reveal .controls[data-controls-layout="edges"] .navigate-down {
     bottom: 8px;
     left: 50%;
-    margin-left: -1.8em; } }
+    margin-left: -1.3em; } }
 
 /*********************************************
  * PROGRESS BAR
@@ -403,13 +403,12 @@ body {
   position: absolute;
   display: block;
   right: 8px;
-  bottom: 8px;
+  top: 8px;
   z-index: 31;
   font-family: Helvetica, sans-serif;
   font-size: 12px;
   line-height: 1;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.4);
+  color: #8093b3;
   padding: 5px; }
 
 .reveal .slide-number a {
