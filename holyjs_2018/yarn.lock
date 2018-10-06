@@ -2640,14 +2640,6 @@ retire@~1.2.x:
     request "~2.x.x"
     walkdir "0.0.7"
 
-reveal-code-focus@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/reveal-code-focus/-/reveal-code-focus-1.0.0.tgz#817b924c7c2241cfd5a2d70730f0ccaaf9bde056"
-
-reveal.js-menu@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/reveal.js-menu/-/reveal.js-menu-1.2.0.tgz#b8d8f060a25b933fad253ffb51012662e31b8c0d"
-
 rimraf@2, rimraf@^2.5.2, rimraf@~2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.6.2.tgz#2ed8150d24a16ea8651e6d6ef0f47c4158ce7a36"

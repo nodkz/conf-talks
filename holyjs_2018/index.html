@@ -42,15 +42,6 @@
 
 			.slide-menu-button { opacity: 0.1 }
 		</style>
-
-		<!-- Printing and PDF exports -->
-		<!-- <script type="text/javascript">
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script> -->
 	</head>
 	<body>
 		<div class="reveal">
@@ -77,7 +68,7 @@
 					{ src: 'plugin/notes/notes.js', async: true },
 					{ src: 'plugin/highlight.9.12.0.pack.js' },
 					{
-						src: 'node_modules/reveal-code-focus/reveal-code-focus.js',
+						src: 'plugin/reveal-code-focus.js',
 						async: true,
 						callback: function() {
 							RevealCodeFocus();
@@ -85,7 +76,7 @@
 					},
 					{ src: 'plugin/elapsed-time-bar.js'},
 					// { src: 'plugin/spotlight.js'},
-					{ src: 'node_modules/reveal.js-menu/menu.js' },
+					{ src: 'plugin/reveal.js-menu/menu.js' },
 				],
 				// https://github.com/tkrkt/reveal.js-elapsed-time-bar
 				allottedTime: 50 * 60000,
@@ -141,6 +132,15 @@
 				}
 				stateHolder = state.indexh;
 			});
+		</script>
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 	</body>
 </html>

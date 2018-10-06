@@ -40,8 +40,5 @@
     "socket.io": "^1.7.3"
   },
   "license": "MIT",
-  "dependencies": {
-    "reveal-code-focus": "^1.0.0",
-    "reveal.js-menu": "^1.2.0"
-  }
+  "dependencies": {}
 }
