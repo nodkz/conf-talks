@@ -3,7 +3,7 @@ module.exports = function gr(grunt) {
   const port = grunt.option('port') || 8000;
   let root = grunt.option('root') || '.';
 
-  if (!Array.isArray(root)) root = [root, './slides'];
+  if (!Array.isArray(root)) root = [root];
 
   // Project configuration
   grunt.initConfig({

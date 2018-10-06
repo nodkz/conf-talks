@@ -1,23 +1,24 @@
 {
-  "name": "conf_talks",
+  "name": "conf-talks",
   "version": "1.0.0",
   "description": "Здесь я готовлю тексты к своим выступлениям и презентациям. Лучшем и надежнее я место не нашел.",
   "main": "index.js",
   "scripts": {
     "test": "yarn jest",
     "watch": "yarn jest --watch",
-    "lint": "eslint --ext .js ./particles"
+    "lint": "eslint --ext .js ./particles",
+    "start": "yarn --cwd ./holyjs-2018 start"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nodkz/conf_talks.git"
+    "url": "git+https://github.com/nodkz/conf-talks.git"
   },
   "author": "Pavel Chertorogov",
   "license": "CC-BY-NC-4.0",
   "bugs": {
-    "url": "https://github.com/nodkz/conf_talks/issues"
+    "url": "https://github.com/nodkz/conf-talks/issues"
   },
-  "homepage": "https://github.com/nodkz/conf_talks#readme",
+  "homepage": "https://github.com/nodkz/conf-talks#readme",
   "dependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.0.0",
     "apollo-server": "^2.1.0",
