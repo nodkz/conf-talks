@@ -137,6 +137,9 @@ module.exports = function gr(grunt) {
       options: {
         livereload: true,
       },
+      plugins: {
+        files: ['plugin/**/*.js'],
+      },
     },
 
     retire: {
