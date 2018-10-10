@@ -231,7 +231,7 @@
                 verticalSeparator: section.getAttribute('data-separator-vertical'),
                 notesSeparator: section.getAttribute('data-separator-notes'),
                 attributes: getForwardedAttributes(section),
-                baseUrl: url.replace(/\/[^/]$/i, ''),
+                baseUrl: url.replace(/\/[^/]+$/i, '/'),
               });
             } else {
               section.outerHTML =
@@ -368,10 +368,13 @@
         section.setAttribute('data-markdown-parsed', true);
 
         const notes = section.querySelector('aside.notes');
-        const markdown = getMarkdownFromSlide(section);
+        let markdown = getMarkdownFromSlide(section);
+        const baseUrl = section.getAttribute('data-base-url') || '';
+
+        markdown = markdown.replace(/\ssrc="\.\//gi, ` src="${baseUrl || './'}`);
 
         section.innerHTML = marked(markdown, {
-          baseUrl: section.getAttribute('data-base-url') || '',
+          baseUrl,
         });
         addAttributes(
           section,
