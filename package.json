@@ -25,13 +25,15 @@
     "graphql": "^14.0.2",
     "graphql-compose": "^5.2.0",
     "graphql-tools": "^4.0.0",
-    "graphql-type-json": "^0.2.1"
+    "graphql-type-json": "^0.2.1",
+    "type-graphql": "^0.14.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "@babel/node": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-decorators": "^7.1.2",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/plugin-transform-flow-strip-types": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
@@ -46,6 +48,7 @@
     "eslint-plugin-prettier": "^2.6.2",
     "flow-bin": "^0.80.0",
     "jest": "^23.5.0",
-    "prettier": "^1.14.2"
+    "prettier": "^1.14.2",
+    "reflect-metadata": "^0.1.12"
   }
 }

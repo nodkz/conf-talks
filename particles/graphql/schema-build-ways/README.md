@@ -1,10 +1,11 @@
-# 3 подхода построения GraphQL-схемы
+# 4 подхода построения GraphQL-схемы
 
 На данный момент сущетвует три способа построения GraphQL-схемы в NodeJS:
 
 - `graphql` - жесткий синтаксис создания объектов типов. Типы редактировать нельзя.
 - `graphql-tools` - описываете отдельно типы (в SDL) и резолверы (методы бизнес логики), а потом все склеиваете через `makeExecutableSchema({ typeDefs, resolvers })`.
 - `graphql-compose` - упрощенный синтаксис создания типов, можно использовать SDL. Позволяет читать и редактировать типы. Удобно для написания собственных функций генераторов.
+- `type-graphql` - самый свежий подход, использует декораторы для описания типов поверх ваших классов и моделей (пока работает только c TypeScript).
 
 Давай построим простую GraphQL-схему на каждом из этих подходов. Представим что у нас есть два типа `Author` и `Article` со следующими данными
 
@@ -274,6 +275,48 @@ export default schema;
 ```
 
 Полный код построения схемы на подходе `graphql-compose` доступен в [этом файле](./schema-via-graphql-compose.js).
+
+## type-graphql
+
+[type-graphql](https://github.com/19majkel94/type-graphql) - создавайте GraphQL схему используя классы и немного магии декораторов (пока работает только c TypeScript). Под капотом имеет встроенные декораторы
+
+- для проверки прав доступа
+- валидации входящих аргументов
+- подсчета сложности запроса (Query Complexity)
+
+На данный момент работает только c TypeScript. На конец 2018 года поженить с Babel и Flowtype у меня не получилось, ввиду неполной реализации [decorators](https://babeljs.io/docs/en/babel-plugin-proposal-decorators) спецификации в бабеле.
+
+Пример кода выглядит следующим образом.
+
+```js
+@ObjectType({ description: 'Author data' })
+class Author {
+  @Field(type => ID)
+  id: number;
+
+  @Field(type => String, { nullable: true })
+  name: string;
+}
+
+@ObjectType({ description: 'Article data with related Author data' })
+class Article {
+  @Field(type => String)
+  title: string;
+
+  @Field(type => String, { nullable: true })
+  text: string;
+
+  @Field(type => ID)
+  authorId: number;
+
+  @Field(type => Author)
+  get author(): ?Object {
+    return authors.find(o => o.id === this.authorId);
+  }
+}
+```
+
+Недописанный код этого примера доступен в [этом файле](./schema-via-type-graphql.js).
 
 ## На закуску - Генераторы
 
