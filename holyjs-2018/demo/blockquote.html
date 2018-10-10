@@ -1,0 +1,33 @@
+blockquote {
+  background: rgba(180, 180, 180, 0.2);
+}
+
+blockquote {
+  text-align: left;
+  width: 90% !important;
+}
+
+div.author {
+  text-align: right;
+  margin-right: 10pt;
+}
+
+div.author:before {
+  content: '(';
+}
+
+div.author:after {
+  content: ')';
+}
+
+<blockquote style="background: rgba(0,0,0,0.5)">
+  <q>The main functions of money are distinguished as:
+      <ul>
+          <li>a medium of exchange;</li> 
+          <li>a unit of account; </li>
+          <li>a store of value; </li>
+          <li>and, sometimes, a standard of deferred payment.</li>
+      </ul>
+      Any item or verifiable record that fulfills these functions can be considered as money.</q>
+  <div class="author">Wikipedia</div>
+</blockquote>

@@ -1,0 +1,29 @@
+<pre><code data-trim>
+  import { makeExecutableSchema } from 'graphql-tools';
+  import { authors, articles } from './data';
+  
+  const typeDefs = `
+    "Author data"
+    type Author {
+      id: Int
+      name: String
+    }
+  
+    "Article data with related Author data"
+    type Article {
+      title: String!
+      text: String
+      "Record id from Author table"
+      authorId: Int!
+      author: Author
+    }
+  
+    type Query {
+      articles(limit: Int = 10): [Article]
+      authors: [Author]
+    }
+  `;
+  </code></pre>
+  
+  <span class="fragment" data-code-focus="1" />
+  <span class="fragment" data-code-focus="14-15" />
