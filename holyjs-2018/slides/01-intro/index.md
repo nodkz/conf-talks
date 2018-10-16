@@ -1,4 +1,35 @@
-# А НАФИГА НУЖНО ЧТО-ТО МЕНЯТЬ?
+# Зачем что-то менять?
 
-- [Swagger vs GraphQL](../particles/swagger/README.md)
-- [Что такое GraphQL?](../particles/graphql/README.md)
+## В чем профит от использования GraphQL?
+
+-----
+
+# Что такое GraphQL?
+
+![Photo](../assets/logo/graphql.png) <!-- .element: style="width: 200px; text-align: center;" class="plain" -->
+
+## Это *удобная* технология написания запросов для общения между сервером и клиентом
+
+-----
+
+**Неудобная** технология это REST API
+
+-----
+
+
+-----
+
+**На сервере объявляете о своих возможностях** 
+
+в предоставлении данных (бэкендеры создают GraphQL схему).
+
+
+**На клиенте заявляете о своих потребностях** 
+
+в получении данных (фронтендеры пишут GraphQL запросы).
+
+-----
+
+Более подробнее расписано тут
+- [Что такое GraphQL?](./particles/graphql/README.md)
+- [Swagger vs GraphQL](./particles/swagger/README.md)

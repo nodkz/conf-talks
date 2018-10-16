@@ -372,6 +372,7 @@
         const baseUrl = section.getAttribute('data-base-url') || '';
 
         markdown = markdown.replace(/\ssrc="\.\//gi, ` src="${baseUrl || './'}`);
+        markdown = markdown.replace(/\ssrc="\.\.\//gi, ` src="${baseUrl + '../' || '../'}`);
 
         section.innerHTML = marked(markdown, {
           baseUrl,

@@ -126,14 +126,17 @@
 
 			// Set 0 index for vertical slide
 			var stateHolder = 0;
-			Reveal.addEventListener('slidechanged', function( event ) {
-				var state = Reveal.getState();
-				if (state.indexh < stateHolder || state.indexh > stateHolder){
-					state.indexv = 0;
-					Reveal.setState(state);
-				}
-				stateHolder = state.indexh;
-			});
+			setTimeout(() => {
+				// Do not update on hot-reload, so enable it after initial load via setTimeout
+				Reveal.addEventListener('slidechanged', function( event ) {
+					var state = Reveal.getState();
+					if (state.indexh < stateHolder || state.indexh > stateHolder){
+						state.indexv = 0;
+						Reveal.setState(state);
+					}
+					stateHolder = state.indexh;
+				});
+			}, 2000);
 		</script>
 
 		<!-- Printing and PDF exports -->
