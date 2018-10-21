@@ -173,6 +173,11 @@ body {
 .reveal code {
 	font-family: SFMono-Regular, 'Roboto Mono', monospace;
 	text-transform: none;
+
+	border: 1px solid #9acd32;
+	background-color: #9acd3240;
+	border-radius: 10px;
+	padding: 0 10px;
 }
 
 .reveal pre code {
@@ -181,6 +186,9 @@ body {
 	overflow: auto;
 	max-height: 400px;
 	word-wrap: normal;
+
+	border: none;
+	background-color: rgb(40, 44, 52);
 }
 
 .reveal table {
