@@ -6,9 +6,10 @@
 - ЭКОСИСТЕМА
   - [GraphQL Schema](../particles/graphql/schema/README.md)
   - [GraphQL Типы](../particles/graphql/types/README.md)
-  - [три подхода к написанию GraphQL-схем](../particles/graphql/schema-build-ways/README.md)
+  - [4 подхода к написанию GraphQL-схем](../particles/graphql/schema-build-ways/README.md)
   - [GraphQL Сервер](../particles/graphql/server/README.md)
   - запускаем сервер на NodeJS
+  - что такое SDL
 - АВТОРИЗАЦИЯ
   - JWT, cookie
   - почему я использую три токена (user, account, admin)
@@ -28,6 +29,7 @@
   - тестирование схем
   - документация
   - версионирование
+  - циклические резолверы
   - генерим две схемы для админов и для клиентов
   - [фронетнедеры писающие кипятком](../particles/redux/README.md)
 - КЕЙСЫ

@@ -35,7 +35,17 @@ const schema = new GraphQLSchema({
 import { graphql } from 'graphql';
 
 const query = '{ hello }';
-const result = await graphql(schema, query);
+
+// Быстрый легкий вариант
+// const result = await graphql(schema, query);
+
+// Вариант с наворотами
+const result = await graphql({
+  schema,
+  source: query, // текст запроса
+  contextValue: prepareSomehowContext(), // глобальный контекст для resolve-методов
+  variableValues: {}, // переменные для GraphQL-запроса
+});
 
 expect(result).toEqual({ data: { hello: "world" } });
 ```
@@ -68,11 +78,12 @@ Cейчас давайте остановимся на http протоколе �
 ```js
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
+import schema from './schema';
 
 const app = express();
 
 app.use('/graphql', graphqlHTTP(req => async ({
-  schema: MyGraphQLSchema,
+  schema,
   graphiql: true,
   context: await prepareSomehowContextDataFromRequest(req),
 })));
@@ -86,9 +97,42 @@ app.listen(3000);
 
 [koa-graphql](https://github.com/chentsulin/koa-graphql) - такое же middleware как `express-graphql`, только для `Koa`.
 
+```js
+import Koa from 'koa';
+import mount from 'koa-mount';
+import graphqlHTTP from 'koa-graphql';
+import schema from './schema';
+
+const app = new Koa();
+
+app.use(mount('/graphql', graphqlHTTP(req => async ({
+  schema,
+  graphiql: true,
+  context: await prepareSomehowContextDataFromRequest(req),
+}))));
+
+app.listen(4000);
+```
+
 ### apollo-server 1.0
 
 [apollo-server@1.x.x](https://github.com/apollographql/apollo-server/tree/version-1) - полная замена для `express-graphql` и `koa-graphql` с набор дополнительных конфигурационных опций. Позволяют делать трейсинг запросов и использовать Apollo Cache Control. Больше гибкости и наворотов, по сравнению с `express-graphql`.
+
+```js
+import express from 'express';
+import bodyParser from 'body-parser';
+import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
+import schema from './schema';
+
+const app = express();
+app.use('/graphql', bodyParser.json(), graphqlExpress(req => async ({
+  schema,
+  context: await prepareSomehowContextDataFromRequest(req),
+}));
+app.get('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
+
+app.listen(5000);
+```
 
 ### apollo-server 2.0
 
@@ -97,8 +141,71 @@ app.listen(3000);
 - теперь для запуска GraphQL-сервера достаточно скачать этот пакет, указать порт и запустить сервер. Никаких `express` или `koa` устанавливать явно уже не нужно (они сами поднимут `express` под капотом). При этом интеграцию с ними они оставили, ежели у вас уже написан какой-то сервер.
 - и теперь вместо передачи `GraphQLSchema` (хотя можно передать и её), проповедуют передачу `typeDefs` и `resolvers`. Такой формат построения схемы был предложен в [graphql-tools](https://github.com/apollographql/graphql-tools), широко распиарен и сейчас большинство пользователей строят схему именно так. Но я обычно генерирую свои GraphQL схемы из моделей через [graphql-compose](https://github.com/graphql-compose/graphql-compose), поэтому особо `graphql-tools` cо своих подходом у меня не прежился.
 
-Ну и конечно добавили сразу websockets, поддержку загрузки файлов, persisted queries и еще удобнее сделали интеграцию со своими платными сервисами.
+Ну и конечно добавили сразу поддержку Subscriptions через PubSub, поддержку загрузки файлов, persisted queries и еще удобнее сделали интеграцию со своими платными сервисами.
+
+Сделали возможность передачи "расчлененной схемы" через `typeDefs` и `resolvers`:
+
+```js
+const { ApolloServer, gql } = require('apollo-server');
+
+const typeDefs = gql`
+  type Query {
+    hello: String
+  }
+`;
+
+const resolvers = {
+  Query: {
+    hello: () => 'world',
+  },
+};
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: ({ req }) => prepareSomehowContextDataFromRequest(req),
+  playground: true,
+});
+server.start({
+  port: 6000,
+  endpoint: '/graphql',
+  playground: '/playground',
+});
+```
+
+Нормальную схему они тоже поддерживают - вместо "расчлененки" `typeDefs` и `resolvers`, нужно передать параметр `schema` как в примерах выше.
 
 ### graphql-yoga
 
 [graphql-yoga](https://github.com/prisma/graphql-yoga) - это можно сказать прототип для `apollo-server 2.0`, авторы которой черпали вдохновление именно с этого пакета. Поэтому базовый функционал у них почти одинаковый.
+
+Есть поддержка Subscriptions через PubSub, загрузки файлов.
+
+```js
+import { GraphQLServer } from 'graphql-yoga'
+
+const typeDefs = `
+  type Query {
+    hello: String
+  }
+`
+
+const resolvers = {
+  Query: {
+    hello: () => 'world',
+  },
+};
+
+const server = new GraphQLServer({
+  typeDefs,
+  resolvers,
+  context: (req) => prepareSomehowContextDataFromRequest(req),
+});
+server.start({
+  port: 7000,
+  endpoint: '/graphql',
+  playground: '/playground',
+})
+```
+
+Вместо `typeDefs` и `resolvers` можно передать схему целиком через параметр `schema`.
