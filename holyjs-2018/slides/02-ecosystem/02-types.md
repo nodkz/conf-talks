@@ -80,7 +80,7 @@ export default new GraphQLScalarType({
   // 1) --- ОПРЕДЕЛЯЕМ МЕТАДАННЫЕ ТИПА ---
   // У каждого типа, должно быть уникальное имя
   name: 'DateTimestamp',
-  // Хорошим тоном будет предоставить описание для вашего типа, 
+  // Хорошим тоном будет предоставить описание для вашего типа,
   // чтобы оно отображалось в документации
   description: 'A string which represents a HTTP URL',
   
@@ -102,7 +102,7 @@ export default new GraphQLScalarType({
   // }
   parseValue: (v: integer) => new Date(v),
 
-  // 3.2) вторая это `parseLiteral`, используется если клиент 
+  // 3.2) вторая это `parseLiteral`, используется если клиент
   // передал значение в теле GraphQL-запроса:
   // {
   //   source: `query { setDate(date: 1536417553) }`

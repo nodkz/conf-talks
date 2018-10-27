@@ -18,7 +18,7 @@ import { GraphQLSchema, GraphQLObjectType, GraphQLString } from 'graphql';
 
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
-    name: 'RootQueryType',
+    name: 'Query',
     fields: {
       hello: {
         type: GraphQLString,
@@ -146,7 +146,7 @@ app.listen(5000);
 Сделали возможность передачи "расчлененной схемы" через `typeDefs` и `resolvers`:
 
 ```js
-const { ApolloServer, gql } = require('apollo-server');
+import { ApolloServer, gql } from 'apollo-server';
 
 const typeDefs = gql`
   type Query {
@@ -166,7 +166,7 @@ const server = new ApolloServer({
   context: ({ req }) => prepareSomehowContextDataFromRequest(req),
   playground: true,
 });
-server.start({
+server.listen({
   port: 6000,
   endpoint: '/graphql',
   playground: '/playground',

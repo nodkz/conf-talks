@@ -52,9 +52,9 @@
 				<section data-markdown="slides/02-ecosystem/index.md" data-separator-vertical="^-----\n"></section>
 				<section data-markdown="slides/02-ecosystem/01-schema.md" data-separator-vertical="^-----\n"></section>
 				<section data-markdown="slides/02-ecosystem/02-types.md" data-separator-vertical="^-----\n"></section>
-				<section data-markdown="slides/02-ecosystem/03-schema-build-ways.md" data-separator-vertical="^-----\n"></section>
-				<section data-markdown="slides/02-ecosystem/04-server.md" data-separator-vertical="^-----\n"></section>
-				<section data-markdown="slides/02-ecosystem/05-introspection.md" data-separator-vertical="^-----\n"></section>
+				<section data-markdown="slides/02-ecosystem/03-sdl-introspection.md" data-separator-vertical="^-----\n"></section>
+				<section data-markdown="slides/02-ecosystem/04-schema-build-ways.md" data-separator-vertical="^-----\n"></section>
+				<section data-markdown="slides/02-ecosystem/05-server.md" data-separator-vertical="^-----\n"></section>
 				<section data-markdown="slides/03-authorization/index.md" data-separator-vertical="^-----\n"></section>
 				<section data-markdown="slides/04-performance/index.md" data-separator-vertical="^-----\n"></section>
 				<section data-markdown="slides/05-security/index.md" data-separator-vertical="^-----\n"></section>
@@ -72,7 +72,12 @@
 					{ src: 'reveal.js/plugin/fixedMarkdown/marked.js' },
 					{ src: 'reveal.js/plugin/fixedMarkdown/markdown.js' },
 					{ src: 'reveal.js/plugin/notes/notes.js', async: true },
-					{ src: 'reveal.js/plugin/highlight.9.12.0.pack.js' },
+					{ 
+						src: 'reveal.js/plugin/highlight.9.12.0.pack.js',
+						callback: function() {
+							hljs.registerLanguage("graphql",function(e){return{aliases:["gql"],k:{keyword:"query mutation subscription|10 type input schema directive interface union scalar fragment|10 enum on ...",literal:"true false null"},c:[e.HCM,e.QSM,e.NM,{cN:"type",b:"[^\\w][A-Z][a-z]",e:"\\W",eE:!0},{cN:"literal",b:"[^\\w][A-Z][A-Z]",e:"\\W",eE:!0},{cN:"variable",b:"\\$",e:"\\W",eE:!0},{cN:"keyword",b:"[.]{2}",e:"\\."},{cN:"meta",b:"@",e:"\\W",eE:!0}],i:/([;<']|BEGIN)/}});
+						},
+					},
 					{
 						src: 'reveal.js/plugin/reveal-code-focus.js',
 						async: true,

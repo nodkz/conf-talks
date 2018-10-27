@@ -8,6 +8,7 @@
 
 - [GraphQL Schema](https://github.com/nodkz/conf-talks/blob/master/particles/graphql/schema/README.md)
 - [GraphQL Типы](https://github.com/nodkz/conf-talks/blob/master/particles/graphql/types/README.md)
+- [Что такое SDL и интроспекция?](https://github.com/nodkz/conf-talks/blob/master/particles/graphql/schema/README.md)
 - [Четыре подхода к написанию GraphQL-схем](https://github.com/nodkz/conf-talks/blob/master/particles/graphql/schema-build-ways/README.md)
 - [GraphQL на вашем сервере](https://github.com/nodkz/conf-talks/blob/master/particles/graphql/server/README.md)
 - [Запускаем сервер на NodeJS](https://github.com/nodkz/conf-talks/blob/master/particles/graphql/schema-build-ways/server.js)
