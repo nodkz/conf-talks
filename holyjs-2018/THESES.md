@@ -9,14 +9,17 @@
   - [Что такое интроспекция и SDL?](../particles/graphql/schema/README.md)
   - [4 подхода к написанию GraphQL-схем](../particles/graphql/schema-build-ways/README.md)
   - [GraphQL Сервер](../particles/graphql/server/README.md)
-  - [запускаем сервер на NodeJS](../particles/graphql/server/README.md)
-- АВТОРИЗАЦИЯ
-  - JWT, cookie
-  - почему я использую три токена (user, account, admin)
-  - примитивный ACL на уровне схемы
+  - [Запускаем сервер на NodeJS](../particles/graphql/server/README.md)
+- АУТЕНТИФИКАЦИЯ и АВТОРИЗАЦИЯ
+  - JWT, cookie (Аутентификация)
+  - Прикручиваем ACL (Авторизация)
+    - на уровне сервера
+    - на уровне схемы
+    - на уровне связей между типами
+  - Почему я использую три токена (user, account, admin)
 - ПРОИЗВОДИТЕЛЬНОСТЬ
-  - как отправлять файлы, и нужно ли это вообще делать через GraphQL?
-  - уменьшаем кол-во запросов через DataLoader (avoiding N+1 problem)
+  - Как отправлять файлы, и нужно ли это вообще делать через GraphQL?
+  - Уменьшаем кол-во запросов через DataLoader (avoiding N+1 problem)
 - БЕЗОПАСНОСТЬ
   - дырки, отдаем данные которые нельзя отдавать
   - прикручиваем QueryCost (Denial of Service attacks)
