@@ -11,12 +11,12 @@
   - [GraphQL Сервер](../particles/graphql/server/README.md)
   - [Запускаем сервер на NodeJS](../particles/graphql/server/README.md)
 - АУТЕНТИФИКАЦИЯ и АВТОРИЗАЦИЯ
-  - JWT, cookie (Аутентификация)
+  - [JWT, cookie (Аутентификация)](../particles/graphql/auth/README.md#sign-in-аутентификация)
   - Прикручиваем ACL (Авторизация)
-    - на уровне сервера
-    - на уровне схемы
-    - на уровне связей между типами
-  - Почему я использую три токена (user, account, admin)
+    - [на уровне сервера](../particles/graphql/auth/README.md#1-авторизация-на-уровне-сервера-express-koa-и-пр)
+    - [на уровне схемы](../particles/graphql/auth/README.md#2-авторизация-на-уровне-graphql-схемы-глобально-на-первых-полях-схемы)
+    - [на уровне связей между типами](../particles/graphql/auth/README.md#3-авторизация-на-уровне-связей-между-типами-в-resolve-методах)
+  - [Почему я использую три токена (user, account, admin)](../particles/graphql/auth/README.md#почему-я-использую-три-токена-user-account-admin)
 - ПРОИЗВОДИТЕЛЬНОСТЬ
   - [Загрузка файлов, и нужно ли это вообще делать через GraphQL?](../particles/graphql/fileUploads/README.md)
   - Уменьшаем кол-во запросов через DataLoader (avoiding N+1 problem)
