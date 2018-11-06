@@ -26,6 +26,7 @@
   - прикручиваем QueryCost (Denial of Service attacks)
   - готовим схему для PRODUCTION
 - ДРУГОЕ
+  - [i18n — интернализация в GraphQL](../particles/graphql/i18n/README.md)
   - как передавать ошибки клиенту
   - генерация схем из моделей
   - расширенное получение данных после мутации
