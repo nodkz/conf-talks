@@ -340,4 +340,4 @@ const schema = new GraphQLSchema({
 
 - [Примеры кода в виде тестов к этой статье](./__tests__/errors-test.js)
 - [Видео про ошибки от Sasha Solomon](https://www.youtube.com/watch?v=GYBhHUGR1ZY)
-- [Похожее видео про ошибки от Eloy Durán](https://www.youtube.com/watch?v=qKA-n8p-sNc), у всё-таки Саши лучше
+- [Похожее видео про ошибки от Eloy Durán](https://www.youtube.com/watch?v=qKA-n8p-sNc), всё-таки у Саши лучше
