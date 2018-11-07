@@ -132,7 +132,7 @@ const res = await graphql({
 
 Ответ от сервера будет получен следующий:
 
-```json
+```js
 {
   errors: [
     { message: 'missing q', locations: [{ line: 4, column: 11 }], path: ['s2'] }
@@ -210,7 +210,7 @@ query {
 
 Т.е. используем фрагменты на конкретных типах и запрашиваем поле `__typename`, которое возвращает имя типа. К запросу выше GraphQL-ответ будет следующий:
 
-```json
+```js
 {
   data: {
     list: [
