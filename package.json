@@ -22,6 +22,7 @@
   "dependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.0.0",
     "apollo-server": "^2.1.0",
+    "dataloader": "^1.4.0",
     "graphql": "^14.0.2",
     "graphql-compose": "^5.2.0",
     "graphql-tools": "^4.0.0",
