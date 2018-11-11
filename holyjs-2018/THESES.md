@@ -24,7 +24,7 @@
   - расширенное получение данных после мутации
 - ПРОИЗВОДИТЕЛЬНОСТЬ
   - [Загрузка файлов, и нужно ли это вообще делать через GraphQL?](../particles/graphql/fileUploads/README.md)
-  - Уменьшаем кол-во запросов через DataLoader (avoiding N+1 problem)
+  - [Уменьшаем кол-во запросов через DataLoader (avoiding N+1 problem)](../particles/graphql/dataloader/README.md)
 - БЕЗОПАСНОСТЬ
   - дырки, отдаем данные которые нельзя отдавать
   - прикручиваем QueryCost (Denial of Service attacks)
