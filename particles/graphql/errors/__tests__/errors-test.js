@@ -2,7 +2,6 @@
 
 import {
   GraphQLString,
-  GraphQLInt,
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLUnionType,
@@ -53,6 +52,43 @@ describe('check how works GraphQLUnionType', () => {
     expect(res).toEqual({
       errors: [{ message: 'missing q', locations: [{ line: 4, column: 11 }], path: ['s2'] }],
       data: { s1: { text: 'ok' }, s2: null, s3: { text: 'good' } },
+    });
+  });
+
+  it('throw error with extensions in resolve method', async () => {
+    const schema = new GraphQLSchema({
+      query: new GraphQLObjectType({
+        name: 'Query',
+        fields: {
+          search: {
+            resolve: () => {
+              const e: any = new Error('Some error');
+              e.extensions = { a: 1, b: 2 }; // will be passed in GraphQL-response
+              e.someOtherData = { c: 3, d: 4 }; // will be omitted
+              throw e;
+            },
+            type: GraphQLString,
+          },
+        },
+      }),
+    });
+
+    const res = await graphql({
+      schema,
+      source: `query { search }`,
+    });
+
+    // console.log(JSON.stringify(res));
+    expect(res).toEqual({
+      errors: [
+        {
+          message: 'Some error',
+          locations: [{ line: 1, column: 9 }],
+          path: ['search'],
+          extensions: { a: 1, b: 2 },
+        },
+      ],
+      data: { search: null },
     });
   });
 
