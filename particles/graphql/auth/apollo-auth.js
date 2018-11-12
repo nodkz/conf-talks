@@ -12,7 +12,7 @@ const users = [{ id: 1, role: 'ADMIN' }, { id: 2, role: 'USER' }];
 
 // Получаем объект пользователя из запроса
 async function getUserFromReq(req: any) {
-  const token = req?.headers?.authorization;
+  const token = req?.cookies?.token || req?.headers?.authorization;
   if (token) {
     const payload = jwt.verify(token, JWT_SECRET_KEY);
     if (payload) {
