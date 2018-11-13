@@ -62,7 +62,9 @@
 
 ## Custom scalar types
 
-Не хватает скалярных типов?
+Не хватает 5 скалярных типов?
+
+Хочется сразу работать с Date а не циферками?
 
 Date, Email, URL, LimitedString, Password, SmallInt ...
 
@@ -349,10 +351,8 @@ GraphQL для входящих аргументов полей может ис�
 </code></pre>
 
 `key` — для клиентской стороны
-
-`value` — доступно на сервере в resolve-методах
-
-Подробно и с деталями — [читать тут](https://github.com/nodkz/conf-talks/blob/master/particles/graphql/types/README.md#enumeration-types)
+<br/>`value` — доступно на сервере в resolve-методах
+<br/>Подробно и с деталями — [читать тут](https://github.com/nodkz/conf-talks/blob/master/particles/graphql/types/README.md#enumeration-types)
 
 -----
 

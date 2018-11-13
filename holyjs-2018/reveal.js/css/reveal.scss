@@ -1316,8 +1316,9 @@ $controlsArrowAngleActive: 36deg;
 	}
 	.slides section:hover,
 	.slides section.present {
-		outline: 10px solid rgba(150,150,150,0.4);
-		outline-offset: 10px;
+		// outline: 10px solid rgba(150,150,150,0.4);
+		outline: 30px solid rgb(214, 83, 253);
+    outline-offset: 10px;
 	}
 	.slides section .fragment {
 		opacity: 1;

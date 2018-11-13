@@ -1,3 +1,5 @@
+# Section #3
+
 # АВТОРИЗАЦИЯ
 
 -----
@@ -466,3 +468,7 @@ const UserType = new GraphQLObjectType({
 ## `user` `account` `admin`
 
 ### Берите и пользуйтесь на здоровье 😉
+
+-----
+
+Подробнее [читаем тут](https://github.com/nodkz/conf-talks/tree/master/particles/graphql/auth)

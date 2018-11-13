@@ -33,7 +33,7 @@
   - генерим две схемы для админов и для клиентов
 - Тестирование схем *(в планах [пакет](https://github.com/graphql-compose/graphql-test))*
 - QueryCost (Denial of Service attacks) *(есть [пакет](https://github.com/slicknode/graphql-query-complexity))*
-- Загрузка файлов через GraphQL *(сразу [нет](https://github.com/nodkz/conf-talks/tree/master/particles/graphql/fileUploads))*
+- Подготовки схемы к PRODу *(вырубайте интроспекцию)*
 - Персистентные запросы без Apollo *(очень простая штука)*
 - И еще что-нибудь интересное
 
@@ -45,7 +45,7 @@
 
 -----
 
-# Вопросы?
+# Вопросы к Паше?
 
 <div style="font-size: 1.5em;">
   <div>

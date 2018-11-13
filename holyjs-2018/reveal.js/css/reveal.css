@@ -1080,7 +1080,7 @@ body {
     box-sizing: border-box; }
   .reveal.overview .slides section:hover,
   .reveal.overview .slides section.present {
-    outline: 10px solid rgba(150, 150, 150, 0.4);
+    outline: 30px solid #d653fd;
     outline-offset: 10px; }
   .reveal.overview .slides section .fragment {
     opacity: 1;
