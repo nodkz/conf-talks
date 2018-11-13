@@ -6,5 +6,6 @@
   "no-emphasis-as-heading": false,
   "no-emphasis-as-header": false,
   "header-increment": false,
-  "hr-style": false
+  "hr-style": false,
+  "no-duplicate-heading": false
 }
