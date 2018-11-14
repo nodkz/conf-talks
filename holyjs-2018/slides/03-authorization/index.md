@@ -471,4 +471,4 @@ const UserType = new GraphQLObjectType({
 
 -----
 
-Подробнее [читаем тут](https://github.com/nodkz/conf-talks/tree/master/particles/graphql/auth)
+Подробнее про Авторизацию [читаем тут](https://github.com/nodkz/conf-talks/tree/master/particles/graphql/auth)
