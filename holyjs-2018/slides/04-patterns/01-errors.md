@@ -2,7 +2,7 @@
 
 -----
 
-## В GraphQL существует<br/>4 группы ошибок
+## В GraphQL я бы выделил<br/>4 группы ошибок
 
 - Фатальные ошибки
 - Ошибки валидации
@@ -224,16 +224,18 @@ const searchResolver = () => {
       message: 'WoW',
       locations: [{ line: 1, column: 9 }],
       path: ['search'],
-      extensions: { a: 'Additional error data for client' },
+      extensions: { a: 'Additional error data for client' }, // <-- ☝️
     },
   ],
   data: { search: null },
+  extensions: {} // <-- это экстеншн на глобальном уровне
 }
 
 ```
 
 <span class="fragment" data-code-block="1" data-code-focus="3" />
 <span class="fragment" data-code-block="2" data-code-focus="7" />
+<span class="fragment" data-code-block="2" data-code-focus="11" />
 
 -----
 

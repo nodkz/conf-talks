@@ -20,7 +20,6 @@
 
 [https://nodkz.github.io/conf-talks/holyjs-2018/index.html](https://nodkz.github.io/conf-talks/holyjs-2018/index.html) <!-- .element: style="color: #ffffff" -->
 
-
 -----
 
 ## Коротко о себе
