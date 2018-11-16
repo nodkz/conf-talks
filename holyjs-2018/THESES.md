@@ -19,7 +19,7 @@
     - [на уровне связей между типами](../particles/graphql/auth/README.md#4-авторизация-на-уровне-связей-между-типами-в-resolve-методах)
   - [Почему я использую три токена (user, account, admin)](../particles/graphql/auth/README.md#почему-я-использую-три-токена-user-account-admin)
 - ПАТТЕРНЫ ПОСТРОЕНИЯ СХЕМ
-  - [i18n — интернализация в GraphQL](../particles/graphql/i18n/README.md)
+  - [i18n — интернационализация в GraphQL](../particles/graphql/i18n/README.md)
   - [как работать с ошибками в GraphQL](../particles/graphql/errors/README.md)
   - расширенное получение данных после мутации
 - ПРОИЗВОДИТЕЛЬНОСТЬ

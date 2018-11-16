@@ -105,8 +105,10 @@ const server = new ApolloServer({
   schema,
   // контекст формируется для каждого http-запроса
   // перед тем как начнется выполняться GraphQL-запрос.
-  // переменные req, user и role будут доступны в третьем агрументе context
-  // на любом уровне вашей схемы в методе resolve(source, args, context)
+  // Контекст будет содержать проперти req, user и hasRole 
+  // Будут доступны во всех резолверах в третьем агрументе context
+  //   на любом уровне вашей схемы:
+  //   resolve(source, args, context, info)
   context: async ({ req }) => {
     let user;
     try {
@@ -114,8 +116,12 @@ const server = new ApolloServer({
     } catch (e) {
       throw new AuthenticationError('You provide incorrect token!');
     }
-    const role = user?.role || 'GUEST';
-    return { req, user, role };
+    // Примитивный RBAC
+    const hasRole = (role) => {
+      if (Array.isArray(user?.roles)) return user?.roles.includes(role);
+      return false;
+    }
+    return { req, user, hasRole };
   },
 });
 
@@ -164,7 +170,7 @@ const Query = new GraphQLObjectType({
     admin: {
       type: AdminNamespace,
       resolve: (_, __, context) => {
-        if (context.role === 'ADMIN') {
+        if (context.hasRole('ADMIN')) {
           // LIFEHACK: возвращаем пустой объект
           // чтоб GraphQL вызвал resolve-методы у вложенных полей
           return {};
@@ -207,7 +213,7 @@ const UserType = new GraphQLObjectType({
         const { id, lastIp } = source;
 
         // return IP for ADMIN
-        if (context.role === 'ADMIN') return lastIp;
+        if (context.hasRole('ADMIN')) return lastIp;
 
         // return IP for current user
         if (id === context.user.id) return lastIp;
@@ -247,7 +253,7 @@ const UserType = new GraphQLObjectType({
         let metaList = await Meta.find(o => o.userId === id);
 
         // проверяем доступ на отображение полученных данных (это отличие от пункта 3)
-        metaList = metaList.filter(m => m.forRole === context.role);
+        metaList = metaList.filter(m => context.hasRole(m.forRole));
 
         return metaList;
       },
@@ -256,7 +262,104 @@ const UserType = new GraphQLObjectType({
 });
 ```
 
-## Appendix: Почему я использую три токена (user, account, admin)
+## Appendix A: Функции помогайки
+
+### getPathFromInfo(info: GraphQLResolveInfo)
+
+Как вам идея авторизировать роли по путям вашего GraphQL?
+
+```graphql
+mutation {
+  login { ... } # GUEST
+  logout { ... } # USER
+}
+
+query {
+  articles { ... } # USER
+  me {
+    debugInfo { ... } # only for ADMIN
+    profile { ... } # USER
+  }
+}
+```
+
+Ну к примеру запилим такую политику:
+
+```yaml
+ADMIN: # имеет доступ ко всему
+  *
+USER: # имеет доступ только к следующим путям графа
+  articles.*
+  me.profile.*
+  logout.*
+GUEST: # может вызвать только login
+  login.*
+```
+
+Когда выполняется код в resolve-методах, то через четвертый аргумент `info` вы можете получить информацию о том на каком уровне схемы сейчас выполняется код. Имея путь запроса, вы можете настроить авторизацию по wildcard'ам.
+
+К примеру мы имеем следующий GraphQL-запрос:
+
+```graphql
+query { articles { author { name } } }
+```
+
+То в резолвере `Article.author` можно провернуть следующую проверку:
+
+```js
+const ArticleType = new GraphQLObjectType({
+  name: 'Article',
+  fields: () => ({
+    title: { type: GraphQLString },
+    authorId: { type: GraphQLString },
+    author: {
+      type: AuthorType,
+      resolve: (source, _, context, info) => {
+        // В `info.path` можно считать путь запроса. Он имеет следующий вид:
+        // { prev: { prev: { prev: undefined, key: 'articles' }, key: 0 }, key: 'author' }
+
+        // Прогоняем `info.path` чтоб получить текущий путь в виде массива
+        const path = getPathFromInfo(info); // ['articles', 0, 'author']
+
+        // ну а дальше можно этот путь прогнать через свой RBAC
+        // для проверки того, имеет ли юзер доступ к текущей ветки вашего АПИ или нет
+        // `checkAccess` вы объявляете на уровне сервера см пункт 3.1
+        context.checkAccess(path);
+
+        return authorModel.findById(source.authorId);
+      },
+    },
+  }),
+});
+```
+
+Так вот можно воспользоваться следующей функцией помогайкой `getPathFromInfo(info)`, которая вернет вам текущий путь в графе в виде массива. Ей на входе нужен четвертый аргумент `info` из resolve-метода:
+
+```js
+/**
+ * Функция помогайка, которая конвертирует
+ * { prev: { prev: { prev: undefined, key: 'articles' }, key: 0 }, key: 'author' }
+ * в
+ * ['articles', 0, 'author']
+ */
+function getPathFromInfo(info: GraphQLResolveInfo): Array<string | number> | false {
+  if (!info || !info.path) return false;
+  const res = [];
+  let curPath = info.path;
+  while (curPath) {
+    if (curPath.key) {
+      res.unshift(curPath.key);
+      if (curPath.prev) curPath = curPath.prev;
+      else break;
+    } else break;
+  }
+  return res;
+}
+```
+
+Ну а дальше дело техники, как текущий путь полученный в виде массива проверить на доступ по wildcard'ам для текущей роли пользователя. Самое главное понять идею, что можно авторизовать юзеров по путям в GraphQL-запросе.
+
+## Appendix B: Почему я использую три токена (user, account, admin)
 
 В большинстве случаев разработчики пользуется всего одним токеном при работе с сервером. Долгим и мучительным рефакторингом я для себя вынес одно великое правило, что надо использовать 3 токена:
 

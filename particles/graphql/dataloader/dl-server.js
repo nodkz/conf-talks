@@ -1,7 +1,7 @@
 // @flow
 
 // Server with DataLoader
-// Run: ./node_modules/.bin/babel-node ./particles/graphql/data-loader/dl-server.js
+// Run: ./node_modules/.bin/babel-node ./particles/graphql/dataloader/dl-server.js
 
 import { ApolloServer } from 'apollo-server';
 import schema from './dl-schema';

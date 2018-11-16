@@ -8,7 +8,7 @@ import jwt from 'jsonwebtoken';
 
 const JWT_SECRET_KEY = 'qwerty ;)';
 
-const users = [{ id: 1, role: 'ADMIN' }, { id: 2, role: 'USER' }];
+const users = [{ id: 1, roles: ['ADMIN', 'USER'] }, { id: 2, roles: ['USER'] }];
 
 // Получаем объект пользователя из запроса
 async function getUserFromReq(req: any) {
@@ -30,7 +30,9 @@ const schema = new GraphQLSchema({
       hello: {
         type: GraphQLString,
         resolve: (source, args, context) => {
-          return `Hello, ${context.role} from ip ${context.req.ip}`;
+          return `Hello, ${context.hasRole('ADMIN') ? 'ADMIN' : 'NON-ADMIN'} from ip ${
+            context.req.ip
+          }`;
         },
       },
     },
@@ -46,8 +48,11 @@ const server = new ApolloServer({
     } catch (e) {
       throw new AuthenticationError('You provide incorrect token!');
     }
-    const role = user?.role || 'GUEST';
-    return { req, user, role };
+    const hasRole = role => {
+      if (user && Array.isArray(user.roles)) return user.roles.includes(role);
+      return false;
+    };
+    return { req, user, hasRole };
   },
   playground: {
     tabs: [

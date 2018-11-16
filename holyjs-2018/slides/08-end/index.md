@@ -55,9 +55,11 @@
     <a href="https://twitter.com/nodkz" target="_blank" style="vertical-align: middle; font-weight: bold; font-size: 1.3em; color: #00abe6;">nodkz</a>
     &nbsp;
     <a href="https://github.com/nodkz" target="_blank">
-      <img src="../assets/logo/github.png" style="height: 1.7em; vertical-align: middle;" class="plain" />
+      <img src="../assets/logo/github.png" style="height: 1.7em; border: none; background: none; box-shadow: none; vertical-align: middle;" class="plain" />
     </a>
   </div>
 </div>
+
+Ссылка на эту презентацию: [http://bit.ly/holy-graphql](https://nodkz.github.io/conf-talks/holyjs-2018/index.html)
 
 ![Photo](../assets/nodkz-photo.jpg) <!-- .element: style="max-width: 400px; border: none" -->
