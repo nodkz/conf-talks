@@ -535,4 +535,4 @@ function getPathFromInfo(info: GraphQLResolveInfo): Array<string | number> | fal
 
 -----
 
-Подробнее про Авторизацию [читаем тут](https://github.com/nodkz/conf-talks/tree/master/particles/graphql/auth)
+Подробнее про Авторизацию [читаем тут](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/auth)

@@ -229,7 +229,7 @@ new GraphQLObjectType({
 
 ```graphql
 query {
-  list(q: "text") {
+  list {
     __typename # <----- магическое поле, которое вернет имя типа для каждой записи
     ...on Video {
       title

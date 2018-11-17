@@ -167,5 +167,5 @@ GraphQL помогает бэкендерам задать конву - опис
 
 #### Более подробнее расписано тут
 
-- [Что такое GraphQL?](https://github.com/nodkz/conf-talks/blob/master/particles/graphql/README.md)
-- [Swagger vs GraphQL](https://github.com/nodkz/conf-talks/blob/master/particles/swagger/README.md)
+- [Что такое GraphQL?](https://github.com/nodkz/conf-talks/blob/master/articles/graphql/README.md)
+- [Swagger vs GraphQL](https://github.com/nodkz/conf-talks/blob/master/articles/swagger/README.md)

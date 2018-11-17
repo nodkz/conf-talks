@@ -515,4 +515,4 @@ query {
 
 -----
 
-Подробнее про работу с ошибками в GraphQL [читаем тут](https://github.com/nodkz/conf-talks/tree/master/particles/graphql/errors/README.md)
+Подробнее про работу с ошибками в GraphQL [читаем тут](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/errors/README.md)

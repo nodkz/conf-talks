@@ -248,7 +248,7 @@ export default new GraphQLScalarType({
 });
 </code></pre>
 
-Подробно и с деталями — [читать тут](https://github.com/nodkz/conf-talks/blob/master/particles/graphql/types/README.md#object-types)
+Подробно и с деталями — [читать тут](https://github.com/nodkz/conf-talks/blob/master/articles/graphql/types/README.md#object-types)
 
 <span class="fragment" data-code-focus="1-2" />
 <span class="fragment" data-code-focus="3" />
@@ -308,7 +308,7 @@ GraphQL для входящих аргументов полей может ис�
 });
 </code></pre>
 
-Подробно и с деталями — [читать тут](https://github.com/nodkz/conf-talks/blob/master/particles/graphql/types/README.md#input-types)
+Подробно и с деталями — [читать тут](https://github.com/nodkz/conf-talks/blob/master/articles/graphql/types/README.md#input-types)
 
 <span class="fragment" data-code-focus="1" />
 <span class="fragment" data-code-focus="3" />
@@ -352,7 +352,7 @@ GraphQL для входящих аргументов полей может ис�
 
 `key` — для клиентской стороны
 <br/>`value` — доступно на сервере в resolve-методах
-<br/>Подробно и с деталями — [читать тут](https://github.com/nodkz/conf-talks/blob/master/particles/graphql/types/README.md#enumeration-types)
+<br/>Подробно и с деталями — [читать тут](https://github.com/nodkz/conf-talks/blob/master/articles/graphql/types/README.md#enumeration-types)
 
 -----
 
@@ -483,7 +483,7 @@ GraphQL для входящих аргументов полей может ис�
 # ]
 </code></pre>
 
-Подробно и с деталями — [читать тут](https://github.com/nodkz/conf-talks/blob/master/particles/graphql/types/README.md#interfaces)
+Подробно и с деталями — [читать тут](https://github.com/nodkz/conf-talks/blob/master/articles/graphql/types/README.md#interfaces)
 
 -----
 
@@ -542,7 +542,7 @@ const SearchRowType = new GraphQLUnionType({
 # ]
 </code></pre>
 
-Подробно и с деталями — [читать тут](https://github.com/nodkz/conf-talks/blob/master/particles/graphql/types/README.md#union-types)
+Подробно и с деталями — [читать тут](https://github.com/nodkz/conf-talks/blob/master/articles/graphql/types/README.md#union-types)
 
 -----
 
@@ -587,7 +587,7 @@ const response = await graphql(schema, `query { ... }`);
 }
 </code></pre>
 
-Подробно и с деталями — [читать тут](https://github.com/nodkz/conf-talks/blob/master/particles/graphql/types/README.md#root-types)
+Подробно и с деталями — [читать тут](https://github.com/nodkz/conf-talks/blob/master/articles/graphql/types/README.md#root-types)
 
 -----
 
@@ -667,13 +667,13 @@ const response = await graphql(schema, `query { ... }`);
 
 #### Директивы в рантайме — только встроенные!
 
-<br/>Подробно и с деталями — [читать тут](https://github.com/nodkz/conf-talks/blob/master/particles/graphql/types/README.md#directives)
+<br/>Подробно и с деталями — [читать тут](https://github.com/nodkz/conf-talks/blob/master/articles/graphql/types/README.md#directives)
 
 -----
 
 ### Вся система типов очень подробно и доходчиво
 
-### [расписана у меня в гитхабе](https://github.com/nodkz/conf-talks/blob/master/particles/graphql/types/README.md)
+### [расписана у меня в гитхабе](https://github.com/nodkz/conf-talks/blob/master/articles/graphql/types/README.md)
 
 ### на русском! 😃 <!-- .element: class="fragment" -->
 

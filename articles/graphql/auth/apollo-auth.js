@@ -1,6 +1,6 @@
 // @flow
 
-// Run: ./node_modules/.bin/babel-node ./particles/graphql/auth/apollo-auth.js
+// Run: ./node_modules/.bin/babel-node ./articles/graphql/auth/apollo-auth.js
 
 import { ApolloServer, AuthenticationError } from 'apollo-server'; // v2.1
 import { GraphQLSchema, GraphQLObjectType, GraphQLString } from 'graphql';

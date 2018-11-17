@@ -9,4 +9,4 @@
 - версионирование
 - циклические резолверы
 - транзакции для нескольких мутаций
-- [фронетнедеры писающие кипятком](https://github.com/nodkz/conf-talks/tree/master/particles/redux/README.md)
+- [фронетнедеры писающие кипятком](https://github.com/nodkz/conf-talks/tree/master/articles/redux/README.md)

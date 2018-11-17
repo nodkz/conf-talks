@@ -244,4 +244,4 @@ const server = new ApolloServer({ schema,
 
 -----
 
-Подробнее о серверах, [читать тут](https://github.com/nodkz/conf-talks/tree/master/particles/graphql/server)
+Подробнее о серверах, [читать тут](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/server)

@@ -1,30 +1,30 @@
 # Тезисный план для HolyJS Moscow 2018
 
 - А НАФИГА НУЖНО ЧТО-ТО МЕНЯТЬ?
-  - [Swagger vs GraphQL](../particles/swagger/README.md)
-  - [Что такое GraphQL?](../particles/graphql/README.md)
+  - [Swagger vs GraphQL](../articles/swagger/README.md)
+  - [Что такое GraphQL?](../articles/graphql/README.md)
 - ЭКОСИСТЕМА
-  - [GraphQL Schema](../particles/graphql/schema/README.md)
-  - [GraphQL Типы](../particles/graphql/types/README.md)
-  - [Что такое интроспекция и SDL?](../particles/graphql/schema/README.md)
-  - [4 подхода к написанию GraphQL-схем](../particles/graphql/schema-build-ways/README.md)
-  - [GraphQL Сервер](../particles/graphql/server/README.md)
-  - [Запускаем сервер на NodeJS](../particles/graphql/server/README.md)
+  - [GraphQL Schema](../articles/graphql/schema/README.md)
+  - [GraphQL Типы](../articles/graphql/types/README.md)
+  - [Что такое интроспекция и SDL?](../articles/graphql/schema/README.md)
+  - [4 подхода к написанию GraphQL-схем](../articles/graphql/schema-build-ways/README.md)
+  - [GraphQL Сервер](../articles/graphql/server/README.md)
+  - [Запускаем сервер на NodeJS](../articles/graphql/server/README.md)
 - АУТЕНТИФИКАЦИЯ и АВТОРИЗАЦИЯ
-  - [JWT, cookie (Аутентификация)](../particles/graphql/auth/README.md#sign-in-аутентификация)
+  - [JWT, cookie (Аутентификация)](../articles/graphql/auth/README.md#sign-in-аутентификация)
   - Прикручиваем ACL (Авторизация)
-    - [на уровне сервера](../particles/graphql/auth/README.md#1-авторизация-на-уровне-сервера-apollo-express-koa-и-пр)
-    - [на уровне схемы](../particles/graphql/auth/README.md#2-авторизация-на-уровне-graphql-схемы-глобально-на-первых-полях-схемы)
-    - [на уровне полей](../particles/graphql/auth/README.md#3-авторизация-на-уровне-полей-в-resolve-методах)
-    - [на уровне связей между типами](../particles/graphql/auth/README.md#4-авторизация-на-уровне-связей-между-типами-в-resolve-методах)
-  - [Почему я использую три токена (user, account, admin)](../particles/graphql/auth/README.md#почему-я-использую-три-токена-user-account-admin)
+    - [на уровне сервера](../articles/graphql/auth/README.md#1-авторизация-на-уровне-сервера-apollo-express-koa-и-пр)
+    - [на уровне схемы](../articles/graphql/auth/README.md#2-авторизация-на-уровне-graphql-схемы-глобально-на-первых-полях-схемы)
+    - [на уровне полей](../articles/graphql/auth/README.md#3-авторизация-на-уровне-полей-в-resolve-методах)
+    - [на уровне связей между типами](../articles/graphql/auth/README.md#4-авторизация-на-уровне-связей-между-типами-в-resolve-методах)
+  - [Почему я использую три токена (user, account, admin)](../articles/graphql/auth/README.md#почему-я-использую-три-токена-user-account-admin)
 - ПАТТЕРНЫ ПОСТРОЕНИЯ СХЕМ
-  - [i18n — интернационализация в GraphQL](../particles/graphql/i18n/README.md)
-  - [как работать с ошибками в GraphQL](../particles/graphql/errors/README.md)
+  - [i18n — интернационализация в GraphQL](../articles/graphql/i18n/README.md)
+  - [как работать с ошибками в GraphQL](../articles/graphql/errors/README.md)
   - расширенное получение данных после мутации
 - ПРОИЗВОДИТЕЛЬНОСТЬ
-  - [Загрузка файлов, и нужно ли это вообще делать через GraphQL?](../particles/graphql/fileUploads/README.md)
-  - [Уменьшаем кол-во запросов через DataLoader (avoiding N+1 problem)](../particles/graphql/dataloader/README.md)
+  - [Загрузка файлов, и нужно ли это вообще делать через GraphQL?](../articles/graphql/fileUploads/README.md)
+  - [Уменьшаем кол-во запросов через DataLoader (avoiding N+1 problem)](../articles/graphql/dataloader/README.md)
 - БЕЗОПАСНОСТЬ
   - дырки, отдаем данные которые нельзя отдавать
   - прикручиваем QueryCost (Denial of Service attacks)
@@ -38,7 +38,7 @@
   - версионирование
   - циклические резолверы
   - транзакции для нескольких мутаций
-  - [фронетнедеры писающие кипятком](../particles/redux/README.md)
+  - [фронетнедеры писающие кипятком](../articles/redux/README.md)
 - КЕЙСЫ
   - кривые схемы
   - оборачивания кучу микросервисов в одну схему

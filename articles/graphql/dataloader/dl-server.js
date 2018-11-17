@@ -1,14 +1,17 @@
 // @flow
 
-// Simple server
-// Run: ./node_modules/.bin/babel-node ./particles/graphql/dataloader/server.js
+// Server with DataLoader
+// Run: ./node_modules/.bin/babel-node ./articles/graphql/dataloader/dl-server.js
 
 import { ApolloServer } from 'apollo-server';
-import schema from './schema';
+import schema from './dl-schema';
 
 const server = new ApolloServer({
   schema,
-  context: ({ req }) => ({ req }),
+  context: ({ req }) => ({
+    req,
+    dataloaders: new WeakMap(), // <--- 👍👍👍 ADD JUST ONE THIS LINE; rest logic in type resolvers
+  }),
   playground: true,
 });
 

@@ -1,6 +1,6 @@
 // @flow
 
-// Run: ./node_modules/.bin/babel-node ./particles/graphql/server/server.js
+// Run: ./node_modules/.bin/babel-node ./articles/graphql/server/server.js
 
 import { ApolloServer } from 'apollo-server';
 import { GraphQLSchema, GraphQLObjectType, GraphQLString } from 'graphql';
