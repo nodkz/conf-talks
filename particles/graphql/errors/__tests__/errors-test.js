@@ -2,14 +2,16 @@
 
 import {
   GraphQLString,
+  GraphQLInt,
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLUnionType,
   GraphQLList,
+  GraphQLNonNull,
   graphql,
 } from 'graphql';
 
-describe('check how works GraphQLUnionType', () => {
+describe('check different Error approaches', () => {
   it('throw error in resolve method', async () => {
     const schema = new GraphQLSchema({
       query: new GraphQLObjectType({
@@ -92,67 +94,87 @@ describe('check how works GraphQLUnionType', () => {
     });
   });
 
-  it('errors via Union-type', async () => {
+  it('errors (PROBLEMS) via Union-type', async () => {
     // Define our models
-    class Article {
+    class Video {
       title: string;
-      publishDate: string;
+      url: string;
 
-      constructor(title, publishDate) {
+      constructor({ title, url }) {
         this.title = title;
-        this.publishDate = publishDate;
+        this.url = url;
       }
     }
 
-    class ErrorNotFound {
-      message: string;
-      constructor(message) {
-        this.message = message;
+    class VideoInProgressProblem {
+      estimatedTime: number;
+      constructor({ estimatedTime }) {
+        this.estimatedTime = estimatedTime;
       }
     }
 
-    class ErrorNoAccess {
-      message: string;
-      constructor(message) {
-        this.message = message;
+    class VideoNeedBuyProblem {
+      price: number;
+      constructor({ price }) {
+        this.price = price;
+      }
+    }
+
+    class VideoApproveAgeProblem {
+      minAge: number;
+      constructor({ minAge }) {
+        this.minAge = minAge;
       }
     }
 
     // Define GraphQL types for our models
-    const ArticleType = new GraphQLObjectType({
-      name: 'Article',
+    const VideoType = new GraphQLObjectType({
+      name: 'Video',
       fields: () => ({
         title: { type: GraphQLString },
-        publishDate: { type: GraphQLString },
+        url: { type: GraphQLString },
       }),
     });
 
-    const ErrorNotFoundType = new GraphQLObjectType({
-      name: 'ErrorNotFound',
+    const VideoInProgressProblemType = new GraphQLObjectType({
+      name: 'VideoInProgressProblem',
       fields: () => ({
-        message: { type: GraphQLString },
+        estimatedTime: { type: GraphQLInt },
       }),
     });
 
-    const ErrorNoAccessType = new GraphQLObjectType({
-      name: 'ErrorNoAccess',
+    const VideoNeedBuyProblemType = new GraphQLObjectType({
+      name: 'VideoNeedBuyProblem',
       fields: () => ({
-        message: { type: GraphQLString },
+        price: { type: GraphQLInt },
+      }),
+    });
+
+    const VideoApproveAgeProblemType = new GraphQLObjectType({
+      name: 'VideoApproveAgeProblem',
+      fields: () => ({
+        minAge: { type: GraphQLInt },
       }),
     });
 
     // Create our Union type which returns different ObjectTypes
-    const ListResultType = new GraphQLUnionType({
-      name: 'ListResult',
-      description: 'List of items which can be one of the following types: Article, ErrorNotFound',
-      types: () => [ArticleType, ErrorNotFoundType, ErrorNoAccessType],
+    const VideoResultType = new GraphQLUnionType({
+      name: 'VideoResult',
+      types: () => [
+        VideoType,
+        VideoInProgressProblemType,
+        VideoNeedBuyProblemType,
+        VideoApproveAgeProblemType,
+      ],
       resolveType: value => {
-        if (value instanceof Article) {
-          return ArticleType;
-        } else if (value instanceof ErrorNotFound) {
-          return ErrorNotFoundType;
-        } else if (value instanceof ErrorNoAccess) {
-          return ErrorNoAccessType;
+        if (value instanceof Video) {
+          return VideoType;
+        } else if (value instanceof VideoInProgressProblem) {
+          return VideoInProgressProblemType;
+        } else if (value instanceof VideoNeedBuyProblem) {
+          return VideoNeedBuyProblemType;
+        } else if (value instanceof VideoApproveAgeProblem) {
+          return VideoApproveAgeProblemType;
         }
         return null;
       },
@@ -164,15 +186,13 @@ describe('check how works GraphQLUnionType', () => {
         name: 'Query',
         fields: {
           list: {
-            type: new GraphQLList(ListResultType),
-            args: {
-              q: { type: GraphQLString },
-            },
+            type: new GraphQLList(VideoResultType),
             resolve: () => {
               return [
-                new Article('Article 1', '2018-09-10'),
-                new ErrorNotFound('missing article'),
-                new ErrorNoAccess('you should be owner'),
+                new Video({ title: 'DOM2 in the HELL', url: 'https://url' }),
+                new VideoApproveAgeProblem({ minAge: 21 }),
+                new VideoNeedBuyProblem({ price: 10 }),
+                new VideoInProgressProblem({ estimatedTime: 220 }),
               ];
             },
           },
@@ -184,17 +204,20 @@ describe('check how works GraphQLUnionType', () => {
       schema,
       source: `
         query {
-          list(q: "text") {
+          list {
             __typename # <----- магическое поле, которое вернет имя типа для каждой записи
-            ...on Article {
+            ...on Video {
               title
-              publishDate
+              url
             }
-            ...on ErrorNotFound {
-              message
+            ...on VideoInProgressProblem {
+              estimatedTime
             }
-            ...on ErrorNoAccess {
-              message
+            ...on VideoNeedBuyProblem {
+              price
+            }
+            ...on VideoApproveAgeProblem {
+              minAge
             }
           }
         }
@@ -203,9 +226,10 @@ describe('check how works GraphQLUnionType', () => {
     expect(res).toEqual({
       data: {
         list: [
-          { __typename: 'Article', publishDate: '2018-09-10', title: 'Article 1' },
-          { __typename: 'ErrorNotFound', message: 'missing article' },
-          { __typename: 'ErrorNoAccess', message: 'you should be owner' },
+          { __typename: 'Video', title: 'DOM2 in the HELL', url: 'https://url' },
+          { __typename: 'VideoApproveAgeProblem', minAge: 21 },
+          { __typename: 'VideoNeedBuyProblem', price: 10 },
+          { __typename: 'VideoInProgressProblem', estimatedTime: 220 },
         ],
       },
     });
@@ -342,6 +366,41 @@ describe('check how works GraphQLUnionType', () => {
         },
       ],
       data: { ooops: ['ok', null] },
+    });
+  });
+
+  it('validation query response with NonNull', async () => {
+    const schema = new GraphQLSchema({
+      query: new GraphQLObjectType({
+        name: 'Query',
+        fields: {
+          ooops: {
+            type: new GraphQLList(new GraphQLNonNull(GraphQLString)),
+            resolve: () => ['ok', { hey: 'wrong non String value' }],
+          },
+        },
+      }),
+    });
+
+    const res = await graphql(
+      schema,
+      `
+        query {
+          ooops
+        }
+      `
+    );
+
+    // console.log(JSON.stringify(res));
+    expect(res).toEqual({
+      errors: [
+        {
+          message: 'String cannot represent value: { hey: "wrong non String value" }',
+          locations: [{ line: 3, column: 11 }],
+          path: ['ooops', 1],
+        },
+      ],
+      data: { ooops: null },
     });
   });
 });

@@ -57,20 +57,39 @@ GraphQL возвращает массив ошибок,
 
 -----
 
-### Первым делом пакет `graphql`, <br/>проводит парсинг и валидацию<br/>GraphQL-запроса.
+### GraphQL-ответ через HTTP <br />всегда возвращает `код 200` ☝️
 
-- проверяет корректность запроса
-- проверяет на соответствие с вашей GraphQL-схемой
-- проверяет корректность переменных
+- GraphQL может вернуть много разных ошибок
+- GraphQL не привязан к HTTP-протоколу
+
+-----
+
+### Забудьте про пачку HTTP-кодов, если вы пришли из мира RESTfull API
+
+-----
+
+### В мире GraphQL с HTTP всего один код `200`.
+
+#### Ну и код `500`, если сервер помер.
+
+-----
+
+### Что происходит когда прилетает <br/>GraphQL-запрос на сервер?
+
+-----
+
+### Первым делом пакет `graphql`, <br/>проводит парсинг и валидацию<br/>GraphQL-запроса.
 
 -----
 
 ## 2. Ошибки валидации
 
 - ошибка невалидного GraphQL-запроса
-- запросили несуществующее поле
-- не передали обязательный аргумент
 - не передали переменную
+- проверяет на соответствие с вашей GraphQL-схемой
+  - запросили несуществующее поле
+  - не передали обязательный аргумент
+  - передали неверный тип для аргумента
 
 -----
 
@@ -206,6 +225,38 @@ const ooops = {
 
 -----
 
+#### Продолжим пример и сделаем так:
+
+```diff
+const ooops = {
+-  type: new GraphQLList(GraphQLString),
++  type: new GraphQLList(new GraphQLNonNull(GraphQLString)),
+  resolve: () => ['ok', { hey: 666 }],
+};
+
+```
+
+#### GraphQL чуть-чуть звереет, т.к. теперь не может вернуть массив с null значением
+
+```diff
+{
+  errors: [
+    {
+      message: 'String cannot represent value: { hey: 666 }',
+      locations: [{ line: 3, column: 11 }],
+      path: ['ooops', 1],
+    },
+  ],
+  data: {
+-    ooops: [ 'ok', null ]
++    ooops: null
+  },
+}
+
+```
+
+-----
+
 ##### А еще есть `extensions` в ошибках, чтобы передать клиентам дополнительные данные об ошибке
 
 ```js
@@ -287,10 +338,15 @@ const searchResolver = () => {
 
 ## 4. Пользовательские ошибки
 
-- запись не найдена
 - недостаточно прав для просмотра
 - недоступно в вашем регионе
 - пользователь забанен
+- необходимо оплатить контент
+- и т.п.
+
+-----
+
+### У пользовательских ошибок есть одно свойство — их надо показать пользователю, чтоб он дальше что-то сделал.
 
 -----
 
@@ -301,12 +357,16 @@ const searchResolver = () => {
 <br/>
 
 ```js
-type ErrorNoAccess {
-  message: String
+type VideoInProgressProblem {
+  estimatedTime: Int
 }
 
-type ErrorNotFound {
-  message: String
+type VideoNeedBuyProblem {
+  price: Int
+}
+
+type VideoApproveAgeProblem {
+  minAge: Int
 }
 
 ```
@@ -315,16 +375,143 @@ type ErrorNotFound {
 
 ### И клиенту возвращать
 
-- либо запись с данными
-- либо запись с пользовательской ошибкой
+- либо запись с данными `Video`
+- либо запись с пользовательской ошибкой `Video*Problem`
 
 -----
 
+### Для этого необходимо использовать <br />Union-тип
 
+```js
+const VideoResultType = new GraphQLUnionType({
+  // Даем имя типу.
+  // Здорово если если вы выработаете конвенцию в своей команде
+  // и к таким Union-типам будите добавлять суффикс Result
+  name: 'VideoResult',
+
+  // как хорошие бекендеры добавляем какое-нибудь описание
+  description: 'List of video or problems',
+
+  // объявляем типы через массив, которые могут быть возвращены
+  types: () => [
+    VideoType,
+    VideoInProgressProblemType,
+    VideoNeedBuyProblemType,
+    VideoApproveAgeProblemType,
+  ],
+
+  // Ну и самое главное надо объявить функцию определения типа.
+  // resolve-функции возвращают JS-объект
+  // нам надо исходя из JS-объекта получить GraphQL-тип
+  resolveType: value => {
+    if (value instanceof Video) {
+      return VideoType;
+    } else if (value instanceof VideoInProgressProblem) {
+      return VideoInProgressProblemType;
+    } else if (value instanceof VideoNeedBuyProblem) {
+      return VideoNeedBuyProblemType;
+    } else if (value instanceof VideoApproveAgeProblem) {
+      return VideoApproveAgeProblemType;
+    }
+    return null;
+  },
+});
+
+```
+
+<span class="fragment" data-code-focus="5" />
+<span class="fragment" data-code-focus="11-16" />
+<span class="fragment" data-code-focus="21-32" />
 
 -----
 
+### Ну а дальше возвращать либо  запись, <br/>либо проблему (ошибку)
+
+```js
+const schema = new GraphQLSchema({
+  query: new GraphQLObjectType({
+    name: 'Query',
+    fields: {
+      list: {
+        type: new GraphQLList(VideoResultType),
+        resolve: () => {
+          return [
+            new Video({ title: 'DOM2 in the HELL', url: 'https://url' }),
+            new VideoApproveAgeProblem({ minAge: 21 }),
+            new VideoNeedBuyProblem({ price: 10 }),
+            new VideoInProgressProblem({ estimatedTime: 220 }),
+          ];
+        },
+      },
+    },
+  }),
+});
+
+```
+
+<span class="fragment" data-code-focus="6" />
+<span class="fragment" data-code-focus="7-14" />
+
 -----
+
+### Тогда фронтендеры смогут писать такие запросы:
+
+```graphql
+query {
+  list {
+    ...on Video {
+      title
+      url
+    }
+    ...on VideoInProgressProblem {
+      estimatedTime
+    }
+    ...on VideoNeedBuyProblem {
+      price
+    }
+    ...on VideoApproveAgeProblem {
+      minAge
+    }
+    __typename # магическое поле, которое вернет имя типа для каждой записи
+  }
+}
+
+```
+
+<span class="fragment" data-code-focus="2" />
+<span class="fragment" data-code-focus="3-6" />
+<span class="fragment" data-code-focus="7-15" />
+<span class="fragment" data-code-focus="16" />
+
+-----
+
+### Ответ от сервера будет таким
+
+```js
+{
+  data: {
+    list: [
+      { __typename: 'Video', title: 'DOM2 in the HELL', url: 'https://url' },
+      { __typename: 'VideoApproveAgeProblem', minAge: 21 },
+      { __typename: 'VideoNeedBuyProblem', price: 10 },
+      { __typename: 'VideoInProgressProblem', estimatedTime: 220 },
+    ],
+  },
+}
+
+```
+
+В зависимости от `__typename` можно рендерить <br/>ту или иную компоненту.</span>
+
+-----
+
+### Профит от таких пользовательских ошибок:
+
+- фронтендеры точно знают какие ошибки могут быть <!-- .element: class="fragment" -->
+- расписаны поля ошибок (статический анализ) <!-- .element: class="fragment" -->
+- получать ошибки сразу на нужном уровне <!-- .element: class="fragment" -->
+- легко понять какая именно ошибка вернулась <!-- .element: class="fragment" -->
+- в результате чище, проще и безопаснее код <!-- .element: class="fragment" -->
 
 -----
 
