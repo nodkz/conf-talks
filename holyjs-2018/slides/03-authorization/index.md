@@ -2,11 +2,16 @@
 
 # АВТОРИЗАЦИЯ
 
-// TODO: Диаграмма авторизации
+-----
+
+## Auth flow diagram
+
+![Диаграмма авторизации](./diagram-auth.svg) <!-- .element: style="width: 90vw;" class="plain"  -->
+<!-- https://drive.google.com/file/d/1G-Iu_fZdrois9NZY1-5YGWNwELJEzy6Y/view?usp=sharing -->
 
 -----
 
-### Что такое...
+### Но сперва вспомним, что такое...
 
 |                    | <!-- .element: class="fragment" data-fragment-index="1" -->|
 |--------------------|----------------------|

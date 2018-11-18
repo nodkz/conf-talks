@@ -1,5 +1,7 @@
 # 4 подхода к построению схем
 
+![Диаграмма экосистемы](./diagram-ecosystem-schema.svg) <!-- .element: style="width: 90vw;" class="plain"  -->
+
 -----
 
 - `graphql` — жестко и квадратно, нельзя редактировать типы.

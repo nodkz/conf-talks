@@ -1,5 +1,7 @@
 # GraphQL Schema
 
+![Диаграмма экосистемы](./diagram-ecosystem-schema.svg) <!-- .element: style="width: 90vw;" class="plain"  -->
+
 -----
 
 # GraphQL Schema — это

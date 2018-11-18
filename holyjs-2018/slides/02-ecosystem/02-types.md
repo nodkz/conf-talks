@@ -1,5 +1,7 @@
 # GraphQL-типы
 
+![Диаграмма экосистемы](./diagram-ecosystem-schema.svg) <!-- .element: style="width: 90vw;" class="plain"  -->
+
 -----
 
 ### GraphQL-схема содержит в себе <br/>описания всех типов, полей <br/>и функции получения данных.

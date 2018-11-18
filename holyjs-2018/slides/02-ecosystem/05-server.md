@@ -1,6 +1,11 @@
 # GraphQL-сервер
 
-// TODO: Диаграмма работы серверов
+![Диаграмма экосистемы](./diagram-ecosystem-server.svg) <!-- .element: style="width: 90vw;" class="plain"  -->
+
+-----
+
+![Диаграмма работы сервера](./diagram-server.svg) <!-- .element: style="width: 90vw;" class="plain"  -->
+<!-- https://drive.google.com/file/d/1G-Iu_fZdrois9NZY1-5YGWNwELJEzy6Y/view?usp=sharing -->
 
 -----
 
@@ -36,7 +41,7 @@ const result = await graphql(schema, query);
 <br />
 <br />
 
-Это может быть http(s) или websockets, либо вообще что-то экзотическое типа ssh, telnet. <!-- .element: class="fragment" -->
+<span>Это может быть `http(s)` или `websockets`, либо вообще что-то экзотическое типа `ssh`, `telnet`.</span> <!-- .element: class="fragment" -->
 
 -----
 

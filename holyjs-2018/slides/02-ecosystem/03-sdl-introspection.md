@@ -1,5 +1,7 @@
 # Что такое SDL и интроспекция?
 
+![Диаграмма экосистемы](./diagram-ecosystem-schema.svg) <!-- .element: style="width: 90vw;" class="plain"  -->
+
 -----
 
 ## SDL — Schema Definition Language
