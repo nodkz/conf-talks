@@ -1,4 +1,4 @@
-# DataLoader - правильно решаем проблему N+1 запросов
+# DataLoader — правильно решаем проблему N+1 запросов
 
 [DataLoader](https://github.com/facebook/dataloader) - это утилита которая позволяет вам сократить кол-во запросов в базу данных через batching.
 
