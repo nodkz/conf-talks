@@ -86,7 +86,7 @@ export default new GraphQLScalarType({
   name: 'DateTimestamp',
   // Хорошим тоном будет предоставить описание для вашего типа,
   // чтобы оно отображалось в документации
-  description: 'A string which represents a HTTP URL',
+  description: 'A timestamp of Date (time in seconds from Epoch)',
 
   // 2) --- ОПРЕДЕЛЯЕМ КАК ТИП ОТДАВАТЬ КЛИЕНТУ ---
   // Чтобы передать клиенту в GraphQL-ответе значение вашего поля
