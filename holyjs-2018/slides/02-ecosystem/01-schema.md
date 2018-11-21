@@ -62,10 +62,10 @@ const result = await graphql(schema, query);
 // returns: { data: { hello: "world" } }
 </code></pre>
 
-##### Когда вы выполняете клиентский запрос на вашей схеме методом graphql() который: <!-- .element: class="fragment" -->
+##### Когда вы выполняете клиентский запрос на вашей схеме методом graphql(), который: <!-- .element: class="fragment" -->
 
 - производит парсинг GraphQL-запроса <!-- .element: class="fragment" -->
-- производит валидацию запроса на соответствие GraphQL-схемы <!-- .element: class="fragment" -->
+- производит валидацию запроса на соответствие GraphQL-схеме <!-- .element: class="fragment" -->
 - выполняет запрос, пробегаясь по дереву схемы <!-- .element: class="fragment" -->
 - валидирует возвращаемый ответ <!-- .element: class="fragment" -->
 
@@ -81,8 +81,8 @@ const result = await graphql(schema, query);
 
 ## ☠️ РАССТРЕЛ ☠️
 
-- фронтендера если криво запросил данные <!-- .element: class="fragment" -->
-- бекендера если криво вернул данные <!-- .element: class="fragment" -->
+- фронтендера, если криво запросил данные <!-- .element: class="fragment" -->
+- бекендера, если криво вернул данные <!-- .element: class="fragment" -->
 
 -----
 
