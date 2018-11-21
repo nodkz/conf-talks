@@ -142,10 +142,10 @@
 				slideNumber: true,
 				showSlideNumber: 'all',
 				keyboard: {
-					13: () => { // pause/resume time when Enter is pressed
+					13: function () { // pause/resume time when Enter is pressed
 						ElapsedTimeBar.isPaused ? ElapsedTimeBar.resume() : ElapsedTimeBar.pause();
 					},
-					82: () => { // reset timer when 'r' is pressed
+					82: function () { // reset timer when 'r' is pressed
 						ElapsedTimeBar.reset();
 					}
 				},
