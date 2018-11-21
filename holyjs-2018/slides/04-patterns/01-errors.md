@@ -1,5 +1,8 @@
 # Как работать с ошибками в GraphQL
 
+#### Выступления:
+- 27 ноября 2018: [http://bit.ly/rambler-graphql](http://bit.ly/rambler-graphql)
+
 -----
 
 ## В GraphQL я бы выделил<br/>4 группы ошибок
