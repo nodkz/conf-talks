@@ -205,8 +205,8 @@ query {
 ```js
 function getLang(args, context) {
   if (args.lang) return args.lang;
-  else if (context.lang) return context.lang;
-  else return 'ru';
+  if (context.lang) return context.lang;
+  return 'ru';
 }
 ```
 
