@@ -393,7 +393,7 @@ const VideoResultType = new GraphQLUnionType({
   name: 'VideoResult',
 
   // как хорошие бекендеры добавляем какое-нибудь описание
-  description: 'List of video or problems',
+  description: 'Returns Video or some Problem object',
 
   // объявляем типы через массив, которые могут быть возвращены
   types: () => [
