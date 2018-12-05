@@ -6,7 +6,6 @@ PS. Куча орфографических и грамматических ош
 
 ### GraphQL
 
-- [Экосистема](./articles/graphql/ecosystem)
 - [GraphQL-типы](./articles/graphql/types)
 - [GraphQL-схема](./articles/graphql/schema)
 - [Способы построения GraphQL-схем](./articles/graphql/schema-build-ways)
