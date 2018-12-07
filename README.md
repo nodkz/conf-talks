@@ -22,7 +22,7 @@ PS. Куча орфографических и грамматических ош
 - [Redux - бойлерплейт](./articles/redux)
 - [Разница в подходах `graphql-compose` и `Prisma`](./articles/graphql-compose/graphql-compose-vs-prisma.md)
 
-## Мои выступления
+## Видео моих выступлений
 
 ### Строим GraphQL-сервер (HolyJS Moscow 2018)
 
@@ -34,13 +34,13 @@ PS. Куча орфографических и грамматических ош
 
 Рассказываю подробно о том как в GraphQL работать с ошибками. И как можно накрутить Union-типы для того чтобы возвращать пользовательские ошибки. Видео начинается с 28 минуты.
 
-<a href="https://www.facebook.com/MoscowGraphql/videos/206572663566137/" target="_blank"><img src="https://user-images.githubusercontent.com/1946920/49630967-798a4a80-fa1a-11e8-8786-5d773d55919e.png" alt="Как в GraphQL работать с ошибками" style="max-width: 480px" /></a>
+<a href="https://www.facebook.com/MoscowGraphql/videos/206572663566137/" target="_blank"><img src="https://user-images.githubusercontent.com/1946920/49631271-8196ba00-fa1b-11e8-933e-e9202c8a15aa.png" alt="Как в GraphQL работать с ошибками" style="max-width: 480px" /></a>
 
 ### Как работать с интернационализацией (i18n) в GraphQL (GraphQL Moscow Meetup at Rambler 2018)
 
 Рассказываю о том как максимально удобно для фронтендеров прикрутить интернационализацию в вашем GraphQL апи. Доклад начинается с 1:59:00.
 
-<a href="https://www.facebook.com/MoscowGraphql/videos/206572663566137/" target="_blank"><img src="https://user-images.githubusercontent.com/1946920/49630974-7beca480-fa1a-11e8-984a-8566af01c658.png" alt="Как максимально удобно для фронтендеров прикрутить интернационализацию в вашем GraphQL апи" style="max-width: 480px" /></a>
+<a href="https://www.facebook.com/MoscowGraphql/videos/206572663566137/" target="_blank"><img src="https://user-images.githubusercontent.com/1946920/49631272-8196ba00-fa1b-11e8-85ae-0a0cc15a72c7.png" alt="Как максимально удобно для фронтендеров прикрутить интернационализацию в вашем GraphQL апи" style="max-width: 480px" /></a>
 
 ### GraphQL — заключаем выгодный контракт между сервером и клиентом (HolyJS Moscow 2017)
 
