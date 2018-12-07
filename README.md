@@ -26,7 +26,7 @@ PS. Куча орфографических и грамматических ош
 
 ### Строим GraphQL-сервер (HolyJS Moscow 2018)
 
-Рассказываю о том из каких пакетов состоит GraphQL-сервер, какие способы построения схемы в NodeJS существуют в 2018 году. Детально разбираю как организовать Авторизации и как правильно использовать DataLoader (чтоб решить N+1 Problem). Доклад был хорошо оценен (<a href="/nodkz/conf-talks/raw/master/misc/2018-holyjs-moscow-feedback-chart.png" target="_blank">chart</a>, <a href="/nodkz/conf-talks/blob/master/misc/2018-holyjs-moscow-feedback.csv" target="_blank">отзывы</a>), т.к. в нем затронуты и раскрыты самые основные проблемы GraphQL.
+Рассказываю о том из каких пакетов состоит GraphQL-сервер, какие способы построения схемы в NodeJS существуют в 2018 году. Детально разбираю как организовать Авторизации и как правильно использовать DataLoader (чтоб решить N+1 Problem). Доклад был хорошо оценен (<a href="https://github.com/nodkz/conf-talks/raw/master/misc/2018-holyjs-moscow-feedback-chart.png" target="_blank">chart</a>, <a href="https://github.com/nodkz/conf-talks/blob/master/misc/2018-holyjs-moscow-feedback.csv" target="_blank">отзывы</a>), т.к. в нем затронуты и раскрыты самые основные проблемы GraphQL.
 
 <a href="https://youtu.be/NnnvOPdstzg" target="_blank"><img src="https://img.youtube.com/vi/NnnvOPdstzg/0.jpg" alt="Строим GraphQL-сервер" style="max-width: 480px" /></a>
 
