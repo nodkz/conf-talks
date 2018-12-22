@@ -1,4 +1,4 @@
-# Дизайн GraphQL-схем
+# Дизайн GraphQL-схем — залог порядка
 
 Рекомендации и правила озвученные в этой статье были выработаны за 3 года использования GraphQL как на стороне сервера (при построении схем) так и на клиентской стороне (написания GraphQL-запросов). Также в этой статье используются рекомендации и опыт Caleb Meredith (автора PostGraphQL и бывшего инженера Facebook) и иженеров Shopify.
 
@@ -6,22 +6,27 @@
 
 ## TL;DR всех правил
 
-- Правила именования полей и типов
-  - Используйте `camelCase` для именования GraphQL-полей.
+- Правила именования
+  - Используйте `camelCase` для именования GraphQL-полей и аргументов.
   - Используйте `UpperCamelCase` для именования GraphQL-типов.
   - Используйте `CAPITALIZED_WITH_UNDERSCORES` для именования значений ENUM-типов.
 
+- Правила скалярных типов
+  - Используйте кастомные скалярные типы, если вы хотите объявить поля или аргументы с определенным семантическим значением.
+  - Используйте Enum для полей, которые содержат определенный набор значений.
+
+- Правила полей
+  - Давайте полям понятные смысловые имена, а не то как они реализованы
+  - Rule #6: Group closely-related fields together into subobjects.
+
+- Правила списков
+  - Для фильтрации списков используйте аргумент `filter` c типом Input, который содержит в себе все доступные фильтры.
+
 - Правила возврата данных
   - Rule #7: Always check whether list fields should be paginated or not.
-  - Rule #10: Use custom scalar types when you’re exposing something with specific semantic value.
-  - Rule #11: Use enums for fields which can only take a specific set of values.
 
 - Правила по версионированию схемы
   - Rule #4: It’s easier to add fields than to remove them.
-
-- Правила полей
-  - Rule #6: Group closely-related fields together into subobjects.
-  - Rule #9: Choose field names based on what makes sense, not based on the implementation or what the field is called in legacy APIs.
 
 - Правила аргументов
   - Rule #20: Use stronger types for inputs (e.g. DateTime instead of String) when the format may be ambiguous and client-side validation is simple. This provides clarity and encourages clients to use stricter input controls (e.g. a date-picker widget instead of a free-text field).
@@ -48,7 +53,7 @@
   - Rule #13: Provide the raw data too, even when there’s business logic around it.
   - Rule #14: Write separate mutations for separate logical actions on a resource.
 
-## Правила именования полей и типов
+## Правила именования
 
 GraphQL для проверки имен полей и типов использует следующую регулярку `/[_A-Za-z][_0-9A-Za-z]*/`. Согласно нее можно использовать `camelCase`, `under_score`, `UpperCamelCase`, `CAPITALIZED_WITH_UNDERSCORES`. Слава богу `kebab-case` ни в каком виде не поддерживается.
 
@@ -58,9 +63,9 @@ GraphQL для проверки имен полей и типов использ
 
 Коль исследования особо не помогло. Давайте будем разбираться в каждом конкретном случае.
 
-### Именование полей
+### Именование полей и аргументов
 
-Названиями полей активнее всего пользуются потребители GraphQL-апи, т.е. наши любымые клиенты — браузеры с JavaScript и разработчики мобильных приложений. Давайте посмотрим, что чаще всего используется по их конвенции для именования полей. Ведь если клиенты дергают ваше апи, то скорее всего они будут использовать ваше именование для переменных у себя в коде. Ведь маппить (алиасить) название полей в удобный формат не шибко интересная работа.
+Названиями полей активнее всего пользуются потребители GraphQL-апи, т.е. наши любымые клиенты — браузеры с JavaScript и разработчики мобильных приложений. Давайте посмотрим, что чаще всего используется по их конвенции для именования переменных. Ведь если клиенты дергают ваше апи, то скорее всего они будут использовать ваше именование для переменных у себя в коде. Ведь маппить (алиасить) название полей в удобный формат не шибко интересная работа.
 
 Согласно [википедии](https://en.wikipedia.org/wiki/Naming_convention_(programming)) следующие клиентские языки (потребители GraphQL апи) придерживаются следующих конвенций по именованию переменных:
 
@@ -78,6 +83,8 @@ GraphQL для проверки имен полей и типов использ
 ```rule
 Используйте `camelCase` для именования GraphQL-полей.
 ```
+
+PS. Мне очень печально видеть в документации MySQL или PostgreSQL примеры с названием полей через `under_score`. Потом все это дело качует в код бэкенда, далее появляется в GraphQL апи, а потом и в коде клиентов. Блин, ведь эти БД спокойно позволяют сразу объявить поля в `camelCase`. Но так как на начале не определились с конвенцией имен, а взяли как в документашке, то потом происходят холивары что `under_score` лучше чем `camelCase`. Ведь переименовывать поля на уже едущем проекте больно и черевато ошибками. Вобщем тот кто выбрал `under_score`, тот и должен маппить поля в `camelCase`!
 
 ### Именование типов
 
@@ -120,7 +127,127 @@ query {
 Используйте `CAPITALIZED_WITH_UNDERSCORES` для именования значений ENUM-типов.
 ```
 
-## 
+## Правила скалярных типов
+
+GraphQL по спецификации содержит всего 5 типов скалярных полей `String` (строка), `Int` (целое число), `Float` (число с точкой), `Boolean` (булевое значение), `ID` (строка с уникальным индетификатором). Все эти типы легко и понятно передаются через JSON на любом языке программирования.
+
+А вот когда речь заходит о каком-то скалярном типе не входящего в синтаксис JSON, например `Date`. То тут уже необходимо бэкендеру самостоятельно определяться с форматом данных, чтоб их можно было сериализовать и передать через JSON клиенту. А также легко и просто получить значение этого типа от клиента и десериализовать его на сервере.
+
+В таких случаях GraphQL позволяет создавать свои кастомные скалярные типы. О том как это делается [написано здесь](../types/README.md#custom-scalar-types).
+
+### Кастомные скалярные типы упрощают понимание формата значений
+
+Если ваше поле возвращает тип `String`, то клиентам вашего апи сложно понять какие ограничения или семантическое значение содержиться в этой строке. Например с помощью типа `String` вы можете передавать обычный текст, HTML, строку длиной в 255 символов, строку в base64, дату или любое другое значение в конкретном формате.
+
+Для того чтобы сделать ваше АПИ более прозрачным для команды, создавайте кастомные скалярные типы. Например: `HTML`, `String255`, `Base64`, `DateString`. Бэкендерам и фронтендерам это позволит единожды написать правила валидации и проверки таких типов и не дублировать код в каждом месте где они будут использоваться.
+
+```diff
+type Article {
+  id: ID!
+-  description: String
++  description: HTML
+}
+```
+
+В таком случае легче понимать, что конкретно прилетает в поле `description`. И понятно что строку не надо эскейпить для отображения в браузере, а показывать как есть.
+
+```rule
+Используйте кастомные скалярные типы, если вы хотите объявить поля или аргументы с определенным семантическим значением.
+```
+
+### Enum для полей с определенным набором значений
+
+Частенько в схемах встречаются поля, которые содержат определенный набор значений. Например: `пол`, `статус заявки`, `код страны`, `вид оплаты`. Использовать просто тип `String` или `Int` в таких случаях никоим образом не помогает вашим клиентам понять, какие значения могут быть получены.
+
+Конечно доступные значения можно описать в документации. Но я не вижу смысла этого делать, когда в GraphQL есть тип `Enum` — [читать подробнее](../types/README.md#enumeration-types).
+
+Значения полей с типом `Enum` проверяются на этапе валидации запроса. А также они могут проверяться на этапе разработки линтерами и статическими анализаторами. Это на порядок полезнее и безопаснее, чем тупо перечислять значения в документашке.
+
+```diff
+type User {
+  id: ID!
+-  gender: String
++  gender: Gender
+}
+
++ enum GenderEnum {
++   MALE
++   FEMALE
++ }
+```
+
+```rule
+Используйте Enum для полей, которые содержат определенный набор значений.
+```
+
+## Правила полей
+
+### Понятные имена для полей
+
+Необходимо полям давать понятные имена. Это очень простое и банальное правило. К примеру у нас есть следующий тип:
+
+```diff
+type Meeting {
+  title: String
+-  bodyHtml: String
++  description: HTML
+}
+```
+
+Человек который в первый раз видит тип `Meeting`, будет гадать что конкретно хранится в поле `bodyHtml`. Здорово если бэкендеры не ленятся и оставляют описание к полям. Но черт возьми, можно же поле в АПИ назвать `description`, а в базе пусть хранится как `bodyHtml`, тогда и документашку читать не нужно.
+
+```rule
+Давайте полям понятные смысловые имена, а не то как они реализованы
+```
+
+## Правила списков
+
+Я не встречал ни одного АПИ, которое бы не возвращало список элементов. Либо это постраничная листалка, либо что-то построенное на курсорах для бесконечных списков. Списки надо фильтровать, сортировать, ограничивать кол-во возвращаемых элементов. Сам GraphQL никак не ограничивает свободу реализации, но для того чтобы сформировать некое единообразие, необходимо ввести стандарт.
+
+### Фильтрация списков
+
+Как вы думаете, как лучше организовать фильтрацию?
+
+```graphql
+type Query {
+  articles(authorId: Int, tags: [String], lang: LangEnum): [Article]
+}
+```
+
+или через аргумент `filter` с типом `ArticleFilter`:
+
+```graphql
+type Query {
+  articles(filter: ArticleFilter): [Article]
+}
+
+input ArticleFilter {
+  authorId: Int
+  tags: [String]
+  lang: LangEnum
+}
+```
+
+Конечно лучше всего организовать через дополнительный тип `ArticleFilter`. На это есть несколько причин:
+
+- если вы будете добавлять новые аргументы не относящиеся к фильтрации (сортировка, лимит, офсет, номер страницы, курсор, язык и прочее), то ваши агрументы не будут путаться друг с другом
+- на клиенте для статического анализа вы получите `ArticleFilter` тип. Иначе клиенты будут вынуждены собирать такой тип вручную, что черевато ошибками
+- тупо легче читать и воспринимать вашу схему, когда в ней 3-5 аргументов а не 33 аргумента с возможной фильтрацией. Есть аргумент `filter` и если нужно провались в него и там уже посмотри все 33 поля для фильтрации
+- этот фильтр можно переиспользовать несколько раз в вашем апи, если список статей можно запросить из нескольких мест
+
+Также важно договориться как назвать поле для фильтрации. А то если у вас 5, 10 или 100 разработчиков, то на выходе в схеме у вас появиться куча названий для аргумента фильтрации — `filter`, `where`, `condition`, `f` и прочий нестандарт. Если учитывать что есть базы SQL и noSQL, есть всякие кэши и прочие сервисы, то **самым адекватным именем для аргумента фильтрации является — `filter`**. Оно понятно и подходит для всех! А вот этот `where` только для SQL-бэкендеров.
+
+```rule
+Для фильтрации списков используйте аргумент `filter` c типом Input, который содержит в себе все доступные фильтры.
+```
+
+### Сортировка списков
+
+### Ограничение возвращаемых данных
+
+### Пагинация
+
+### Бесконечные списки
 
 ----
 
@@ -192,7 +319,7 @@ Rule #7: Always check whether list fields should be paginated or not.
 
 Rule #8: Always use object references instead of ID fields.
 
-Now we come to the imageId field. This field is a classic example of what happens when you try and apply REST designs to GraphQL. In REST APIs it's pretty common to include the IDs of other objects in your response as a way to link together those objects, but this is a major anti-pattern in GraphQL. Instead of providing an ID, and forcing the client to do another round-trip to get any information on the object, we should just include the object directly into the graph - that's what GraphQL is for after all. In REST APIs this pattern often isn't practical, since it inflates the size of the response significantly when the included objects are large. However, this works fine in GraphQL because every field must be explicitly queried or the server won't return it.
+Now we come to the imageId field. This field is a classic example of what happens when you try and apply REST designs to GraphQL. In REST APIs it's pretty common to include the IDs of other objects in your response as a way to link together those objects, but this is a major anti-pattern in GraphQL. Instead of providing an ID, and forcing the client to do another round-trip to get any information on the object, we should just include the object directly into the graph — that's what GraphQL is for after all. In REST APIs this pattern often isn't practical, since it inflates the size of the response significantly when the included objects are large. However, this works fine in GraphQL because every field must be explicitly queried or the server won't return it.
 
 ```graphql
 type Collection implements Node {
@@ -204,32 +331,6 @@ type Collection implements Node {
 
 type Image {
   id: ID!
-}
-```
-
-----
-
-Rule #9: Choose field names based on what makes sense, not based on the implementation or what the field is called in legacy APIs.
-
-```graphql
-type Collection implements Node {
-  id: ID!
-  bodyHtml: String
-  description: String # is better name rather than bodyHtml
-}
-```
-
-----
-
-Rule #10: Use custom scalar types when you're exposing something with specific semantic value.
-
-These provide additional context and semantic value for clients. In this case, it probably makes sense to define a custom HTML scalar for use here (and potentially elsewhere) when the string in question must be valid HTML.
-
-```graphql
-type Collection implements Node {
-  id: ID!
-  description: String
-  description: StringHTML # is better name rather just String
 }
 ```
 
@@ -280,8 +381,6 @@ Rule #14: Write separate mutations for separate logical actions on a resource.
 Shopify: The first thing we might notice if we were to stick to just CRUD is that our update mutation quickly becomes massive, responsible not just for updating simple scalar values like title but also for performing complex actions like publishing/unpublishing, adding/removing/reordering the products in the collection, changing the rules for automatic collections, etc. This makes it hard to implement on the server and hard to reason about for the client. Instead, we can take advantage of GraphQL to split it apart into more granular, logical actions.
 
 Caleb Meredith: Don’t be afraid of super specific mutations that correspond exactly to an update that your UI can make. Specific mutations that correspond to semantic user actions are more powerful than general mutations. This is because specific mutations are easier for a UI developer to write, they can be optimized by a backend developer, and only providing a specific subset of mutations makes it much harder for an attacker to exploit your API.
-
-
 
 ----
 
