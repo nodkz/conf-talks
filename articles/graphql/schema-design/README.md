@@ -1,60 +1,72 @@
-# Дизайн GraphQL-схем — залог порядка
+# Дизайн GraphQL-схем — делаем АПИ удобным, избегаем боль и страдания
 
-Рекомендации и правила озвученные в этой статье были выработаны за 3 года использования GraphQL как на стороне сервера (при построении схем) так и на клиентской стороне (написания GraphQL-запросов). Также в этой статье используются рекомендации и опыт Caleb Meredith (автора PostGraphQL и бывшего инженера Facebook) и иженеров Shopify.
+Рекомендации и правила озвученные в этой статье были выработаны за 3 года использования GraphQL как на стороне сервера (при построении схем) так и на клиентской стороне (написания GraphQL-запросов и покрытием клиентского кода статическим анализом). Также в этой статье используются рекомендации и опыт Caleb Meredith (автора PostGraphQL, ex-сотрудник Facebook) и иженеров Shopify.
 
-Эта статья может поменяться в будущем, т.к. текущие правила носят рекомендательный характер и могут со временем улучшиться, измениться или вовсе стать антипаттерном. Но то что здесь написано, выстрадано временем и опытом использования кривых GraphQL-схем.
+Эта статья может поменяться в будущем, т.к. текущие правила носят рекомендательный характер и могут со временем улучшиться, измениться или вовсе стать антипаттерном. Но то что здесь написано, выстрадано временем и болью от использования кривых GraphQL-схем.
 
 ## TL;DR всех правил
 
-- Правила именования
-  - Используйте `camelCase` для именования GraphQL-полей и аргументов.
-  - Используйте `UpperCamelCase` для именования GraphQL-типов.
-  - Используйте `CAPITALIZED_WITH_UNDERSCORES` для именования значений ENUM-типов.
+### 1. Правила именования
 
-- Правила скалярных типов
-  - Используйте кастомные скалярные типы, если вы хотите объявить поля или аргументы с определенным семантическим значением.
-  - Используйте Enum для полей, которые содержат определенный набор значений.
+- Используйте `camelCase` для именования GraphQL-полей и аргументов.
+- Используйте `UpperCamelCase` для именования GraphQL-типов.
+- Используйте `CAPITALIZED_WITH_UNDERSCORES` для именования значений ENUM-типов.
 
-- Правила полей
-  - Давайте полям понятные смысловые имена, а не то как они реализованы
-  - Rule #6: Group closely-related fields together into subobjects.
+### 2. Правила типов
 
-- Правила списков
-  - Для фильтрации списков используйте аргумент `filter` c типом Input, который содержит в себе все доступные фильтры.
-  - Для сортировки списков используйте аргумент `sort`, который должен быть массивом перечисляемых значений [Enum!].
-  - Для ограничения возвращаемых элементов в списке используйте аргументы `limit` со значением по-умолчанию и `skip`.
-  - Для пагинации используйте аргументы `page`, `perPage` и возвращайте output-тип с полями `items` с массивом элементов и `pageInfo` с мета-данными для удобной отрисовки страниц на клиенте.
-  - Для бесконечных списков (infinite scroll) используйте [Relay Cursor Connections Specification](https://facebook.github.io/relay/graphql/connections.htm).
+- Используйте кастомные скалярные типы, если вы хотите объявить поля или аргументы с определенным семантическим значением.
+- Используйте Enum для полей, которые содержат определенный набор значений.
 
-wip: GraphQL Schema Design- Правила по версионированию схемы
-  - Rule #4: It’s easier to add fields than to remove them.
+### 3. Правила полей
 
-- Правила аргументов
-  - Rule #20: Use stronger types for inputs (e.g. DateTime instead of String) when the format may be ambiguous and client-side validation is simple. This provides clarity and encourages clients to use stricter input controls (e.g. a date-picker widget instead of a free-text field).
-  - Rule #18: Only make input fields required if they're actually semantically required for the mutation to proceed.
+- Давайте полям понятные смысловые имена, а не то как они реализованы
+- Rule #6: Group closely-related fields together into subobjects.
 
-- Правила реляций между типами (relationships)
-  - Rule #1: Always start with a high-level view of the objects and their relationships before you deal with specific fields.
-  - Rule #8: Always use object references instead of ID fields.
+### 4. Правила аргументов
 
-- Правила мутаций
-  - Rule #15: Mutating relationships is really complicated and not easily summarized into a snappy rule.
-  - Rule #16: When writing separate mutations for relationships, consider whether it would be useful for the mutations to operate on multiple elements at once.
-  - Rule #17: Prefix mutation names with the object they are mutating for alphabetical grouping (e.g. use `orderCancel` instead of `cancelOrder`).
-  - Rule #19: Use weaker types for inputs (e.g. String instead of Email) when the format is unambiguous and client-side validation is complex. This lets the server run all non-trivial validations at once and return the errors in a single place in a single format, simplifying the client.
-  - Rule #21: Structure mutation inputs to reduce duplication, even if this requires relaxing requiredness constraints on certain fields.
-  - Rule #22: Mutations should provide user/business-level errors via a userErrors field on the mutation payload. The top-level query errors entry is reserved for client and server-level errors.
-  - Rule #23: Most payload fields for a mutation should be nullable, unless there is really a value to return in every possible error case.
+- Rule #20: Use stronger types for inputs (e.g. DateTime instead of String) when the format may be ambiguous and client-side validation is simple. This provides clarity and encourages clients to use stricter input controls (e.g. a date-picker widget instead of a free-text field).
+- Rule #18: Only make input fields required if they're actually semantically required for the mutation to proceed.
 
-- Правила по бизнес-логике
-  - Rule #2: Never expose implementation details in your API design.
-  - Rule #3: Design your API around the business domain, not the implementation, user-interface, or legacy APIs.
-  - Rule #5: Major business-object types should always implement Node.
-  - Rule #12: The API should provide business logic, not just data. Complex calculations should be done on the server, in one place, not on the client, in many places.
-  - Rule #13: Provide the raw data too, even when there’s business logic around it.
-  - Rule #14: Write separate mutations for separate logical actions on a resource.
+### 5. Правила списков
 
-## Правила именования
+- Для фильтрации списков используйте аргумент `filter` c типом Input, который содержит в себе все доступные фильтры.
+- Для сортировки списков используйте аргумент `sort`, который должен быть массивом перечисляемых значений [Enum!].
+- Для ограничения возвращаемых элементов в списке используйте аргументы `limit` со значением по-умолчанию и `skip`.
+- Для пагинации используйте аргументы `page`, `perPage` и возвращайте output-тип с полями `items` с массивом элементов и `pageInfo` с мета-данными для удобной отрисовки страниц на клиенте.
+- Для бесконечных списков (infinite scroll) используйте [Relay Cursor Connections Specification](https://facebook.github.io/relay/graphql/connections.htm).
+
+### 6. Правила Мутаций
+
+- Используйте Namespace-типы для группировки мутаций в рамках одного ресурса!
+- Забудьте про CRUD - cоздавайте небольшие мутации для разных логических операций над ресурсами.
+- Рассмотрите возможность выполнения мутаций сразу над несколькими элементами (однотипные batch-изменения).
+- У мутаций должны быть четко описаны все обязательные аргументы, не должно быть вариантов либо-либо.
+- Rule #19: Use weaker types for inputs (e.g. String instead of Email) when the format is unambiguous and client-side validation is complex. This lets the server run all non-trivial validations at once and return the errors in a single place in a single format, simplifying the client.
+- Rule #21: Structure mutation inputs to reduce duplication, even if this requires relaxing requiredness constraints on certain fields.
+- Rule #22: Mutations should provide user/business-level errors via a userErrors field on the mutation payload. The top-level query errors entry is reserved for client and server-level errors.
+- Rule #23: Most payload fields for a mutation should be nullable, unless there is really a value to return in every possible error case.
+
+### 7. Правила реляций между типами (relationships)
+
+- Rule #1: Always start with a high-level view of the objects and their relationships before you deal with specific fields.
+- Rule #8: Always use object references instead of ID fields.
+
+### 8. Правила по бизнес-логике
+  
+- Rule #2: Never expose implementation details in your API design.
+- Rule #3: Design your API around the business domain, not the implementation, user-interface, or legacy APIs.
+- Rule #5: Major business-object types should always implement Node.
+- Rule #12: The API should provide business logic, not just data. Complex calculations should be done on the server, in one place, not on the client, in many places.
+- Rule #13: Provide the raw data too, even when there’s business logic around it.
+
+### 9. Правила по версионированию схемы
+
+- Rule #4: It’s easier to add fields than to remove them.
+- Unique payload type. Use a unique payload type for each mutation and add the mutation’s output as a field to that payload type.
+
+---
+
+## 1. Правила именования
 
 GraphQL для проверки имен полей и типов использует следующую регулярку `/[_A-Za-z][_0-9A-Za-z]*/`. Согласно нее можно использовать `camelCase`, `under_score`, `UpperCamelCase`, `CAPITALIZED_WITH_UNDERSCORES`. Слава богу `kebab-case` ни в каком виде не поддерживается.
 
@@ -128,7 +140,7 @@ query {
 Используйте `CAPITALIZED_WITH_UNDERSCORES` для именования значений ENUM-типов.
 ```
 
-## Правила скалярных типов
+## 2. Правила типов
 
 GraphQL по спецификации содержит всего 5 типов скалярных полей `String` (строка), `Int` (целое число), `Float` (число с точкой), `Boolean` (булевое значение), `ID` (строка с уникальным индетификатором). Все эти типы легко и понятно передаются через JSON на любом языке программирования.
 
@@ -181,7 +193,7 @@ type User {
 Используйте Enum для полей, которые содержат определенный набор значений.
 ```
 
-## Правила полей
+## 3. Правила полей
 
 ### Понятные имена для полей
 
@@ -201,7 +213,7 @@ type Meeting {
 Давайте полям понятные смысловые имена, а не то как они реализованы
 ```
 
-## Правила списков
+## 5. Правила списков
 
 Я не встречал ни одного АПИ, которое бы не возвращало список элементов. Либо это постраничная листалка, либо что-то построенное на курсорах для бесконечных списков. Списки надо фильтровать, сортировать, ограничивать кол-во возвращаемых элементов. Сам GraphQL никак не ограничивает свободу реализации, но для того чтобы сформировать некое единообразие, необходимо ввести стандарт.
 
@@ -371,6 +383,265 @@ type ArticlePagination {
 Для бесконечных списков (infinite scroll) используйте [Relay Cursor Connections Specification](https://facebook.github.io/relay/graphql/connections.htm).
 ```
 
+## 6. Правила Мутаций
+
+Больше всего бардака разводят в Мутациях. Внимательно прочитайте следующие правила, которые позволят вам сделать ваше АПИ сухим, чистым и удобным.
+
+### Используйте Namespace-типы для мутаций
+
+В большенстве GraphQL-схем страшно заглядывать в мутации. На АПИ среднего размера кол-во мутаций может легко переваливать за 50-100 штук, и это все на одном уровне. Ковыряться и искать нужную операцию в таком списке достаточно сложно.
+
+Shopify рекомендует придерживаться такого именования для мутаций `collection<Action>`. В списке это позволяет хоть как-то сгрупировать операции над одним ресурсом. Кто-то противник такого подхода, и форсит использование `<action>Collection`.
+
+В любом случае есть способ получше – используйте Namespace-типы. Это такие типы которые содержат в себе набор операций над одним ресурсом. Если представить путь запроса в dot-нотации, то выглядит он так `Mutation.<collection>.<action>`.
+
+В NodeJS это делается достаточно легко. Я приведу несколько примеров с использованием разных библиотек:
+
+Стандартная имплементация с пакетом `graphql`:
+
+```js
+// Create Namespace type for Article mutations
+const ArticleMutations = new GraphQLObjectType({
+  name: 'ArticleMutations',
+  fields: () => {
+    like: { type: GraphQLBoolean, resolve: () => { /* resolver code */ } },
+    unlike: { type: GraphQLBoolean, resolve: () => { /* resolver code */ } },
+  },
+});
+
+// Add `article` to regular mutation type with small magic
+const Mutation = new GraphQLObjectType({
+  name: 'Mutation',
+  fields: () => {
+    article: {
+      type: ArticleMutations,
+      resolve: () => ({}), // ✨✨✨ magic! which allows to proceed call of sub-methods
+    }
+  },
+});
+```
+
+С помощью пакета `graphql-tools`:
+
+```js
+const typeDefs = gql`
+  type ArticleMutations {
+    like: Boolean
+    unlike: Boolean
+  }
+
+  type Mutation {
+    article: ArticleMutations
+}
+`;
+
+const resolvers = {
+  Mutation: {
+    article: () => ({}), // ✨✨✨ magic! which allows to proceed call of sub-methods
+  }
+  ArticleMutations: {
+    like: () => { /* resolver code */ },
+    unlike: () => { /* resolver code */ },
+  },
+};
+```
+
+С помощью `graphql-compose`:
+
+```js
+schemaComposer.Mutation.addNestedFields({
+  'article.like': { // ✨✨✨ magic! Just use dot-notation with `addNestedFields` method
+    type: 'Boolean',
+    resolve: () => { /* resolver code */ }
+  },
+  'article.unlike': {
+    type: 'Boolean',
+    resolve: () => { /* resolver code */ }
+  },
+});
+```
+
+Соответственно клиенты будут делать такие запросы к вашему АПИ:
+
+```graphql
+mutation {
+  article {
+    like
+  }
+
+  ### Forget about ugly mutations names!
+  # artileLike
+  # likeArticle
+}
+```
+
+Итак правило, для избежания бардака в мутациях:
+
+```rule
+Используйте Namespace-типы для группировки мутаций в рамках одного ресурса!
+```
+
+### Разбиваем оковы CRUD
+
+С GraphQL надо отходить от CRUD (create, read, update, delete). Если вешать все измениня на мутацию `update`, то достаточно быстро она станет массивной и тяжелой в обслуживании. Здесь речь идет не о простом редактировании полей заголовок и описание, а о "сложных" операциях.  К примеру, для публикации статей создайте мутации `publish`, `unpublish`. Необходимо добавить лайки к статье - создайте две мутации `like`, `unlike`. Помните, что потребители вашего АПИ слабо представляют себе структуру взаимосвязей ваших данных, и за что каждое поле отвечает. А набор мутаций над ресурсом быстро позволяет фронтендеру вьехать в набор возможных операций.
+
+Да и вам в будущем будет легче отслеживать по логам, что пользователи чаще всего дергают. И оптимизировать узкие места.
+
+```rule
+Забудьте про CRUD – cоздавайте небольшие мутации для разных логических операций над ресурсами.
+```
+
+### Однотипные batch-изменения
+
+Клиентские приложения становятся более умными и удобными. Часто пользователю предлагаются batch-операции – добавление нескольких записей, массового удаления или сортировки. Отправлять операции по одной будет накладно. Как-то агрегировать их в сложный GraphQL-запрос с несколькими мутациями, т.е. генерировать один общий запрос на клиенте - порождает кучу кода с душком.
+
+Например: есть мутация `deleteArticle`, добавьте еще `deleteArticles`. Для того чтоб пользователь мог нащелкать несколько статей и подтвердить удаление сразу пачкой.
+
+Но здесь самое главное без фанатизма, не надо на все подряд вешать массовые операции. Всегда руководствуйтесь здравым смыслом.
+
+```rule
+Рассмотрите возможность выполнения мутаций сразу над несколькими элементами (однотипные batch-изменения).
+```
+
+### Избегаем "общих" мутаций со слабой типизацией
+
+К примеру ваше АПИ позволяет отправить разные письма с помощью мутации `sendEmail(type: PASSWORD_RESET, params: JSON)`. Для того чтобы выбрать шаблон, вы передаете Enum аргумент с типом письма и для него передаете какие-то параметры.
+
+Проблема такого подхода в том, что клиент заранее точно не знает какие параметры необходимо передать для того или иного типа писем. К тому же, если в будущем проводить рефакторинг схемы, то статическая типизация нам не позволит отловить ошибки на клиенте.
+
+Лучше разбивать мутации на несколько штук с жестким описанием аргументов. Например: `sendEmailPasswordReset(login: String!, note: String)`. При этом не забываем аргументы помечать как обязательные, если без них операция не отработает.
+
+Также бывают ситуации, когда вы обязаны передать либо один аргумент, либо другой. К примеру, мы можем отправить письмо по сбросу пароля если укажут login или email. В таком случае мы не можем оба аргумента в нашей мутации сделать обязательными. Пользователь узнает только в рантайме, что забыл передать обязательный аргумент. Да и фронтендеру будет не сразу понятно, что надо передавать либо `login`, либо `email`. А что будет если передать оба аргумента от разных пользователей?
+
+В таком случае просто заводится две мутации, где жестко расписаны обязательные аргументы:
+
+- `sendResetPasswordByLogin(login: String!)`
+- `sendResetPasswordByEmail(email: String!)`
+
+Не экономьте на мутациях и старайтесь избегать слабой типизации. Поэтому правило можно сформулировать так:
+
+```rule
+У мутаций должны быть четко описаны все обязательные аргументы, не должно быть вариантов либо-либо.
+```
+
+----
+
+- Input object. Use a single, required, unique, input object type as an argument for easier mutation execution on the client.
+
+----
+
+## Input
+
+Rule #18: Only make input fields required if they're actually semantically required for the mutation to proceed.
+
+----
+
+Rule #20: Use stronger types for inputs (e.g. DateTime instead of String) when the format may be ambiguous and client-side validation is simple. This provides clarity and encourages clients to use stricter input controls (e.g. a date-picker widget instead of a free-text field).
+
+----
+
+- Mutations remain slim and readable with only a couple of top-level arguments.
+
+- Clients can share code between their create and update forms (a common pattern) because they end up manipulating the same kind of input object.
+
+Rule #21: Structure mutation inputs to reduce duplication, even if this requires relaxing requiredness constraints on certain fields.
+
+```graphql
+type Mutation {
+  # ...
+  collectionCreate(title: String!, ruleSet: CollectionRuleSetInput, image: ImageInput, description: String)
+  collectionUpdate(id: ID!, title: String, ruleSet: CollectionRuleSetInput, image: ImageInput, description: String)
+}
+
+# better will be
+type Mutation {
+  collectionCreate(collection: CollectionInput!)
+  collectionUpdate(id: ID!, collection: CollectionInput!)
+}
+
+input CollectionInput {
+  title: String
+  ruleSet: CollectionRuleSetInput
+  image: ImageInput
+  description: String
+}
+```
+
+Caleb Meredith: But why? The reason is that the first style is much easier to use client-side. The client is only required to send one variable with per mutation instead of one for every argument on the mutation.
+
+```graphql
+mutation MyMutation($input: UpdatePostInput!) {
+  updatePost(input: $input) { ... }
+}
+
+# vs.
+
+mutation MyMutation($id: ID!, $newText: String, ...) {
+  updatePost(id: $id, newText: $newText, ...) { ... }
+}
+```
+
+For no cost besides a few extra keystrokes, nesting allows you to fully embrace GraphQL’s power to be your version-less API. Nesting gives you room on your object types to explore new schema designs as time goes on. You can easily deprecate sections of the API and add new names in a conflict free space instead of fighting to find a new name on a cluttered collision-rich object type.
+
+Think of nesting as an investment into the future of your API. See the following for an example:
+
+```graphql
+mutation {
+  createPerson(input: {
+    # By nesting we have room at the top level of `input`
+    # to add fields like `password`, or metadata fields like
+    # `clientMutationId` for Relay. We could also deprecate
+    # `person` in the future to use another top level field
+    # like `partialPerson`.
+    password: "qwerty"
+    person: {
+      id: 4
+      name: "Budd Deey"
+    }
+  }) { ... }
+  updatePerson(input: {
+    # The `id` field represents who we want to update.
+    id: 4
+    # The `patch` field represents what we want to update.
+    patch: {
+      name: "Budd Deey"
+    }
+  }) { ... }
+}
+```
+
+----
+
+Caleb Meredith: Mutations should return payload
+
+Just like when you design your input, nesting is a virtue for your GraphQL payload. Always create a custom object type for each of your mutations and then add any output you want as a field of that custom object type. This will allow you to add multiple outputs over time and metadata fields like clientMutationId or userErrors. Just like with inputs nesting is an investment that will pay off.
+
+Even if you only want to return a single thing from your mutation, resist the temptation to return that one type directly. It is hard to predict the future, and if you choose to return only a single type now you remove the future possibility to add other return types or metadata to the mutation. Preemptively removing design space is not something you want to do when designing a versionless GraphQL API.
+
+----
+
+Rule #22: Mutations should provide user/business-level errors via a userErrors field on the mutation payload. The top-level query errors entry is reserved for client and server-level errors.
+
+```graphql
+type CollectionCreatePayload {
+  userErrors: [UserError!]!
+  collection: Collection
+}
+
+type UserError {
+  message: String!
+
+  # Path to input field which caused the error.
+  field: [String!]
+}
+```
+
+Rule #23: Most payload fields for a mutation should be nullable, unless there is really a value to return in every possible error case.
+
+----
+
+
+## Some rules from Shopify
 ----
 
 To get this simplified representation, I took out all scalar fields, all field names, and all nullability information. What you're left with still looks kind of like GraphQL but lets you focus on higher level of the types and their relationships.
@@ -485,164 +756,6 @@ type Collection implements Node {
 Rule #13: Provide the raw data too, even when there's business logic around it.
 
 Clients should be able to do the business logic themselves, if they have to. You can’t predict all of the logic a client is going to want
-
-## Mutations
-
-----
-
-Rule #14: Write separate mutations for separate logical actions on a resource.
-
-Shopify: The first thing we might notice if we were to stick to just CRUD is that our update mutation quickly becomes massive, responsible not just for updating simple scalar values like title but also for performing complex actions like publishing/unpublishing, adding/removing/reordering the products in the collection, changing the rules for automatic collections, etc. This makes it hard to implement on the server and hard to reason about for the client. Instead, we can take advantage of GraphQL to split it apart into more granular, logical actions.
-
-Caleb Meredith: Don’t be afraid of super specific mutations that correspond exactly to an update that your UI can make. Specific mutations that correspond to semantic user actions are more powerful than general mutations. This is because specific mutations are easier for a UI developer to write, they can be optimized by a backend developer, and only providing a specific subset of mutations makes it much harder for an attacker to exploit your API.
-
-----
-
-Rule #15: Mutating relationships is really complicated and not easily summarized into a snappy rule.
-
-- addProducts
-- removeProducts
-- reorderProducts
-
-Products we split into their own mutations, because the relationship is large, and ordered. Rules we left inline because the relationship is small, and rules are sufficiently minor to not have IDs.
-
-Finally, you may note that we have mutations like addProducts and not addProduct. This is simply a convenience for the client, since the common use case when manipulating this relationship will be to add, remove, or reorder more than one product at a time.
-
-Rule #16: When writing separate mutations for relationships, consider whether it would be useful for the mutations to operate on multiple elements at once.
-
-----
-
-Rule #17: Prefix mutation names with the object they are mutating for alphabetical grouping (e.g. use orderCancel instead of cancelOrder).
-
-First a quick note on naming: you'll notice that we named all of our mutations in the form collection<Action> rather than the more naturally-English <action>Collection. Unfortunately, GraphQL does not provide a method for grouping or otherwise organizing mutations, so we are forced into alphabetization as a workaround. Putting the core type first ensures that all of the related mutations group together in the final list.
-
-Caleb Meredith says: Names like createUser, likePost, updateComment, and reloadUserFeed are preferable to names like userCreate, postLike, commentUpdate, and userFeedReload.
-
-----
-
-- Naming. Name your mutations verb first. Then the object, or “noun,” if applicable. Use camelCase.
-- Specificity. Make mutations as specific as possible. Mutations should represent semantic actions that might be taken by the user whenever possible.
-- Input object. Use a single, required, unique, input object type as an argument for easier mutation execution on the client.
-- Unique payload type. Use a unique payload type for each mutation and add the mutation’s output as a field to that payload type.
-- Nesting. Use nesting to your advantage wherever it makes sense.
-
-----
-
-However, many applications have mutations that do not map directly to actions that can be performed on objects in your data model. For instance, say you were building a password reset feature into your app. To actually send that email you may have a mutation named: sendPasswordResetEmail. This mutation is more like an RPC call then a simple CRUD action on a data type.
-
-The password reset email case is also a good use case for illustrating why you want specific mutations over general mutations. You may be tempted to create a mutation like sendEmail(type: PASSWORD_RESET) and call this mutation with all the different email types you may have. This is not a good design because it will be much more difficult to enforce the correct input in the GraphQL type system and understand what operations are available in GraphiQL.
-
-----
-
-## Input
-
-Rule #18: Only make input fields required if they're actually semantically required for the mutation to proceed.
-
-----
-
-Rule #20: Use stronger types for inputs (e.g. DateTime instead of String) when the format may be ambiguous and client-side validation is simple. This provides clarity and encourages clients to use stricter input controls (e.g. a date-picker widget instead of a free-text field).
-
-----
-
-- Mutations remain slim and readable with only a couple of top-level arguments.
-
-- Clients can share code between their create and update forms (a common pattern) because they end up manipulating the same kind of input object.
-
-Rule #21: Structure mutation inputs to reduce duplication, even if this requires relaxing requiredness constraints on certain fields.
-
-```graphql
-type Mutation {
-  # ...
-  collectionCreate(title: String!, ruleSet: CollectionRuleSetInput, image: ImageInput, description: String)
-  collectionUpdate(id: ID!, title: String, ruleSet: CollectionRuleSetInput, image: ImageInput, description: String)
-}
-
-# better will be
-type Mutation {
-  collectionCreate(collection: CollectionInput!)
-  collectionUpdate(id: ID!, collection: CollectionInput!)
-}
-
-input CollectionInput {
-  title: String
-  ruleSet: CollectionRuleSetInput
-  image: ImageInput
-  description: String
-}
-```
-
-Caleb Meredith: But why? The reason is that the first style is much easier to use client-side. The client is only required to send one variable with per mutation instead of one for every argument on the mutation.
-
-```graphql
-mutation MyMutation($input: UpdatePostInput!) {
-  updatePost(input: $input) { ... }
-}
-
-# vs.
-
-mutation MyMutation($id: ID!, $newText: String, ...) {
-  updatePost(id: $id, newText: $newText, ...) { ... }
-}
-```
-
-For no cost besides a few extra keystrokes, nesting allows you to fully embrace GraphQL’s power to be your version-less API. Nesting gives you room on your object types to explore new schema designs as time goes on. You can easily deprecate sections of the API and add new names in a conflict free space instead of fighting to find a new name on a cluttered collision-rich object type.
-
-Think of nesting as an investment into the future of your API. See the following for an example:
-
-```graphql
-mutation {
-  createPerson(input: {
-    # By nesting we have room at the top level of `input`
-    # to add fields like `password`, or metadata fields like
-    # `clientMutationId` for Relay. We could also deprecate
-    # `person` in the future to use another top level field
-    # like `partialPerson`.
-    password: "qwerty"
-    person: {
-      id: 4
-      name: "Budd Deey"
-    }
-  }) { ... }
-  updatePerson(input: {
-    # The `id` field represents who we want to update.
-    id: 4
-    # The `patch` field represents what we want to update.
-    patch: {
-      name: "Budd Deey"
-    }
-  }) { ... }
-}
-```
-
-----
-
-Caleb Meredith: Mutations should return payload
-
-Just like when you design your input, nesting is a virtue for your GraphQL payload. Always create a custom object type for each of your mutations and then add any output you want as a field of that custom object type. This will allow you to add multiple outputs over time and metadata fields like clientMutationId or userErrors. Just like with inputs nesting is an investment that will pay off.
-
-Even if you only want to return a single thing from your mutation, resist the temptation to return that one type directly. It is hard to predict the future, and if you choose to return only a single type now you remove the future possibility to add other return types or metadata to the mutation. Preemptively removing design space is not something you want to do when designing a versionless GraphQL API.
-
-----
-
-Rule #22: Mutations should provide user/business-level errors via a userErrors field on the mutation payload. The top-level query errors entry is reserved for client and server-level errors.
-
-```graphql
-type CollectionCreatePayload {
-  userErrors: [UserError!]!
-  collection: Collection
-}
-
-type UserError {
-  message: String!
-
-  # Path to input field which caused the error.
-  field: [String!]
-}
-```
-
-Rule #23: Most payload fields for a mutation should be nullable, unless there is really a value to return in every possible error case.
-
-----
 
 ## Caleb Meredith example API
 
