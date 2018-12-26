@@ -93,9 +93,9 @@ GraphQL для проверки имен полей и типов использ
 
 Таким образом, чтоб удовлетворить большинство ваших клиентов по именованию полей:
 
-<div class="design-rule" style="padding: 10px;color: #333;font-weight: 500;font-size: 1.2em;line-height: 1.3;background: #FAFAFF;border-left: solid 4px #BBBBFF;">
+<blockquote class="design-rule">
   Используйте `camelCase` для именования GraphQL-полей.
-</div>
+</blockquote>
 
 PS. Мне очень печально видеть в документации MySQL или PostgreSQL примеры с названием полей через `under_score`. Потом все это дело качует в код бэкенда, далее появляется в GraphQL апи, а потом и в коде клиентов. Блин, ведь эти БД спокойно позволяют сразу объявить поля в `camelCase`. Но так как на начале не определились с конвенцией имен, а взяли как в документашке, то потом происходят холивары что `under_score` лучше чем `camelCase`. Ведь переименовывать поля на уже едущем проекте больно и черевато ошибками. Вобщем тот кто выбрал `under_score`, тот и должен маппить поля в `camelCase`!
 
@@ -110,11 +110,6 @@ PS. Мне очень печально видеть в документации 
 А еще GraphQL статический типизированный язык запросов. И из GraphQL-запросов много кто генерирует тайп-дефинишены для статического анализа кода. Так вот если посмотреть как в JS именуют сложные типы во Flowtype и TypeScript — то тут тоже обычно используется `UpperCamelCase`.
 
 Таким образом, чтоб не быть "белой вороной", быть понятным и удобным для большинства:
-
-<kbd class="design-rule" >**
-Используйте `UpperCamelCase` для именования GraphQL-типов.**</kbd>
-
-<kbd>## Используйте `UpperCamelCase` для именования GraphQL-типов.</kbd>
 
 <blockquote class="design-rule">
 Используйте `UpperCamelCase` для именования GraphQL-типов.
@@ -141,9 +136,9 @@ query {
 
 Опять таки дабы не расширять энтропию, надо быть как все:
 
-<div class="design-rule" style="padding: 10px;color: #333;font-weight: 500;font-size: 1.2em;line-height: 1.3;background: #FAFAFF;border-left: solid 4px #BBBBFF;">
+<blockquote class="design-rule">
 Используйте `CAPITALIZED_WITH_UNDERSCORES` для именования значений ENUM-типов.
-</div>
+</blockquote>
 
 ## 2. Правила типов
 
@@ -169,9 +164,9 @@ type Article {
 
 В таком случае легче понимать, что конкретно прилетает в поле `description`. И понятно что строку не надо эскейпить для отображения в браузере, а показывать как есть.
 
-<div class="design-rule" style="padding: 10px;color: #333;font-weight: 500;font-size: 1.2em;line-height: 1.3;background: #FAFAFF;border-left: solid 4px #BBBBFF;">
+<blockquote class="design-rule">
 Используйте кастомные скалярные типы, если вы хотите объявить поля или аргументы с определенным семантическим значением.
-</div>
+</blockquote>
 
 ### Enum для полей с определенным набором значений
 
@@ -194,9 +189,9 @@ type User {
 + }
 ```
 
-<div class="design-rule" style="padding: 10px;color: #333;font-weight: 500;font-size: 1.2em;line-height: 1.3;background: #FAFAFF;border-left: solid 4px #BBBBFF;">
+<blockquote class="design-rule">
 Используйте Enum для полей, которые содержат определенный набор значений.
-</div>
+</blockquote>
 
 ## 3. Правила полей
 
@@ -214,9 +209,9 @@ type Meeting {
 
 Человек который в первый раз видит тип `Meeting`, будет гадать что конкретно хранится в поле `bodyHtml`. Здорово если бэкендеры не ленятся и оставляют описание к полям. Но черт возьми, можно же поле в АПИ назвать `description`, а в базе пусть хранится как `bodyHtml`, тогда и документашку читать не нужно.
 
-<div class="design-rule" style="padding: 10px;color: #333;font-weight: 500;font-size: 1.2em;line-height: 1.3;background: #FAFAFF;border-left: solid 4px #BBBBFF;">
+<blockquote class="design-rule">
 Давайте полям понятные смысловые имена, а не то как они реализованы
-</div>
+</blockquote>
 
 ## 5. Правила списков
 
@@ -255,9 +250,9 @@ input ArticleFilter {
 
 Также важно договориться как назвать поле для фильтрации. А то если у вас 5, 10 или 100 разработчиков, то на выходе в схеме у вас появиться куча названий для аргумента фильтрации — `filter`, `where`, `condition`, `f` и прочий нестандарт. Если учитывать что есть базы SQL и noSQL, есть всякие кэши и прочие сервисы, то **самым адекватным именем для аргумента фильтрации является — `filter`**. Оно понятно и подходит для всех! А вот этот `where` только для SQL-бэкендеров.
 
-<div class="design-rule" style="padding: 10px;color: #333;font-weight: 500;font-size: 1.2em;line-height: 1.3;background: #FAFAFF;border-left: solid 4px #BBBBFF;">
+<blockquote class="design-rule">
 Для фильтрации списков используйте аргумент `filter` c типом Input, который содержит в себе все доступные фильтры.
-</div>
+</blockquote>
 
 ### Сортировка списков
 
@@ -287,9 +282,9 @@ enum ArticleSort {
 
 Таким образом правило для сортировки списков звучит так:
 
-<div class="design-rule" style="padding: 10px;color: #333;font-weight: 500;font-size: 1.2em;line-height: 1.3;background: #FAFAFF;border-left: solid 4px #BBBBFF;">
+<blockquote class="design-rule">
 Для сортировки списков используйте аргумент `sort`, который должен быть массивом перечисляемых значений [Enum!].
-</div>
+</blockquote>
 
 ### Ограничение возвращаемых данных
 
@@ -304,9 +299,9 @@ type Query {
 }
 ```
 
-<div class="design-rule" style="padding: 10px;color: #333;font-weight: 500;font-size: 1.2em;line-height: 1.3;background: #FAFAFF;border-left: solid 4px #BBBBFF;">
+<blockquote class="design-rule">
 Для ограничения возвращаемых элементов в списке используйте аргументы `limit` со значением по-умолчанию и `skip`.
-</div>
+</blockquote>
 
 ### Пагинация
 
@@ -371,9 +366,9 @@ type ArticlePagination {
 - `items` — массив элементов
 - `pageInfo` — объект с мета-данными пагинации `pageCount`, `itemCount`, `currentPage`, `perPage`
 
-<div class="design-rule" style="padding: 10px;color: #333;font-weight: 500;font-size: 1.2em;line-height: 1.3;background: #FAFAFF;border-left: solid 4px #BBBBFF;">
+<blockquote class="design-rule">
 Для пагинации используйте аргументы `page`, `perPage` и возвращайте output-тип с полями `items` с массивом элементов и `pageInfo` с мета-данными для удобной отрисовки страниц на клиенте.
-</div>
+</blockquote>
 
 ### Бесконечные списки
 
@@ -384,9 +379,9 @@ type ArticlePagination {
 
 Для решения этой проблемы Facebook разработал спецификацию [Relay Cursor Connections Specification](https://facebook.github.io/relay/graphql/connections.htm). Она идеально подходит для создания бесконечных (infinite scroll) списков. А коль есть спецификация, то значит есть некий стандарт которому может следовать команда разработчиков и не изобретать велосипеды.
 
-<div class="design-rule" style="padding: 10px;color: #333;font-weight: 500;font-size: 1.2em;line-height: 1.3;background: #FAFAFF;border-left: solid 4px #BBBBFF;">
+<blockquote class="design-rule">
 Для бесконечных списков (infinite scroll) используйте [Relay Cursor Connections Specification](https://facebook.github.io/relay/graphql/connections.htm).
-</div>
+</blockquote>
 
 ## 6. Правила Мутаций
 
@@ -482,9 +477,9 @@ mutation {
 
 Итак правило, для избежания бардака в мутациях:
 
-<div class="design-rule" style="padding: 10px;color: #333;font-weight: 500;font-size: 1.2em;line-height: 1.3;background: #FAFAFF;border-left: solid 4px #BBBBFF;">
+<blockquote class="design-rule">
 Используйте Namespace-типы для группировки мутаций в рамках одного ресурса!
-</div>
+</blockquote>
 
 ### Разбиваем оковы CRUD
 
@@ -492,9 +487,9 @@ mutation {
 
 Да и вам в будущем будет легче отслеживать по логам, что пользователи чаще всего дергают. И оптимизировать узкие места.
 
-<div class="design-rule" style="padding: 10px;color: #333;font-weight: 500;font-size: 1.2em;line-height: 1.3;background: #FAFAFF;border-left: solid 4px #BBBBFF;">
+<blockquote class="design-rule">
 Забудьте про CRUD – cоздавайте небольшие мутации для разных логических операций над ресурсами.
-</div>
+</blockquote>
 
 ### Однотипные batch-изменения
 
@@ -504,9 +499,9 @@ mutation {
 
 Но здесь самое главное без фанатизма, не надо на все подряд вешать массовые операции. Всегда руководствуйтесь здравым смыслом.
 
-<div class="design-rule" style="padding: 10px;color: #333;font-weight: 500;font-size: 1.2em;line-height: 1.3;background: #FAFAFF;border-left: solid 4px #BBBBFF;">
+<blockquote class="design-rule">
 Рассмотрите возможность выполнения мутаций сразу над несколькими элементами (однотипные batch-изменения).
-</div>
+</blockquote>
 
 ### Избегаем "общих" мутаций со слабой типизацией
 
@@ -525,9 +520,9 @@ mutation {
 
 Не экономьте на мутациях и старайтесь избегать слабой типизации. Поэтому правило можно сформулировать так:
 
-<div class="design-rule" style="padding: 10px;color: #333;font-weight: 500;font-size: 1.2em;line-height: 1.3;background: #FAFAFF;border-left: solid 4px #BBBBFF;">
+<blockquote class="design-rule">
 У мутаций должны быть четко описаны все обязательные аргументы, не должно быть вариантов либо-либо.
-</div>
+</blockquote>
 
 ----
 
