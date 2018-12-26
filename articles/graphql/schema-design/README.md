@@ -111,9 +111,9 @@ PS. Мне очень печально видеть в документации 
 
 Таким образом, чтоб не быть "белой вороной", быть понятным и удобным для большинства:
 
-<div class="design-rule" style="padding: 10px;color: #333;font-weight: 500;font-size: 1.2em;line-height: 1.3;background: #FAFAFF;border-left: solid 4px #BBBBFF;">
+<kbd class="design-rule" ><h2>
 Используйте `UpperCamelCase` для именования GraphQL-типов.
-</div>
+</h2></kbd>
 
 ### Именование значений для Enum'ом
 
