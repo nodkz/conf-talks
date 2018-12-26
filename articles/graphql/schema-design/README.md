@@ -116,6 +116,10 @@ PS. Мне очень печально видеть в документации 
 
 <kbd>## Используйте `UpperCamelCase` для именования GraphQL-типов.</kbd>
 
+<blockquote class="design-rule">
+Используйте `UpperCamelCase` для именования GraphQL-типов.
+</blockquote>
+
 ### Именование значений для Enum'ом
 
 Enum в GraphQL используются для перечисления списка возможных значение у некого типа.
