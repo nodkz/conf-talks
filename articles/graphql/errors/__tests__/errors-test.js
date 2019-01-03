@@ -6,6 +6,7 @@ import {
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLUnionType,
+  GraphQLInterfaceType,
   GraphQLList,
   GraphQLNonNull,
   graphql,
@@ -401,6 +402,180 @@ describe('check different Error approaches', () => {
         },
       ],
       data: { ooops: null },
+    });
+  });
+
+  it('Errors for mutation with Union&Interfaces', async () => {
+    const PostType = new GraphQLObjectType({
+      name: 'Post',
+      fields: {
+        id: { type: GraphQLInt },
+        title: { type: GraphQLString },
+        likes: { type: GraphQLInt },
+      },
+    });
+
+    const ProblemInterface = new GraphQLInterfaceType({
+      name: 'ProblemInterface',
+      fields: { message: { type: new GraphQLNonNull(GraphQLString) } },
+      resolveType: value => {
+        if (value && value.name) return value.name;
+        return null;
+      },
+    });
+
+    const SpikeProtectionProblem = new GraphQLObjectType({
+      name: 'SpikeProtectionProblem',
+      interfaces: [ProblemInterface],
+      fields: () => ({
+        message: { type: new GraphQLNonNull(GraphQLString) },
+        wait: {
+          description: 'Timout in seconds when the next operation will be executed without errors',
+          type: new GraphQLNonNull(GraphQLInt),
+        },
+      }),
+    });
+
+    const PostDoesNotExistsProblem = new GraphQLObjectType({
+      name: 'PostDoesNotExistsProblem',
+      interfaces: [ProblemInterface],
+      fields: () => ({
+        message: { type: new GraphQLNonNull(GraphQLString) },
+        postId: { type: new GraphQLNonNull(GraphQLInt) },
+      }),
+    });
+
+    const LikePostProblems = new GraphQLUnionType({
+      name: 'LikePostProblems',
+      types: () => [SpikeProtectionProblem, PostDoesNotExistsProblem],
+      resolveType: value => {
+        if (value && value.name) return value.name;
+        return null;
+      },
+    });
+
+    const schema = new GraphQLSchema({
+      query: new GraphQLObjectType({
+        name: 'Query',
+        fields: {
+          hello: { type: GraphQLString, resolve: () => 'world' },
+        },
+      }),
+      mutation: new GraphQLObjectType({
+        name: 'Mutation',
+        fields: {
+          likePost: {
+            type: new GraphQLObjectType({
+              name: 'LikePostPayload',
+              fields: {
+                record: { type: PostType },
+                recordId: { type: GraphQLInt },
+                errors: { type: new GraphQLList(new GraphQLNonNull(LikePostProblems)) },
+              },
+            }),
+            args: { id: { type: new GraphQLNonNull(GraphQLInt) } },
+            resolve: async (_, { id }) => {
+              if (id === 666) {
+                return {
+                  record: { id, title: `Post ${id}`, likes: 0 },
+                  recordId: id,
+                  errors: [
+                    {
+                      name: 'PostDoesNotExistsProblem',
+                      message: 'Post does not exists!',
+                      postId: id,
+                    },
+                    {
+                      name: 'SpikeProtectionProblem',
+                      message: 'Spike protection! Please retry later!',
+                      wait: 20,
+                    },
+                  ],
+                };
+              }
+
+              return {
+                record: { id, title: `Post ${id}`, likes: 15 },
+                recordId: id,
+                errors: null,
+              };
+            },
+          },
+        },
+      }),
+    });
+
+    expect(
+      await graphql(
+        schema,
+        `
+          mutation {
+            likePost(id: 10) {
+              recordId
+              record {
+                title
+                likes
+              }
+              errors {
+                __typename
+              }
+            }
+          }
+        `
+      )
+    ).toEqual({
+      data: { likePost: { record: { likes: 15, title: 'Post 10' }, recordId: 10, errors: null } },
+    });
+
+    // Query with any type of error
+    expect(
+      await graphql(
+        schema,
+        `
+          mutation {
+            likePost(id: 666) {
+              recordId
+              record {
+                title
+                likes
+              }
+              errors {
+                __typename
+                ... on ProblemInterface {
+                  message
+                }
+                ... on SpikeProtectionProblem {
+                  message
+                  wait
+                }
+                ... on PostDoesNotExistsProblem {
+                  message
+                  postId
+                }
+              }
+            }
+          }
+        `
+      )
+    ).toEqual({
+      data: {
+        likePost: {
+          errors: [
+            {
+              __typename: 'PostDoesNotExistsProblem',
+              message: 'Post does not exists!',
+              postId: 666,
+            },
+            {
+              __typename: 'SpikeProtectionProblem',
+              message: 'Spike protection! Please retry later!',
+              wait: 20,
+            },
+          ],
+          record: { likes: 0, title: 'Post 666' },
+          recordId: 666,
+        },
+      },
     });
   });
 });

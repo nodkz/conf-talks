@@ -1,7 +1,8 @@
 {
   "line-length": false,
   "no-trailing-punctuation": {
-    "punctuation": ".,;:!"
+    "punctuation": ",;:!"
   },
-  "no-inline-html": false
+  "no-inline-html": false,
+  "ol-prefix": false
 }
