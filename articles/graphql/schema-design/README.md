@@ -1,3 +1,5 @@
+[CC-BY-NC-4.0](https://creativecommons.org/licenses/by-nc/4.0/)
+
 # Дизайн GraphQL-схем — делаем АПИ удобным, избегаем боль и страдания
 
 Рекомендации и правила озвученные в этой статье были выработаны за 3 года использования GraphQL как на стороне сервера (при построении схем) так и на клиентской стороне (написания GraphQL-запросов и покрытием клиентского кода статическим анализом). Также в этой статье используются рекомендации и опыт Caleb Meredith (автора PostGraphQL, ex-сотрудник Facebook) и иженеров Shopify.
@@ -6,47 +8,47 @@
 
 ## TL;DR всех правил
 
-- 1. Правила именования
+- **1. Правила именования**
   - [1.1.](#rule-1.1) Используйте `camelCase` для именования GraphQL-полей и аргументов.
   - [1.2.](#rule-1.2) Используйте `UpperCamelCase` для именования GraphQL-типов.
   - [1.3.](#rule-1.3) Используйте `CAPITALIZED_WITH_UNDERSCORES` для именования значений ENUM-типов.
-- 2. Правила типов
+- **2. Правила типов**
   - [2.1.](#rule-2.1) Используйте кастомные скалярные типы, если вы хотите объявить поля или аргументы с определенным семантическим значением.
   - [2.2.](#rule-2.2) Используйте Enum для полей, которые содержат определенный набор значений.
-- 3. Правила полей (Output)
+- **3. Правила полей (Output)**
   - [3.1.](#rule-3.1) Давайте полям понятные смысловые имена, а не то как они реализованы.
   - [3.2.](#rule-3.2) Группируйте взаимосвязанные поля вместе в новый output-тип.
-- 4. Правила аргументов (Input)
+- **4. Правила аргументов (Input)**
   - TODO: Группируйте взаимосвязанные аргументы вместе в новый input-тип.
   - TODO: Rule #20: Use stronger types for inputs (e.g. DateTime instead of String) when the format may be ambiguous and client-side validation is simple. This provides clarity and encourages clients to use stricter input controls (e.g. a date-picker widget instead of a free-text field).
   - TODO: Rule #18: Only make input fields required if they're actually semantically required for the mutation to proceed.
-- 5. Правила списков
+- **5. Правила списков**
   - [5.1.](#rule-5.1) Для фильтрации списков используйте аргумент `filter` c типом Input, который содержит в себе все доступные фильтры.
-  - [5.2.](#rule-5.2) Для сортировки списков используйте аргумент `sort`, который должен быть массивом перечисляемых значений [Enum!].
+  - [5.2.](#rule-5.2) Для сортировки списков используйте аргумент `sort`, который должен быть массивом перечисляемых значений `[Enum!]`.
   - [5.3.](#rule-5.3) Для ограничения возвращаемых элементов в списке используйте аргументы `limit` со значением по-умолчанию и `skip`.
   - [5.4.](#rule-5.4) Для пагинации используйте аргументы `page`, `perPage` и возвращайте output-тип с полями `items` с массивом элементов и `pageInfo` с мета-данными для удобной отрисовки страниц на клиенте.
   - [5.5.](#rule-5.5) Для бесконечных списков (infinite scroll) используйте [Relay Cursor Connections Specification](https://facebook.github.io/relay/graphql/connections.htm).
-- 6. Правила Мутаций
+- **6. Правила Мутаций**
   - [6.1.](#rule-6.1) Используйте Namespace-типы для группировки мутаций в рамках одного ресурса!
   - [6.2.](#rule-6.2) Забудьте про CRUD - cоздавайте небольшие мутации для разных логических операций над ресурсами.
   - [6.3.](#rule-6.3) Рассмотрите возможность выполнения мутаций сразу над несколькими элементами (однотипные batch-изменения).
   - [6.4.](#rule-6.4) У мутаций должны быть четко описаны все обязательные аргументы, не должно быть вариантов либо-либо.
   - [6.5.](#rule-6.5) У мутации вкладывайте все переменные в один уникальный `input` аргумент.
   - [6.6.](#rule-6.6) Мутация должна возвращать свой уникальный Payload-тип.
-  - [6.7.](#rule-6.7) В ответе мутации возвращайте поле с типом Query
+  - [6.7.](#rule-6.7) В ответе мутации возвращайте поле с типом `Query`
   - [6.8.](#rule-6.8) Мутации должны возвращать в Payload'e поле `errors` с типизированными пользовательскими ошибками.
   - TODO: Rule #23: Most payload fields for a mutation should be nullable, unless there is really a value to return in every possible error case.
   - TODO: Rule #19: Use weaker types for inputs (e.g. String instead of Email) when the format is unambiguous and client-side validation is complex. This lets the server run all non-trivial validations at once and return the errors in a single place in a single format, simplifying the client.
-- 7. Правила реляций между типами (relationships)
+- **7. Правила реляций между типами (relationships)**
   - TODO: Rule #1: Always start with a high-level view of the objects and their relationships before you deal with specific fields.
   - TODO: Rule #8: Always use object references instead of ID fields.
-- 8. Правила по бизнес-логике
+- **8. Правила по бизнес-логике**
   - TODO: Rule #2: Never expose implementation details in your API design.
   - TODO: Rule #3: Design your API around the business domain, not the implementation, user-interface, or legacy APIs.
   - TODO: Rule #5: Major business-object types should always implement Node.
   - TODO: Rule #12: The API should provide business logic, not just data. Complex calculations should be done on the server, in one place, not on the client, in many places.
   - TODO: Rule #13: Provide the raw data too, even when there’s business logic around it.
-- 9. Правила по версионированию схемы
+- **9. Правила по версионированию схемы**
   - TODO: Rule #4: It’s easier to add fields than to remove them.
   - TODO: Unique payload type. Use a unique payload type for each mutation and add the mutation’s output as a field to that payload type.
 
@@ -247,7 +249,7 @@ input ArticleFilter {
 
 Также важно договориться как назвать поле для фильтрации. А то если у вас 5, 10 или 100 разработчиков, то на выходе в схеме у вас появиться куча названий для аргумента фильтрации — `filter`, `where`, `condition`, `f` и прочий нестандарт. Если учитывать что есть базы SQL и noSQL, есть всякие кэши и прочие сервисы, то **самым адекватным именем для аргумента фильтрации является — `filter`**. Оно понятно и подходит для всех! А вот этот `where` только для SQL-бэкендеров.
 
-### <a name="rule-5.2"></a> 5.2. Для сортировки списков используйте аргумент `sort`, который должен быть массивом перечисляемых значений [Enum!].
+### <a name="rule-5.2"></a> 5.2. Для сортировки списков используйте аргумент `sort`, который должен быть массивом перечисляемых значений `[Enum!]`.
 
 Когда в списке много записей, то может потребоваться сортировка по полю. А иногда требуется сортировка по нескольким полям.
 
@@ -556,7 +558,7 @@ type CreatePersonPayload {
 }
 ```
 
-### <a name="rule-6.7"></a> 6.7. В ответе мутации возвращайте поле с типом Query
+### <a name="rule-6.7"></a> 6.7. В ответе мутации возвращайте поле с типом `Query`
 
 Если ваши мутации возвращают Payload-тип, то обязательно добавляейте в него поле `query` с типом `Query`. Это позволит клиентам за один раунд-трип не только вызвать мутацию, но и получить вагон данных для обновления своего приложения. К примеру, мы лайкаем какую-то статью `likePost` и тут же в ответе через поле `query` можем запросить любые данные которые доступны нам в АПИ (в нашем примере список последних статей с активностью `lastActivePosts`).
 
