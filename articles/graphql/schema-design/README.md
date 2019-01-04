@@ -917,7 +917,7 @@ mutation {
   - TODO: Rule #4: It’s easier to add fields than to remove them.
   - TODO: Unique payload type. Use a unique payload type for each mutation and add the mutation’s output as a field to that payload type.
 
-### Some rules from Shopify
+Some rules from Shopify
 
 To get this simplified representation, I took out all scalar fields, all field names, and all nullability information. What you're left with still looks kind of like GraphQL but lets you focus on higher level of the types and their relationships.
 
@@ -985,19 +985,19 @@ Rule #13: Provide the raw data too, even when there's business logic around it.
 
 Clients should be able to do the business logic themselves, if they have to. You can’t predict all of the logic a client is going to want
 
-### 9. Правила версионирования
+----
 
------
+9. TODO: Правила версионирования
 
 Я в корне не согласен с правилом №21 от Shopify:
 > Rule #21: Structure mutation inputs to reduce duplication, even if this requires relaxing requiredness constraints on certain fields.
 
 Экономию на типах сложно оправдать. С таким подход от Shopify будет трудно изменять ваше апи в будущем.
 
------
+----
 
 Exposing a schema element (field, argument, type, etc) should be driven by an actual need and use case. GraphQL schemas can easily be evolved by adding elements, but changing or removing them are breaking changes and much more difficult.
 
 Rule #4: It's easier to add fields than to remove them.
 
------
+----
