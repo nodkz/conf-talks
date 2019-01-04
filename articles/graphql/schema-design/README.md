@@ -18,10 +18,11 @@
 - **3. Правила полей (Output)**
   - [3.1.](#rule-3.1) Давайте полям понятные смысловые имена, а не то как они реализованы.
   - [3.2.](#rule-3.2) Группируйте взаимосвязанные поля вместе в новый output-тип.
+  - [3.3.](#rule-3.3) Делайте поля обязательными `NonNull`, если данные в поле возвращаются при любой ситуации.
 - **4. Правила аргументов (Input)**
-  - TODO: Группируйте взаимосвязанные аргументы вместе в новый input-тип.
-  - TODO: Rule #20: Use stronger types for inputs (e.g. DateTime instead of String) when the format may be ambiguous and client-side validation is simple. This provides clarity and encourages clients to use stricter input controls (e.g. a date-picker widget instead of a free-text field).
-  - TODO: Rule #18: Only make input fields required if they're actually semantically required for the mutation to proceed.
+  - [4.1.](#rule-4.1) Группируйте взаимосвязанные аргументы вместе в новый input-тип.
+  - [4.2.](#rule-4.2) Используйте строгие скалярные типы для аргументов, например `DateTime` вместо `String`.
+  - [4.3.](#rule-4.3) Помечайте аргументы как `NonNull`, если они обязательны для выполнения запроса.
 - **5. Правила списков**
   - [5.1.](#rule-5.1) Для фильтрации списков используйте аргумент `filter` c типом Input, который содержит в себе все доступные фильтры.
   - [5.2.](#rule-5.2) Для сортировки списков используйте аргумент `sort`, который должен быть массивом перечисляемых значений `[Enum!]`.
@@ -37,22 +38,6 @@
   - [6.6.](#rule-6.6) Мутация должна возвращать свой уникальный Payload-тип.
   - [6.7.](#rule-6.7) В ответе мутации возвращайте поле с типом `Query`
   - [6.8.](#rule-6.8) Мутации должны возвращать в Payload'e поле `errors` с типизированными пользовательскими ошибками.
-  - TODO: Rule #23: Most payload fields for a mutation should be nullable, unless there is really a value to return in every possible error case.
-  - TODO: Rule #19: Use weaker types for inputs (e.g. String instead of Email) when the format is unambiguous and client-side validation is complex. This lets the server run all non-trivial validations at once and return the errors in a single place in a single format, simplifying the client.
-- **7. Правила реляций между типами (relationships)**
-  - TODO: Rule #1: Always start with a high-level view of the objects and their relationships before you deal with specific fields.
-  - TODO: Rule #8: Always use object references instead of ID fields.
-- **8. Правила по бизнес-логике**
-  - TODO: Rule #2: Never expose implementation details in your API design.
-  - TODO: Rule #3: Design your API around the business domain, not the implementation, user-interface, or legacy APIs.
-  - TODO: Rule #5: Major business-object types should always implement Node.
-  - TODO: Rule #12: The API should provide business logic, not just data. Complex calculations should be done on the server, in one place, not on the client, in many places.
-  - TODO: Rule #13: Provide the raw data too, even when there’s business logic around it.
-- **9. Правила по версионированию схемы**
-  - TODO: Rule #4: It’s easier to add fields than to remove them.
-  - TODO: Unique payload type. Use a unique payload type for each mutation and add the mutation’s output as a field to that payload type.
-
----
 
 ## 1. Правила именования
 
@@ -205,12 +190,121 @@ type MeetingSettingsGroup {
 
 Т.е. если сгруппировать взаимоувязанные поля в под-тип, то это делает схему не только легче для восприятия, но и позволяет достаточно легко ее расширять в будущем.
 
+### <a name="rule-3.3"></a> 3.3. Делайте поля обязательными `NonNull`, если данные в поле возвращаются при любой ситуации.
+
+Делая поля в вашей схеме NonNull (обязательными) позволят клиентам при статическом анализе делать меньше проверок в коде. Если вдруг бэкендер не вернет данные по обязательному полю, то GraphQL вернет ошибку о том, что данных нет. При этом занулит родительский объект. И если родительский объект тоже обязателен, то выбросит ошибку еще выше. В любом случае клиент не получит объект (тип) без данных для обязательного поля.
+
+Также это правило распростроняется на возвращение массивов. Если вы всегда возвращаете массив, то пометьте его как `[SomeType]!` (`new GraphQLNonNull(new GraphQLList(SomeType))`). По-умолчанию у GraphQL все поля nullable, поэтому клиентам необходимо сперва проверить наличие массива, а потом по нему проходиться. Иногда это очень загрязняет код. Поэтому если вы всегда возвращаете массив, даже если он пустой (0 элементов), то обязательно помечайте его как NonNull. При этом сам массив внутри себя может содержать null элементы и если не может, то помечайте его как `[SomeType!]!` (`new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(SomeType)))`).
+
 ## 4. Правила аргументов
 
-TODO: some rules
+### <a name="rule-4.1"></a> 4.1. Группируйте взаимосвязанные аргументы вместе в новый input-тип.
 
-- Rule #20: Use stronger types for inputs (e.g. DateTime instead of String) when the format may be ambiguous and client-side validation is simple. This provides clarity and encourages clients to use stricter input controls (e.g. a date-picker widget instead of a free-text field).
-- Rule #18: Only make input fields required if they're actually semantically required for the mutation to proceed.
+Часто бывают ситуации, когда несколько аргументов по логике взаимоувязаны друг с другом. К примеру вы возвращаете список статей, и позволяете этот список фильтровать по трем полям `lang`, `userId`, `rating` и ограничивать размер выборки `limit`. Ни в коем случае не смешивайте все эти аргументы на одном уровне:
+
+- клиенту будет тяжело понять к чему какой аргумент относится
+- в будущем у вас может возникнуть проблема, что одно имя аргумента уже используется для других целей.
+
+Смело группируйте взаимосвязанные аргументы, например все аргументы фильтрации можно положить в аргумент `filter` с типом `ArticleFilter`:
+
+```graphql
+type Query {
+  articles(filter: ArticleFilter, limit: Int): [Article]
+}
+
+input ArticleFilter {
+  lang: Stirng
+  userId: Int
+  rating: MinMaxInput
+}
+
+input MinMaxInput {
+  min: Int
+  max: Int
+}
+```
+
+Из кода выше, также обратите внимание как поступили с фильтрацией по полю `rating`. Вместо двух разрозненных полей `ratingMin` и `ratingMax` был заведен новый input-тип `MinMaxInput`.
+
+Вобщем если сгруппировать взаимоувязанные аргументы в под-тип, то это делает схему не только легче для восприятия, но и позволяет достаточно легко ее расширять в будущем.
+
+### <a name="rule-4.2"></a> 4.2. Используйте строгие скалярные типы для аргументов, например `DateTime` вместо `String`.
+
+Используйте более строгие типы для входных данных. Например, скалярный тип `DateTime` вместо `String`. Как вы знаете в GraphQL всего 5 скалярных типов и типа для `дат` в нем нет. Но в GraphQL есть возможность создания своих скалярных типов, которая позволяет задать описание и написать методы валидации, сериализации и десериализации полученных значений.
+
+Во-первых это позволяет вам единожды описать методы конвертации значений от клиента в серверное представление (в нашем примере в объект Date).
+
+Во-вторых это обеспечивает ясность и побуждает клиентов использовать более строгие элементы управления вводом (например, виджет выбора даты вместо поля с произвольным текстом).
+
+А вот и пример создания такого скалярного типа в NodeJS:
+
+```js
+import { GraphQLScalarType, GraphQLError } from 'graphql';
+
+export default new GraphQLScalarType({
+  // 1) --- ОПРЕДЕЛЯЕМ МЕТАДАННЫЕ ТИПА ---
+  // У каждого типа, должно быть уникальное имя
+  name: 'DateTime',
+  // Хорошим тоном будет предоставить описание для вашего типа, чтобы оно отображалось в документации
+  description: 'A string which represents a HTTP URL',
+  
+  // 2) --- ОПРЕДЕЛЯЕМ КАК ТИП ОТДАВАТЬ КЛИЕНТУ ---
+  // Чтобы передать клиенту в GraphQL-ответе значение вашего поля
+  // вам необходимо определить функцию `serialize`,
+  // которая превратит значение в допустимый json-тип
+  serialize: (v: Date) => v.getTime(), // return 1536417553
+
+  // 3) --- ОПРЕДЕЛЯЕМ КАК ТИП ПРИНИМАТЬ ОТ КЛИЕНТА ---
+  // Чтобы принять значение от клиента, провалидировать его и преобразовать
+  // в нужный тип/объект для работы на сервере вам нужно определить две функции:
+
+  // 3.1) первая это `parseValue`, используется если клиент передал значение через GraphQL-переменную:
+  // {
+  //   variableValues: { "date": 1536417553 }
+  //   source: `query ($date: DateTimestamp) { setDate(date: $date) }`
+  // }
+  parseValue: (v: integer) => new Date(v),
+
+  // 3.2) вторая это `parseLiteral`, используется если клиент передал значение в теле GraphQL-запроса:
+  // {
+  //   source: `query { setDate(date: 1536417553) }`
+  // }
+  parseLiteral: (ast) => {
+    if (ast.kind === Kind.STRING) {
+      throw new GraphQLError('Field error: value must be Integer');
+    } else if (ast.kind === Kind.INT) {
+      return new Date(parseInt(ast.value, 10)); // ast value is always in string format
+    }
+    return null;
+  },
+});
+```
+
+### <a name="rule-4.3"></a> 4.3. Помечайте аргументы как `required`, если они обязательны для выполнения запроса.
+
+По-умолчанию, все поля и аргументы в GraphQL являются `nullable` – необязательными. Поэтому хорошим тононом будет помечать обязательные аргументы для выполнения запроса как `GraphQLNonNull` или если в формате SDL то с восклицательным знаком – `String!`. Это позволит отловить ошибку на клиенте еще на уровне статического анализа, а не во время реального выполнения вашего кода.
+
+Плюс, если вы указали что аргумент обязательный, то на сервере в своем resolve-методе вы можете быть уверены, что данное значение присутствует и дополнительно его не нужно проверять на наличие. Т.к. во время парсинга и валидации запроса GraphQL уже сделает эту проверку, и завернет запрос с ошибкой если значение не указано.
+
+Например, для получения списка статей клиент должен указать кол-во возвращаемых записей:
+
+```graphql
+type Query {
+  articles(limit: Int!): [Article]
+}
+```
+
+Хотя, иногда злодействовать не стоит и можно воспользоваться значением по-умолчанию:
+
+```graphql
+type Query {
+  articles(limit: Int! = 10): [Article]
+}
+```
+
+Тогда клиент может не передавать значение для обязательного аргумента `limit`, оно будет равно по-умолчанию 10. Но если клиент захочет надурачить систему и в запросе передаст null – `query { articles(limit: null) }`, то сервер вернет ошибку `Expected type Int!, found null.`.
+
+Вобщем обязательные аргументы в GraphQL работают хорошо и их стоит использовать для более строгого описания вашей GraphQL-схемы.
 
 ## 5. Правила списков
 
@@ -558,6 +652,8 @@ type CreatePersonPayload {
 }
 ```
 
+Важно отметить, что возвращаемые поля в вашем Payload-типе должны быть nullable (необязательными). Т.е. если вы будите возвращать ошибку например в поле `userErrors`, то вы не сможете гарантировать наличие данных в поле `record`. Этот момент может всплыть, когда фронтендеры начнут вас просить сделать эти поля обязательными, т.к. статический анализ заставляет их делать дополнительную проверку на наличие данных. Вы спокойно должны им сказать, что им необходимо делать проверку, ведь данные реально могут отсутствовать.
+
 ### <a name="rule-6.7"></a> 6.7. В ответе мутации возвращайте поле с типом `Query`
 
 Если ваши мутации возвращают Payload-тип, то обязательно добавляейте в него поле `query` с типом `Query`. Это позволит клиентам за один раунд-трип не только вызвать мутацию, но и получить вагон данных для обновления своего приложения. К примеру, мы лайкаем какую-то статью `likePost` и тут же в ответе через поле `query` можем запросить любые данные которые доступны нам в АПИ (в нашем примере список последних статей с активностью `lastActivePosts`).
@@ -799,7 +895,29 @@ mutation {
 }
 ```
 
-## Some rules from Shopify
+## Полезные ссылки
+
+- [Shopify: Designing a GraphQL API](https://github.com/Shopify/graphql-design-tutorial/blob/master/TUTORIAL.md)
+- [Designing GraphQL Mutations by Caleb Meredith](https://blog.apollographql.com/designing-graphql-mutations-e09de826ed97)
+
+----
+
+## WIP: Следующие правила в процессе формирования
+
+- **7. Правила реляций между типами (relationships)**
+  - TODO: Rule #1: Always start with a high-level view of the objects and their relationships before you deal with specific fields.
+  - TODO: Rule #8: Always use object references instead of ID fields.
+- **8. Правила по бизнес-логике**
+  - TODO: Rule #2: Never expose implementation details in your API design.
+  - TODO: Rule #3: Design your API around the business domain, not the implementation, user-interface, or legacy APIs.
+  - TODO: Rule #5: Major business-object types should always implement Node.
+  - TODO: Rule #12: The API should provide business logic, not just data. Complex calculations should be done on the server, in one place, not on the client, in many places.
+  - TODO: Rule #13: Provide the raw data too, even when there’s business logic around it.
+- **9. Правила по версионированию схемы**
+  - TODO: Rule #4: It’s easier to add fields than to remove them.
+  - TODO: Unique payload type. Use a unique payload type for each mutation and add the mutation’s output as a field to that payload type.
+
+### Some rules from Shopify
 
 To get this simplified representation, I took out all scalar fields, all field names, and all nullability information. What you're left with still looks kind of like GraphQL but lets you focus on higher level of the types and their relationships.
 
@@ -867,7 +985,7 @@ Rule #13: Provide the raw data too, even when there's business logic around it.
 
 Clients should be able to do the business logic themselves, if they have to. You can’t predict all of the logic a client is going to want
 
-## 9. Правила версионирования
+### 9. Правила версионирования
 
 -----
 
@@ -883,8 +1001,3 @@ Exposing a schema element (field, argument, type, etc) should be driven by an ac
 Rule #4: It's easier to add fields than to remove them.
 
 -----
-
-## Полезные ссылки
-
-- [Shopify: Designing a GraphQL API](https://github.com/Shopify/graphql-design-tutorial/blob/master/TUTORIAL.md)
-- [Designing GraphQL Mutations by Caleb Meredith](https://blog.apollographql.com/designing-graphql-mutations-e09de826ed97)
