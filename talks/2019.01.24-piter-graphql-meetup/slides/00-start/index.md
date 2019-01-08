@@ -18,7 +18,7 @@
 
 ## Ссылка на эту презентацию
 
-![QR Code](./qr-code.png) <!-- .element: class="plain"  -->
+![QR Code](./qr-code.png) <!-- .element: class="plain" style="max-width: 400px"  -->
 
 [http://bit.ly/piter-graphql-meetup](https://nodkz.github.io/conf-talks/talks/2019.01.24-piter-graphql-meetup/index.html) <!-- .element: style="color: #ffffff" -->
 
