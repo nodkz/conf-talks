@@ -20,7 +20,7 @@
 
 ![QR Code](./qr-code.png) <!-- .element: class="plain"  -->
 
-[http://bit.ly/holy-graphql](https://nodkz.github.io/conf-talks/holyjs-2018/index.html) <!-- .element: style="color: #ffffff" -->
+[http://bit.ly/holy-graphql](https://nodkz.github.io/conf-talks/talks/2018.11.24-holyjs-moscow/index.html) <!-- .element: style="color: #ffffff" -->
 
 -----
 

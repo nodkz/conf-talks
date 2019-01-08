@@ -62,6 +62,6 @@
   </div>
 </div>
 
-Ссылка на эту презентацию: [http://bit.ly/holy-graphql](https://nodkz.github.io/conf-talks/holyjs-2018/index.html)
+Ссылка на эту презентацию: [http://bit.ly/holy-graphql](https://nodkz.github.io/conf-talks/talks/2018.11.24-holyjs-moscow/index.html)
 
 ![Photo](../assets/nodkz-photo.jpg) <!-- .element: style="max-width: 400px; border: none" -->

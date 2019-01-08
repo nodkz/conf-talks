@@ -20,7 +20,7 @@
 
 ![QR Code](./qr-code.png) <!-- .element: class="plain"  -->
 
-[http://bit.ly/...](https://nodkz.github.io/talks/2019.01.24-wrike/index.html) <!-- .element: style="color: #ffffff" -->
+[http://bit.ly/piter-graphql-meetup](https://nodkz.github.io/conf-talks/talks/2019.01.24-piter-graphql-meetup/index.html) <!-- .element: style="color: #ffffff" -->
 
 -----
 
