@@ -1,13 +1,13 @@
 {
   "name": "conf-talks",
   "version": "1.0.0",
-  "description": "Здесь я готовлю тексты к своим выступлениям и презентациям. Лучшем и надежнее я место не нашел.",
+  "description": "В этой репке находятся мои статьи и презентации для конференций",
   "main": "index.js",
   "scripts": {
     "test": "yarn jest",
     "watch": "yarn jest --watch",
     "lint": "eslint --ext .js ./articles",
-    "start": "yarn --cwd ./holyjs-2018 start"
+    "start": "yarn --cwd ./talks/2019.01.24-piter-graphql-meetup start"
   },
   "repository": {
     "type": "git",
