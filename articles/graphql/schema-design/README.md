@@ -1,6 +1,6 @@
 [CC-BY-NC-4.0](https://creativecommons.org/licenses/by-nc/4.0/)
 
-# Дизайн GraphQL-схем — делаем АПИ удобным, избегаем боль и страдания
+# Дизайн GraphQL-схем — делаем АПИ удобным, избегаем боли и страданий
 
 Рекомендации и правила озвученные в этой статье были выработаны за 3 года использования GraphQL как на стороне сервера (при построении схем) так и на клиентской стороне (написания GraphQL-запросов и покрытием клиентского кода статическим анализом). Также в этой статье используются рекомендации и опыт Caleb Meredith (автора PostGraphQL, ex-сотрудник Facebook) и иженеров Shopify.
 
@@ -247,7 +247,7 @@ export default new GraphQLScalarType({
   name: 'DateTime',
   // Хорошим тоном будет предоставить описание для вашего типа, чтобы оно отображалось в документации
   description: 'A string which represents a HTTP URL',
-  
+
   // 2) --- ОПРЕДЕЛЯЕМ КАК ТИП ОТДАВАТЬ КЛИЕНТУ ---
   // Чтобы передать клиенту в GraphQL-ответе значение вашего поля
   // вам необходимо определить функцию `serialize`,
@@ -434,7 +434,7 @@ type Query {
 type ArticlePagination {
   # Array of objects.
   items: [User]
-  
+
   # Information to aid in pagination.
   pageInfo: PaginationInfo!
 }
