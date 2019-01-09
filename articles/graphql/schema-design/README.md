@@ -163,16 +163,14 @@ type Meeting {
 Часто бывают ситуации, когда несколько полей по логике взаимоувязаны друг с другом. К примеру наш `Meeting` может быть 1-1 или групповой, соответственно он имеет разные наборы полей для каждого типа встречи. Так вот, чтобы не делать бардак из полей и явно дать понять фронтендеру какие поля можно использовать для того или иного вида встречи, лучше их разнести по подтипам. Например настройки для 1-1 вчтречи уносим в тип `MeetingSettingsOneToOne`, а настройки групповой встречи в `MeetingSettingsGroup`:
 
 ```graphql
+union MettingSettings = MeetingSettingsOneToOne | MeetingSettingsGroup
+
 type Meeting {
   title: String
-  type: MeetingType
-  settingsOneToOne: MeetingSettingsOneToOne
-  settingsGroup: MeetingSettingsGroup
+  settings: MettingSettings
 }
 
-enum MeetingType { ONE_TO_ONE, GROUP }
-
-type MeetingSettingsOneToOne {
+type MeetingSettingsOneToOne  {
   peer1: String!
   peer2: String!
 }
