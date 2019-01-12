@@ -26,8 +26,8 @@
 
 ```diff
 type User {
-+  isActive: boolean # GOOD
 -  in_active: boolean # BAD
++  isActive: boolean # GOOD
 }
 
 ```
@@ -36,8 +36,8 @@ type User {
 
 ```diff
 type Query {
-+  users(perPage: Int): boolean # GOOD
 -  users(per_page: Int): boolean # BAD
++  users(perPage: Int): boolean # GOOD
 }
 
 ```
@@ -64,9 +64,9 @@ type Query {
 ### Имя типа
 
 ```diff
-+ type UserFilter { # GOOD
 - type User_Filter { # BAD
 - type userFilter { # BAD
++ type UserFilter { # GOOD
     isActive: boolean
   }
 
@@ -92,9 +92,9 @@ type Query {
 
 ```diff
 enum Sort {
-+  NAME_ASC # GOOD
 -  nameAsc # BAD
 -  NameAsc # BAD
++  NAME_ASC # GOOD
    NAME_DESC
    AGE_ASC
    AGE_DESC
@@ -115,8 +115,8 @@ enum Sort {
 
 ```diff
 query {
-+  findUser(sort: ID_DESC) { # GOOD
 -  findUser(sort: idDesc) { # BAD
++  findUser(sort: ID_DESC) { # GOOD
      id
      name
    }
