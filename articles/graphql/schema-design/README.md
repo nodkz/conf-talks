@@ -286,14 +286,14 @@ type ClaimBase {
   text: String!
 }
 
-# Опишем тип жалобы, пришедший по телефону
+# Опишем тип жалобы, пришедшей по телефону
 type ClaimByPhone implements ClaimBase {
   text: String!
   phone: String!
   operatorCode: String!
 }
 
-# Опишем тип жалобы, пришедший по почте
+# Опишем тип жалобы, пришедшей по почте
 type ClaimByMail implements ClaimBase {
   text: String!
   email: String!
@@ -308,17 +308,17 @@ union Claim = ClaimByPhone | ClaimByMail
 
 ```graphql
 query {
-	claim {
-		... on ClaimByPhone {
-		  text
-			phone
-			operatorCode
-		}
-		... on ClaimByMail {
-		  text
-			email
-		}
-	}
+  claim {
+    ... on ClaimByPhone {
+      text
+      phone
+      operatorCode
+    }
+    ... on ClaimByMail {
+      text
+      email
+    }
+  }
 }
 ```
 
