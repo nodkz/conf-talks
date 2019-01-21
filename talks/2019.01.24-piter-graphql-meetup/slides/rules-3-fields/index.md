@@ -28,6 +28,39 @@ type Meeting {
 
 ## [Rule 3.2.](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-design#rule-3.2)
 
+## Делайте поля обязательными `NonNull`, если данные в поле возвращаются при любой ситуации.
+
+-----
+
+### Помечая поля как `NonNull`, при статическом анализе кода позволяет фронтендерам делать меньше проверок.
+
+-----
+
+### Массивы – `null` снаружи и внутри
+
+```graphql
+type MyLists {
+  list1: [String]   # [], [null], null
+  list2: [String]!  # [], [null]
+  list3: [String!]! # []                <-- BETTER!
+}
+
+```
+
+### 3 состояния у `boolean`
+
+```graphql
+type MyBool {
+  bool1: Boolean  # true, false, null
+  bool2: Boolean! # true, false         <-- BETTER!
+}
+
+```
+
+-----
+
+## [Rule 3.3.](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-design#rule-3.3)
+
 ## Группируйте взаимосвязанные поля вместе в новый output-тип.
 
 -----
@@ -36,7 +69,7 @@ type Meeting {
 
 ```graphql
 type Claim {
-  text: String
+  text: String!
   phone: String
   operatorCode: String
   email: String
@@ -82,36 +115,3 @@ type ClaimByMail {
 
 - облегчает восприятие связей между полями
 - позволяет схему сделать более строгой
-
------
-
-## [Rule 3.3.](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-design#rule-3.3)
-
-## Делайте поля обязательными `NonNull`, если данные в поле возвращаются при любой ситуации.
-
------
-
-### Помечая поля как `NonNull`, при статическом анализе кода позволяет фронтендерам делать меньше проверок.
-
------
-
-### Массивы – `null` снаружи и внутри
-
-```graphql
-type MyLists {
-  list1: [String]   # [], [null], null
-  list2: [String]!  # [], [null]
-  list3: [String!]! # []                <-- BETTER!
-}
-
-```
-
-### 3 состояния у `boolean`
-
-```graphql
-type MyBool {
-  bool1: Boolean  # true, false, null
-  bool2: Boolean! # true, false         <-- BETTER!
-}
-
-```
