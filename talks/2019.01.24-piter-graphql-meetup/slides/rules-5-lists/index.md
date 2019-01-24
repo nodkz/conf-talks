@@ -145,9 +145,9 @@ type ArticlePagination {
 
 ```graphql
 type PaginationInfo {
-  pageCount: Int!           # Total number of pages
-  itemCount: Int!           # Total number of items
-  currentPage: Int!         # Current page number
+  totalItems: Int!          # Total number of items
+  totalPages: Int!          # Total number of pages
+  page: Int!                # Current page number (starts from 1)
   perPage: Int!             # Number of items per page
   hasNextPage: Boolean!     # When paginating forwards, are there more items?
   hasPreviousPage: Boolean! # When paginating backwards, are there more items?

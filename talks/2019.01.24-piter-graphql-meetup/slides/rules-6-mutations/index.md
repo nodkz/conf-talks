@@ -14,7 +14,7 @@
 
 ## Чтоб удобней ковыряться:
 
-- `Mutation.collection<Action>` – рекомендует Shopify
+- `Mutation.collection<Action>` – рекомендуют одни
 - `Mutation.<action>Collection` – рекомендуют другие
 - `Mutation.<collection>.<action>` – рекомендую я
 
@@ -77,7 +77,7 @@ const resolvers = {
 
 ## [Rule 6.2.](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-design#rule-6.2)
 
-## Забудьте про CRUD – cоздавайте небольшие мутации для разных логических операций над ресурсами.
+## Выходите за рамки CRUD – cоздавайте небольшие мутации для разных логических операций над ресурсами.
 
 -----
 

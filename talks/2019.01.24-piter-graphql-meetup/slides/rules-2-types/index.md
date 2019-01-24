@@ -58,13 +58,14 @@ type Article {
 
 ```diff
 type User {
--  gender: String # BAD
-+  gender: GenderEnum # GOOD
+-  status: String # BAD
++  status: StatusEnum # GOOD
 }
 
-+ enum GenderEnum {
-+   MALE
-+   FEMALE
++ enum StatusEnum {
++   ACTIVE
++   PENDING
++   REJECTED
 + }
 
 ```

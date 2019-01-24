@@ -4,7 +4,7 @@
 
 ## [Rule 3.1.](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-design#rule-3.1)
 
-## Давайте полям понятные смысловые имена, а не то как они реализованы.
+## Давайте полям понятные смысловые имена, а не то как они реализованы у вас в базе данных.
 
 -----
 
@@ -29,8 +29,6 @@ type Meeting {
 ### Ваше GraphQL API – это<br/>фронтенд бэкенда для Фронтендеров.
 
 ![img](./front-back.jpg) <!-- .element: class="plain" style="max-width: 300px"  -->
-
------
 
 -----
 

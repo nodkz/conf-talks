@@ -26,7 +26,7 @@
 
 ```diff
 type User {
--  in_active: boolean # BAD
+-  is_active: boolean # BAD
 +  isActive: boolean # GOOD
 }
 
@@ -64,10 +64,10 @@ type Query {
 ### Имя типа
 
 ```diff
-- type userFilter { # BAD
-- type User_Filter { # so-so
-+ type UserFilter { # GOOD
-    isActive: boolean
+- type blogPost { # BAD
+- type Blog_Post { # so-so
++ type BlogPost { # GOOD
+    title: String!
   }
 
 ```

@@ -33,7 +33,7 @@
   - [5.5.](#rule-5.5) Для бесконечных списков (infinite scroll) используйте [Relay Cursor Connections Specification](https://facebook.github.io/relay/graphql/connections.htm).
 - **6. Правила Мутаций**
   - [6.1.](#rule-6.1) Используйте Namespace-типы для группировки мутаций в рамках одного ресурса!
-  - [6.2.](#rule-6.2) Забудьте про CRUD – cоздавайте небольшие мутации для разных логических операций над ресурсами.
+  - [6.2.](#rule-6.2) Выходите за рамки CRUD – cоздавайте небольшие мутации для разных логических операций над ресурсами.
   - [6.3.](#rule-6.3) Рассмотрите возможность выполнения мутаций сразу над несколькими элементами (однотипные batch-изменения).
   - [6.4.](#rule-6.4) У мутаций должны быть четко описаны все обязательные аргументы, не должно быть вариантов либо-либо.
   - [6.5.](#rule-6.5) У мутации вкладывайте все переменные в один уникальный `input` аргумент.
@@ -58,7 +58,7 @@ GraphQL для проверки имен полей и типов использ
 ```diff
 type User {
 +  isActive: boolean # GOOD
--  in_active: boolean # BAD
+-  is_active: boolean # BAD
 }
 ```
 
@@ -91,12 +91,11 @@ PS. Мне очень печально видеть в документации 
 А вот именование типов, в отличии от полей уже происходит немного по другому.
 
 ```diff
-- type userFilter { # BAD
-- type User_Filter { # SO-SO
-+ type UserFilter { # GOOD
-    isActive: boolean
+- type blogPost { # BAD
+- type Blog_Post { # so-so
++ type BlogPost { # GOOD
+    title: String!
   }
-
 ```
 
 В самом GraphQL уже есть скалярные типы `String`, `Int`, `Boolean`, `Float`. Они именуются через `UpperCamelCase`.
@@ -175,14 +174,14 @@ type Article {
 
 ```diff
 type User {
-  id: ID!
--  gender: String
-+  gender: GenderEnum
+-  status: String # BAD
++  status: StatusEnum # GOOD
 }
 
-+ enum GenderEnum {
-+   MALE
-+   FEMALE
++ enum StatusEnum {
++   ACTIVE
++   PENDING
++   REJECTED
 + }
 ```
 
@@ -544,13 +543,13 @@ type Query {
 ```graphql
 type PaginationInfo {
   # Total number of pages
-  pageCount: Int!
+  totalPages: Int!
 
   # Total number of items
-  itemCount: Int!
+  totalItems: Int!
 
   # Current page number
-  currentPage: Int!
+  page: Int!
 
   # Number of items per page
   perPage: Int!
@@ -587,7 +586,7 @@ type ArticlePagination {
 У `ArticlePagination` должно быть как минимум два поля:
 
 - `items` — NonNull-массив элементов
-- `pageInfo` — NonNull-объект с мета-данными пагинации `pageCount`, `itemCount`, `currentPage`, `perPage`
+- `pageInfo` — NonNull-объект с мета-данными пагинации `totalPages`, `totalItems`, `page`, `perPage`
 
 ### <a name="rule-5.5"></a> 5.5. Для бесконечных списков (infinite scroll) используйте [Relay Cursor Connections Specification](https://facebook.github.io/relay/graphql/connections.htm).
 
@@ -719,7 +718,7 @@ mutation {
 
 Итак правило, для избежания бардака в мутациях используйте Namespace-типы для группировки мутаций в рамках одного ресурса!
 
-### <a name="rule-6.2"></a> 6.2. Забудьте про CRUD – cоздавайте небольшие мутации для разных логических операций над ресурсами.
+### <a name="rule-6.2"></a> 6.2. Выходите за рамки CRUD – cоздавайте небольшие мутации для разных логических операций над ресурсами.
 
 ```diff
 type ArticleMutations {
@@ -738,8 +737,6 @@ type ArticleMutations {
 
 ### <a name="rule-6.3"></a> 6.3. Рассмотрите возможность выполнения мутаций сразу над несколькими элементами (однотипные batch-изменения).
 
-Клиентские приложения становятся более умными и удобными. Часто пользователю предлагаются batch-операции – добавление нескольких записей, массового удаления или сортировки. Отправлять операции по одной будет накладно. Как-то агрегировать их в сложный GraphQL-запрос с несколькими мутациями, т.е. генерировать один общий запрос на клиенте - порождает кучу кода с душком.
-
 ```diff
 type ArticleMutations {
    deleteArticle(id: Int!): Payload
@@ -748,9 +745,22 @@ type ArticleMutations {
 
 ```
 
-Например: есть мутация `deleteArticle`, добавьте еще `deleteArticles`. Для того чтоб пользователь мог нащелкать несколько статей и подтвердить удаление сразу пачкой.
+Клиентские приложения становятся более умными и удобными. Часто пользователю предлагаются batch-операции – добавление нескольких записей, массового удаления или сортировки. Отправлять операции по одной будет накладно. Как-то агрегировать их в сложный GraphQL-запрос с несколькими мутациями, т.е. генерировать один общий запрос на клиенте - порождает кучу кода и GraphQL-запрос с душком:
+
+```graphql
+mutation DeleteArticles { # BAD
+  op1: deleteArticle(id: 1)
+  op2: deleteArticle(id: 2)
+  op3: deleteArticle(id: 5)
+  op4: deleteArticle(id: 5)
+}
+```
 
 Если GraphQL-запрос создается в рантайме (само тело запроса, а не сбор переменных) – то вы скорее всего вы делаете что-то не так. Форма запрос должна задаваться разработчиками. Поэтому клиенту неправильно пользоваться `deleteArticle`, для того чтоб своими силами на клиенте генерировать batch-запрос на удаление.
+
+Например: есть мутация `deleteArticle`, добавьте еще `deleteArticles`. Для того чтоб пользователь мог нащелкать несколько статей и подтвердить удаление сразу пачкой.
+
+Также иногда бекендерам важно понимать, что происходит массовая операция. Т.к. можно оптимизировать логику или побочные эффекты, например отправить 1 нотификацию или 1000.
 
 Но здесь самое главное без фанатизма, не надо на все подряд вешать массовые операции. Всегда руководствуйтесь здравым смыслом.
 
