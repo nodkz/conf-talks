@@ -108,13 +108,9 @@ type ClaimByMail {
 
 ```
 
-<div class="fragment" data-code-focus="3,8,9">
-  <code>phone</code> + <code>operatorCode</code> группируем в под-тип <code>ClaimByPhone</code>
-</div>
+<code>phone</code> + <code>operatorCode</code> группируем в под-тип <code>ClaimByPhone</code>
 
-<div class="fragment" data-code-focus="3,8,9">
-  И можем теперь поля сделать обязательными <code>NonNull</code>!
-</div>
+И можем теперь поля сделать обязательными <code>NonNull</code>!
 
 -----
 
