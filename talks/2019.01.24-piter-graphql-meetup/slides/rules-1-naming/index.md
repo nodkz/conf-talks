@@ -130,4 +130,4 @@ query {
 
 - `camelCase` – для полей и аргументов
 - `UpperCamelCase` – для типов
-- `CAPITALIZED_WITH_UNDERSCORES` – для ENUM-значений
+- `CAPITALIZED_WITH_UNDERSCORES` – для ENUM-ключей

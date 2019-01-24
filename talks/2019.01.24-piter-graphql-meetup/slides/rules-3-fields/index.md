@@ -42,6 +42,16 @@ type Meeting {
 
 -----
 
+### 3 состояния у `boolean`
+
+```graphql
+type MyBool {
+  bool1: Boolean  # true, false, null
+  bool2: Boolean! # true, false         <-- BETTER!
+}
+
+```
+
 ### Массивы – `null` снаружи и внутри
 
 ```graphql
@@ -50,16 +60,6 @@ type MyLists {
   list2: [String]!  # [], [null]
   list3: [String!]  # [], null
   list4: [String!]! # []                <-- BETTER!
-}
-
-```
-
-### 3 состояния у `boolean`
-
-```graphql
-type MyBool {
-  bool1: Boolean  # true, false, null
-  bool2: Boolean! # true, false         <-- BETTER!
 }
 
 ```

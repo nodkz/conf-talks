@@ -22,6 +22,8 @@
 
 [http://bit.ly/piter-graphql-meetup](https://nodkz.github.io/conf-talks/talks/2019.01.24-piter-graphql-meetup/index.html) 
 
+Лэтс ХЕЙТ бегин
+
 -----
 
 ### Текущие правила носят <br/>`рекомендательный` характер<br/>и могут со временем:
