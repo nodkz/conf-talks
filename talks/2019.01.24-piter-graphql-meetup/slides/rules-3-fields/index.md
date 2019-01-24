@@ -26,6 +26,14 @@ type Meeting {
 
 -----
 
+### Ваше GraphQL API – это<br/>фронтенд бэкенда для Фронтендеров.
+
+![img](./front-back.jpg) <!-- .element: class="plain" style="max-width: 300px"  -->
+
+-----
+
+-----
+
 ## [Rule 3.2.](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-design#rule-3.2)
 
 ## Делайте поля обязательными `NonNull`, если данные в поле возвращаются при любой ситуации.
@@ -42,7 +50,8 @@ type Meeting {
 type MyLists {
   list1: [String]   # [], [null], null
   list2: [String]!  # [], [null]
-  list3: [String!]! # []                <-- BETTER!
+  list3: [String!]  # [], null
+  list4: [String!]! # []                <-- BETTER!
 }
 
 ```

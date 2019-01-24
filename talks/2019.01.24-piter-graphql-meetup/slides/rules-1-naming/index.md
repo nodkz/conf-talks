@@ -64,8 +64,8 @@ type Query {
 ### Имя типа
 
 ```diff
-- type User_Filter { # BAD
 - type userFilter { # BAD
+- type User_Filter { # so-so
 + type UserFilter { # GOOD
     isActive: boolean
   }
@@ -74,7 +74,7 @@ type Query {
 
 -----
 
-## Почему `UpperCamelCase` <br/>для названия типов?
+## Почему `UpperCamelCase` <br/>для именования типов?
 
 - [конвенции в JavaScript, Java, Swift и Kotlin](https://en.wikipedia.org/wiki/Naming_convention_(programming)) для классов и деклараций типов используется `UpperCamelCase`
 - встроенные GraphQL-типы уже `UpperCamelCase`

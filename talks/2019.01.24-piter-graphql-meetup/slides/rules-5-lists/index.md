@@ -117,25 +117,14 @@ type Query {
 
 -----
 
-## Пагинация (аргументы)
+## Пагинация (аргументы и payload)
 
 ```graphql
 type Query {
   articles(
     page: Int! = 1
     perPage: Int! = 20
-  ): [Article]
-}
-
-```
-
------
-
-## Пагинация (payload)
-
-```graphql
-type Query {
-  articles(page: Int! = 1, perPage: Int! = 20): ArticlePagination
+  ): ArticlePagination
 }
 
 type ArticlePagination {
@@ -143,17 +132,16 @@ type ArticlePagination {
   pageInfo: PaginationInfo!
 }
 
-
 ```
 
-#### `ArticlePagination` возвращает 2 элемента
+#### Пагинация возвращает 2 поля
 
 - `items` – NonNull-массив элементов
 - `pageInfo` – NonNull-объект с мета-данными пагинации
 
 -----
 
-### `PaginationInfo` – общий тип с мета-данными для любой пагинации
+### `PaginationInfo` – общий тип с мета-данными для пагинации
 
 ```graphql
 type PaginationInfo {
@@ -175,7 +163,7 @@ type PaginationInfo {
 
 ### Что прилетит на рендеринг? <!-- .element: class="fragment" -->
 
-## Без поллитра и мета-инфы от сервера не разобраться! <!-- .element: class="fragment" -->
+## Без поллитра, либо мета-инфы от сервера не разобраться! <!-- .element: class="fragment" -->
 
 -----
 

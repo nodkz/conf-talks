@@ -10,11 +10,7 @@
 
 <br />
 
-### Анекдот в тему: <!-- .element: class="fragment" -->
-
-### – Сколько человек работает в вашей компании? <!-- .element: class="fragment" -->
-
-### – Хорошо если половина! 😜 <!-- .element: class="fragment" -->
+### Еще в работе разделы: Реляции, Бизнес-Логика, Версионирование <!-- .element: class="fragment" -->
 
 -----
 
@@ -22,7 +18,7 @@
 
 <br />
 
-# Пока составлял только я один <!-- .element: class="fragment" -->
+# Пока только я один <!-- .element: class="fragment" -->
 
 <br />
 
@@ -31,26 +27,6 @@
 ### <span>Брал что-то из правил [Shopify](https://github.com/Shopify/graphql-design-tutorial/blob/master/TUTORIAL.md)</span> <!-- .element: class="fragment" -->
 
 ### <span>Что-то у [Caleb Meredith](https://blog.apollographql.com/designing-graphql-mutations-e09de826ed97)</span> <!-- .element: class="fragment" -->
-
------
-
-## Как лучше всего следовать правилам?
-
-<br />
-
-# <span>`Генерируйте` свои&nbsp;GraphQL-схемы!</span> <!-- .element: class="fragment" -->
-
-<br />
-
-### На порядок меньше рутины и ошибок! <!-- .element: class="fragment" -->
-
-### Вручную собирать схемы – 💩💩💩 <!-- .element: class="fragment" -->
-
------
-
-## Спасибо за ваше внимание!
-
-# 😉
 
 -----
 
@@ -92,3 +68,17 @@
 Ссылка на эту презентацию: [http://bit.ly/piter-graphql-meetup](https://nodkz.github.io/conf-talks/talks/2019.01.24-piter-graphql-meetup/index.html)
 
 ![Photo](../assets/nodkz-photo.jpg) <!-- .element: style="max-width: 400px; border: none" -->
+
+-----
+
+## Как лучше всего следовать правилам?
+
+<br />
+
+# <span>`Генерируйте` свои&nbsp;GraphQL-схемы!</span> <!-- .element: class="fragment" -->
+
+<br />
+
+### На порядок меньше рутины и ошибок! <!-- .element: class="fragment" -->
+
+### Вручную собирать схемы – 💩💩💩 <!-- .element: class="fragment" -->
