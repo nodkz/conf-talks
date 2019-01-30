@@ -23,11 +23,27 @@ PS. Куча орфографических и грамматических ош
 - [Redux - бойлерплейт](./articles/redux)
 - [Разница в подходах `graphql-compose` и `Prisma`](./articles/graphql-compose/graphql-compose-vs-prisma.md)
 
+## Предстоящие выступления (в планах)
+
+- 16 февраля 2019, Нижний Новгород, Mera.ru
+- 2 марта 2019, Астана, AstanaJS #3
+- март 2019, Минск, воркшоп
+- 5-6 апреля 2019, Москва, JPoint
+- 24-25 мая 2019, Санкт-Петербург, HolyJS
+
 ## Видео моих выступлений
+
+### Дизайн и паттерны проектирования GraphQL-схем (Piter GraphQL Meetup 2019)
+
+Рассказываю о правилах которые необходимо использовать при построении GraphQL-схем. Объясняю ситуации в которых они позволяют избежать переделку схем в будущем. [Данные правила](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-design) позволяют выработать конвенцию для ваших бэкенд разработчиков. [Ссылка на презентацию](http://bit.ly/piter-graphql-meetup).
+
+Видео начинается с 44 минуты. Длительность 55 минут.
+
+<a href="https://youtu.be/E2SsFS3w9Tk?t=2664" target="_blank"><img src="https://img.youtube.com/vi/E2SsFS3w9Tk/0.jpg" alt="Строим GraphQL-сервер" style="max-width: 480px" /></a>
 
 ### Строим GraphQL-сервер (HolyJS Moscow 2018)
 
-Рассказываю о том из каких пакетов состоит GraphQL-сервер, какие способы построения схемы в NodeJS существуют в 2018 году. Детально разбираю как организовать Авторизации и как правильно использовать DataLoader (чтоб решить N+1 Problem). Доклад был хорошо оценен (<a href="https://github.com/nodkz/conf-talks/raw/master/misc/2018-holyjs-moscow-feedback-chart.png" target="_blank">chart</a>, <a href="https://github.com/nodkz/conf-talks/blob/master/misc/2018-holyjs-moscow-feedback.csv" target="_blank">отзывы</a>), т.к. в нем затронуты и раскрыты самые основные проблемы GraphQL.
+Рассказываю о том из каких пакетов состоит GraphQL-сервер, какие способы построения схемы в NodeJS существуют в 2018 году. Детально разбираю как организовать Авторизации и как правильно использовать DataLoader (чтоб решить N+1 Problem). Доклад был хорошо оценен (<a href="https://github.com/nodkz/conf-talks/raw/master/misc/2018-holyjs-moscow-feedback-chart.png" target="_blank">chart</a>, <a href="https://github.com/nodkz/conf-talks/blob/master/misc/2018-holyjs-moscow-feedback.csv" target="_blank">отзывы</a>), т.к. в нем затронуты и раскрыты самые основные проблемы GraphQL. [Ссылка на презентацию](http://bit.ly/holy-graphql).
 
 <a href="https://youtu.be/NnnvOPdstzg" target="_blank"><img src="https://img.youtube.com/vi/NnnvOPdstzg/0.jpg" alt="Строим GraphQL-сервер" style="max-width: 480px" /></a>
 
