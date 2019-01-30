@@ -35,7 +35,7 @@ type User {
 ### Имя аргумента
 
 ```diff
-type Query {
+type Mutation {
 -  users(per_page: Int): boolean # BAD
 +  users(perPage: Int): boolean  # GOOD
 }
