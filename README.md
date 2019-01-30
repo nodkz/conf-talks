@@ -39,13 +39,13 @@ PS. Куча орфографических и грамматических ош
 
 ## Видео моих выступлений
 
-### Дизайн и паттерны проектирования GraphQL-схем (Piter GraphQL Meetup 2019)
+### Дизайн и паттерны проектирования GraphQL-схем (Piter GraphQL Meetup 2019, Wrike)
 
 Рассказываю о правилах которые необходимо использовать при построении GraphQL-схем. Объясняю ситуации в которых они позволяют избежать переделку схем в будущем. [Данные правила](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-design) позволяют выработать конвенцию для ваших бэкенд разработчиков. [Ссылка на презентацию](http://bit.ly/piter-graphql-meetup).
 
-Видео начинается с 44 минуты. Длительность 55 минут.
+Продолжительность 52 минуты.
 
-<a href="https://youtu.be/E2SsFS3w9Tk?t=2664" target="_blank"><img src="https://img.youtube.com/vi/E2SsFS3w9Tk/0.jpg" alt="Строим GraphQL-сервер" style="max-width: 480px" /></a>
+<a href="https://www.youtube.com/watch?v=nkv0eDE5FbA" target="_blank"><img src="https://img.youtube.com/vi/nkv0eDE5FbA/0.jpg" alt="Строим GraphQL-сервер" style="max-width: 480px" /></a>
 
 ### Строим GraphQL-сервер (HolyJS Moscow 2018)
 
