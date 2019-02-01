@@ -1,6 +1,13 @@
 /* @flow strict */
 
-import { GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLBoolean, graphql } from 'graphql';
+import {
+  GraphQLSchema,
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLInt,
+  GraphQLBoolean,
+  graphql,
+} from 'graphql';
 
 describe('mutation rules', () => {
   it('test nested mutations via aliases', async () => {
@@ -10,17 +17,19 @@ describe('mutation rules', () => {
       fields: () => ({
         like: {
           type: GraphQLBoolean,
-          resolve: async () => {
+          args: { id: { type: GraphQLInt } },
+          resolve: async (_, { id }) => {
             await new Promise(resolve => setTimeout(resolve, 100));
-            serialResults.push('like executed');
+            serialResults.push(`like ${id} executed with timeout 100ms`);
             return true;
           },
         },
         unlike: {
           type: GraphQLBoolean,
-          resolve: async () => {
-            await new Promise(resolve => setTimeout(resolve, 50));
-            serialResults.push('unlike executed');
+          args: { id: { type: GraphQLInt } },
+          resolve: async (_, { id }) => {
+            await new Promise(resolve => setTimeout(resolve, 5));
+            serialResults.push(`unlike ${id} executed with timeout 5ms`);
             return true;
           },
         },
@@ -42,18 +51,18 @@ describe('mutation rules', () => {
       schema,
       source: `
       mutation {
-        op1: article { like }
-        op2: article { like }
-        op3: article { unlike }
-        op4: article { like }
+        op1: article { like(id: 1) }
+        op2: article { like(id: 2) }
+        op3: article { unlike(id: 3) }
+        op4: article { like(id: 4) }
       }
     `,
     });
     expect(serialResults).toEqual([
-      'like executed',
-      'like executed',
-      'unlike executed',
-      'like executed',
+      'like 1 executed with timeout 100ms',
+      'like 2 executed with timeout 100ms',
+      'unlike 3 executed with timeout 5ms',
+      'like 4 executed with timeout 100ms',
     ]);
   });
 });
