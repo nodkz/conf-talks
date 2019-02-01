@@ -38,7 +38,7 @@ describe('mutation rules', () => {
       }),
     });
 
-    const res = await graphql({
+    await graphql({
       schema,
       source: `
       mutation {
