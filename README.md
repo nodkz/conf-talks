@@ -70,13 +70,13 @@ PS. Куча орфографических и грамматических ош
 
 <a href="https://youtu.be/F4vHSHzpO1g" target="_blank"><img src="https://img.youtube.com/vi/F4vHSHzpO1g/0.jpg" alt="GraphQL — заключаем выгодный контракт между сервером и клиентом" style="max-width: 480px" /></a>
 
-### React, Relay и GraphQL — вполне себе нормальный компонентный подход (HolyJS Yekaterinburg 2016)
+### React, Relay и GraphQL — вполне себе нормальный компонентный подход (FrontTalks, Yekaterinburg 2016)
 
 Введение в GraphQL, в компонентный подход и Relay.
 
 <a href="https://youtu.be/jrJQ2B027Xk" target="_blank"><img src="https://img.youtube.com/vi/jrJQ2B027Xk/0.jpg" alt="React, Relay и GraphQL — вполне себе нормальный компонентный подход" style="max-width: 480px" /></a>
 
-### Бэкенд, Фронтенд — всё смешалось. Обзорная экскурсия в будущее веб-разработки (FrontTalks Yekaterinburg 2016)
+### Бэкенд, Фронтенд — всё смешалось. Обзорная экскурсия в будущее веб-разработки (FrontendFellows, Almaty 2016)
 
 Мой самый первый доклад. Рекомендую пропустить первые 10 минут бла-бла-бла.
 
