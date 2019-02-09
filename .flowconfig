@@ -1,5 +1,10 @@
 [ignore]
 
+[untyped]
+.*/node_modules/graphql/jsutils/inspect.js.flow
+.*/node_modules/graphql/type/scalars.js.flow
+.*/node_modules/graphql/jsutils/keyValMap.js.flow
+
 [include]
 
 [libs]
