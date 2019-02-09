@@ -1,11 +1,12 @@
 # 4 подхода построения GraphQL-схемы
 
-На данный момент сущетвует 4 способа построения GraphQL-схемы в NodeJS:
+На данный момент сущетвует 5 способа построения GraphQL-схемы в NodeJS:
 
-- [graphql](https://github.com/graphql/graphql-js) — жесткий синтаксис создания объектов типов. Типы редактировать нельзя.
-- [graphql-tools](https://github.com/apollographql/graphql-tools) — описываете отдельно типы (в SDL) и резолверы (методы бизнес логики), а потом все склеиваете через `makeExecutableSchema({ typeDefs, resolvers })`.
-- [graphql-compose](https://github.com/graphql-compose/graphql-compose) — упрощенный синтаксис создания типов, можно использовать SDL. Позволяет читать и редактировать типы. Удобно для написания собственных функций генераторов.
-- [type-graphql](https://github.com/19majkel94/type-graphql) — самый свежий подход, использует декораторы для описания типов поверх ваших классов и моделей (пока работает только c TypeScript).
+- [graphql](https://github.com/graphql/graphql-js) — жесткий синтаксис создания объектов типов. Типы редактировать нельзя. (2012/2015)
+- [graphql-tools](https://github.com/apollographql/graphql-tools) — описываете отдельно типы (в SDL) и резолверы (методы бизнес логики), а потом все склеиваете через `makeExecutableSchema({ typeDefs, resolvers })`. (2016 Apr)
+- [graphql-compose](https://github.com/graphql-compose/graphql-compose) — упрощенный синтаксис создания типов, можно использовать SDL. Позволяет читать и редактировать типы. Удобно для написания собственных функций генераторов. (2016 Jul)
+- [type-graphql](https://github.com/19majkel94/type-graphql) — использует декораторы для описания типов поверх ваших классов и моделей (пока работает только c TypeScript). (2018 Feb)
+- [nexus](https://github.com/graphql-nexus/nexus) - самый свежий подход. (2018 Nov)
 
 Давай построим простую GraphQL-схему на каждом из этих подходов. Представим что у нас есть два типа `Author` и `Article` со следующими данными
 
