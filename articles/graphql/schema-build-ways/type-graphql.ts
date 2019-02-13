@@ -1,14 +1,18 @@
+import { ApolloServer } from 'apollo-server';
 import 'reflect-metadata';
 import {
+  // methods
+  buildSchemaSync,
+  // decorators
+  Root,
+  Query,
   ObjectType,
   Field,
-  Arg,
-  ID,
-  Resolver,
-  Query,
   FieldResolver,
-  Root,
-  buildSchemaSync,
+  Arg,
+  Resolver,
+  // types
+  ID,
 } from 'type-graphql';
 import { authors, articles } from './data';
 
@@ -17,7 +21,7 @@ class Author {
   @Field(type => ID)
   id: number;
 
-  @Field(type => String, { nullable: true })
+  @Field({ nullable: true })
   name: string;
 }
 
@@ -31,23 +35,23 @@ class AuthorResolver {
 
 @ObjectType({ description: 'Article data with related Author data' })
 class Article {
-  @Field(type => String)
+  @Field()
   title: string;
 
-  @Field(type => String, { nullable: true })
+  @Field({ nullable: true })
   text: string;
 
   @Field(type => ID)
   authorId: number;
 
-  @Field(type => Author, { nullable: true })
+  @Field({ nullable: true })
   author: Author;
 }
 
 @Resolver(of => Article)
 class ArticleResolver {
   @Query(returns => [Article])
-  articles(@Arg('limit', { nullable: true }) limit: number = 3): Array<Article> {
+  articles(@Arg('limit', { nullable: true, defaultValue: 3 }) limit: number): Array<Article> {
     return articles.slice(0, limit) as any;
   }
 
@@ -59,6 +63,11 @@ class ArticleResolver {
 
 const schema = buildSchemaSync({
   resolvers: [ArticleResolver, AuthorResolver],
+  // Or it may be a GLOB mask:
+  // resolvers: [__dirname + '/**/*.ts'],
 });
 
-export default schema;
+const server = new ApolloServer({ schema });
+server.listen(5000).then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`);
+});

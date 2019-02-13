@@ -24,11 +24,11 @@
     "apollo-server": "^2.4.0",
     "dataloader": "^1.4.0",
     "graphql": "14.0.2",
-    "graphql-compose": "^5.10.1",
+    "graphql-compose": "^5.10.4",
     "graphql-tools": "^4.0.4",
     "graphql-type-json": "^0.2.1",
     "jsonwebtoken": "^8.4.0",
-    "nexus": "^0.9.9",
+    "nexus": "^0.9.11",
     "reflect-metadata": "^0.1.13",
     "type-graphql": "^0.16.0"
   },
@@ -47,13 +47,14 @@
     "eslint": "^5.13.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^4.0.0",
-    "eslint-plugin-flowtype": "^3.2.1",
+    "eslint-plugin-flowtype": "^3.4.1",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-prettier": "^3.0.1",
     "flow-bin": "0.89.0",
     "jest": "^24.1.0",
     "prettier": "^1.16.4",
     "ts-node": "^8.0.2",
+    "tslint": "^5.12.1",
     "typescript": "^3.3.3"
   }
 }

@@ -1,5 +1,14 @@
-import { objectType, queryType, makeSchema } from 'nexus';
+import { ApolloServer } from 'apollo-server';
+import { objectType, queryType, intArg, makeSchema } from 'nexus';
 import { authors, articles } from './data';
+
+const Author = objectType({
+  name: 'Author',
+  definition(t) {
+    t.int('id', { nullable: true });
+    t.string('name', { nullable: true });
+  },
+});
 
 const Article = objectType({
   name: 'Article',
@@ -18,19 +27,14 @@ const Article = objectType({
   },
 });
 
-const Author = objectType({
-  name: 'Author',
-  definition(t) {
-    t.int('id', { nullable: true });
-    t.string('name', { nullable: true });
-  },
-});
-
 const Query = queryType({
   definition(t) {
     t.list.field('articles', {
       nullable: true,
       type: Article,
+      args: {
+        limit: intArg({ default: 3, required: true })
+      },
       resolve: (_, args) => {
         const { limit } = args;
         return articles.slice(0, limit);
@@ -52,4 +56,8 @@ const schema = makeSchema({
   },
 });
 
-export default schema;
+const server = new ApolloServer({ schema });
+server.listen(5000).then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`);
+});
+

@@ -1,6 +1,7 @@
 // @flow
 
-import { makeExecutableSchema } from 'graphql-tools';
+import { ApolloServer } from 'apollo-server';
+import { schemaComposer } from 'graphql-compose';
 import { authors, articles } from './data';
 
 const typeDefs = `
@@ -41,9 +42,11 @@ const resolvers = {
   },
 };
 
-const schema = makeExecutableSchema({
-  typeDefs,
-  resolvers,
-});
+schemaComposer.addTypeDefs(typeDefs);
+schemaComposer.addResolveMethods(resolvers);
+const schema = schemaComposer.buildSchema();
 
-export default schema;
+const server = new ApolloServer({ schema });
+server.listen(5000).then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`);
+});

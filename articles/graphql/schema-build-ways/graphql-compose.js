@@ -1,5 +1,6 @@
 // @flow
 
+import { ApolloServer } from 'apollo-server';
 import { TypeComposer, schemaComposer } from 'graphql-compose';
 import { authors, articles } from './data';
 
@@ -47,4 +48,7 @@ schemaComposer.Query.addFields({
 
 const schema = schemaComposer.buildSchema();
 
-export default schema;
+const server = new ApolloServer({ schema });
+server.listen(5000).then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`);
+});

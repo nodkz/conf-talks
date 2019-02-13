@@ -1,6 +1,6 @@
-# 4 подхода построения GraphQL-схемы
+# 5 подходов построения GraphQL-схем
 
-На данный момент сущетвует 5 способа построения GraphQL-схемы в NodeJS:
+На данный момент сущетвует 5 способов построения GraphQL-схем в NodeJS:
 
 - [graphql](https://github.com/graphql/graphql-js) — жесткий синтаксис создания объектов типов. Типы редактировать нельзя. (2012/2015)
 - [graphql-tools](https://github.com/apollographql/graphql-tools) — описываете отдельно типы (в SDL) и резолверы (методы бизнес логики), а потом все склеиваете через `makeExecutableSchema({ typeDefs, resolvers })`. (2016 Apr)
@@ -124,11 +124,11 @@ const schema = new GraphQLSchema({
 export default schema;
 ```
 
-Полный код построения схемы на подходе `graphql` доступен в [этом файле](./schema-via-graphql.js).
+Полный код построения схемы на подходе `graphql` доступен в [этом файле](./graphql.js).
 
 ## graphql-tools
 
-[graphql-tools](https://github.com/apollographql/graphql-tools) использует под собой `graphql`, только меняет принцип сборки вашей схемы. Вы отдельно объявляете все типы на SDL-языке (текстовый формат), и отдельно объявляете `resolve`-методы.
+[graphql-tools](https://github.com/apollographql/graphql-tools) использует под капотом `graphql`, только меняет принцип сборки вашей схемы. Вы отдельно объявляете все типы на SDL-языке (текстовый формат), и отдельно объявляете `resolve`-методы.
 
 Вам нужно импортировать только метод `makeExecutableSchema`, который склеит ваши типы и resolve-методы:
 
@@ -194,13 +194,18 @@ const schema = makeExecutableSchema({
 export default schema;
 ```
 
-Полный код построения схемы на подходе `graphql-tools` доступен в [этом файле](./schema-via-graphql-tools.js).
+Полный код построения схемы на подходе `graphql-tools` доступен в [этом файле](./graphql-tools.js).
 
 ## graphql-compose
 
-[graphql-compose](https://github.com/graphql-compose/graphql-compose) - также под капотом использует построение типов как в первом подходе с помощью `graphql`. Но при этом добавляет синтаксического сахара при создании типов. И самое главное, позволяет  модифицировать типы, перед тем как будет построена GraphQL-схема.
+[graphql-compose](https://github.com/graphql-compose/graphql-compose) - под капотом использует `graphql`. При этом позволяет конструировать схемы несколькими способами:
 
-Импортируем `TypeComposer` для построения узлов (промежуточных типов) и `schemaComposer` конструктор схемы:
+- как в `graphql` с кучей синтаксического сахара при создании типов.
+- как в `graphql-tools` описав типы через SDL и предоставив отдельно резолверы к ним.
+
+Но самое главное `graphql-compose`, позволяет  модифицировать типы, перед тем как будет построена GraphQL-схема. Это открывает возможность генерировать ваши схемы, комбинировать несколько схем, либо редактировать уже существующие (например генерировать урезанную публичную схему из полной админской).
+
+Строится GraphQL-схема следующим образом. Сперва импортируем `TypeComposer` для построения узлов (промежуточных типов) и `schemaComposer` конструктор схемы:
 
 ```js
 import { TypeComposer, schemaComposer } from 'graphql-compose';
@@ -247,10 +252,16 @@ const ArticleType = TypeComposer.create({
 });
 ```
 
-После того, как мы создали два типа `Author` и `Article` нам необходимо задать поля для корневого-типа `Query`. Т.к. этот тип в схеме один, то он сразу есть `schemaComposer.Query`. `Query` это инстанс `TypeComposer` и пришло время рассказать про редактирования типов. `TypeComposer` имеет много [полезных методов](https://graphql-compose.github.io/docs/en/api-TypeComposer.html#field-methods) по чтению и редактированию конфигурации GraphQL-типа. И в данном случае, мы просто воспользуемся методом `addFields`, чтобы добавить два новых поля `articles` и `authors`.
+После того, как мы создали два типа `Author` и `Article` нам необходимо задать поля для корневого-типа `Query`. Он уже сразу есть в схеме – `schemaComposer.Query`. `Query` это инстанс `TypeComposer` который можно редактировать, добавляя или удаляя существующие поля. `TypeComposer` имеет много [полезных методов](https://graphql-compose.github.io/docs/en/api-TypeComposer.html#field-methods) по чтению и редактированию конфигурации GraphQL-типа.
+
+Чтобы добавить два новых поля `articles` и `authors`, мы воспользуемся методом `addFields()`:
 
 ```js
 schemaComposer.Query.addFields({
+  authors: {
+    type: [AuthorType],
+    resolve: () => authors,
+  },
   articles: {
     args: {
       limit: { type: 'Int', defaultValue: 3 },
@@ -260,10 +271,6 @@ schemaComposer.Query.addFields({
       const { limit } = args;
       return articles.slice(0, limit);
     },
-  },
-  authors: {
-    type: [AuthorType],
-    resolve: () => authors,
   },
 });
 ```
@@ -276,19 +283,75 @@ const schema = schemaComposer.buildSchema();
 export default schema;
 ```
 
-Полный код построения схемы на подходе `graphql-compose` доступен в [этом файле](./schema-via-graphql-compose.js).
+Полный код построения схемы на подходе `graphql-compose` доступен в [этом файле](./graphql-compose.js).
+
+### Миграция с graphql-tools на graphql-compose
+
+Мигрировать с `graphql-tools` на `graphql-compose` и получить все плюшки редактирования, модификации и генерации типов достаточно просто:
+
+```js
+- import { makeExecutableSchema } from 'graphql-tools';
++ import { schemaComposer } from 'graphql-compose';
+
+- const schema = makeExecutableSchema({
+-  typeDefs,
+-  resolvers,
+- });
++ schemaComposer.addTypeDefs(typeDefs);
++ schemaComposer.addResolveMethods(resolvers);
++ const schema = schemaComposer.buildSchema();
+```
+
+Методы `addTypeDefs` и `addResolveMethods` могут вызываться много раз, позволяя собирать ваши схемы из разных модулей.
+
+Рабочий код можно посмотреть в [этом файле](./graphql-compose-sdl.js).
 
 ## type-graphql
 
-[type-graphql](https://github.com/19majkel94/type-graphql) - создавайте GraphQL схему используя классы и немного магии декораторов (пока работает только c TypeScript). Под капотом имеет встроенные декораторы
+[type-graphql](https://github.com/19majkel94/type-graphql) - создает GraphQL-схему используя классы и декораторы (пока работает только c TypeScript). Из коробки предоставляются следующие виды декораторов:
 
-- для проверки прав доступа
-- валидации входящих аргументов
-- подсчета сложности запроса (Query Complexity)
+- отметка типов, полей, аргументов и резолверов для построения GraphQL-схемы
+- проверки прав доступа по ролям `@Authorized(["ADMIN", "MODERATOR"])`
+- базовая валидация входящих аргументов `@MaxLength(30)`
+- подсчета сложности запроса (Query Complexity) `@Field({ complexity: 2 })`
 
-На данный момент работает только c TypeScript. На конец 2018 года поженить с Babel и Flowtype у меня не получилось, ввиду неполной реализации [decorators](https://babeljs.io/docs/en/babel-plugin-proposal-decorators) спецификации в бабеле.
+Для работы с пакетом `type-graphql` необходимо использовать TypeScript c правильными настройками для декораторов в `tsconfig.json`:
 
-Пример кода выглядит следующим образом.
+```js
+{
+  "compilerOptions": {
+    "target": "es6", // при es5 не работает
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+}
+```
+
+Также необходимо использовать полифилл [reflect-metadata](https://github.com/rbuckton/reflect-metadata), который позволит использовать TypeScript дефинишены в рантайме. Т.е. при построении GraphQL-схемы имена типов могут браться из тайпскрипта. Этот полифил подключается один раз в самом начале вашего кода.
+
+Наш пример с Authors и Articles будет выглядеть следующим образом.
+
+Сперва импортируем необходимые методы, декораторы и типы:
+
+```js
+import 'reflect-metadata';
+import {
+  // methods
+  buildSchemaSync,
+  // decorators
+  Root,
+  Query,
+  ObjectType,
+  Field,
+  FieldResolver,
+  Arg,
+  Resolver,
+  // types
+  ID,
+} from 'type-graphql';
+import { authors, articles } from './data';
+```
+
+Строим класс `Author` из которого будет сгенерирован наш GraphQL-тип благодаря декораторам `@ObjectType` и `@Field`. И создадим класс c резолверами `AuthorResolver`, который в `Query` добавит поле `authors`:
 
 ```js
 @ObjectType({ description: 'Author data' })
@@ -296,35 +359,174 @@ class Author {
   @Field(type => ID)
   id: number;
 
-  @Field(type => String, { nullable: true })
+  @Field({ nullable: true })
   name: string;
 }
 
+@Resolver(of => Author)
+class AuthorResolver {
+  @Query(returns => [Author])
+  authors(): Array<Author> {
+    return authors as any;
+  }
+}
+```
+
+Похожим образом добавим класс `Article` и `ArticleResolver`, только в резолвере помимо добавления поля в `Query` через `@Query` декоратор, будет еще использоваться `@FieldResolver()` декоратор для описания метода получения данных автора для поля `author`:
+
+```js
 @ObjectType({ description: 'Article data with related Author data' })
 class Article {
-  @Field(type => String)
+  @Field()
   title: string;
 
-  @Field(type => String, { nullable: true })
+  @Field({ nullable: true })
   text: string;
 
   @Field(type => ID)
   authorId: number;
 
-  @Field(type => Author)
-  get author(): ?Object {
-    return authors.find(o => o.id === this.authorId);
+  @Field({ nullable: true })
+  author: Author;
+}
+
+@Resolver(of => Article)
+class ArticleResolver {
+  @Query(returns => [Article])
+  articles(@Arg('limit', { nullable: true }) limit: number = 3): Array<Article> {
+    return articles.slice(0, limit) as any;
+  }
+
+  @FieldResolver()
+  author(@Root() article: Article) {
+    return authors.find(o => o.id === article.authorId);
   }
 }
 ```
 
-Недописанный код этого примера доступен в [этом файле](./schema-via-type-graphql.js).
+Ну и затем останется только собрать GraphQL-схему с помощью метода `buildSchemaSync`:
+
+```js
+const schema = buildSchemaSync({
+  resolvers: [ArticleResolver, AuthorResolver],
+  // Or it may be a GLOB mask:
+  // resolvers: [__dirname + '/**/*.ts'],
+});
+
+export default schema;
+```
+
+Пример рабочего кода доступен в [этом файле](./type-graphql.ts).
+
+## nexus
+
+[nexus](https://github.com/prisma/nexus) - декларативный конструктор схемы со встроенным генератором дефинишенов для TypeScript. Продвигается [Prisma](https://prisma.io)'ой.
+
+На данный момент чтобы заработали тайпинги, вы должны запустить сервер. Он будет генерировать вам дефинишены типов, которые будет подхватывать TypeScript. Поэтому для удобной работы в dev-режиме рекомендуется использовать [nodemon](https://nodemon.io/) или более шустрый [ts-node-dev](https://github.com/whitecolor/ts-node-dev) для перезапуска сервера при изменении файлов. Поменяли файл схемы, перезапустился сервер, перегенерились тайпинги, TypeScript подхватил изменения и перевалидировал код.
+
+Для построения простой схемы `Article` и `Author` необходимо подключить пакет `nexus`:
+
+```js
+import { objectType, queryType, intArg, makeSchema } from 'nexus';
+import { authors, articles } from './data';
+```
+
+Далее объявляем типы схемы очень интересным способом, используя функцию `objectType` для создания типов, в котором используется метод `definition(t)` для определения полей:
+
+```js
+const Author = objectType({
+  name: 'Author',
+  definition(t) {
+    t.int('id', { nullable: true });
+    t.string('name', { nullable: true });
+  },
+});
+
+const Article = objectType({
+  name: 'Article',
+  definition(t) {
+    t.string('title');
+    t.string('text', { nullable: true });
+    t.int('authorId', { description: 'Record id from Author table' });
+    t.field('author', {
+      nullable: true,
+      type: 'Author',
+      resolve: source => {
+        const { authorId } = source;
+        return authors.find(o => o.id === authorId) as any;
+      },
+    });
+  },
+});
+```
+
+А вот для конструирования корневых типов используется специальные функции, в нашем случае `queryType`:
+
+```js
+const Query = queryType({
+  definition(t) {
+    t.list.field('articles', {
+      nullable: true,
+      type: Article,
+      args: {
+        limit: intArg({ default: 3, required: true })
+      },
+      resolve: (_, args) => {
+        const { limit } = args;
+        return articles.slice(0, limit);
+      },
+    });
+    t.list.field('authors', {
+      nullable: true,
+      type: Author,
+      resolve: () => authors,
+    });
+  },
+});
+```
+
+Ну а дальше используется метод `makeSchema` в который необходимо передать все инстансы наших типов – не очень удобно если в вашей схеме сотни типов. Наверняка в будущем придумают что-нибудь получше. Также вы обязательно должны передать пути, куда будут генерироваться тайпинги при запуске сервера:
+
+```js
+const schema = makeSchema({
+  types: [Query, Article, Author],
+  outputs: {
+    schema: __dirname + '/nexus-generated/schema.graphql',
+    typegen: __dirname + '/nexus-generated/typings.ts',
+  },
+});
+
+export default schema;
+```
+
+Рабочий код можно посмотреть в [этом файле](./nexus.ts).
+
+## В итоге что имеем по подходам
+
+|                                       |    graphql   |        graphql-tools       |    graphql-compose   |          type-graphql          |                 nexus                 |
+|---------------------------------------|:------------:|:--------------------------:|:--------------------:|:------------------------------:|:-------------------------------------:|
+| Дата создания                         |   2012/2015  |           2016.04          |        2016.07       |             2018.02            |                2018.11                |
+| Язык для разработки схемы             | JS, TS, Flow |        JS, TS, Flow        |     JS, TS, Flow     |               TS               |                 JS, TS                |
+| Schema-first (SDL-first)              |       -      |             да             |          да          |                -               |                   -                   |
+| Code-first                            |      да      |              -             |          да          |               да               |                   да                  |
+| Редактирование GraphQL-типов          |       -      |              -             |          да          |                -               |                   -                   |
+| Статическая типизация в резолверах    |    нет 1/5   | через сторонние пакеты 3/5 | кроме аргументов 2/5 | из коробки через рефлексию 5/5 | через генерацию файлов из коробки 4/5 |
+| Простота в изучении                   |      3/5     |             5/5            |          2/5         |               4/5              |                  4/5                  |
+| Чистота в коде схемы                  |      1/5     |             5/5            |          4/5         |               4/5              |                  3/5                  |
+| Типы полей (модификатор по-умолчанию) |   optional   |          optional          |       optional       |            Required            |                optional               |
+
+Также рекомендую прочитать хорошую статью [про разницу в подходах Schema-first и Code-first](https://www.prisma.io/blog/the-problems-of-schema-first-graphql-development-x1mn4cb0tyl3)
 
 ## На закуску — Генераторы
 
-Есть решения, которые позволяют вам генерировать схемы с уже имеющихся баз данных или ORM-моделей. Так или иниче, они используют один из трех подходов описанных выше.
+Есть решения, которые позволяют вам генерировать схемы с уже имеющихся баз данных или ORM-моделей. Это совершенно отдельная каста инструментов, и чистыми инструментами по созданию схем их уже назвать нельзя. Т.к. они ограничены БД/моделью – вы не конструируете схему, она для вас генерируется.
 
-- [Prisma](https://www.prisma.io/) — ORM прослойка на GraphQL, генерирует базу (Postgres, MySQL, more to come) и GraphQL API со всеми базовыми CRUD операциями. Дальше вы можете строить свой уникальный GraphQL API (используя подход `graphql-tools`), либо пользоваться уже сгенерированным.
-- [Hasura](https://hasura.io/) — работает на интроспекции Postgres, плюс задает пермишенны и реляции между таблицами. Захотите свою кастомную схему, опять будите брать подход `graphql-tools` и ститчить (склеивать) вместе несколько схем, либо использовать [knex](https://github.com/tgriesser/knex) для хитрого получения данных.
+- [Prisma](https://www.prisma.io/) — ORM прослойка на GraphQL, генерирует базу (Postgres, MySQL, more to come) и GraphQL API со всеми базовыми CRUD операциями. Дальше вы можете строить свой уникальный GraphQL API (используя подход `graphql-tools`), либо пользоваться уже сгенерированным. Под капотом Scala.
+- [Hasura](https://hasura.io/) — работает на интроспекции Postgres, плюс задает пермишенны и реляции между таблицами. Захотите свою кастомную схему, опять будите брать подход `graphql-tools` и ститчить (склеивать) вместе несколько схем, либо использовать [knex](https://github.com/tgriesser/knex) для хитрого получения данных. Под капотом Haskel.
+- [postgraphile](https://www.graphile.org/postgraphile/) – работает на интроспекции Postgres, при этом автоматически следит за изменениями схемы БД. Через плагины позволяет контролировать конструирование типов. Под капотом JavaScript.
+- [join-monster](https://join-monster.readthedocs.io/en/latest/) – превращает GraphQL-запрос в SQL-запрос. Не особо активно поддерживается. Некоторые люди жаловались на плохую производительность.
 - [graphql-compose-mongoose](https://github.com/graphql-compose/graphql-compose-mongoose) — на базе ваших [mongoose-моделей](https://mongoosejs.com/) для MongoDB генерирует типы и резолверы (кусочки для схемы). А дальше вы с помощью подхода `graphql-compose` собираете свою схему сразу так, как вам нужно.
-- Есть что добавить? Откройте пожалуйста Pull Request.
+
+Обсуждение генераторов происходит [в этом issue](https://github.com/nodkz/conf-talks/issues/20).
+
+Есть что добавить? Откройте пожалуйста Pull Request.

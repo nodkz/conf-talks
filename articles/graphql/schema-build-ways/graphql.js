@@ -1,5 +1,6 @@
 // @flow
 
+import { ApolloServer } from 'apollo-server';
 import {
   GraphQLSchema,
   GraphQLObjectType,
@@ -67,4 +68,7 @@ const schema = new GraphQLSchema({
   query: Query,
 });
 
-export default schema;
+const server = new ApolloServer({ schema });
+server.listen(5000).then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`);
+});

@@ -11,7 +11,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowJs": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "lib": ["es2015", "esnext", "dom"],
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true,
