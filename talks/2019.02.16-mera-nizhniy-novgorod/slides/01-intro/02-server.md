@@ -1,4 +1,4 @@
-## GraphQL-сервер
+# GraphQL-сервер
 
 ![Диаграмма экосистемы](./diagram-ecosystem-server.svg) <!-- .element: style="width: 90vw;" class="plain"  -->
 

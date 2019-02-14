@@ -6,7 +6,7 @@
 - [graphql-tools](https://github.com/apollographql/graphql-tools) — описываете отдельно типы (в SDL) и резолверы (методы бизнес логики), а потом все склеиваете через `makeExecutableSchema({ typeDefs, resolvers })`. (2016 Apr)
 - [graphql-compose](https://github.com/graphql-compose/graphql-compose) — упрощенный синтаксис создания типов, можно использовать SDL. Позволяет читать и редактировать типы. Удобно для написания собственных функций генераторов. (2016 Jul)
 - [type-graphql](https://github.com/19majkel94/type-graphql) — использует декораторы для описания типов поверх ваших классов и моделей (пока работает только c TypeScript). (2018 Feb)
-- [nexus](https://github.com/graphql-nexus/nexus) - самый свежий подход. (2018 Nov)
+- [nexus](https://github.com/graphql-nexus/nexus) – самый свежий подход. (2018 Nov)
 
 Давай построим простую GraphQL-схему на каждом из этих подходов. Представим что у нас есть два типа `Author` и `Article` со следующими данными
 
@@ -196,6 +196,54 @@ export default schema;
 
 Полный код построения схемы на подходе `graphql-tools` доступен в [этом файле](./graphql-tools.js).
 
+### Бонус статического анализа для `graphql-tools`
+
+Рекомендую использовать пакет `graphql-code-generator`, который сможет вам генерировать тайпинги для резолверов исходя из SDL схемы.
+
+Прописываете следующий конфиг `codegen.yml`:
+
+```yaml
+overwrite: true
+schema: src/**/*.gql
+documents: null
+generates:
+  src/__generated__/graphql.ts:
+    plugins:
+      - "typescript-common"
+      - "typescript-server"
+      - "typescript-resolvers"
+  src/__generated__/schema.graphql.json:
+    plugins:
+      - "introspection"
+  src/__generated__/schema.graphql:
+    plugins:
+      - "graphql-codegen-schema-ast"
+```
+
+Выполняете команду:
+
+```bash
+gql-gen --config codegen.yml
+```
+
+А потом облагораживаете свои резолверы следующим образом:
+
+```js
+import { IResolvers } from './__generated__/graphql';
+
+const resolvers: IResolvers = {
+  Article: {
+    author: () => {},
+  },
+  Query: {
+    articles: (_, args) => {},
+    authors: () => authors,
+  },
+};
+```
+
+И получаете отменную проверку от TypeScript'а.
+
 ## graphql-compose
 
 [graphql-compose](https://github.com/graphql-compose/graphql-compose) - под капотом использует `graphql`. При этом позволяет конструировать схемы несколькими способами:
@@ -203,7 +251,7 @@ export default schema;
 - как в `graphql` с кучей синтаксического сахара при создании типов.
 - как в `graphql-tools` описав типы через SDL и предоставив отдельно резолверы к ним.
 
-Но самое главное `graphql-compose`, позволяет  модифицировать типы, перед тем как будет построена GraphQL-схема. Это открывает возможность генерировать ваши схемы, комбинировать несколько схем, либо редактировать уже существующие (например генерировать урезанную публичную схему из полной админской).
+Но самое главное `graphql-compose`, позволяет  модифицировать типы, перед тем как будет построена GraphQL-схема. Это открывает возможности генерировать ваши схемы, комбинировать несколько схем, либо редактировать уже существующие (например генерировать урезанную публичную схему из полной админской).
 
 Строится GraphQL-схема следующим образом. Сперва импортируем `TypeComposer` для построения узлов (промежуточных типов) и `schemaComposer` конструктор схемы:
 
