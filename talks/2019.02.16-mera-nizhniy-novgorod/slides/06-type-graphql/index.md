@@ -8,7 +8,7 @@
 
 -----
 
-Из коробки предоставляются следующие виды декораторов:
+### Из коробки предоставляются следующие виды декораторов:
 
 - отметка типов, полей, аргументов и резолверов для построения GraphQL-схемы
 - проверки прав доступа по ролям `@Authorized(["ADMIN", "MODERATOR"])`
@@ -33,116 +33,126 @@
 
 Также необходимо использовать полифилл [reflect-metadata](https://github.com/rbuckton/reflect-metadata), который позволит использовать TypeScript дефинишены в рантайме.
 
-Т.е. при построении GraphQL-схемы имена типов могут браться из тайпскрипта. 💪👌
-
-# TODO: 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑
+Т.е. при построении GraphQL-схемы значения типов будут браться из тайпскрипта. 💪👌
 
 -----
 
-### 1. Импортируем нужные классы
+### 1. Импортируем нужные запчасти
 
 ```js
+import 'reflect-metadata';
 import {
-  GraphQLSchema,
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLInt,
-  GraphQLList,
-  GraphQLNonNull,
-} from 'graphql';
+  // methods
+  buildSchemaSync,
+  // decorators
+  Root,
+  Query,
+  ObjectType,
+  Field,
+  FieldResolver,
+  Arg,
+  Resolver,
+  // types
+  ID,
+} from 'type-graphql';
 import { authors, articles } from './data';
 
 ```
 
------
-
-### 2. Cоздаем тип для `Автора`
-
-```js
-const AuthorType = new GraphQLObjectType({
-  name: 'Author',
-  description: 'Author data',
-  fields: () => ({
-    id: { type: GraphQLInt },
-    name: { type: GraphQLString },
-  }),
-});
-
-```
+<span class="fragment" data-code-focus="1" />
+<span class="fragment" data-code-focus="3-4" />
+<span class="fragment" data-code-focus="5-12" />
+<span class="fragment" data-code-focus="13-14" />
 
 -----
 
-### 3. Cоздаем тип для `Статьи`
+### 2. Cоздаем класс для `Автора` и его резолвер
 
 <div class="code-500">
 
 ```js
-const ArticleType = new GraphQLObjectType({
-  name: 'Article',
-  description: 'Article data with related Author data',
-  fields: () => ({
-    title: { type: new GraphQLNonNull(GraphQLString) },
-    text: { type: GraphQLString },
-    authorId: {
-      type: new GraphQLNonNull(GraphQLInt),
-      description: 'Record id from Author table',
-    },
-    author: {
-      type: AuthorType,
-      resolve: source => {
-        const { authorId } = source;
-        return authors.find(o => o.id === authorId);
-      },
-    },
-  }),
-});
+@ObjectType({ description: 'Author data' })
+class Author {
+  @Field(type => ID)
+  id: number;
+
+  @Field({ nullable: true })
+  name: string;
+}
+
+@Resolver(of => Author)
+class AuthorResolver {
+  @Query(returns => [Author])
+  authors(): Array<Author> {
+    return authors as any;
+  }
+}
 
 ```
 
 </div>
 
-<span class="fragment" data-code-focus="11-17" />
-
 -----
 
-### 4. Описываем точку входа – `Query`
+### 3.1. Cоздаем класс для `Статьи`
+
+<div class="code-500">
 
 ```js
-const Query = new GraphQLObjectType({
-  name: 'Query',
-  fields: {
-    articles: {
-      args: {
-        limit: { type: GraphQLInt, defaultValue: 3 },
-      },
-      type: new GraphQLList(ArticleType),
-      resolve: (_, args) => {
-        const { limit } = args;
-        return articles.slice(0, limit);
-      },
-    },
-    authors: {
-      type: new GraphQLList(AuthorType),
-      resolve: () => authors,
-    },
-  },
-});
+@ObjectType({ description: 'Article data with related Author data' })
+class Article {
+  @Field()
+  title: string;
+
+  @Field({ nullable: true })
+  text: string;
+
+  @Field(type => ID)
+  authorId: number;
+
+  @Field({ nullable: true })
+  author: Author;
+}
 
 ```
 
-<span class="fragment" data-code-focus="4-13" />
-<span class="fragment" data-code-focus="5-7" />
-<span class="fragment" data-code-focus="8" />
-<span class="fragment" data-code-focus="9-12" />
-<span class="fragment" data-code-focus="14-17" />
+</div>
+
+<span class="fragment" data-code-focus="13" />
 
 -----
 
-### 5. Теперь можно построить экземпляр схемы
+### 3.2. Cоздаем класс резолвера для `Статьи`
+
+<div class="code-500">
 
 ```js
-const schema = new GraphQLSchema({
-  query: Query,
+@Resolver(of => Article)
+class ArticleResolver {
+  @Query(returns => [Article])
+  articles(@Arg('limit', { nullable: true }) limit: number = 3): Array<Article> {
+    return articles.slice(0, limit) as any;
+  }
+
+  @FieldResolver()
+  author(@Root() article: Article) {
+    return authors.find(o => o.id === article.authorId);
+  }
+}
+
+```
+
+</div>
+
+-----
+
+### 4. Теперь можно построить экземпляр схемы
+
+```js
+const schema = buildSchemaSync({
+  resolvers: [ArticleResolver, AuthorResolver],
+  // Or it may be a GLOB mask:
+  // resolvers: [__dirname + '/**/*.ts'],
 });
 
 export default schema;

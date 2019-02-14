@@ -22,9 +22,9 @@
 
 -----
 
-# Вопросы к Паше?
+## Вопросы к Паше?
 
-<div style="font-size: 1.9em; font-weight: bold">@nodkz</div>
+<div style="font-size: 1.5em; font-weight: bold">@nodkz</div>
 
 <div>
   <a href="https://t.me/nodkz" target="_blank">
@@ -40,7 +40,8 @@
   </a>
 </div>
 
-Ссылка на эту презентацию: [http://bit.ly/graphql-mera](https://nodkz.github.io/conf-talks/talks/2019.02.16-mera-nizhniy-novgorod/index.html)
+- Cтатья и код [http://bit.ly/graphql-mera-read](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-build-ways)
+- Презентация [http://bit.ly/graphql-mera](https://nodkz.github.io/conf-talks/talks/2019.02.16-mera-nizhniy-novgorod/index.html)
 
 
 ![Photo](../assets/nodkz-photo.jpg) <!-- .element: style="max-width: 400px; border: none" -->

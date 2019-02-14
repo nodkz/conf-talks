@@ -52,4 +52,4 @@
 
 ### Все схемки построены с помощью <br/>[graphql-voyager](https://apis.guru/graphql-voyager/) <br/>из интроспекции GraphQL-схемы.
 
-### Можно [потыкать вживую](https://apis.guru/graphql-voyager/) схему GitHub.
+### Cхему GitHub можно [потыкать вживую](https://apis.guru/graphql-voyager/).
