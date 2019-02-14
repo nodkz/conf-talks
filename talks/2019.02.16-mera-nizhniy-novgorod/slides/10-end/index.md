@@ -43,5 +43,4 @@
 - Cтатья и код [http://bit.ly/graphql-mera-read](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-build-ways)
 - Презентация [http://bit.ly/graphql-mera](https://nodkz.github.io/conf-talks/talks/2019.02.16-mera-nizhniy-novgorod/index.html)
 
-
 ![Photo](../assets/nodkz-photo.jpg) <!-- .element: style="max-width: 400px; border: none" -->
