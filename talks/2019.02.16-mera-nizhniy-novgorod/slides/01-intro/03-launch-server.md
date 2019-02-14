@@ -1,12 +1,14 @@
-# Запускаем сервер
+## Запускаем сервер
+
+![Диаграмма экосистемы](./diagram-ecosystem.svg) <!-- .element: style="width: 90vw;" class="plain"  -->
 
 -----
 
 ### Запускаем сервер на NodeJS
 
 ```js
-import { ApolloServer } from 'apollo-server';
 import { GraphQLSchema, GraphQLObjectType, GraphQLString } from 'graphql';
+import { ApolloServer } from 'apollo-server';
 
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({

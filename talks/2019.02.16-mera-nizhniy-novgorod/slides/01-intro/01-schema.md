@@ -18,17 +18,9 @@
 
 -----
 
-### И у этого корня три "головы" 🐲🐲🐲
-
-- `query` — для операций получения данных
-- `mutation` — для операций изменения данных
-- `subscription` — для подписки на события
-
------
-
 ##### Hello world schema (build phase)
 
-<pre><code data-trim>
+```js
 import { GraphQLSchema, GraphQLObjectType, GraphQLString } from 'graphql';
 
 const schema = new GraphQLSchema({
@@ -44,15 +36,16 @@ const schema = new GraphQLSchema({
   // mutation: { ... },
   // subscription: { ... },
 });
-</code></pre>
 
-Когда вы описываете структуру своих данных и методы получения.
+```
+
+`build phase` – это когда вы описываете структуру своих данных и методы получения.
 
 -----
 
 ##### Hello world schema (runtime phase)
 
-<pre><code data-trim>
+```js
 import { graphql } from 'graphql';
 import { schema } from './your-schema';
 
@@ -60,9 +53,10 @@ const query = '{ hello }';
 const result = await graphql(schema, query);
 
 // returns: { data: { hello: "world" } }
-</code></pre>
 
-##### Когда вы выполняете клиентский запрос на вашей схеме методом graphql(), который: <!-- .element: class="fragment" -->
+```
+
+<span>`runtime phase` – это когда выполняется клиентский запрос через методом `graphql()`, который:</span> <!-- .element: class="fragment" -->
 
 - производит парсинг GraphQL-запроса <!-- .element: class="fragment" -->
 - производит валидацию запроса на соответствие GraphQL-схеме <!-- .element: class="fragment" -->

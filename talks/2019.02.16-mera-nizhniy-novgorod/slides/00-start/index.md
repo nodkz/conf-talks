@@ -18,7 +18,7 @@
 
 ## Ссылка на эту презентацию
 
-![QR Code](./qr-code.png) <!-- .element: class="plain"  -->
+![QR Code](./qr-code.png) <!-- .element: class="plain" style="max-width: 600px"  -->
 
 [http://bit.ly/graphql-mera](https://nodkz.github.io/conf-talks/talks/2019.02.16-mera-nizhniy-novgorod/index.html) <!-- .element: style="color: #ffffff" -->
 

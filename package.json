@@ -7,7 +7,7 @@
     "test": "yarn jest",
     "watch": "yarn jest --watch",
     "lint": "eslint --ext .js ./articles",
-    "start": "yarn --cwd ./talks/2019.01.24-piter-graphql-meetup start"
+    "start": "yarn --cwd ./talks/2019.02.16-mera-nizhniy-novgorod start"
   },
   "repository": {
     "type": "git",

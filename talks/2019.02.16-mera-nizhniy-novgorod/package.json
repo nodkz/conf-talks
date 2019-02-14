@@ -1,9 +1,8 @@
 {
   "version": "0.0.1",
-  "name": "nodkz-conf-talks-holyjs-2018",
+  "name": "nodkz-reveal-talk",
   "private": true,
-  "description": "HolyJS Moscow 2018: Строим GraphQL-сервер",
-  "homepage": "https://nodkz.github.io/conf-talks/talks/2018.11.24-holyjs-moscow/index.html",
+  "description": "Some talk",
   "scripts": {
     "start": "cd reveal.js && yarn && cd .. && ./reveal.js/node_modules/.bin/grunt --gruntfile ./reveal.js/Gruntfile.js serve --root=../"
   },
