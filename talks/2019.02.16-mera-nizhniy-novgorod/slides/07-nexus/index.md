@@ -15,8 +15,8 @@
 - поменяли файл схемы
 - перезапустили сервер
 - перегенерились тайпинги
-- TypeScript подхватил дефинишены типов и
-- TypeScript проверил ваш код.
+- TypeScript подхватил дефинишены типов
+- TypeScript проверяет ваш код
 
 -----
 
@@ -99,6 +99,7 @@ const Query = queryType({
 
 ```
 
+<span class="fragment" data-code-focus="1" />
 <span class="fragment" data-code-focus="3-13" />
 <span class="fragment" data-code-focus="14-18" />
 

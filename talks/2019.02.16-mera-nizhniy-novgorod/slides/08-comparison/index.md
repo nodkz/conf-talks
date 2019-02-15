@@ -83,9 +83,21 @@
 <td align="center">optional</td>
 <td align="center">optional</td>
 <td align="center">Required</td>
-<td align="center">optional</td>
+<td align="center">Required</td>
 </tr>
 </tbody></table>
+
+-----
+
+## Required полей по-умолчанию – плохо!
+
+<br/>
+
+### Шаг в лево, шаг в право в данных<br/> – и все сломалось. <!-- .element: class="fragment" -->
+
+<br/>
+
+#### В данных! Не в схеме! ☝️ <!-- .element: class="fragment" -->
 
 -----
 

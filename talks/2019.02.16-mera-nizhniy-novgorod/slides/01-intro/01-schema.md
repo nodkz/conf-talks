@@ -56,7 +56,7 @@ const result = await graphql(schema, query);
 
 ```
 
-<span>`runtime phase` – это когда выполняется клиентский запрос через методом `graphql()`, который:</span> <!-- .element: class="fragment" -->
+<span>`runtime phase` – это когда выполняется клиентский запрос через метод `graphql()`, который:</span> <!-- .element: class="fragment" -->
 
 - производит парсинг GraphQL-запроса <!-- .element: class="fragment" -->
 - производит валидацию запроса на соответствие GraphQL-схеме <!-- .element: class="fragment" -->

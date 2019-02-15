@@ -25,6 +25,7 @@
     "target": "es6", // при es5 не работает
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+  },
 }
 
 ```
@@ -92,6 +93,11 @@ class AuthorResolver {
 
 </div>
 
+<span class="fragment" data-code-focus="2,4,7,8" />
+<span class="fragment" data-code-focus="1,3,6" />
+
+<span class="fragment" data-code-focus="10-16" />
+
 -----
 
 ### 3.1. Cоздаем класс для `Статьи`
@@ -144,6 +150,9 @@ class ArticleResolver {
 
 </div>
 
+<span class="fragment" data-code-focus="3-6" />
+<span class="fragment" data-code-focus="8-11" />
+
 -----
 
 ### 4. Теперь можно построить экземпляр схемы
@@ -158,6 +167,9 @@ const schema = buildSchemaSync({
 export default schema;
 
 ```
+
+<span class="fragment" data-code-focus="2" />
+<span class="fragment" data-code-focus="4" />
 
 -----
 

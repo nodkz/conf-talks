@@ -1,6 +1,6 @@
-# Подходы построения
+## Подходы построения
 
-# GraphQL-сервера в NodeJS
+## GraphQL-сервера в NodeJS
 
 ![Photo](../assets/nodkz-photo.jpg) <!-- .element: style="max-width: 300px;" class="plain"  -->
 
