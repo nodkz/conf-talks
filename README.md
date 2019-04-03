@@ -25,15 +25,15 @@ PS. Куча орфографических и грамматических ош
 
 ## Предстоящие выступления (в планах)
 
-- [23 марта 2019](https://vk.com/@-178787432-varim-graphql-klient-so-staticheskim-analizom), Минск, воркшоп
-- 30—31 марта 2019, Новосибирск, CodeFest
-- 8-9 апреля 2019, Санкт-Петербург, Saint HighLoad++
-- 24-25 мая 2019, Санкт-Петербург, HolyJS
-- 27-28 мая 2019, Москва, Сколково, РИТ++
+- 11-12 мая 2019, Киев, Zlit Tech: Рассвет GraphQL, InLight Studio (подтверждено ✈️)
+- 24-25 мая 2019, Санкт-Петербург, [HolyJS](https://holyjs-piter.ru/talks/5aijmcmhxyojks5vdbf5ct/) (подтверждено ✈️)
+- 27-28 мая 2019, Москва, Сколково, [FrontendConf (РИТ++)](https://frontendconf.ru/moscow-rit/2019/abstracts/5127) (подтверждено ️✈️)
 
 ## Прошедшие мероприятия
 
-- [26 января 2019](https://graphql-course.ru/), GraphQL workshop – сервер, клиент и статические анализ
+- [23 марта 2019](https://vk.com/@-178787432-varim-graphql-klient-so-staticheskim-analizom), Минск, воркшоп [фото](https://www.facebook.com/pg/MinskJS/photos/?tab=album&album_id=2017956155174105
+) [repo](https://github.com/nodkz/graphql-workshop-by)
+- [26 января 2019](https://graphql-course.ru/), GraphQL workshop – сервер, клиент и статические анализ [repo](https://github.com/nodkz/graphql-workshop-ru)
 - [16 февраля 2019](https://www.mera.ru/career/calendar/graphql), Нижний Новгород, Mera.ru *Билеты и визит оплачены*
 
 ## Видео моих выступлений
