@@ -25,7 +25,8 @@ PS. Куча орфографических и грамматических ош
 
 ## Предстоящие выступления (в планах)
 
-- 11-12 мая 2019, Киев, Zlit Tech: Рассвет GraphQL, InLight Studio (подтверждено ✈️)
+- 11 мая 2019, Киев, Workshop [Zlit Tech: Рассвет GraphQL](https://zlit-graphql.2event.com/), InLight Studio (подтверждено ✈️)
+- 12 мая 2019, Киев, Выступление [Zlit Tech: Рассвет GraphQL](https://zlit-graphql.2event.com/), InLight Studio (подтверждено ✈️)
 - 24-25 мая 2019, Санкт-Петербург, [HolyJS](https://holyjs-piter.ru/talks/5aijmcmhxyojks5vdbf5ct/) (подтверждено ✈️)
 - 27-28 мая 2019, Москва, Сколково, [FrontendConf (РИТ++)](https://frontendconf.ru/moscow-rit/2019/abstracts/5127) (подтверждено ️✈️)
 
