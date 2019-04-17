@@ -8,7 +8,7 @@
 - [type-graphql](https://github.com/19majkel94/type-graphql) — использует декораторы для описания типов поверх ваших классов и моделей (пока работает только c TypeScript). (2018 Feb)
 - [nexus](https://github.com/graphql-nexus/nexus) – самый свежий подход с синтаксисом из 90-х (2018 Nov)
 
-На мой вкус и взгляд самый крутым является [type-graphql](https://github.com/19majkel94/type-graphql) (по состоянию на апрель 2019).
+На мой вкус и на текущий момент самым крутым и продвинутым является [type-graphql](https://github.com/19majkel94/type-graphql) (по состоянию на апрель 2019).
 
 Давай построим простую GraphQL-схему на каждом из этих подходов. Представим что у нас есть два типа `Author` и `Article` со следующими данными
 
