@@ -6,7 +6,9 @@
 - [graphql-tools](https://github.com/apollographql/graphql-tools) — описываете отдельно типы (в SDL) и резолверы (методы бизнес логики), а потом все склеиваете через `makeExecutableSchema({ typeDefs, resolvers })`. (2016 Apr)
 - [graphql-compose](https://github.com/graphql-compose/graphql-compose) — упрощенный синтаксис создания типов, можно использовать SDL. Позволяет читать и редактировать типы. Удобно для написания собственных функций генераторов. (2016 Jul)
 - [type-graphql](https://github.com/19majkel94/type-graphql) — использует декораторы для описания типов поверх ваших классов и моделей (пока работает только c TypeScript). (2018 Feb)
-- [nexus](https://github.com/graphql-nexus/nexus) – самый свежий подход. (2018 Nov)
+- [nexus](https://github.com/graphql-nexus/nexus) – самый свежий подход с синтаксисом из 90-х (2018 Nov)
+
+На мой вкус и взгляд самый крутым является [type-graphql](https://github.com/19majkel94/type-graphql) (по состоянию на апрель 2019).
 
 Давай построим простую GraphQL-схему на каждом из этих подходов. Представим что у нас есть два типа `Author` и `Article` со следующими данными
 
