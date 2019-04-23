@@ -30,7 +30,7 @@ PS. Куча орфографических и грамматических ош
 - 24-25 мая 2019, Санкт-Петербург, [HolyJS](https://holyjs-piter.ru/talks/5aijmcmhxyojks5vdbf5ct/) (подтверждено ✈️)
 - 27-28 мая 2019, Москва, Сколково, [FrontendConf (РИТ++)](https://frontendconf.ru/moscow-rit/2019/abstracts/5127) (подтверждено ️✈️)
 - 27-28 мая 2019, Москва, Сколково, [BackendConf (РИТ++)](https://backendconf.ru/moscow-rit/2019/abstracts/4874) (подтверждено ️✈️)
-- июнь 2019, Нур-Султан, AstanaJS (на этапе переговоров)
+- 15 июня 2019, Нур-Султан, AstanaJS (на этапе переговоров)
 
 ## Прошедшие мероприятия
 
