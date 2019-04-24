@@ -32,12 +32,12 @@ PS. Куча орфографических и грамматических ош
 - 27-28 мая 2019, Москва, Сколково, [BackendConf (РИТ++)](https://backendconf.ru/moscow-rit/2019/abstracts/4874) (подтверждено ️✈️)
 - 15 июня 2019, Нур-Султан, AstanaJS (на этапе переговоров)
 
-## Прошедшие мероприятия
+## Прошедшие мероприятия за 2019 год
 
 - [23 марта 2019](https://vk.com/@-178787432-varim-graphql-klient-so-staticheskim-analizom), Минск, воркшоп [фото](https://www.facebook.com/pg/MinskJS/photos/?tab=album&album_id=2017956155174105
 ) [repo](https://github.com/nodkz/graphql-workshop-by)
-- [26 января 2019](https://graphql-course.ru/), GraphQL workshop – сервер, клиент и статические анализ [repo](https://github.com/nodkz/graphql-workshop-ru)
-- [16 февраля 2019](https://www.mera.ru/career/calendar/graphql), Нижний Новгород, Mera.ru *Билеты и визит оплачены*
+- [16 февраля 2019](https://www.mera.ru/career/calendar/graphql), Нижний Новгород, Mera.ru
+- [26 января 2019](https://graphql-course.ru/), Санкт-Петербург, GraphQL workshop – сервер, клиент и статические анализ [repo](https://github.com/nodkz/graphql-workshop-ru)
 
 ## Видео моих выступлений
 
