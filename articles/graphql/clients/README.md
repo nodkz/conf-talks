@@ -8,7 +8,10 @@
 - [ApolloClient](#ApolloClient)
 - [Lokka](#Lokka)
 - [graphql-hooks](#graphql-hooks)
+- [urql](#urql)
 - [graphql.js](#graphql.js)
+- [graphql-request](#graphql-request)
+- [fetch](#fetch)
 
 ### Relay
 
@@ -26,11 +29,33 @@
 
 [graphql-hooks](https://github.com/nearform/graphql-hooks) – простой JS клиент для React (c 16.8.0), построенный на React хуках. У ребят большие [амбиции заменить собой](https://github.com/nearform/graphql-hooks#migrating-from-apollo) ApolloClient. В преимуществах заявляют, что на 93% их бандл меньше чем аполловский. На начало мая 2019, нет фрагментов, нет полноценного нормализованного кеша/стора (есть псевдо кеш целых запросов), нет подписок на изменения в кеше данных (если они вызваны другими запросами) и много еще чего. По мне, так и функционала у них на 93% меньше, чем у Аполло. Таким образом если вам не нужно ничего кешировать и не важно поменялись ли данные в соседнем запросе – то однозначно надо брать. Вобщем сильно напоминают времена, когда Apollo таким же образом начинала бороться с Relay и искать места под солнцем (комьюнити).
 
+### urql
+
+[urql](https://github.com/FormidableLabs/urql) – простой клиент для React, предоставляет как и обычные компоненты `Query` и пр., так и hooks. Нет фрагментов, нет полноценного нормализованного стора.
+
 ### graphql.js
 
 Не путать с `graphql-js` репкой, которая является имплементацией GraphQL спецификации на NodeJS для сервера.
 
 [graphql.js](https://github.com/f/graphql.js/) – vanilla JS клиент, умеет работать с фрагментами, но нет своего локального стора и соответственно нет подписок на измения данных в сторе. Но то что работает с фрагментами, это похвально.
+
+### graphql-request
+
+[graphql-request](https://github.com/prisma/graphql-request) – 150 строчек кода от Prisma. Максимально простой. Просто берет оборачивает `fetch` с настройками, и такого клиента предоставляет для многоразового использования, куда необходимо передать только запрос и переменные. Просто и удобно. Хотите устанавливайте в виде пакета, хотите копипастой к себе утащите в проект. Нет стора, нет фрагментов.
+
+### fetch
+
+[fetch](https://developer.mozilla.org/ru/docs/Web/API/Fetch_API/Using_Fetch) – самый легковесный способ сделать запрос:
+
+```js
+fetch('https://example.com/graphql', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ query: '{ posts { title } }', variables: {} }),
+})
+  .then(res => res.json())
+  .then(res => console.log(res.data));
+```
 
 ## Что такое нормализованный кэш/стор?
 

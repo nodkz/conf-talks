@@ -7,7 +7,7 @@
     "test": "yarn jest",
     "watch": "yarn jest --watch",
     "lint": "eslint --ext .js ./articles",
-    "start": "yarn --cwd ./talks/2019.02.16-mera-nizhniy-novgorod start"
+    "start": "yarn --cwd ./talks/2019.05.24-holyjs-piter start"
   },
   "repository": {
     "type": "git",
