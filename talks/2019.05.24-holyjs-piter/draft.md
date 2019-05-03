@@ -22,6 +22,10 @@
 - graphql-hooks – simple for React
 - urql – simple for React
 
+--
+
+Вообще я не хотел сравнивать Relay и Apollo
+
 https://github.com/nodkz/conf-talks/tree/master/articles/graphql/clients
 
 Нам интересны только `Relay` и `ApolloClient`, т.к. у них есть нормализованный стор и поддержка фрагментов.
@@ -88,6 +92,8 @@ RelayCompiler, Apollo Codegen (показать команды запуска и
       - работает на уровне Query
 
 Представьте что мутацией отредактировали часть записи так, что 800 зависимых записей остались непривязанными. Аполло их оставит в кеше а релей удалит. Аполло работает над этим, вроде как заработает [в версии Appllo Client 3](https://github.com/apollographql/apollo-client/pull/4681)
+
+А вот отзыв что для карты с точками Apollo 2.x `is drasticallyslow down` https://github.com/apollographql/apollo-client/issues/3965.
 
 Потянет ли Ben Newman рефакторинг подписок на фрагменты, большой вопрос. До этого этим занимались Jonas Helfer и Sashko Stubailo (но они уже не в Аполло).
 

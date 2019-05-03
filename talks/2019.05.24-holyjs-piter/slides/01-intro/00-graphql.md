@@ -1,8 +1,12 @@
-## GraphQL – стильно, модно, молодёжно
+# GraphQL
 
-![Logo](../assets/logo/graphql.png) <!-- .element: style="width: 100px;" class="plain"  -->
+![Logo](../assets/logo/graphql.png) <!-- .element: style="width: 300px;" class="plain"  -->
 
-- Язык запросов для вашего API (что просите, то получаете) <!-- .element: class="fragment" -->
+## стильно, модно, молодёжно
+
+-----
+
+- Язык запросов для вашего API (что просите, то получаете)
 - Интроспекция АПИ из коробки (документация) <!-- .element: class="fragment" -->
 - Удобная IDE в браузере (на поиграть с API) <!-- .element: class="fragment" -->
 - Ваше API статически типизированное (интерпрайзненько) <!-- .element: class="fragment" -->

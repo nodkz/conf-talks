@@ -2,7 +2,7 @@
 
 ## с фрагментами
 
-#### TypeScript и «волосатый» GraphQL 
+#### «волосатый» GraphQL и TypeScript
 
 #### — всё, что нужно для правильного
 
@@ -47,3 +47,7 @@
 - [react-relay-network-layer](https://github.com/relay-tools/react-relay-network-layer) — NetworkLayer для Relay <br/> ![GitHub stars](https://img.shields.io/github/stars/relay-tools/react-relay-network-layer.svg?color=lightgrey) <!-- .element: class="plain" style="padding-left: 250px; height: 40px; vertical-align: middle;"  --> ![Downloads](https://img.shields.io/npm/dw/react-relay-network-layer.svg?color=lightgrey) <!-- .element: class="plain" style="height: 40px; vertical-align: middle;" -->
 - [lvovich](https://github.com/nodkz/lvovich) — склонение городов (from, to, in)<br/> ![GitHub stars](https://img.shields.io/github/stars/nodkz/lvovich.svg?color=lightgrey) <!-- .element: class="plain" style="padding-left: 250px; height: 40px; vertical-align: middle;" --> ![Downloads](https://img.shields.io/npm/dw/lvovich.svg?color=lightgrey) <!-- .element: class="plain" style="height: 40px; vertical-align: middle;" -->
 - и пачка других
+
+-----
+
+![ps-logo](https://user-images.githubusercontent.com/1946920/57164502-21634300-6e16-11e9-8c45-6d10fe9dea4e.jpg) <!-- .element: style="max-width: 1200px;" class="plain"  -->
