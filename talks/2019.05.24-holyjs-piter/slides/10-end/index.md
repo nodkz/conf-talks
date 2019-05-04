@@ -41,7 +41,6 @@
 </div>
 
 - Группа Telegram [https://t.me/graphql_ru](https://t.me/graphql_ru)
-- Cтатья и код [http://bit.ly/graphql-kiev-read](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-build-ways)
-- Презентация [http://bit.ly/graphql-kiev](https://nodkz.github.io/conf-talks/talks/2019.05.12-zlit-tech-kiev/index.html)
+- Презентация [http://bit.ly/piter-graphql-client](https://nodkz.github.io/conf-talks/talks/2019.05.24-holyjs-piter/index.html)
 
 ![Photo](../assets/nodkz-photo.jpg) <!-- .element: style="max-width: 400px; border: none" -->

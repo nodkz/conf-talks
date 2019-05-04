@@ -47,8 +47,16 @@
 
 			.slide-menu-button { opacity: 0.1 }
 
-			.text-red {
+			.red {
 				color: tomato !important;
+			}
+
+			.orange {
+				color: darkorange !important;
+			}
+
+			.green {
+				color: greenyellow !important;
 			}
 
 			.code-500 > * > code {
@@ -61,17 +69,7 @@
 			<div class="slides">
 				<section data-markdown="slides/00-start/index.md" data-separator-vertical="^-----\n"></section>
 				<section data-markdown="slides/01-intro/00-graphql.md" data-separator-vertical="^-----\n"></section>
-				<section data-markdown="slides/01-intro/01-schema.md" data-separator-vertical="^-----\n"></section>
-				<section data-markdown="slides/01-intro/02-server.md" data-separator-vertical="^-----\n"></section>
-				<section data-markdown="slides/01-intro/03-launch-server.md" data-separator-vertical="^-----\n"></section>
-				<section data-markdown="slides/02-schema-build-ways/index.md" data-separator-vertical="^-----\n"></section>
-				<section data-markdown="slides/03-graphql-js/index.md" data-separator-vertical="^-----\n"></section>
-				<section data-markdown="slides/04-graphql-tools/index.md" data-separator-vertical="^-----\n"></section>
-				<section data-markdown="slides/05-graphql-compose/index.md" data-separator-vertical="^-----\n"></section>
-				<section data-markdown="slides/06-type-graphql/index.md" data-separator-vertical="^-----\n"></section>
-				<section data-markdown="slides/07-nexus/index.md" data-separator-vertical="^-----\n"></section>
-				<section data-markdown="slides/08-comparison/index.md" data-separator-vertical="^-----\n"></section>
-				<section data-markdown="slides/09-generators/index.md" data-separator-vertical="^-----\n"></section>
+				<section data-markdown="slides/01-intro/01-clients.md" data-separator-vertical="^-----\n"></section>
 				<section data-markdown="slides/10-end/index.md" data-separator-vertical="^-----\n"></section>
 			</div>
 		</div>
@@ -150,21 +148,21 @@
 			});
 
 			// Set 0 index for vertical slide
-			var stateHolder = 0;
-			try {
-				// On page load take slide from URL
-				stateHolder = parseInt(window.location.hash.split('/')[1]) || 0;
-			} catch (e) { 
-				//o_O
-			}
-			Reveal.addEventListener('slidechanged', function( event ) {
-				var state = Reveal.getState();
-				if (state.indexh < stateHolder || state.indexh > stateHolder){
-					state.indexv = 0;
-					Reveal.setState(state);
-				}
-				stateHolder = state.indexh;
-			});
+			// var stateHolder = 0;
+			// try {
+			// 	// On page load take slide from URL
+			// 	stateHolder = parseInt(window.location.hash.split('/')[1]) || 0;
+			// } catch (e) { 
+			// 	//o_O
+			// }
+			// Reveal.addEventListener('slidechanged', function( event ) {
+			// 	var state = Reveal.getState();
+			// 	if (state.indexh < stateHolder || state.indexh > stateHolder){
+			// 		state.indexv = 0;
+			// 		Reveal.setState(state);
+			// 	}
+			// 	stateHolder = state.indexh;
+			// });
 		</script>
 
 		<!-- Printing and PDF exports -->

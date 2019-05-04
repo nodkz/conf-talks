@@ -255,17 +255,17 @@ const resolvers: IResolvers = {
 
 Но самое главное `graphql-compose`, позволяет  модифицировать типы, перед тем как будет построена GraphQL-схема. Это открывает возможности генерировать ваши схемы, комбинировать несколько схем, либо редактировать уже существующие (например генерировать урезанную публичную схему из полной админской).
 
-Строится GraphQL-схема следующим образом. Сперва импортируем `TypeComposer` для построения узлов (промежуточных типов) и `schemaComposer` конструктор схемы:
+Строится GraphQL-схема следующим образом. Импортируем `schemaComposer` глобальный регистр типов, которые позволяет создавать новые типы множеством удобных способов:
 
 ```js
-import { TypeComposer, schemaComposer } from 'graphql-compose';
+import { schemaComposer } from 'graphql-compose';
 import { authors, articles } from './data';
 ```
 
-`TypeComposer` позволяет создать Object-тип с помощью SDL, как в `graphql-tools`. Давайте объявим простой тип `Author`:
+Метод `createObjectTC()` позволяет создать Object-тип с помощью SDL, как в `graphql-tools`. Давайте объявим простой тип `Author`:
 
 ```js
-const AuthorType = TypeComposer.create(`
+const AuthorType = schemaComposer.createObjectTC(`
   "Author data"
   type Author {
     id: Int
@@ -274,14 +274,14 @@ const AuthorType = TypeComposer.create(`
 `);
 ```
 
-Также `TypeComposer` позволяет создать Object-тип как в подходе с `graphql` в формате `GraphQLObjectType`. Но при этом добавляя кучу сахара:
+Также `createObjectTC()` позволяет создать Object-тип как в подходе с `graphql` в формате `GraphQLObjectType`. Но при этом добавляя кучу сахара:
 
 - `title` - объявляем тип поля сразу через SDL `String!`, под капотом замениться на `{ type: new GraphQLNonNull(GraphQLString) }`
 - `authorId` - т.к. надо добавить дополнительное свойство, то конфигурация поля делается через объект, где `type` опять можно указать через SDL и при этом указать `description`
 - `author` - тип поля можно указать через функцию. Позволяет бороться с hoisting-проблемой, когда у вас два типа импортируют друг от друга. В подходе `graphql` вы можете обернуть в функцию только все поля сразу, а т.к. `graphql-compose` позволяет читать и редактировать типы, то пришлось добавить эту возможность на уровень типа для каждого поля.
 
 ```js
-const ArticleType = TypeComposer.create({
+const ArticleType = schemaComposer.createObjectTC({
   name: 'Article',
   description: 'Article data with related Author data',
   fields: {
@@ -302,7 +302,7 @@ const ArticleType = TypeComposer.create({
 });
 ```
 
-После того, как мы создали два типа `Author` и `Article` нам необходимо задать поля для корневого-типа `Query`. Он уже сразу есть в схеме – `schemaComposer.Query`. `Query` это инстанс `TypeComposer` который можно редактировать, добавляя или удаляя существующие поля. `TypeComposer` имеет много [полезных методов](https://graphql-compose.github.io/docs/en/api-TypeComposer.html#field-methods) по чтению и редактированию конфигурации GraphQL-типа.
+После того, как мы создали два типа `Author` и `Article` нам необходимо задать поля для корневого-типа `Query`. Он уже сразу есть в схеме – `schemaComposer.Query`. `Query` это инстанс `ObjectTypeComposer` который можно редактировать, добавляя или удаляя существующие поля. `ObjectTypeComposer` имеет много [полезных методов](https://graphql-compose.github.io/docs/api/ObjectTypeComposer.html#field-methods) по чтению и редактированию конфигурации GraphQL-типа.
 
 Чтобы добавить два новых поля `articles` и `authors`, мы воспользуемся методом `addFields()`:
 

@@ -1,10 +1,10 @@
 // @flow
 
 import { ApolloServer } from 'apollo-server';
-import { TypeComposer, schemaComposer } from 'graphql-compose';
+import { schemaComposer } from 'graphql-compose';
 import { authors, articles } from './data';
 
-const AuthorType = TypeComposer.create(`
+const AuthorType = schemaComposer.createObjectTC(`
   "Author data"
   type Author {
     id: Int
@@ -12,7 +12,7 @@ const AuthorType = TypeComposer.create(`
   }
 `);
 
-const ArticleType = TypeComposer.create({
+const ArticleType = schemaComposer.createObjectTC({
   name: 'Article',
   description: 'Article data with related Author data',
   fields: {
