@@ -2,10 +2,10 @@
   <tr>
     <td style="vertical-align: top">
         <div style="transform: rotate(-10deg); vertical-align: text-top;">
-        <h2>ApolloClient или Relay с фрагментами</h2>
+        <h2 class="orange">ApolloClient или Relay с фрагментами</h2>
         <h4>
-          «волосатый» GraphQL и TypeScript
-          — всё, что нужно для правильного статического анализа React-приложения
+          <span class="green">«волосатый» GraphQL и TypeScript</span>
+          — всё, что нужно для правильного <span class="red">статического анализа React-приложения</span>
         </h4>
         <hr/>
         <h4>Pavel Chertorogov :: <a href="https://twitter.com/nodkz" target="_blank">@nodkz</a></h4>
