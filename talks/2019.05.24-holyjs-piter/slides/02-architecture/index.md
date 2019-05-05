@@ -394,10 +394,74 @@
 
 -----
 
------
+### Различия в подписках на изменения в сторе
+
+- <span class="orange">Relay</span> на уровне фрагмента
+- <span class="apollo">ApolloClient</span> на уровне запроса целиком
 
 -----
 
------
+### Представьте большую таблицу, если произошли изменения в сторе:
+
+- то <span class="orange">Relay</span> отправит изменения фрагменту
+- <span class="apollo">ApolloClient</span> отправит изменения всему Query
+
+<span class="fragment"><span class="orange">Relay</span> будет перерендерить строчку, а то и ячейку. А вот <span class="apollo">ApolloClient</span> всю таблицу.</span>
+
+<span class="fragment">Т.к. у <span class="orange">Relay</span> еcть специальный компонент <code>FragmentContainer</code></span>
 
 -----
+
+#### Очень показательно [issue 3965](https://github.com/apollographql/apollo-client/issues/3965), где Mike Marcacci делиться опытом работы отображения объектов на карте при изменении Viewport'a:
+
+- <span class="apollo">ApolloClient</span> – <b>"is drastically slow down"</b> 👎
+- <span class="orange">Relay</span> – <b>"total lack of communication"</b> 👎
+
+-----
+
+## GrabageCollector
+
+- <span class="apollo">ApolloClient</span> – завезут в v3 ([PR 4681](https://github.com/apollographql/apollo-client/pull/4681)), отпалируется скорее всего к концу года.
+- <span class="orange">Relay</span> – GC еще был два года назад. Но кто об этом знал?!
+
+Пока Relay все равно будет рулить, т.к. он работает на уровне фрагментов. <!-- .element: class="fragment green" -->
+
+-----
+
+## А еще у <span class="orange">Relay</span> есть<br/><br/>
+
+- `PaginationContainer` – компонента облегчающая жизнь с [Relay Cursor Connections Spec](https://facebook.github.io/relay/graphql/connections.htm)<br/><br/>
+- `FragmentContainer` – гвоздь производительности Relay, у него еще Datamasking по-умолчанию
+
+-----
+
+### Неужели в Аполло все так плохо? <!-- .element: class="red" -->
+
+Куча людей радуется тому, что есть.
+
+И вполне хватает текущего поведения под их задачи.
+
+В край не кэшируйте или чистите стор ручками, когда начнутся проблемы. <!-- .element: class="fragment green" -->
+
+-----
+
+## Что выбрать <span class="orange">Relay</span> или <span class="apollo">ApolloClient</span>?
+
+![mark-almost-ready](https://user-images.githubusercontent.com/1946920/57198410-2bab4b80-6f94-11e9-9e14-6c14b8138cd7.jpg) <!-- .element: class="plain" -->
+
+-----
+
+### <span class="orange">Relay ~170k/week</span> <span class="apollo">ApolloClient ~650k/week</span>
+
+[<img width="1121" alt="Screen Shot 2019-05-06 at 12 55 20 AM" src="https://user-images.githubusercontent.com/1946920/57198866-d96d2900-6f99-11e9-999d-e5b9df9ba579.png">](https://www.npmtrends.com/apollo-client-vs-relay-runtime)
+
+-----
+
+## Быстрое сравнение с Redux  <!-- .element: class="red" -->
+
+- Создание стора – нет такой задачи в вашем спринте. <!-- .element: class="fragment" -->
+- Нет редьюсеров. <!-- .element: class="fragment" -->
+- Экшены – это GraphQL-запросы. <!-- .element: class="fragment" -->
+- Коннект – это компоненты Query, Mutation, FragmentContainer и прочие хуки. <!-- .element: class="fragment" -->
+
+<span class="fragment green">Чуть подробнее про [Redux - бойлерплей vs Relay/ApolloClient](https://github.com/nodkz/conf-talks/tree/master/articles/redux)</span>

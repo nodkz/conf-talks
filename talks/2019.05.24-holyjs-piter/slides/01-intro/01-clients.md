@@ -163,7 +163,7 @@ GlobalId обычно `base64(__typename + ':' + id)`
 
 -----
 
-## Ну чтож, сейчас <span class="orange">Relay</span> получит
+## Ну чтож, в 2019 <span class="orange">Relay</span> получит
 
 ## второе дыхание хайпа.
 

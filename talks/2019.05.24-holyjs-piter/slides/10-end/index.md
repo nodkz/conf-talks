@@ -1,20 +1,3 @@
-# Послесловие
-
------
-
-## Как лучше всего строить схемы?
-
-<br />
-
-# <span>`Генерируйте` свои&nbsp;GraphQL-схемы!</span> <!-- .element: class="fragment" -->
-
-<br />
-
-### На порядок меньше рутины и ошибок! <!-- .element: class="fragment" -->
-
-### Вручную собирать схемы – 💩💩💩 <!-- .element: class="fragment" -->
-
------
 
 ## Спасибо за ваше внимание!
 
@@ -22,9 +5,9 @@
 
 -----
 
-## Вопросы к Паше?
+### Вопросы к Паше? <!-- .element: class="orange" -->
 
-<div style="font-size: 1.5em; font-weight: bold">@nodkz</div>
+<div style="font-size: 1.2em; font-weight: bold">@nodkz</div>
 
 <div>
   <a href="https://t.me/nodkz" target="_blank">
@@ -40,7 +23,10 @@
   </a>
 </div>
 
-- Группа Telegram [https://t.me/graphql_ru](https://t.me/graphql_ru)
-- Презентация [http://bit.ly/piter-graphql-client](https://nodkz.github.io/conf-talks/talks/2019.05.24-holyjs-piter/index.html)
+<div style="font-size: 0.8em !important">
+  Группа Telegram <a href="https://t.me/graphql_ru" target="_blank">https://t.me/graphql_ru</a>
+  <br />Эта презентация <a href="https://nodkz.github.io/conf-talks/talks/2019.05.24-holyjs-piter/index.html" target="_blank">http://bit.ly/piter-graphql-client</a>
+  <br />Я пишу про GraphQL <a href="https://github.com/nodkz/conf-talks" target="_blank">https://github.com/nodkz/conf-talks</a>
+</div>
 
 ![Photo](../assets/nodkz-photo.jpg) <!-- .element: style="max-width: 400px; border: none" -->
