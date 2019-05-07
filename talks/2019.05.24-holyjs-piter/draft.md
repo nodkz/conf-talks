@@ -65,7 +65,7 @@ RelayCompiler, Apollo Codegen (показать команды запуска и
 - Можно подписаться на измененные данные в сторе (обновлять компоненты)
 - Mutation с оптимистичными апдейтами
   - Когда вы сразу меняете данные на клиенте, пока запрос на изменение данных летит на сервер. И в случае ошибки, данные обратно откатываются к первоначальному виду.
-- Garbadge Collector кэша/стора (ссылка на релей, ссылка на аполло)
+- Garbage Collector кэша/стора (ссылка на релей, ссылка на аполло)
 
 ## Архитектура Relay и Apollo
 
@@ -81,7 +81,7 @@ RelayCompiler, Apollo Codegen (показать команды запуска и
       - [[dataID, record], ...]
     - Subscriptions
       - на selectionSet (Selectors), т.е. на уровне фрагментов
-    - GarbadgeCollector
+    - GarbageCollector
       - работает на уровне references по dataID
 
 ### Apollo
@@ -94,7 +94,7 @@ RelayCompiler, Apollo Codegen (показать команды запуска и
       - [[dataID, record], ...]
     - watches: Set<Cache.WatchOptions>
       - работает на уровне [пробегись по всем Query](https://github.com/apollographql/apollo-client/blob/a132d8cdd76779120b25481b60ce0882a70656de/packages/apollo-cache-inmemory/src/inMemoryCache.ts#L370) и посмотри не поменялись ли в них данные
-    - GarbadgeCollector
+    - GarbageCollector
       - работает на уровне Query
 
 Представьте что мутацией отредактировали часть записи так, что 800 зависимых записей остались непривязанными. Аполло их оставит в кеше а релей удалит. Аполло работает над этим, вроде как заработает [в версии Appllo Client 3](https://github.com/apollographql/apollo-client/pull/4681)

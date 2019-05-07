@@ -286,7 +286,7 @@
             <switch>
                 <foreignObject style="overflow:visible;" pointer-events="all" width="176" height="23" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
                     <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 21px; font-family: Helvetica; color: rgb(255, 255, 255); line-height: 1.2; vertical-align: top; width: 178px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
-                        <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">GarbadgeCollector
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">GarbageCollector
                             <br style="font-size: 21px" />
                         </div>
                     </div>
@@ -421,7 +421,7 @@
 
 ## GrabageCollector
 
-- <span class="apollo">ApolloClient</span> – завезут в v3 ([PR 4681](https://github.com/apollographql/apollo-client/pull/4681)), отпалируется скорее всего к концу года.
+- <span class="apollo">ApolloClient</span> – завезут в v3 ([PR 4681](https://github.com/apollographql/apollo-client/pull/4681)), отполируется скорее всего к концу года.
 - <span class="orange">Relay</span> – GC еще был два года назад. Но кто об этом знал?!
 
 Пока Relay все равно будет рулить, т.к. он работает на уровне фрагментов. <!-- .element: class="fragment green" -->
@@ -464,4 +464,4 @@
 - Экшены – это GraphQL-запросы. <!-- .element: class="fragment" -->
 - Коннект – это компоненты Query, Mutation, FragmentContainer и прочие хуки. <!-- .element: class="fragment" -->
 
-<span class="fragment green">Чуть подробнее про [Redux - бойлерплей vs Relay/ApolloClient](https://github.com/nodkz/conf-talks/tree/master/articles/redux)</span>
+<span class="fragment green">Чуть подробнее про [Redux - бойлерплейт vs Relay/ApolloClient](https://github.com/nodkz/conf-talks/tree/master/articles/redux)</span>
