@@ -24,9 +24,11 @@
 
 ## Ссылка на эту презентацию
 
+<!-- QRCode generator: http://goqr.me/#t=url -->
+
 ![QR Code](./qr-code.png) <!-- .element: class="plain" style="max-width: 500px"  -->
 
-[http://bit.ly/graphql-kiev](https://nodkz.github.io/conf-talks/talks/2019.05.12-zlit-tech-kiev/index.html) <!-- .element: style="color: #ffffff" -->
+[http://bit.ly/graphql-kyiv](https://nodkz.github.io/conf-talks/talks/2019.05.12-zlit-tech-kyiv/index.html) <!-- .element: style="color: #ffffff" -->
 
 -----
 
