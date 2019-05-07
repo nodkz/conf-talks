@@ -10,7 +10,7 @@
 
 -----
 
-### <span class="orange">Relay</span> пилиться уже лет 5.
+### <span class="orange">Relay</span> пилится уже лет 5.
 
 #### До этого у них еще от Flux'а куча шишек, боли и опыта завалялось.
 
@@ -412,7 +412,7 @@
 
 -----
 
-#### Очень показательно [issue 3965](https://github.com/apollographql/apollo-client/issues/3965), где Mike Marcacci делиться опытом работы отображения объектов на карте при изменении Viewport'a:
+#### Очень показательно [issue 3965](https://github.com/apollographql/apollo-client/issues/3965), где Mike Marcacci делится опытом работы отображения объектов на карте при изменении Viewport'a:
 
 - <span class="apollo">ApolloClient</span> – <b>"is drastically slow down"</b> 👎
 - <span class="orange">Relay</span> – <b>"total lack of communication"</b> 👎
