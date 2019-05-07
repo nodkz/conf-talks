@@ -24,7 +24,7 @@
 </div>
 
 - Группа Telegram [https://t.me/graphql_ru](https://t.me/graphql_ru)
-- Cтатья и код [http://bit.ly/graphql-kyiv-read](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-build-ways)
-- Презентация [http://bit.ly/graphql-kyiv](https://nodkz.github.io/conf-talks/talks/2019.05.12-zlit-tech-kyiv/index.html)
+- Cтатья и код [http://bit.ly/kyiv-graphql-read](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-build-ways)
+- Презентация [http://bit.ly/kyiv-graphql](https://nodkz.github.io/conf-talks/talks/2019.05.12-zlit-tech-kyiv/index.html)
 
 ![Photo](../assets/nodkz-photo.jpg) <!-- .element: style="max-width: 400px; border: none" -->
