@@ -7,26 +7,35 @@
 ### [graphql-compose](https://github.com/graphql-compose/graphql-compose) позволяет конструировать схемы несколькими способами:
 
 - как в `graphql` с кучей синтаксического сахара
-- как в `graphql-tools` через SDL и резолверы.
+- как в `graphql-tools` через SDL и резолверы
+- скоро через декораторы, почти как `type-graphql`
 
 -----
 
-### Но самое главное `graphql-compose`, <br/>позволяет  модифицировать типы, <br/>перед тем как будет построена GraphQL-схема.
+### Фишки `graphql-compose`
+
+- имеет свой регистр типов <!-- .element: class="fragment" -->
+- позволяет модифицировать типы <!-- .element: class="fragment" -->
+- писать собственные трансформеры/генераторы <!-- .element: class="fragment" -->
+- он как babel позволяет трансформировать существующие схемы <!-- .element: class="fragment" -->
+- сейчас в работе навернутый stitching-схем <!-- .element: class="fragment" -->
 
 -----
 
 ### Это открывает возможности:
 
 - генерировать ваши схемы
-- комбинировать несколько схем
 - либо редактировать уже существующие (например генерировать урезанную публичную схему из полной админской).
+- комбинировать несколько схем
+
+<span class="fragment green">Цель: из `graphql-compose` сделать `FFB` (frontend for backend) для микросервисной архитектуры (банки, корп.сектор, производство)</span>
 
 -----
 
 ### 1. Импортируем нужные классы
 
 ```js
-import { TypeComposer, schemaComposer } from 'graphql-compose';
+import { schemaComposer } from 'graphql-compose';
 import { authors, articles } from './data';
 
 ```
@@ -36,7 +45,7 @@ import { authors, articles } from './data';
 ### 2. Cоздаем тип для `Автора` с помощью SDL
 
 ```js
-const AuthorType = TypeComposer.create(`
+const AuthorType = schemaComposer.createObjectTC(`
   "Author data"
   type Author {
     id: Int
@@ -53,7 +62,7 @@ const AuthorType = TypeComposer.create(`
 <div class="code-500">
 
 ```js
-const ArticleType = TypeComposer.create({
+const ArticleType = schemaComposer.createObjectTC({
   name: 'Article',
   description: 'Article data with related Author data',
   fields: {
@@ -149,3 +158,5 @@ export default schema;
 + const schema = schemaComposer.buildSchema();
 
 ```
+
+<span class="fragment">`addTypeDefs` и `addResolveMethods` вызывайте сколько хотите раз (удобно для модульных схем)

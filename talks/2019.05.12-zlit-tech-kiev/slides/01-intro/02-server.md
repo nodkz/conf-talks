@@ -4,11 +4,6 @@
 
 -----
 
-![Диаграмма работы сервера](./diagram-server.svg) <!-- .element: style="width: 90vw;" class="plain"  -->
-<!-- https://drive.google.com/file/d/1G-Iu_fZdrois9NZY1-5YGWNwELJEzy6Y/view?usp=sharing -->
-
------
-
 ### Каковы обычно требования к серверу?
 
 <br />
@@ -31,6 +26,11 @@
 - откуда-то получить "сваренную" GraphQL-схему
 - отправить на выполнение GraphQL-схему, запрос и `context` в пакет `graphql`
 - из полученных данных от `graphql` сформировать http-ответ и отдать клиенту
+
+-----
+
+![Диаграмма работы сервера](./diagram-server.svg) <!-- .element: style="width: 90vw;" class="plain"  -->
+<!-- https://drive.google.com/file/d/1G-Iu_fZdrois9NZY1-5YGWNwELJEzy6Y/view?usp=sharing -->
 
 -----
 

@@ -38,7 +38,7 @@
 
 <img height="400" alt="AWS" src="https://user-images.githubusercontent.com/1946920/52818067-eaf81080-30cf-11e9-8609-d1370af07871.png">
 
-Нарисовано 481 нода из 6595. <br/>Спасибо Ивану Гончарову из [APIs.guru](https://apis.guru/) за помощь в генерации картинки из [graphql-compose-aws](https://github.com/graphql-compose/graphql-compose-aws).
+Нарисована 481 нода из 6595. <br/>Спасибо Ивану Гончарову из [APIs.guru](https://apis.guru/) за помощь в генерации картинки из [graphql-compose-aws](https://github.com/graphql-compose/graphql-compose-aws).
 
 -----
 

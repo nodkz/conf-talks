@@ -1,6 +1,6 @@
 ## 5 подходов построения GraphQL-схем
 
-### graphql, graphql-tools, graphql-compose, 
+### graphql, graphql-tools, graphql-compose,
 
 ### type-graphql, nexus.
 
@@ -9,6 +9,10 @@
 ### Pavel Chertorogov :: @nodkz
 
 #### Zlit Tech, Киев, 2019.05.12
+
+---
+
+![Photo](./poster-pavel.jpg) <!-- .element: style="max-width: 100%" class="plain"  -->
 
 ---
 
@@ -30,7 +34,6 @@
 
 <br/>
 
-- Дипломку писал по SOAP и WSDL 😬 <!-- .element: class="fragment" -->
 - В веб-разработке с 2001 года (ужос 18 лет мучений) 🙀 <!-- .element: class="fragment" -->
 - Фронтендер и бэкендер в одном флаконе 💑 <!-- .element: class="fragment" -->
 - Использую GraphQL с 2015 года 💃 <!-- .element: class="fragment" -->
@@ -44,3 +47,9 @@
 - [react-relay-network-layer](https://github.com/relay-tools/react-relay-network-layer) — NetworkLayer для Relay <br/> ![GitHub stars](https://img.shields.io/github/stars/relay-tools/react-relay-network-layer.svg?color=lightgrey) <!-- .element: class="plain" style="padding-left: 250px; height: 40px; vertical-align: middle;"  --> ![Downloads](https://img.shields.io/npm/dw/react-relay-network-layer.svg?color=lightgrey) <!-- .element: class="plain" style="height: 40px; vertical-align: middle;" -->
 - [lvovich](https://github.com/nodkz/lvovich) — склонение городов (from, to, in)<br/> ![GitHub stars](https://img.shields.io/github/stars/nodkz/lvovich.svg?color=lightgrey) <!-- .element: class="plain" style="padding-left: 250px; height: 40px; vertical-align: middle;" --> ![Downloads](https://img.shields.io/npm/dw/lvovich.svg?color=lightgrey) <!-- .element: class="plain" style="height: 40px; vertical-align: middle;" -->
 - и пачка других
+
+-----
+
+### В самой кучерявой хостинговой компании <br/>в Казахстане строим новый биллинг на GraphQL
+
+![ps-logo](https://user-images.githubusercontent.com/1946920/57164502-21634300-6e16-11e9-8c45-6d10fe9dea4e.jpg) <!-- .element: style="max-width: 1000px;" class="plain"  -->

@@ -98,7 +98,7 @@
 <td align="center">optional</td>
 <td align="center">optional</td>
 <td align="center">optional</td>
-<td align="center">Required</td>
+<td align="center">Required or <a href="https://github.com/19majkel94/type-graphql/issues/297" target="_blank">optional</a></td>
 <td align="center">Required</td>
 </tr>
 </tbody></table>
@@ -109,7 +109,7 @@
 
 <br/>
 
-### Шаг в лево, шаг в право в данных<br/> – и все сломалось. <!-- .element: class="fragment" -->
+### Шаг в лево, шаг в право в данных<br/> – и все на клиенте сломалось. <!-- .element: class="fragment" -->
 
 <br/>
 

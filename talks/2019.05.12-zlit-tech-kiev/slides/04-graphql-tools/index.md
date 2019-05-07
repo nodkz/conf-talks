@@ -42,7 +42,7 @@ const typeDefs = `
   }
 
   type Query {
-    articles(limit: Int = 10): [Article]
+    articles(limit: Int = 3): [Article]
     authors: [Author]
   }
 `;

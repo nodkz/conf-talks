@@ -18,7 +18,7 @@
 
 -----
 
-##### Hello world schema (build phase)
+##### Hello world schema (startup phase)
 
 ```js
 import { GraphQLSchema, GraphQLObjectType, GraphQLString } from 'graphql';
