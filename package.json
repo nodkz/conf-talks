@@ -7,8 +7,8 @@
     "test": "yarn jest",
     "watch": "yarn jest --watch",
     "lint": "eslint --ext .js ./articles",
-    "start-holy": "yarn --cwd ./talks/2019.05.24-holyjs-piter start",
-    "start-kiev": "yarn --cwd ./talks/2019.05.12-zlit-tech-kiev start"
+    "start-piter": "yarn --cwd ./talks/2019.05.24-holyjs-piter start",
+    "start-kyiv": "yarn --cwd ./talks/2019.05.12-zlit-tech-kyiv start"
   },
   "repository": {
     "type": "git",
