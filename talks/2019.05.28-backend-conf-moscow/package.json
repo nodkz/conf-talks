@@ -1,0 +1,15 @@
+{
+  "version": "0.0.1",
+  "name": "nodkz-conf-talks-peter-graphql-meetup-2019-01",
+  "private": true,
+  "description": "GraphQL Peter Meetup @ Wrike 2019 (24 января): Дизан и паттерны проектирования GraphQL-схем",
+  "homepage": "https://nodkz.github.io/conf-talks/talks/2019.01.24-piter-graphql-meetup/index.html",
+  "scripts": {
+    "start": "cd reveal.js && yarn && cd .. && ./reveal.js/node_modules/.bin/grunt --gruntfile ./reveal.js/Gruntfile.js serve --root=../"
+  },
+  "author": {
+    "name": "Pavel Chertorogov",
+    "email": "pavel.chertorogov@gmail.com"
+  },
+  "license": "CC-BY-NC-4.0"
+}

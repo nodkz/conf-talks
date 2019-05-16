@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<title>Дизайн GraphQL-схем — строим схемы правильно (версия 2): Pavel Chertorogov</title>
+
+		<link rel="stylesheet" href="reveal.js/css/reveal.css" />
+		<link rel="stylesheet" href="reveal.js/css/theme/nodkz.css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="reveal.js/lib/css/atom-one-dark.css" />
+
+		<style>
+			.line { display: block; }
+			.line.focus { background: #fdf6e3; color: #657b83; }
+			.line.focus .hljs-comment, .line.focus .hljs-quote { color: #93a1a1; }
+
+			code {
+				counter-reset: line;
+			}
+			code > span {
+				counter-increment: line;
+			}
+			code > span:before {
+				content: counter(line);
+				text-align: right;
+				color: #454f60;
+				/* border-right: 1px solid #555; */
+				width: 40px;
+				padding-right: 8px;
+				margin-right: 8px;
+				display: inline-block;
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-khtml-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none; 
+				user-select: none;
+			}
+
+			code > span.focus:before {
+				color: #dadada;
+			}
+
+			.slide-menu-button { opacity: 0.1 }
+
+			.red {
+				color: tomato !important;
+			}
+
+			.orange {
+				color: darkorange !important;
+			}
+
+			.green {
+				color: greenyellow !important;
+			}
+
+			.apollo {
+				color: #15a4a2 !important;
+			}
+
+			.grey {
+				color: #818a91 !important;
+			}
+
+			.code-500 > * > code {
+				max-height: 500px !important;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown="slides/00-start/index.md" data-separator-vertical="^-----\n"></section>
+				<section data-markdown="slides/rules-1-naming/index.md" data-separator-vertical="^-----\n"></section>
+				<section data-markdown="slides/rules-2-types/index.md" data-separator-vertical="^-----\n"></section>
+				<section data-markdown="slides/rules-3-fields/index.md" data-separator-vertical="^-----\n"></section>
+				<section data-markdown="slides/rules-4-args/index.md" data-separator-vertical="^-----\n"></section>
+				<section data-markdown="slides/rules-5-lists/index.md" data-separator-vertical="^-----\n"></section>
+				<section data-markdown="slides/rules-6-mutations/index.md" data-separator-vertical="^-----\n"></section>
+				<section data-markdown="slides/09-end/index.md" data-separator-vertical="^-----\n"></section>
+			</div>
+		</div>
+
+		<script src="reveal.js/lib/js/head.min.js"></script>
+		<script src="reveal.js/js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'reveal.js/plugin/fixedMarkdown/marked.js' },
+					{ src: 'reveal.js/plugin/fixedMarkdown/markdown.js' },
+					{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+					{ 
+						src: 'reveal.js/plugin/highlight.9.12.0.pack.js',
+						callback: function() {
+							hljs.registerLanguage("graphql",function(e){return{aliases:["gql"],k:{keyword:"query mutation subscription|10 type input schema directive interface union scalar fragment|10 enum on ...",literal:"true false null"},c:[e.HCM,e.QSM,e.NM,{cN:"type",b:"[^\\w][A-Z][a-z]",e:"\\W",eE:!0},{cN:"literal",b:"[^\\w][A-Z][A-Z]",e:"\\W",eE:!0},{cN:"variable",b:"\\$",e:"\\W",eE:!0},{cN:"keyword",b:"[.]{2}",e:"\\."},{cN:"meta",b:"@",e:"\\W",eE:!0}],i:/([;<']|BEGIN)/}});
+						},
+					},
+					{
+						src: 'reveal.js/plugin/reveal-code-focus.js',
+						async: true,
+						callback: function() {
+							RevealCodeFocus();
+						}
+					},
+					{ src: 'reveal.js/plugin/elapsed-time-bar.js'},
+					// { src: 'reveal.js/plugin/spotlight.js'},
+					{ src: 'reveal.js/plugin/reveal.js-menu/menu.js' },
+					// { src: 'https://d3js.org/d3.v4.min.js' },
+					// { src: 'reveal.js/plugin/d3js.js'},
+				],
+				// https://github.com/tkrkt/reveal.js-elapsed-time-bar
+				allottedTime: 35 * 60000,
+				progressBarHeight: 3,
+				barColor: 'rgb(66, 128, 246, 0.6)',
+				// https://github.com/denniskniep/reveal.js-plugin-spotlight
+				spotlight: {
+					size: 60,
+					toggleSpotlightOnMouseDown: true,
+					presentingCursor: "initial", // change to "none"
+					presentingCursorOnlyVisibleWhenSpotlightVisible: false
+				},
+				// https://github.com/denehyg/reveal.js-menu
+				menu: {
+					side: 'left',
+					width: 'normal', 	// 'normal', 'wide', 'third', 'half', 'full', or any valid css length value
+					numbers: false, // Add slide numbers to the titles in the slide list
+					titleSelector: 'h1, h2, h3, h4, h5, h6',
+					useTextContentForMissingTitles: false,
+					hideMissingTitles: false,
+					markers: true,
+					openButton: true,
+					keyboard: true,
+					sticky: false,
+					autoOpen: false,
+					delayInit: false,
+					openOnInit: false,
+					loadIcons: true
+				},
+				// standard options
+				history: true,
+				width: 1280,
+				height: 720,
+				slideNumber: true,
+				showSlideNumber: 'all',
+				keyboard: {
+					13: function () { // pause/resume time when Enter is pressed
+						ElapsedTimeBar.isPaused ? ElapsedTimeBar.resume() : ElapsedTimeBar.pause();
+					},
+					82: function () { // reset timer when 'r' is pressed
+						ElapsedTimeBar.reset();
+					}
+				},
+			});
+
+			// Set 0 index for vertical slide
+			// var stateHolder = 0;
+			// try {
+			// 	// On page load take slide from URL
+			// 	stateHolder = parseInt(window.location.hash.split('/')[1]) || 0;
+			// } catch (e) { 
+			// 	//o_O
+			// }
+			// Reveal.addEventListener('slidechanged', function( event ) {
+			// 	var state = Reveal.getState();
+			// 	if (state.indexh < stateHolder || state.indexh > stateHolder){
+			// 		state.indexv = 0;
+			// 		Reveal.setState(state);
+			// 	}
+			// 	stateHolder = state.indexh;
+			// });
+		</script>
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</body>
+</html>
