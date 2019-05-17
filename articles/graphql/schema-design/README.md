@@ -42,6 +42,8 @@
     - [6.6.2.](#rule-6.6.2) В ответе мутации возвращайте статус операции.
     - [6.6.3.](#rule-6.6.3) В ответе мутации возвращайте поле с типом `Query`.
     - [6.6.4.](#rule-6.6.4) В ответе мутации возвращайте поле `errors` с типизированными пользовательскими ошибками.
+- **7. Правила связей между типами (relationships)**
+  - [7.1.](#rule-7.1) GraphQL-схема должна быть "волосатой"
 - **10. Прочие правила**
   - [10.1.](#rule-10.1) Для документации используйте markdown
 - **A. Appendix**
@@ -1185,6 +1187,36 @@ mutation {
 }
 ```
 
+## 7. Правила связей между типами (relationships)**
+
+Концептуальная разница GraphQL от REST API в том, что реализацию логики получения связанных ресурсов перенесли с клиента на сервер. Если с REST API фронтендеры гадают (без hypemedia) как запрашивать связанные ресурсы, пишут слой склейки/довытаскивания данных на клиенте. То с GraphQL этим делом занимаются те люди, которые прекрасно понимают свой data domain, и делают это на порядок быстрее и эффективнее. Тем более, когда связанные ресурсы дергаются в рамках сервера, не тратиться много времени на долгие раунд-трипы между клиентом и сервером для подзапросов. И вы не ограничены 4-мя браузерными подключениями на домен, внутри сервера отправляйте хоть 200 одновременных запросов, если хватает мощей.
+
+### <a name="rule-7.1"></a> 7.1. GraphQL-схема должна быть "волосатой"
+
+Фронтендеры активно сейчас используют компонентный подход. И если посмотреть на фейсбуковский [Relay](https://facebook.github.io/relay/docs/en/fragment-container#container-composition) и как они используют композицию компонентов и GraphQL-фрагментов, то вы заметите как они сломали парадигму написания запроса "наверху" и предложили более удобное и устойчивое к ошибкам решение:
+
+- каждый компонент имеет свой GraphQL-фрагмент (может иметь несколько фрагментов)
+- GraphQL-фрагмент содержит только те поля, которые необходимы текущей компоненте
+- чтобы сформировать GraphQL-запрос, они композируют компоненты и фрагменты
+
+Получается, что конечный GraphQL-запрос пишется снизу-вверх – в зависимости от того, какие компоненты используются на странице, будут взяты необходимые GraphQL-фрагменты. Если кто-то внизу решит расширить свою компоненту дополнительными данными, то он просто расширит список полей в GraphQL-фрагменте этой компоненты. И соответственно автоматически все GraphQL-запросы, которые используют этот фрагмент, начнут запрашивать дополнительные поля. Т.е. запрос как бы начинается формироваться внизу, где данные будут использоваться, а наверх уже склеиваются большие фрагменты. В конце мая 2019 я буду выступать в Санкт-Петербурге и Москве, где буду раскрывать эту тему подробнее. Здесь обязательно добавлю ссылку на видео.
+
+Чтобы GraphQL-фрагменты хорошо работали на фронтенде, необходимо чтобы бэкендеры указывали в своей схеме как можно больше связей между своими типами. Как бы оправдывали слово `Graph`. Иначе если схема содержит мало связей и похоже не дерево, то ее можно называть `RestQL`.
+
+**`Волосатый GraphQL` (`Hairy GraphQL`) – это GraphQL-схема, которая содержит много связей между типами.**
+
+В качестве примера можно привести "волосатую" схему GitHub АПИ (посмотрите сколько связей между типами):
+
+![hairly-github](https://user-images.githubusercontent.com/1946920/57200267-b0ee2a80-6fab-11e9-9c76-6053abe48ecd.jpg)
+
+А в качестве "лысого" `RestQL` АПИ за пример сойдет вот такое древовидное АПИ:
+
+![hairly-amazon](https://user-images.githubusercontent.com/1946920/57200270-b3e91b00-6fab-11e9-9d65-e6f794ea42f5.jpg)
+
+Данные картинки сделаны с помощью инструмента [graphql-voyager](https://apis.guru/graphql-voyager/) от Ivan Goncharov и Roman Gotsiy. Можно загрузить интроспекцию любой схемы и визуально оценить ее – "волосатая" она или "лысая".
+
+Т.е. чем больше связей в вашей схеме, тем легче фронтендерам делать запросы используя GraphQL-фрагменты. К сожалению, на "лысой" схеме применить фрагментный подход нормально не получится. Чтобы получить необходимые данные, фронтендеры будут вынуждены писать новые запросы через корень. А не просто дозапросить у текущего Типа по какому-то полю связанные данные с другим Типом. Одним словом, обратно возвращаемся в каменный 2000 год REST API.
+
 ## 10. Прочие правила
 
 ### <a name="rule-10.1"></a> 10.1. Для документации используйте markdown
@@ -1208,26 +1240,17 @@ mutation {
 
 ## WIP: Следующие правила в процессе формирования
 
-- **7. Правила реляций между типами (relationships)**
-  - TODO: Rule #1: Always start with a high-level view of the objects and their relationships before you deal with specific fields.
-  - TODO: Rule #8: Always use object references instead of ID fields.
-- **8. Правила по бизнес-логике**
+- **8. Правила по версионированию схемы**
+  - TODO: Rule #4: It’s easier to add fields than to remove them.
+  - TODO: Unique payload type. Use a unique payload type for each mutation and add the mutation’s output as a field to that payload type.
+- **9. Правила по бизнес-логике**
   - TODO: Rule #2: Never expose implementation details in your API design.
   - TODO: Rule #3: Design your API around the business domain, not the implementation, user-interface, or legacy APIs.
   - TODO: Rule #5: Major business-object types should always implement Node.
   - TODO: Rule #12: The API should provide business logic, not just data. Complex calculations should be done on the server, in one place, not on the client, in many places.
   - TODO: Rule #13: Provide the raw data too, even when there’s business logic around it.
-- **9. Правила по версионированию схемы**
-  - TODO: Rule #4: It’s easier to add fields than to remove them.
-  - TODO: Unique payload type. Use a unique payload type for each mutation and add the mutation’s output as a field to that payload type.
 
 Some rules from Shopify
-
-To get this simplified representation, I took out all scalar fields, all field names, and all nullability information. What you're left with still looks kind of like GraphQL but lets you focus on higher level of the types and their relationships.
-
-Rule #1: Always start with a high-level view of the objects and their relationships before you deal with specific fields.
-
-----
 
 The one that may have stood out to you already, and is hopefully fairly obvious, is the inclusion of the CollectionMembership type in the schema. The collection memberships table is used to represent the many-to-many relationship between products and collections. Now read that last sentence again: the relationship is between products and collections; from a semantic, business domain perspective, collection memberships have nothing to do with anything. They are an implementation detail.
 
@@ -1252,25 +1275,6 @@ interface Node {
 ```
 
 It hints to the client that this object is persisted and retrievable by the given ID, which allows the client to accurately and efficiently manage local caches and other tricks. Most of your major identifiable business objects (e.g. products, collections, etc) should implement Node.
-
-----
-
-Rule #8: Always use object references instead of ID fields.
-
-Now we come to the imageId field. This field is a classic example of what happens when you try and apply REST designs to GraphQL. In REST APIs it's pretty common to include the IDs of other objects in your response as a way to link together those objects, but this is a major anti-pattern in GraphQL. Instead of providing an ID, and forcing the client to do another round-trip to get any information on the object, we should just include the object directly into the graph — that's what GraphQL is for after all. In REST APIs this pattern often isn't practical, since it inflates the size of the response significantly when the included objects are large. However, this works fine in GraphQL because every field must be explicitly queried or the server won't return it.
-
-```graphql
-type Collection implements Node {
-  id: ID!
-  title: String!
-  imageId: ID # <-- BAD
-  image: Image
-}
-
-type Image {
-  id: ID!
-}
-```
 
 ----
 
