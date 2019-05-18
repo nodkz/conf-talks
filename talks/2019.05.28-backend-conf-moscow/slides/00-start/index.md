@@ -1,14 +1,14 @@
 <table>
   <tr>
-    <td style="vertical-align: top">
-        <div style="transform: rotate(-10deg); vertical-align: text-top;">
+    <td style="vertical-align: top;">
+      <div style="transform: rotate(-10deg); vertical-align: text-top; margin-top: 100px;">
         <h2 class="orange">Дизайн GraphQL-схем</h2>
-        <h4>
+        <h4 style="text-align: center">
           <span class="green">— строим схемы правильно</span>
           Version 2</span>
         </h4>
         <hr/>
-        <h4>Pavel Chertorogov :: <a href="https://twitter.com/nodkz" target="_blank">@nodkz</a></h4>
+        <h4 style="text-align: center">Pavel Chertorogov :: <a href="https://twitter.com/nodkz" target="_blank">@nodkz</a></h4>
       </div>
     </td>
     <td>
@@ -49,3 +49,26 @@
 ### В самой кучерявой хостинговой компании <br/>в Казахстане строим новый биллинг на GraphQL
 
 ![ps-logo](https://user-images.githubusercontent.com/1946920/57164502-21634300-6e16-11e9-8c45-6d10fe9dea4e.jpg) <!-- .element: style="max-width: 1000px;" class="plain"  -->
+
+-----
+
+# Поговорим о правилах
+
+-----
+
+## Правилах построения GraphQL-схем
+
+-----
+
+### Текущие правила носят <br/><span class="orange">рекомендательный характер</span><br/>и могут со временем:
+
+- улучшиться
+- измениться
+- расшириться
+- а что-то стать антипаттерном
+
+-----
+
+## так или иначе...
+
+## Долой креати💩 в больших командах! <!-- .element: class="fragment red" -->
