@@ -430,8 +430,8 @@
 
 ## А еще у <span class="orange">Relay</span> есть<br/><br/>
 
-- `PaginationContainer` – компонента облегчающая жизнь с [Relay Cursor Connections Spec](https://facebook.github.io/relay/graphql/connections.htm)<br/><br/>
-- `FragmentContainer` – гвоздь производительности Relay, у него еще Datamasking по-умолчанию
+- `PaginationContainer` – компонента, облегчающая жизнь с [Relay Cursor Connections Spec](https://facebook.github.io/relay/graphql/connections.htm)<br/><br/>
+- `FragmentContainer` – гвоздь производительности Relay, у него еще Datamasking по умолчанию
 
 -----
 

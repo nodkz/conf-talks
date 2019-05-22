@@ -200,5 +200,25 @@ type PaginationInfo {
 
 ### Но зато Relay Cursor Connections Specification
 
-- не имеет проблем с `over-fetching`ом
-- не имеет проблем с `under-fetching`ом
+- не имеет проблем с постраничным `over-fetching`ом
+- не имеет проблем с постраничным `under-fetching`ом
+
+-----
+
+## Листалка строится на курсорах
+
+```graphql
+{
+  articles(first: 10, after: "opaqueCursor") {
+    edges {
+      cursor # <--- используется для следующего запроса
+      node {
+        name
+      }
+    }
+  }
+}
+
+```
+
+<span class="fragment" data-code-focus="2,4" />
