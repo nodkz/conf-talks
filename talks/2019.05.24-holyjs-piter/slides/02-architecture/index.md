@@ -32,7 +32,7 @@
 
 -----
 
-### Разбираем основные пакеты
+### Все начинается с framework agnostic клиентов:
 
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="949px" height="562px" viewBox="-0.5 -0.5 791 469">
@@ -196,15 +196,208 @@
 
 -----
 
-## А теперь копнем поглубже в ядро сторов
+<div style="font-size: 30px; font-weight: bold; padding-bottom: 15px;">
+  <span class="orange">relay-runtime</span> vs <span class="apollo">apollo-client</span>
+</div>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1231px" height="586px" viewBox="-0.5 -0.5 926 441">
+    <defs/>
+    <g>
+        <rect x="150" y="0" width="310" height="440" rx="7" ry="7" fill="#ff9408" stroke="#c73500" pointer-events="none" />
+        <rect x="170" y="60" width="270" height="115" rx="7" ry="7" fill="#1ba1e2" stroke="#006eaf" pointer-events="none" class="fragment" data-fragment-index="1" />
+        <g transform="translate(240.5,18.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="129" height="23" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 21px; font-family: Helvetica; color: rgb(255, 255, 255); line-height: 1.2; vertical-align: top; width: 129px; white-space: nowrap; overflow-wrap: normal; font-weight: bold; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><span style="font-size: 21px">Environment</span></div>
+                    </div>
+                </foreignObject>
+                <text x="65" y="22" fill="#FFFFFF" text-anchor="middle" font-size="21px" font-family="Helvetica" font-weight="bold">[Not supported by viewer]</text>
+            </switch>
+        </g>
+        <g transform="translate(263.5,75.5)" class="fragment" data-fragment-index="1">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="82" height="23" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 21px; font-family: Helvetica; color: rgb(255, 255, 255); line-height: 1.2; vertical-align: top; width: 84px; white-space: nowrap; overflow-wrap: normal; font-weight: bold; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">Network
+                            <br style="font-size: 21px" />
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="41" y="22" fill="#FFFFFF" text-anchor="middle" font-size="21px" font-family="Helvetica" font-weight="bold">[Not supported by viewer]</text>
+            </switch>
+        </g>
+        <rect x="170" y="197" width="270" height="225" rx="7" ry="7" fill="#60a917" stroke="#2d7600" pointer-events="none" class="fragment" data-fragment-index="2" />
+        <g transform="translate(278.5,218.5)" class="fragment" data-fragment-index="2">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="53" height="23" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 21px; font-family: Helvetica; color: rgb(255, 255, 255); line-height: 1.2; vertical-align: top; width: 55px; white-space: nowrap; overflow-wrap: normal; font-weight: bold; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">Store</div>
+                    </div>
+                </foreignObject>
+                <text x="27" y="22" fill="#FFFFFF" text-anchor="middle" font-size="21px" font-family="Helvetica" font-weight="bold">Store</text>
+            </switch>
+        </g>
+        <path d="M 325 30 L 325 30" fill="none" stroke="#66b2ff" stroke-width="3" stroke-miterlimit="10" pointer-events="none" />
+        <rect x="490" y="0" width="310" height="440" rx="7" ry="7" fill="#125775" stroke="#118583" pointer-events="none" />
+        <rect x="510" y="60" width="270" height="115" rx="7" ry="7" fill="#1ba1e2" stroke="#006eaf" pointer-events="none" class="fragment" data-fragment-index="1" />
+        <g transform="translate(586.5,5.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="124" height="48" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 21px; font-family: Helvetica; color: rgb(255, 255, 255); line-height: 1.2; vertical-align: top; width: 124px; white-space: nowrap; overflow-wrap: normal; font-weight: bold; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">ApolloClient
+                            <br /><font style="font-size: 15px">(QueryManager)</font>
+                            <br />
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="62" y="35" fill="#FFFFFF" text-anchor="middle" font-size="21px" font-family="Helvetica" font-weight="bold">[Not supported by viewer]</text>
+            </switch>
+        </g>
+        <g transform="translate(590.5,75.5)" class="fragment" data-fragment-index="1">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="108" height="23" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 21px; font-family: Helvetica; color: rgb(255, 255, 255); line-height: 1.2; vertical-align: top; width: 110px; white-space: nowrap; overflow-wrap: normal; font-weight: bold; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><span>ApolloLink</span>
+                            <br style="font-size: 21px" />
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="54" y="22" fill="#FFFFFF" text-anchor="middle" font-size="21px" font-family="Helvetica" font-weight="bold">[Not supported by viewer]</text>
+            </switch>
+        </g>
+        <rect x="510" y="197" width="270" height="225" rx="7" ry="7" fill="#60a917" stroke="#2d7600" pointer-events="none" class="fragment" data-fragment-index="2" />
+        <g transform="translate(548.5,209.5)" class="fragment" data-fragment-index="2">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="202" height="48" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 21px; font-family: Helvetica; color: rgb(255, 255, 255); line-height: 1.2; vertical-align: top; width: 204px; white-space: nowrap; overflow-wrap: normal; font-weight: bold; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><span>ApolloCache </span>
+                            <br /><span><font style="font-size: 17px">(apollo-cache-inmemory)</font></span></div>
+                    </div>
+                </foreignObject>
+                <text x="101" y="35" fill="#FFFFFF" text-anchor="middle" font-size="21px" font-family="Helvetica" font-weight="bold">[Not supported by viewer]</text>
+            </switch>
+        </g>
+        <path d="M 789 30 L 789 30" fill="none" stroke="#66b2ff" stroke-width="3" stroke-miterlimit="10" pointer-events="none" />
+        <image x="0" y="149.5" width="119" height="70" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTAwIiBoZWlnaHQ9IjE0NzUiIHZpZXdCb3g9IjAgMCAyNTYgMTUxIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCI+PHBhdGggZD0iTTIwOC42MTUgMTE5LjkwOEg5Ni42ODNjLTEwLjUzNyAwLTE5LjExLTguNTcyLTE5LjExLTE5LjEwNyAwLTEwLjUzOSA4LjU3Mi0xOS4xMTEgMTkuMTEtMTkuMTExaDYxLjEyOWMxNy44NCAwIDMyLjM1My0xNC41MTMgMzIuMzUzLTMyLjM1MyAwLTE3Ljg0LTE0LjUxMi0zMi4zNTQtMzIuMzUzLTMyLjM1NEg0Ny4yMjNDNDQuMTcgNy4xNDMgMzQuOTk1IDAgMjQuMTUyIDAgMTAuODExIDAgMCAxMC44MSAwIDI0LjE1MmMwIDEzLjM0MSAxMC44MTIgMjQuMTUyIDI0LjE1MyAyNC4xNTIgMTEuMjM5IDAgMjAuNjg3LTcuNjc3IDIzLjM4MS0xOC4wNzZoMTEwLjI3OWMxMC41MzUgMCAxOS4xMDcgOC41NzMgMTkuMTA3IDE5LjExIDAgMTAuNTM2LTguNTcyIDE5LjEwOS0xOS4xMDcgMTkuMTA5aC02MS4xM2MtMTcuODM5IDAtMzIuMzUzIDE0LjUxMy0zMi4zNTMgMzIuMzU0IDAgMTcuODQgMTQuNTEzIDMyLjM1MiAzMi4zNTQgMzIuMzUyaDExMS45M2MyLjg3OCAxMC4xMjEgMTIuMTg5IDE3LjUzIDIzLjIzNCAxNy41MyAxMy4zNDEgMCAyNC4xNTItMTAuODEgMjQuMTUyLTI0LjE1MSAwLTEzLjM0Mi0xMC44MS0yNC4xNTItMjQuMTUyLTI0LjE1Mi0xMS4wNDQgMC0yMC4zNTQgNy40MDgtMjMuMjMzIDE3LjUyOHoiIGZpbGw9IiNGMjZCMDAiLz48L3N2Zz4=" preserveAspectRatio="none" pointer-events="none" />
+        <image x="839.5" y="144.5" width="85" height="85" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjU2cHgiIGhlaWdodD0iMjU2cHgiIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB2ZXJzaW9uPSIxLjEiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIj4mI3hhOyAgICA8Zz4mI3hhOyAgICAgICAgPHBhdGggZD0iTTE2MC4yMjcsMTc4LjUxODYgTDE4Ny44NTcsMTc4LjUxODYgTDE0My43NSw2NC4wNDg2IEwxMTMuMjAxLDY0LjA0ODYgTDY5LjA5NCwxNzguNTE4NiBMOTYuNzI2LDE3OC41MTg2IEwxMDMuOTM0LDE1OS4xMjg2IEwxNDUuNjA5LDE1OS4xMjg2IEwxMzguMDY1LDEzNy42NzI2IEwxMTAuNjI1LDEzNy42NzI2IEwxMjguNDc1LDg4LjQxODYgTDE2MC4yMjcsMTc4LjUxODYgWiBNMjUxLjMzOSw5My43NjggQzI1MC4zNTcsOTAuMjMyIDI0Ni43MDUsODguMTU1IDI0My4xNTQsODkuMTQxIEMyMzkuNjE3LDkwLjEyMyAyMzcuNTQ0LDkzLjc4NyAyMzguNTI2LDk3LjMyNCBDMjQxLjI5OSwxMDcuMzA5IDI0Mi43MDQsMTE3LjYzIDI0Mi43MDQsMTI4IEMyNDIuNzA0LDE5MS4yNDggMTkxLjI0OCwyNDIuNzAyIDEyOCwyNDIuNzAyIEM2NC43NTIsMjQyLjcwMiAxMy4yOTcsMTkxLjI0OCAxMy4yOTcsMTI4IEMxMy4yOTcsNjQuNzUxIDY0Ljc1MiwxMy4yOTYgMTI4LDEzLjI5NiBDMTU0Ljc5MywxMy4yOTYgMTgwLjcxOCwyMi44MTQgMjAxLjE3OSwzOS43NTIgQzIwMC4zODMsNDEuNjUyIDE5OS45NDEsNDMuNzM3IDE5OS45NDEsNDUuOTI1IEMxOTkuOTQxLDU0Ljc2IDIwNy4xMDMsNjEuOTIyIDIxNS45MzgsNjEuOTIyIEMyMjQuNzczLDYxLjkyMiAyMzEuOTM1LDU0Ljc2IDIzMS45MzUsNDUuOTI1IEMyMzEuOTM1LDM3LjA5IDIyNC43NzMsMjkuOTI4IDIxNS45MzgsMjkuOTI4IEMyMTQuMjM3LDI5LjkyOCAyMTIuNiwzMC4xOTkgMjExLjA2MiwzMC42OTEgQzE4OC4wMjIsMTEuMDU2IDE1OC41MTMsMCAxMjgsMCBDNTcuNDIxLDAgMCw1Ny40MiAwLDEyOCBDMCwxOTguNTc5IDU3LjQyMSwyNTUuOTk5IDEyOCwyNTUuOTk5IEMxOTguNTc5LDI1NS45OTkgMjU2LDE5OC41NzkgMjU2LDEyOCBDMjU2LDExNi40MjggMjU0LjQzMywxMDQuOTEgMjUxLjMzOSw5My43NjggWiIgZmlsbD0iIzExMkI0OSIvPiYjeGE7ICAgIDwvZz4mI3hhOzwvc3ZnPg==" preserveAspectRatio="none" pointer-events="none" />
+    </g>
+</svg>
 
 -----
 
-<div style="font-size: 30px; font-weight: bold; padding-bottom: 15px;">
-  Найдите 5 отличий
-  <br/>
-  <span class="orange">relay-runtime</span> vs <span class="apollo">apollo-client</span> 
-</div>
+### Рассмотрим Network Layer (Link)
+
+![network](./network.svg) <!-- .element: class="plain"  -->
+
+#### Задача: работать по сети с сервером <!-- .element: class="fragment green"  -->
+
+-----
+
+### Доступные мидлвары:
+
+- apollo-link-<span class="green">http</span>
+- apollo-link-<span class="green">ws</span>
+- apollo-link-<span class="green">schema</span>
+- apollo-link-<span class="orange">error</span>
+- apollo-link-<span class="orange">context</span>
+- apollo-link-<span class="orange">retry</span>
+- apollo-link-<span class="orange">batch-http</span>
+- apollo-link-<span class="orange">dedup</span>
+- apollo-link-<span class="gray">state</span>
+- apollo-link-<span class="gray">rest</span>
+
+-----
+
+### Нормализованный стор
+
+![store](./store.svg) <!-- .element: class="plain"  -->
+
+#### Задача: разобрать GraphQL-ответ на key-value map и смерджить с имеющимися данными <!-- .element: class="fragment green"  -->
+
+-----
+
+## Нормализованный кэш/стор
+
+![normalized store](./normalized-store.svg) <!-- .element: style="width: 800px;" class="plain"  -->
+
+GlobalId обычно `base64(__typename + ':' + id)`
+
+-----
+
+#### С другим запросом пришли обновленные данные – обновились записи в нормализованном сторе
+
+![normalized store](./normalized-store-2.svg) <!-- .element: style="width: 800px;" class="plain"  -->
+
+-----
+
+### С нормализованным стором
+
+- вам не важно сколько раз вам вернулись данные
+- насколько глубоко они вложены в графкуэль-ответе
+
+<span class="green fragment">Записи хранятся компактно, происходит дедупликация.</span>
+
+-----
+
+## Watchers (подписки)
+
+![watchers](./watchers.svg) <!-- .element: style="width: 800px;" class="plain"  -->
+
+#### Задача: следить за изменениями в сторе, предоставить механизм подписки<!-- .element: class="fragment green"  -->
+
+-----
+
+### Отправили первый запрос, сформировалась подписка
+
+![store](./normalized-store.svg) <!-- .element: class="plain"  -->
+
+-----
+
+### В другом запросе прилетели обновленные данные
+
+![store](./normalized-store-2.svg) <!-- .element: class="plain"  -->
+
+-----
+
+### Подписка на первый запрос передергивается, и возвращается ответ с обновленными данными
+
+![normalized store](./normalized-store-3.svg) <!-- .element: style="width: 800px;" class="plain"  -->
+
+-----
+
+### Различия в подписках на изменения в сторе
+
+- <span class="orange">Relay</span> на уровне фрагмента (Selector)
+- <span class="apollo">ApolloClient</span> на уровне запроса целиком (Query)
+
+-----
+
+### Представьте большую таблицу, если произошли изменения в сторе:
+
+- то <span class="orange">Relay</span> отправит изменения фрагменту
+- <span class="apollo">ApolloClient</span> отправит изменения всему Query
+
+<span class="fragment"><span class="orange">Relay</span> будет перерендерить строчку, а то и ячейку. А вот <span class="apollo">ApolloClient</span> всю таблицу.</span>
+
+<span class="fragment">Т.к. у <span class="orange">Relay</span> еcть специальный компонент <code>FragmentContainer</code></span>
+
+-----
+
+# TODO:
+
+-----
+
+## GrabageCollector
+
+- <span class="apollo">ApolloClient</span> – завезут в v3 ([PR 4681](https://github.com/apollographql/apollo-client/pull/4681)), отполируется скорее всего к концу года.
+- <span class="orange">Relay</span> – GC еще был два года назад. Но кто об этом знал?!
+
+Пока Relay все равно будет рулить, т.к. он работает на уровне фрагментов. <!-- .element: class="fragment green" -->
+
+-----
+
+### Ещё раз всё вместе для закрепления
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1231px" height="586px" viewBox="-0.5 -0.5 926 441">
     <defs/>
@@ -394,40 +587,6 @@
 
 -----
 
-### Различия в подписках на изменения в сторе
-
-- <span class="orange">Relay</span> на уровне фрагмента
-- <span class="apollo">ApolloClient</span> на уровне запроса целиком
-
------
-
-### Представьте большую таблицу, если произошли изменения в сторе:
-
-- то <span class="orange">Relay</span> отправит изменения фрагменту
-- <span class="apollo">ApolloClient</span> отправит изменения всему Query
-
-<span class="fragment"><span class="orange">Relay</span> будет перерендерить строчку, а то и ячейку. А вот <span class="apollo">ApolloClient</span> всю таблицу.</span>
-
-<span class="fragment">Т.к. у <span class="orange">Relay</span> еcть специальный компонент <code>FragmentContainer</code></span>
-
------
-
-#### Очень показательно [issue 3965](https://github.com/apollographql/apollo-client/issues/3965), где Mike Marcacci делится опытом работы отображения объектов на карте при изменении Viewport'a:
-
-- <span class="apollo">ApolloClient</span> – <b>"is drastically slow down"</b> 👎
-- <span class="orange">Relay</span> – <b>"total lack of communication"</b> 👎
-
------
-
-## GrabageCollector
-
-- <span class="apollo">ApolloClient</span> – завезут в v3 ([PR 4681](https://github.com/apollographql/apollo-client/pull/4681)), отполируется скорее всего к концу года.
-- <span class="orange">Relay</span> – GC еще был два года назад. Но кто об этом знал?!
-
-Пока Relay все равно будет рулить, т.к. он работает на уровне фрагментов. <!-- .element: class="fragment green" -->
-
------
-
 ## А еще у <span class="orange">Relay</span> есть<br/><br/>
 
 - `PaginationContainer` – компонента, облегчающая жизнь с [Relay Cursor Connections Spec](https://facebook.github.io/relay/graphql/connections.htm)<br/><br/>
@@ -454,6 +613,19 @@
 ### <span class="orange">Relay ~170k/week</span> <span class="apollo">ApolloClient ~650k/week</span>
 
 [<img width="1121" alt="Screen Shot 2019-05-06 at 12 55 20 AM" src="https://user-images.githubusercontent.com/1946920/57198866-d96d2900-6f99-11e9-999d-e5b9df9ba579.png">](https://www.npmtrends.com/apollo-client-vs-relay-runtime)
+
+-----
+
+#### Очень показательно [issue 3965](https://github.com/apollographql/apollo-client/issues/3965), где Mike Marcacci делится опытом работы отображения объектов на карте при изменении Viewport'a:
+
+<img width="1400" alt="Screen Shot 2019-05-20 at 11 02 29 PM" src="https://user-images.githubusercontent.com/1946920/58238533-1f730c80-7d50-11e9-8163-5e324b8c5fa2.png">
+
+-----
+
+#### Очень показательно [issue 3965](https://github.com/apollographql/apollo-client/issues/3965), где Mike Marcacci делится опытом работы отображения объектов на карте при изменении Viewport'a:
+
+- <span class="apollo">ApolloClient</span> – <b>"is drastically slow down"</b> 👎
+- <span class="orange">Relay</span> – <b>"total lack of communication"</b> 👎
 
 -----
 
