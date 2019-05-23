@@ -384,16 +384,20 @@ GlobalId обычно `base64(__typename + ':' + id)`
 
 -----
 
-# TODO:
+### Рассмотрим Garbage Collector
+
+![garbadge-collector.svg](./garbadge-collector.svg) <!-- .element: class="plain"  -->
+
+#### Задача: подчищать ненужные или старые данные <!-- .element: class="fragment green"  -->
 
 -----
 
-## GrabageCollector
+## GarbageCollector
 
+- <span class="orange">Relay</span> – GC c незапамятных времен
 - <span class="apollo">ApolloClient</span> – завезут в v3 ([PR 4681](https://github.com/apollographql/apollo-client/pull/4681)), отполируется скорее всего к концу года.
-- <span class="orange">Relay</span> – GC еще был два года назад. Но кто об этом знал?!
 
-Пока Relay все равно будет рулить, т.к. он работает на уровне фрагментов. <!-- .element: class="fragment green" -->
+GC у Relay будет всегда на порядок круче, пока Apollo не прекрутит фрагменты к стору. <!-- .element: class="fragment green" -->
 
 -----
 
@@ -590,17 +594,7 @@ GlobalId обычно `base64(__typename + ':' + id)`
 ## А еще у <span class="orange">Relay</span> есть<br/><br/>
 
 - `PaginationContainer` – компонента, облегчающая жизнь с [Relay Cursor Connections Spec](https://facebook.github.io/relay/graphql/connections.htm)<br/><br/>
-- `FragmentContainer` – гвоздь производительности Relay, у него еще Datamasking по умолчанию
-
------
-
-### Неужели в Аполло все так плохо? <!-- .element: class="red" -->
-
-Куча людей радуется тому, что есть.
-
-И вполне хватает текущего поведения под их задачи.
-
-В край не кэшируйте или чистите стор ручками, когда начнутся проблемы. <!-- .element: class="fragment green" -->
+- `FragmentContainer` – гвоздь производительности Relay, плюс у него еще есть Datamasking по умолчанию
 
 -----
 
@@ -637,3 +631,9 @@ GlobalId обычно `base64(__typename + ':' + id)`
 - Коннект – это компоненты Query, Mutation, FragmentContainer и прочие хуки. <!-- .element: class="fragment" -->
 
 <span class="fragment green">Чуть подробнее про [Redux - бойлерплейт vs Relay/ApolloClient](https://github.com/nodkz/conf-talks/tree/master/articles/redux)</span>
+
+-----
+
+## И помните ☝️
+
+### Вам не нужен Redux для Apollo/Relay!
