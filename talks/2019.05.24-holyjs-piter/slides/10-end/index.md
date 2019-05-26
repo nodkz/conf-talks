@@ -2,6 +2,18 @@
 
 ### Про статический анализ
 
+### Example repos: [Relay](https://github.com/nodkz/example-fragments-relay), [Apollo](https://github.com/nodkz/example-fragments-apollo)
+
+-----
+
+## Recap:
+
+- Волосатый GraphQL <!-- .element: class="fragment green" -->
+- GraphQL-фрагменты и компоненты <!-- .element: class="fragment green" -->
+- Генерация тайпингов из фрагментов <!-- .element: class="fragment green" -->
+- Relay – крутая архитектура, но фейсбук не помогает <!-- .element: class="fragment orange" -->
+- Apollo – легок в изучении, но архитектура послабее <!-- .element: class="fragment orange" -->
+
 -----
 
 ## Спасибо за ваше внимание!
