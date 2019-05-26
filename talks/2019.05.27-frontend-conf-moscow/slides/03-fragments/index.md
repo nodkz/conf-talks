@@ -9,7 +9,7 @@
 
 ### Это компоненты (виджеты) <!-- .element: class="fragment green" -->
 
-<span class="fragment">К примеру графкуэльный тип `User` может быть представлен на фронтенде 3 компонентами:
+<span class="fragment">К примеру, графкуэльный тип `User` может быть представлен на фронтенде 3 компонентами:
 <br/>
 `UserProfile`, `UserAvatar`, `UserKarmaWithName`</span>
 
@@ -17,7 +17,7 @@
 
 ### Что такое <span class="green">GraphQL-фрагмент</span> в терминах фронтендера?
 
-<h3 class="fragment">Это запрос нужных полей на <span class="orange">GraphQL-типе</span> для отображения компоненты</h3>
+<h3 class="fragment">Это запрос нужных полей на <span class="orange">GraphQL-типе</span> для отображения реакт-компоненты</h3>
 
 -----
 
@@ -44,15 +44,46 @@ fragment UserAvatar on User {
 
 <br/>
 
-Тип `User` имеет кучу полей, и фрагмент это именованный набор только тех полей которые вам нужны в Компоненте.
+Тип `User` имеет кучу полей, и фрагмент — это именованный набор только тех полей, которые вам нужны в Компоненте.
 
 -----
 
-## `Фрагменты` круто называть
+<!--
+import React from 'react';
+import { createFragmentContainer } from 'react-relay';
+import graphql from 'babel-plugin-relay/macro';
+import { OrderRow_order } from './__generated__/OrderRow_order.graphql';
 
-## по названию ваших `Компонент`
+interface Props {
+  user: UserAvatar_user;
+}
+-->
 
-## 👍
+### Пример на React + Relay
+
+```jsx
+class UserAvatar extends React.Component<Props> {
+  render() {
+    const { user } = this.props;
+    return <img src={user.avatar} alt={user.nickname}></img>;
+  }
+}
+
+export default createFragmentContainer(UserAvatar, {
+  user: graphql`
+    fragment UserAvatar_user on User {
+      avatar(w: 400, h: 400)
+      nickname
+    }
+  `,
+});
+
+```
+
+<span class="fragment" data-code-focus="10" />
+<span class="fragment" data-code-focus="11-12" />
+<span class="fragment" data-code-focus="3-4" />
+<span class="fragment" data-code-focus="1,8" />
 
 -----
 
@@ -101,7 +132,7 @@ Image created by @sgwilym
 
 - Накидали компонентов, собрали с них фрагменты и запрос на 90% готов <!-- .element: class="fragment" -->
 
-- Кто-то внизу зарефакторил компоненту чтобы отображать больше данных – вам наверху в запросе пофигу, т.к. ничего менять не надо <!-- .element: class="fragment" -->
+- Кто-то внизу зарефакторил компоненту, чтобы отображать больше данных – вам наверху в запросе пофигу, т.к. ничего менять не надо <!-- .element: class="fragment" -->
 
 -----
 
@@ -110,9 +141,3 @@ Image created by @sgwilym
 ## Ущербно писать запрос целиком только наверху, когда есть Фрагменты
 
 ### <span class="red fragment">Убей RESTовика в себе!</span>
-
------
-
-<h1><span class="orange">DE</span><span class="green">mo</span> <span class="green">ti</span><span class="red">ME</span></h1>
-
-### Про статический анализ
