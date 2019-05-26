@@ -12,7 +12,7 @@
 - under_score <!-- .element: class="fragment" -->
 - UpperCamelCase <!-- .element: class="fragment" -->
 - CAPITALIZED_WITH_UNDERSCORES <!-- .element: class="fragment" -->
-- <span>слава богу `kebab-case` не поддерживается!</span> <!-- .element: class="fragment" -->
+- <span>слава богу, `kebab-case` не поддерживается!</span> <!-- .element: class="fragment" -->
 
 -----
 
@@ -111,7 +111,7 @@ enum Sort {
 
 -----
 
-### И не забываем про то, как будут использоваться ENUM значения в GraphQL-запросах
+### И не забываем про то, как будут использоваться ENUM-значения в GraphQL-запросах
 
 ```diff
 query {

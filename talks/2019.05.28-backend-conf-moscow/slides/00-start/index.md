@@ -1,25 +1,3 @@
-<table>
-  <tr>
-    <td style="vertical-align: top;">
-      <div style="transform: rotate(-10deg); vertical-align: text-top; margin-top: 100px;">
-        <h2 class="orange">Дизайн GraphQL-схем</h2>
-        <h4 style="text-align: center">
-          <span class="green">— строим схемы правильно</span>
-          Version 2</span>
-        </h4>
-        <hr/>
-        <h4 style="text-align: center">Pavel Chertorogov :: <a href="https://twitter.com/nodkz" target="_blank">@nodkz</a></h4>
-      </div>
-    </td>
-    <td>
-      <!-- QRCode generator: http://goqr.me/#t=url -->
-      <img src="slides/00-start/qrcode.jpeg" alt="QRCode" class="plain" style="max-width: 500px" />
-    </td>
-  </tr>
-</table>
-
----
-
 #### Чтобы листать презентацию, используйте ПРОБЕЛ.
 
 <br /> А то [Reveal.js](https://github.com/hakimel/reveal.js/) со своим листанием<br />влево-вправо-вверх-вниз<br /> всё ещё много кому ломает голову.
@@ -30,7 +8,7 @@
 
 <br/>
 
-- В веб-разработке с 2001 года (ужос 18 лет мучений) 🙀 <!-- .element: class="fragment" -->
+- В веб-разработке с 2001 года (ужос, 18 лет мучений) 🙀 <!-- .element: class="fragment" -->
 - Фронтендер и бэкендер в одном флаконе 💑 <!-- .element: class="fragment" -->
 - Использую GraphQL с 2015 года 💃 <!-- .element: class="fragment" -->
 
