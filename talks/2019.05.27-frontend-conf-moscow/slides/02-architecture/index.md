@@ -378,13 +378,13 @@ GlobalId обычно `base64(__typename + ':' + id)`
 - то <span class="orange">Relay</span> отправит изменения фрагменту
 - <span class="apollo">ApolloClient</span> отправит изменения всему Query
 
-<span class="fragment"><span class="orange">Relay</span> будет перерендерить строчку, а то и ячейку. А вот <span class="apollo">ApolloClient</span> всю таблицу.</span>
+<span class="fragment"><span class="orange">Relay</span> будет перерендерить строчку, а то и ячейку. А вот <span class="apollo">ApolloClient</span> – всю таблицу.</span>
 
 <span class="fragment">Т.к. у <span class="orange">Relay</span> еcть специальный компонент <code>FragmentContainer</code></span>
 
 -----
 
-### Рассмотрим Garbage Collector
+### Рассмотрим garbage collector
 
 ![garbadge-collector.svg](./garbadge-collector.svg) <!-- .element: class="plain"  -->
 
@@ -392,12 +392,12 @@ GlobalId обычно `base64(__typename + ':' + id)`
 
 -----
 
-## GarbageCollector
+## Garbage collector
 
 - <span class="orange">Relay</span> – GC c незапамятных времен
 - <span class="apollo">ApolloClient</span> – завезут в v3 ([PR 4681](https://github.com/apollographql/apollo-client/pull/4681)), отполируется скорее всего к концу года.
 
-GC у Relay будет всегда на порядок круче, пока Apollo не прекрутит фрагменты к стору. <!-- .element: class="fragment green" -->
+GC у Relay будет всегда на порядок круче, пока Apollo не прикрутит фрагменты к стору. <!-- .element: class="fragment green" -->
 
 -----
 
