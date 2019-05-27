@@ -645,7 +645,7 @@ export default schema;
 <td align="center">3/5</td>
 </tr>
 <tr>
-<td>Типы полей (модификатор по-умолчанию)</td>
+<td>Типы полей (модификатор по умолчанию)</td>
 <td align="center">optional</td>
 <td align="center">optional</td>
 <td align="center">optional</td>
