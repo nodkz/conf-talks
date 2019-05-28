@@ -247,7 +247,6 @@ type Mutation {
 }
 
 + type CreatePersonPayload {
-+   recordId: ID
 +   record: Person
 +   # ... любые другие поля, которые пожелаете
 + }
@@ -260,7 +259,72 @@ type Mutation {
 
 -----
 
-## [Rule 6.7.](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-design#rule-6.7)
+## [Rule 6.6.1](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-design#rule-6.6.1)
+
+## В ответе мутации возвращайте измененный ресурс и его `id`.
+
+-----
+
+```diff
+type CreatePersonPayload {
++  recordId: ID!
++  record: Person
+}
+
+```
+
+-----
+
+### Имена полей `record` и `recordId` лучше зафиксировать.
+
+```diff
+type CreatePersonPayload {
+  recordId: ID!
+-  person: Person
++  record: Person
+}
+
+```
+
+Фронтендерам легче будет находить измененный объект в Payload'е разных мутаций
+
+-----
+
+## [Rule 6.6.2](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-design#rule-6.6.2)
+
+## В ответе мутации возвращайте статус операции.
+
+-----
+
+### Это механизм для быстрого определения прошла ли мутация успешно или нет
+
+```diff
+type CreatePersonPayload {
+   record: Person
++  status: CreatePersonStatus! # fail, success, etc. OR 201, 403, 404 etc.
+}
+
+```
+
+-----
+
+### Это решение проблемы отсутствия <br />http статус кодов в GraphQL.
+
+```diff
+type CreatePersonPayload {
+   record: Person
++  status: CreatePersonStatus! # fail, success, etc. OR 201, 403, 404 etc.
+}
+
+```
+
+-----
+
+### Желательно, чтобы поле `status` было типом `Enum` с фиксированным набором значений.
+
+-----
+
+## [Rule 6.6.3](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-design#rule-6.6.3)
 
 ## В ответе мутации возвращайте поле с типом `Query`.
 
@@ -306,11 +370,11 @@ mutation {
 
 ```
 
-Подробнее читайте [правило 6.7 тут](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-design#rule-6.7)
+Подробнее читайте [правило 6.6.3 тут](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-design#rule-6.6.3)
 
 -----
 
-## [Rule 6.8.](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-design#rule-6.8)
+## [Rule 6.6.4](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-design#rule-6.6.4)
 
 ## Мутации должны возвращать поле `errors` с типизированными пользовательскими ошибками.
 
@@ -366,4 +430,4 @@ type SpikeProtectionProblem implements ProblemInterface {
 
 ### Читать [статью про ошибки](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/errors) и смотреть [видео](https://www.facebook.com/MoscowGraphql/videos/206572663566137/).
 
-### И перечитать [правило 6.8](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-design#rule-6.8)
+### И перечитать [правило 6.6.4](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-design#rule-6.6.4)
