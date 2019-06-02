@@ -26,14 +26,15 @@ PS. Куча орфографических и грамматических ош
 
 ## Предстоящие выступления (в планах)
 
-- 24-25 мая 2019, Санкт-Петербург, [HolyJS](https://holyjs-piter.ru/talks/5aijmcmhxyojks5vdbf5ct/) (подтверждено ✈️)
-- 27-28 мая 2019, Москва, Сколково, [FrontendConf (РИТ++)](https://frontendconf.ru/moscow-rit/2019/abstracts/5127) (подтверждено ️✈️)
-- 27-28 мая 2019, Москва, Сколково, [BackendConf (РИТ++)](https://backendconf.ru/moscow-rit/2019/abstracts/4874) (подтверждено ️✈️)
-- 15 июня 2019, Нур-Султан, AstanaJS (подтверждено ️✈️)
+- 15 июня 2019, Нур-Султан, [AstanaJS](https://astanajs.timepad.ru/event/978851/) (подтверждено ️✈️)
 - 5-6 октября 2019, Харьков, KharkivJS (в мыслях)
+- 8-9 ноября 2019, Москва, HolyJS (в мыслях)
 
 ## Прошедшие мероприятия за 2019-18 года
 
+- 27-28 мая 2019, Москва, Сколково, [FrontendConf (РИТ++)](https://frontendconf.ru/moscow-rit/2019/abstracts/5127)
+- 27-28 мая 2019, Москва, Сколково, [BackendConf (РИТ++)](https://backendconf.ru/moscow-rit/2019/abstracts/4874)
+- 24-25 мая 2019, Санкт-Петербург, [HolyJS](https://holyjs-piter.ru/talks/5aijmcmhxyojks5vdbf5ct/)
 - 12 мая 2019, Киев, [Запись стрима на YouTube: Рассвет GraphQL](https://youtu.be/jd3BpKv7LZ8), Zlit Tech, InLight Studio
 - 11 мая 2019, Киев, Workshop [Apollo-client с фрагментами и статическим анализом](https://zlit.events/dawn-of-the-graphql/the-first-flight-of-apollo), Wix Office
 - [23 марта 2019](https://vk.com/@-178787432-varim-graphql-klient-so-staticheskim-analizom), Минск, воркшоп ([фото](https://www.facebook.com/pg/MinskJS/photos/?tab=album&album_id=2017956155174105
