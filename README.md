@@ -47,6 +47,24 @@ PS. Куча орфографических и грамматических ош
 
 ## Видео моих выступлений
 
+### ApolloClient или Relay с фрагментами, «волосатый» GraphQL (HolyJS Piter 2019)
+
+Сравниваю архитектуру ApolloClient и Relay. Разбираю фрагментный подход, при котором запросы собираются снизу вверх. Объясняю что хороший GraphQL – это «волосатый» GraphQL у которого много связей. А если мало связей, то это уже RestQL и с ним практически невозможно использовать фрагментный подход. [Ссылка на презентацию](http://bit.ly/piter-graphql-client).
+
+Фидбэк по выступлению: <a href="https://github.com/nodkz/conf-talks/raw/master/misc/2019-holyjs-piter-feedback-chart.png" target="_blank">chart</a>, <a href="https://github.com/nodkz/conf-talks/blob/master/misc/2019-holyjs-piter-feedback.csv" target="_blank">отзывы</a>.
+
+Продолжительность 58 минут.
+
+<a href="https://youtu.be/VdoPraj0QqU" target="_blank"><img src="https://img.youtube.com/vi/VdoPraj0QqU/0.jpg" alt="ApolloClient или Relay с фрагментами, «волосатый» GraphQL" style="max-width: 480px" /></a>
+
+### 5 подходов построения GraphQL-схем (Kyiv 2019, Zlit Tech)
+
+Разберем, что такое GraphQL-сервер и из каких частей он состоит. Подробно остановимся на описании GraphQL-схемы. Рассмотрим 5 подходов построения схем с помощью: graphql, graphql-tools, graphql-compose, type-graphql, nexus. Сравним подходы между собой, поймем сильные и слабые стороны каждого из них. [Cтатья и код](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-build-ways) позволяют выработать конвенцию для ваших бэкенд разработчиков. [Ссылка на презентацию](http://bit.ly/kyiv-graphql).
+
+Продолжительность 49 минут.
+
+<a href="https://www.youtube.com/watch?v=RmGxUfmksck" target="_blank"><img src="https://img.youtube.com/vi/RmGxUfmksck/0.jpg" alt="5 подходов построения GraphQL-схем" style="max-width: 480px" /></a>
+
 ### Дизайн и паттерны проектирования GraphQL-схем (Piter GraphQL Meetup 2019, Wrike)
 
 Рассказываю о правилах которые необходимо использовать при построении GraphQL-схем. Объясняю ситуации в которых они позволяют избежать переделку схем в будущем. [Данные правила](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-design) позволяют выработать конвенцию для ваших бэкенд разработчиков. [Ссылка на презентацию](http://bit.ly/piter-graphql-meetup).
