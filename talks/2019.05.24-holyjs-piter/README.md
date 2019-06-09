@@ -1,6 +1,6 @@
 # [Презентация](https://nodkz.github.io/conf-talks/talks/2019.05.24-holyjs-piter/index.html) - жмите ПРОБЕЛ, чтоб листать слайды
 
-Также презентация доступно в [светлой теме](https://nodkz.github.io/conf-talks/talks/2019.05.24-holyjs-piter/white.html).
+Также презентация доступна в [светлой теме](https://nodkz.github.io/conf-talks/talks/2019.05.24-holyjs-piter/white.html).
 
 Пробел листает слайды, стрелки влево и вправо листают секции.
 

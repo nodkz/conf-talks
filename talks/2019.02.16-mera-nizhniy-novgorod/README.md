@@ -1,6 +1,6 @@
 # [Презентация](https://nodkz.github.io/conf-talks/talks/2019.02.16-mera-nizhniy-novgorod/index.html) - жмите ПРОБЕЛ, чтоб листать слайды
 
-Также презентация доступно в [светлой теме](https://nodkz.github.io/conf-talks/talks/2019.02.16-mera-nizhniy-novgorod/white.html).
+Также презентация доступна в [светлой теме](https://nodkz.github.io/conf-talks/talks/2019.02.16-mera-nizhniy-novgorod/white.html).
 
 Пробел листает слайды, стрелки влево и вправо листают секции.
 
