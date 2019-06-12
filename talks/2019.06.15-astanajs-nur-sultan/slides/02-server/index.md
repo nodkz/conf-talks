@@ -1,12 +1,14 @@
-## Что происходит на сервере? (+-10 мин)
-
-Дам базовые основы того, что представляет из себя графкуэль на сервере. Какие задачи он решает, а какие вы должны решать самостоятельно.
+# Что такое GraphQL <br/> на сервере?
 
 -----
+
+## Это минимум 2 пакета
 
 ![Диаграмма экосистемы](./diagram-ecosystem.svg) <!-- .element: style="width: 90vw;" class="plain"  -->
 
 -----
+
+## Фаза запуска приложения
 
 ![Диаграмма экосистемы](./diagram-ecosystem-schema.svg) <!-- .element: style="width: 90vw;" class="plain"  -->
 
@@ -19,10 +21,6 @@
 ### связей между ними <!-- .element: class="fragment" -->
 
 ### и логики получения этих самых данных. <!-- .element: class="fragment" -->
-
------
-
-## GraphQL-схема это точка входа, это корень всего вашего API.
 
 -----
 
@@ -51,6 +49,12 @@ const schema = new GraphQLSchema({
 
 -----
 
+## Runtime фаза
+
+![Диаграмма экосистемы](./diagram-ecosystem-server.svg) <!-- .element: style="width: 90vw;" class="plain"  -->
+
+-----
+
 ##### Hello world schema (runtime phase)
 
 ```js
@@ -73,7 +77,8 @@ const result = await graphql(schema, query);
 
 -----
 
-![Диаграмма экосистемы](./diagram-ecosystem-server.svg) <!-- .element: style="width: 90vw;" class="plain"  -->
+![Диаграмма работы сервера](./diagram-server.svg) <!-- .element: style="width: 90vw;" class="plain"  -->
+<!-- https://drive.google.com/file/d/1G-Iu_fZdrois9NZY1-5YGWNwELJEzy6Y/view?usp=sharing -->
 
 -----
 
@@ -99,11 +104,6 @@ const result = await graphql(schema, query);
 - откуда-то получить "сваренную" GraphQL-схему
 - отправить на выполнение GraphQL-схему, запрос и `context` в пакет `graphql`
 - из полученных данных от `graphql` сформировать http-ответ и отдать клиенту
-
------
-
-![Диаграмма работы сервера](./diagram-server.svg) <!-- .element: style="width: 90vw;" class="plain"  -->
-<!-- https://drive.google.com/file/d/1G-Iu_fZdrois9NZY1-5YGWNwELJEzy6Y/view?usp=sharing -->
 
 -----
 
@@ -193,3 +193,20 @@ server
 ![Launch server result](./launch-server.png)
 
 -----
+
+### Итак, грубо говоря <!-- .element: class="red" -->
+
+GraphQL требует от бекендеров описать набор функций для получения данных. <!-- .element: class="fragment" -->
+
+И потом, исходя из полученного GraphQL-запроса, сам вызывает только необходимые функции. <!-- .element: class="fragment" -->
+
+-----
+
+## Никакой магии, просто «строгий» вызывальщик функций
+
+-----
+
+![not my problems](./graphql-rest-rpc.svg) <!-- .element: style="width: 600px;" class="plain"  -->
+
+Авторизация, оптимизация, кэширование <br />– это за пределами GraphQL
+

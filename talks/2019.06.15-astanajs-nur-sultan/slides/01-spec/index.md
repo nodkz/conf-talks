@@ -8,7 +8,12 @@
 
 -----
 
-## GraphQL — это не база данных! <!-- .element: class="red" -->
+## GraphQL — это <!-- .element: class="red" -->
+
+- не база данных
+- не для передачи бинарных данных
+- не только под NodeJS
+- не только по HTTP
 
 -----
 
@@ -231,6 +236,7 @@ type Book {
 - для IDE (GraphiQL, GraphQL Playground, Altair GraphQL Client)
 - для линтеров (проверки корректности запросов)
 - для тайпчекеров (TypeScript, Flowtype)
+- для кодогенерации
 - для связывания микросервисной архитектуры (stitching, federation)
 
 <br />
