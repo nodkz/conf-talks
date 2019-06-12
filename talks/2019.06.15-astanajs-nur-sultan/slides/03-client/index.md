@@ -1,6 +1,4 @@
-## Что происходит на клиенте? (+-10 мин)
-
-Объясню зачем нужен какой-то специальный GraphQL-клиент на клиенте для клиента (суровая тавтология). Расскажу про архитектуру ApolloClient и Relay.
+# Что такое <br/>GraphQL-клиент?
 
 -----
 
@@ -12,7 +10,7 @@
 
 ### по-простому в лоб<!-- .element: class="fragment orange" -->
 
-### или капитально и оптимально <!-- .element: class="fragment green" -->
+### или жёстко и изощрённо <!-- .element: class="fragment green" -->
 
 -----
 
@@ -24,7 +22,7 @@
 
 -----
 
-## А вот как <span class="red">капитально</span> и <span class="orange">оптимально</span>
+## А вот как <span class="red">жёстко</span> и <span class="orange">изощрённо</span>
 
 ### надо разбирать подробнее
 
@@ -32,16 +30,14 @@
 
 <table><tr>
   <td style="vertical-align: middle">
-    <h3 id="-">🔥 Капитально ... <small>(на этапе разработки)</small></h3>
+    <h3 id="-">🔥 Жёстко ... <small>(на этапе разработки)</small></h3>
     <ul>
       <li class="fragment">Позволяют сделать GraphQL-запросы составными из <span class="green">фрагментов</span></li>
       <li class="fragment">Генерируют <span class="green">тайп дефинишены</span> из запросов</li>
       <li class="fragment">Позволяют сделать запросы <span class="green">персистентными</span></li>
     </ul>
   </td><td>
-    <a href="slides/01-intro/tough2.jpg" target="_blank">
-      <img src="slides/01-intro/tough.jpg" alt="tough" style="min-width: 200px;" class="plain">
-    </a>
+    <img src="./tough2.jpg" alt="tough" style="min-width: 200px;" class="plain">
   </td>
 </tr></table>
 
@@ -49,12 +45,10 @@
 
 <table><tr>
   <td>
-    <a href="slides/01-intro/tough2.jpg" target="_blank">
-      <img src="slides/01-intro/tough.jpg" alt="tough" style="min-width: 200px;" class="plain">
-    </a>
+    <img src="./tough2.jpg" alt="tough" style="min-width: 200px;" class="plain">
   </td>
   <td style="vertical-align: middle">
-    <h3 id="-">🔥 Капитально ... </h3>
+    <h3 id="-">🔥 Жёстко ... </h3>
     <span class="green">Цель: декомпозировать кодовую базу и проверять статическим анализатором.</span>
     <br/><br/>Упор на качество и стабильность кода.
   </td>
@@ -64,7 +58,7 @@
 
 <table><tr>
   <td style="vertical-align: middle">
-    <h3 id="-">🔥 ... оптимально <small>(в рантайме)</small></h3>
+    <h3 id="-">🔥 ... изощрённо <small>(в рантайме)</small></h3>
     <ul>
       <li class="fragment">Распилили ответ и положили в <span class="green">нормализованный стор</span></li>
       <li class="fragment">Предоставили <span class="green">подписки</span> на изменение кусочков данных в сторе</li>
@@ -73,9 +67,7 @@
       <li class="fragment">Предложили вручную <span class="green">изменять данные в сторе</span></li>
     </ul>
   </td><td>
-    <a href="slides/01-intro/sophisticated2.jpg" target="_blank">
-      <img src="slides/01-intro/sophisticated.jpg" alt="sophisticated" style="max-height: 1000px;" class="plain">
-    </a>
+    <img src="./sophisticated2.jpg" alt="sophisticated" style="max-height: 1000px;" class="plain">
   </td>
 </tr></table>
 
@@ -83,12 +75,10 @@
 
 <table><tr>
   <td>
-    <a href="slides/01-intro/sophisticated2.jpg" target="_blank">
-      <img src="slides/01-intro/sophisticated.jpg" alt="sophisticated" style="max-height: 1000px;" class="plain">
-    </a>
+    <img src="./sophisticated2.jpg" alt="sophisticated" style="max-height: 1000px;" class="plain">
   </td>
   <td style="vertical-align: middle">
-    <h3 id="-">🔥 ... оптимально <small>(в рантайме)</small></h3>
+    <h3 id="-">🔥 ... изощрённо <small>(в рантайме)</small></h3>
     <span class="green">Цель: эффективно работать со стором, <br/> точечно получать уведомления на изменения данных в сторе.</span>
     <br/><br/>Упор на скорость и производительность.
   </td>
@@ -111,9 +101,9 @@
 
 -----
 
-## Будем разбирать и сравнивать
+## Самые продвинутые
 
-## `ApolloClient` и `Relay`
+## `Relay` и `ApolloClient`
 
 ### У них есть <span class="red fragment">генераторы</span>, <span class="green fragment">нормализованный стор</span> и поддержка <span class="orange fragment">фрагментов</span>.
 
@@ -131,15 +121,7 @@
 
 40 минут увлекательного видео
 
-## Трындец одним словом, опять задрали планку фронтендерам <!-- .element: class="fragment red" -->
-
------
-
-## Ну что ж, в 2019 <span class="orange">Relay</span> получит
-
-## второе дыхание хайпа.
-
-#### <br/>И не говорить про него в своем докладе — это кощунство. <!-- .element: class="fragment orange" -->
+## Опять задрали планку фронтендерам <!-- .element: class="fragment red" -->
 
 -----
 
@@ -358,6 +340,12 @@
 
 -----
 
-## И помните ☝️
+## И помните ☝️<!-- .element: class="red" -->
 
 ### Вам не нужен Redux для Apollo/Relay!
+
+-----
+
+### Больше деталей в видео с HolyJS Piter 2019 <br/> [https://youtu.be/VdoPraj0QqU](https://youtu.be/VdoPraj0QqU)
+
+<a href="https://youtu.be/VdoPraj0QqU" target="_blank"><img src="https://img.youtube.com/vi/VdoPraj0QqU/0.jpg" alt="ApolloClient или Relay с фрагментами, «волосатый» GraphQL" style="max-width: 600px" class="plain" /></a>
