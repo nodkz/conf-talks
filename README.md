@@ -26,13 +26,15 @@ PS. Куча орфографических и грамматических ош
 
 ## Предстоящие выступления (в планах)
 
-- 15 июня 2019, Нур-Султан, [AstanaJS](https://astanajs.timepad.ru/event/978851/) (подтверждено ️✈️)
 - 29 июня 2019, Алматы, [AlmatyJS](https://almatyjs.timepad.ru/event/996360/) (подтверждено ️🚕)
+- 1-3 августа, Иннополис, [IT-nights](http://it-night.ru/) (на этапе переговоров)
+- 24-25 августа, Санкт-Петербург, [TechTrain](https://techtrain.ru/) (на этапе переговоров)
 - 5-6 октября 2019, Харьков, KharkivJS (в мыслях)
 - 8-9 ноября 2019, Москва, HolyJS (в мыслях)
 
 ## Прошедшие мероприятия за 2019-18 года
 
+- 15 июня 2019, Нур-Султан, [AstanaJS](https://astanajs.timepad.ru/event/978851/)
 - 28 мая 2019, Москва, Сколково, [FrontendConf (РИТ++)](https://frontendconf.ru/moscow-rit/2019/abstracts/5127)
 - 27 мая 2019, Москва, Сколково, [BackendConf (РИТ++)](https://backendconf.ru/moscow-rit/2019/abstracts/4874)
 - 24 мая 2019, Санкт-Петербург, [HolyJS](https://holyjs-piter.ru/talks/5aijmcmhxyojks5vdbf5ct/)
@@ -48,6 +50,14 @@ PS. Куча орфографических и грамматических ош
 
 ## Видео моих выступлений
 
+### Дизайн GraphQL-схем — строим схемы правильно (версия 2) (Backend Conf 2019, РИТ++)
+
+GraphQL-схема может обернуться головой болью и кучей дополнительного кода для разработчиков. Поэтому, чем удобнее схема, тем быстрее, легче и с меньшим количеством ошибок будут разработаны ваши клиентские приложения. [Данные правила](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-design) позволяют выработать конвенцию для ваших бэкенд разработчиков. [Ссылка на презентацию](http://bit.ly/rit-graphql-design).
+
+Продолжительность 49 минут.
+
+<a href="https://www.youtube.com/watch?v=tASEYJXdO_c" target="_blank"><img src="https://img.youtube.com/vi/tASEYJXdO_c/0.jpg" alt="Дизайн GraphQL-схем — строим схемы правильно (версия 2) (Backend Conf 2019, РИТ++)" style="max-width: 480px" /></a>
+
 ### ApolloClient или Relay с фрагментами, «волосатый» GraphQL (HolyJS Piter 2019)
 
 Сравниваю архитектуру ApolloClient и Relay. Разбираю фрагментный подход, при котором запросы собираются снизу вверх. Объясняю что хороший GraphQL – это «волосатый» GraphQL у которого много связей. А если мало связей, то это уже RestQL и с ним практически невозможно использовать фрагментный подход. [Ссылка на презентацию](http://bit.ly/piter-graphql-client).
@@ -56,7 +66,7 @@ PS. Куча орфографических и грамматических ош
 
 Продолжительность 58 минут.
 
-<a href="https://youtu.be/VdoPraj0QqU" target="_blank"><img src="https://img.youtube.com/vi/VdoPraj0QqU/0.jpg" alt="ApolloClient или Relay с фрагментами, «волосатый» GraphQL" style="max-width: 480px" /></a>
+<a href="https://youtu.be/VdoPraj0QqU" target="_blank"><img src="https://img.youtube.com/vi/VdoPraj0QqU/0.jpg" alt="ApolloClient или Relay с фрагментами, «волосатый» GraphQL (HolyJS Piter 2019)" style="max-width: 480px" /></a>
 
 ### 5 подходов построения GraphQL-схем (Kyiv 2019, Zlit Tech)
 
@@ -64,7 +74,7 @@ PS. Куча орфографических и грамматических ош
 
 Продолжительность 49 минут.
 
-<a href="https://www.youtube.com/watch?v=RmGxUfmksck" target="_blank"><img src="https://img.youtube.com/vi/RmGxUfmksck/0.jpg" alt="5 подходов построения GraphQL-схем" style="max-width: 480px" /></a>
+<a href="https://www.youtube.com/watch?v=RmGxUfmksck" target="_blank"><img src="https://img.youtube.com/vi/RmGxUfmksck/0.jpg" alt="5 подходов построения GraphQL-схем (Kyiv 2019, Zlit Tech)" style="max-width: 480px" /></a>
 
 ### Дизайн и паттерны проектирования GraphQL-схем (Piter GraphQL Meetup 2019, Wrike)
 
@@ -72,19 +82,19 @@ PS. Куча орфографических и грамматических ош
 
 Продолжительность 52 минуты.
 
-<a href="https://www.youtube.com/watch?v=nkv0eDE5FbA" target="_blank"><img src="https://img.youtube.com/vi/nkv0eDE5FbA/0.jpg" alt="Строим GraphQL-сервер" style="max-width: 480px" /></a>
+<a href="https://www.youtube.com/watch?v=nkv0eDE5FbA" target="_blank"><img src="https://img.youtube.com/vi/nkv0eDE5FbA/0.jpg" alt="Дизайн и паттерны проектирования GraphQL-схем (Piter GraphQL Meetup 2019, Wrike)" style="max-width: 480px" /></a>
 
 ### Строим GraphQL-сервер (HolyJS Moscow 2018)
 
 Рассказываю о том из каких пакетов состоит GraphQL-сервер, какие способы построения схемы в NodeJS существуют в 2018 году. Детально разбираю как организовать Авторизации и как правильно использовать DataLoader (чтоб решить N+1 Problem). Доклад был хорошо оценен (<a href="https://github.com/nodkz/conf-talks/raw/master/misc/2018-holyjs-moscow-feedback-chart.png" target="_blank">chart</a>, <a href="https://github.com/nodkz/conf-talks/blob/master/misc/2018-holyjs-moscow-feedback.csv" target="_blank">отзывы</a>), т.к. в нем затронуты и раскрыты самые основные проблемы GraphQL. [Ссылка на презентацию](http://bit.ly/holy-graphql).
 
-<a href="https://youtu.be/NnnvOPdstzg" target="_blank"><img src="https://img.youtube.com/vi/NnnvOPdstzg/0.jpg" alt="Строим GraphQL-сервер" style="max-width: 480px" /></a>
+<a href="https://youtu.be/NnnvOPdstzg" target="_blank"><img src="https://img.youtube.com/vi/NnnvOPdstzg/0.jpg" alt="Строим GraphQL-сервер (HolyJS Moscow 2018)" style="max-width: 480px" /></a>
 
 ### Как работать с ошибками в GraphQL (GraphQL Moscow Meetup at Rambler 2018)
 
 Рассказываю подробно о том как в GraphQL работать с ошибками. И как можно накрутить Union-типы для того чтобы возвращать пользовательские ошибки. Видео начинается с 28 минуты.
 
-<a href="https://www.facebook.com/MoscowGraphql/videos/206572663566137/" target="_blank"><img src="https://user-images.githubusercontent.com/1946920/49631271-8196ba00-fa1b-11e8-933e-e9202c8a15aa.png" alt="Как в GraphQL работать с ошибками" style="max-width: 480px" /></a>
+<a href="https://www.facebook.com/MoscowGraphql/videos/206572663566137/" target="_blank"><img src="https://user-images.githubusercontent.com/1946920/49631271-8196ba00-fa1b-11e8-933e-e9202c8a15aa.png" alt="Как работать с ошибками в GraphQL (GraphQL Moscow Meetup at Rambler 2018)" style="max-width: 480px" /></a>
 
 ### Как работать с интернационализацией (i18n) в GraphQL (GraphQL Moscow Meetup at Rambler 2018)
 
@@ -102,10 +112,10 @@ PS. Куча орфографических и грамматических ош
 
 Введение в GraphQL, в компонентный подход и Relay.
 
-<a href="https://youtu.be/jrJQ2B027Xk" target="_blank"><img src="https://img.youtube.com/vi/jrJQ2B027Xk/0.jpg" alt="React, Relay и GraphQL — вполне себе нормальный компонентный подход" style="max-width: 480px" /></a>
+<a href="https://youtu.be/jrJQ2B027Xk" target="_blank"><img src="https://img.youtube.com/vi/jrJQ2B027Xk/0.jpg" alt="React, Relay и GraphQL — вполне себе нормальный компонентный подход (FrontTalks, Yekaterinburg 2016)" style="max-width: 480px" /></a>
 
 ### Бэкенд, Фронтенд — всё смешалось. Обзорная экскурсия в будущее веб-разработки (FrontendFellows, Almaty 2016)
 
 Мой самый первый доклад. Рекомендую пропустить первые 10 минут бла-бла-бла.
 
-<a href="https://youtu.be/i6i1xGlaVwY?t=614" target="_blank"><img src="https://img.youtube.com/vi/i6i1xGlaVwY/0.jpg" alt="Бэкенд, Фронтенд — всё смешалось. Обзорная экскурсия в будущее веб-разработки" style="max-width: 480px" /></a>
+<a href="https://youtu.be/i6i1xGlaVwY?t=614" target="_blank"><img src="https://img.youtube.com/vi/i6i1xGlaVwY/0.jpg" alt="Бэкенд, Фронтенд — всё смешалось. Обзорная экскурсия в будущее веб-разработки (FrontendFellows, Almaty 2016)" style="max-width: 480px" /></a>
