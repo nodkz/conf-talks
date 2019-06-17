@@ -35,8 +35,8 @@ PS. Куча орфографических и грамматических ош
 ## Прошедшие мероприятия за 2019-18 года
 
 - 15 июня 2019, Нур-Султан, [AstanaJS](https://astanajs.timepad.ru/event/978851/)
-- 28 мая 2019, Москва, Сколково, [FrontendConf (РИТ++)](https://frontendconf.ru/moscow-rit/2019/abstracts/5127)
-- 27 мая 2019, Москва, Сколково, [BackendConf (РИТ++)](https://backendconf.ru/moscow-rit/2019/abstracts/4874)
+- 28 мая 2019, Москва, Сколково, [BackendConf (РИТ++)](https://backendconf.ru/moscow-rit/2019/abstracts/4874)
+- 27 мая 2019, Москва, Сколково, [FrontendConf (РИТ++)](https://frontendconf.ru/moscow-rit/2019/abstracts/5127)
 - 24 мая 2019, Санкт-Петербург, [HolyJS](https://holyjs-piter.ru/talks/5aijmcmhxyojks5vdbf5ct/)
 - 12 мая 2019, Киев, [Запись стрима на YouTube: Рассвет GraphQL](https://youtu.be/jd3BpKv7LZ8), Zlit Tech, InLight Studio
 - 11 мая 2019, Киев, Workshop [Apollo-client с фрагментами и статическим анализом](https://zlit.events/dawn-of-the-graphql/the-first-flight-of-apollo), Wix Office
@@ -46,7 +46,7 @@ PS. Куча орфографических и грамматических ош
 - [26 января 2019](https://graphql-course.ru/), Санкт-Петербург, GraphQL workshop – сервер, клиент и статические анализ ([repo](https://github.com/nodkz/graphql-workshop-ru))
 - [24 января 2019](https://habr.com/ru/company/wrike/blog/438124/), Санкт-Петербург, Wrike
 - [27 ноября 2018](https://habr.com/ru/post/430626/), Москва, Moscow GraphQL Meetup
-- [24 ноября 2018](https://2018.holyjs-moscow.ru/talks/5ulreiooe80eao6qwwkyyi/), Москва, Moscow GraphQL Meetup
+- [24 ноября 2018](https://2018.holyjs-moscow.ru/talks/5ulreiooe80eao6qwwkyyi/), Москва, HolyJS 2018
 
 ## Видео моих выступлений
 
