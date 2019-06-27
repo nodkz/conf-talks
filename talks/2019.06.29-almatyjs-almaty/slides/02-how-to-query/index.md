@@ -66,6 +66,7 @@ fetch('https://graphql-compose.herokuapp.com/user/', {
 })
   .then(res => res.json())
   .then(res => console.log(res));
+
 ```
 
 -----
@@ -103,6 +104,7 @@ import gql from 'graphql-tag';
 const link = new HttpLink({ 
   uri: 'https://graphql-compose.herokuapp.com/user/'
 });
+
 const query = gql`{ userMany { name gender age } }`;
 
 execute(link, { query }).subscribe(res => {
