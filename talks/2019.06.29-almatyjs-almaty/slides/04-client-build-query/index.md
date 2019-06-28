@@ -1,14 +1,14 @@
 ## Важно ☝️ <!-- .element: class="green" -->
 
-1. удобно формировать GraphQL-запросы <!-- .element: class="green" -->
-2. удобно слать запросы на сервер <!-- .element: class="gray" -->
-3. удобно кешировать GraphQL-ответы и работать с данными <!-- .element: class="gray" -->
+1. удобно и безошибочно формировать GraphQL-запросы <!-- .element: class="green" -->
+2. хитро слать запросы на сервер <!-- .element: class="gray" -->
+3. эффективно кешировать ответы и работать с данными <!-- .element: class="gray" -->
 
 -----
 
-## 1. Удобно формировать GraphQL-запросы <!-- .element: class="green" -->
+## 1. Удобно и безошибочно формировать GraphQL-запросы <!-- .element: class="green" -->
 
-Это когда запросы собираются сами из фрагментов, которые необходимы компонентам вашего приложения.
+Это когда запросы собираются из GraphQL-фрагментов
 
 -----
 
@@ -155,7 +155,3 @@ fragment UserAvatar on User {
 <br/><br/>
 
 ### В ApolloClient эти занимается <br/>`apollo client:codegen` <!-- .element: style="line-height: 2" -->
-
------
-
------

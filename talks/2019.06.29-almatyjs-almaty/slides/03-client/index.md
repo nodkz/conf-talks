@@ -8,9 +8,9 @@
 
 ## Важно ☝️ <!-- .element: class="green" -->
 
-1. удобно формировать GraphQL-запросы <!-- .element: class="fragment green" -->
-2. удобно слать запросы на сервер <!-- .element: class="fragment green" -->
-3. удобно кешировать GraphQL-ответы и работать с данными <!-- .element: class="fragment green" -->
+1. удобно и безошибочно формировать GraphQL-запросы <!-- .element: class="fragment green" -->
+2. хитро слать запросы на сервер <!-- .element: class="fragment green" -->
+3. эффективно кешировать ответы и работать с данными <!-- .element: class="fragment green" -->
 
 -----
 
