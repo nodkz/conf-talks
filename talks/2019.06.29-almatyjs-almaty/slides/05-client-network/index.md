@@ -12,7 +12,7 @@
 
 -----
 
-## Который берет на себя все проблемы по хитрой отправке GraphQL-запросов на сервер.
+## Который берёт на себя все проблемы по хитрой отправке GraphQL-запросов на сервер.
 
 -----
 
@@ -43,6 +43,7 @@ export const apolloClient = new ApolloClient({ cache, link });
 <span class="fragment" data-code-focus="1-6" />
 <span class="fragment" data-code-focus="8-11" />
 <span class="fragment" data-code-focus="13" />
+<span class="fragment" data-code-focus="14" />
 
 -----
 
@@ -65,6 +66,8 @@ export const apolloClient = new ApolloClient({ cache, link });
 
 -----
 
-<span class="gray">(в разных проектах свои тараканы, и надо фетчить по-разному)</span>
+## В разных проектах <br/><span class="red">свои тараканы с логикой,</span> <br/>поэтому надо фетчить по-разному
+
+-----
 
 ## Fetch с мидлварами позволяет <br/><span class="orange">быстро настроить</span> под себя всякую <span class="orange">хитрую логику</span> получения данных

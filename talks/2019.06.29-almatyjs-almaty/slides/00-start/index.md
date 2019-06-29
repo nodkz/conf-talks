@@ -54,3 +54,9 @@
 ### Сейчас в самой кучерявой <br/>казахстанской хостинговой компании ps.kz<br/>строим облачную консоль на GraphQL 👌
 
 ![ps-logo](https://user-images.githubusercontent.com/1946920/57164502-21634300-6e16-11e9-8c45-6d10fe9dea4e.jpg) <!-- .element: style="max-width: 1000px;" class="plain"  -->
+
+-----
+
+### На микросервисах как на сервере, <br/>так и на клиенте через GraphQL 👍
+
+![ps-logo](https://user-images.githubusercontent.com/1946920/57164502-21634300-6e16-11e9-8c45-6d10fe9dea4e.jpg) <!-- .element: style="max-width: 1000px;" class="plain"  -->

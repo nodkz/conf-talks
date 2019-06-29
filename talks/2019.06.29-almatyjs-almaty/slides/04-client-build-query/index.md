@@ -146,12 +146,12 @@ fragment UserAvatar on User {
 
 -----
 
-## И сделать все это на этапе билда вашего приложения, а не в рантайме
+## И сделать всё это на этапе билда вашего приложения, а не в рантайме
 
 -----
 
-### В Relay этим занимается <br/>`relay-compiler` <!-- .element: style="line-height: 2" -->
+### В Relay проверкой и сборкой запросов занимается <br/>`relay-compiler` <!-- .element: style="line-height: 2" -->
 
 <br/><br/>
 
-### В ApolloClient эти занимается <br/>`apollo client:codegen` <!-- .element: style="line-height: 2" -->
+### В ApolloClient – <br/>`apollo client:codegen` <!-- .element: style="line-height: 2" -->

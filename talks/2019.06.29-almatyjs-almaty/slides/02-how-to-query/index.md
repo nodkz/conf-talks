@@ -13,7 +13,6 @@
 - [GraphQL Playground](https://www.graphqlbin.com/v2/6RQ6TM)
 - [OneGraphiQL](https://www.onegraph.com/graphiql)
 - [Altair](https://altair.sirmuel.design/)
-- [Insomnia](https://insomnia.rest/graphql/)
 
 -----
 
@@ -28,6 +27,10 @@
 В 7.2 добавили поддержку GraphQL (космолет не меньше 🤣) <!-- .element: class="fragment" -->
 
 <img width="700" alt="" src="https://user-images.githubusercontent.com/1946920/60190996-696e7700-9855-11e9-90de-92d01412c63d.png">
+
+-----
+
+Наряду с Postman'ом еще есть [Insomnia](https://insomnia.rest/graphql/)
 
 -----
 
@@ -71,7 +74,7 @@ fetch('https://graphql-compose.herokuapp.com/user/', {
 
 -----
 
-## Через чутка поумневший `fetch`
+## Через чутка поумневший (обёрнутый) `fetch`
 
 - 🛵 Отправили запрос получили ответ <!-- .element: class="fragment" -->
 - 🚜 Возможно, по строке запроса закешировали <!-- .element: class="fragment" -->
