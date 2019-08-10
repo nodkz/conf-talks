@@ -2,9 +2,9 @@
 
 [Migrating to GraphQL: A Practical Assessment](https://arxiv.org/abs/1906.07535?fbclid=IwAR2bxA2sXbAQSuRLPR5kTpX30fwbJ6cxIJZMLFN-4TggOMDo2-nref2OGL0).
 
-- Gleison Brito, PhD 1993 года рождения, https://twitter.com/glebritto
+- Gleison Brito, PhD 1993 года рождения, <https://twitter.com/glebritto>
 - Thais Mombach
-- Marco Tulio Valente, Associate Professor (Доцент), https://twitter.com/mtov, https://homepages.dcc.ufmg.br/~mtov/
+- Marco Tulio Valente, Associate Professor (Доцент), <https://twitter.com/mtov>, <https://homepages.dcc.ufmg.br/~mtov/>
 
 As our key result, we show that GraphQL can reduce the size of the JSON documents returned by REST APIs in 94% (in number of fields) and in 99% (in number of bytes), both median results.
 
@@ -19,3 +19,13 @@ As our key result, we show that GraphQL can reduce the size of the JSON document
 2) Query должны лежать и вызываться на уровне роутинга (в 95% случаев). Это связано с тем, что сломаны get-параметры в browser-history. Точнее этих get-параметров вообще не существует, т.к. не сложилось связки в голове между параметрами из адресной строки и переменными для GraphQL-запроса. И как результат, нельзя скопировать ссылку и открыть в новом окне тот же результат.
 
 3) На сервере код выносим в общие методы. А вот на клиенте с GraphQL-запросами и фрагментами необходимо использовать фрагментную модель. Т.е. общих запросов и фрагментов априори не должно существовать. Один компонент = один фрагмент. И ниоткуда он не должен импортироваться. Если два разных компонента используют один и тот же фрагмент, то фрагменты должны быть записаны два раза, чтоб в будущем их можно было спокойно менять и не бояться что где-то что-то сломается в другом месте.
+
+## Вопросы
+
+### Id объектов
+
+Всем привет. Кто использует Apollo GraphQL с React js  подскажите, пожалуйста.
+
+Есть компонент, который запрашивает данные по одной query и передает данные дочернему, затем по нажатию пользователя выполняется мутация в дочернем компоненте, которая возвращает новые данные, но набор данных немного отличается.
+
+Я правильно понимаю, что в мутации надо давать точно такие же имена данным, как и в query, что они сразу обновились в компоненте и он отрисовал новые данные?

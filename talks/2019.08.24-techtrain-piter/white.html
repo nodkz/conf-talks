@@ -70,6 +70,19 @@
 			.code-500 > * > code {
 				max-height: 500px !important;
 			}
+
+			.twitter-link {
+				position: absolute;
+				display: block;
+				left: 8px;
+				top: 8px;
+				z-index: 31;
+				font-family: Helvetica, sans-serif;
+				font-size: 16px !important;
+				line-height: 1;
+				color: #8093b3;
+				padding: 5px;
+			} 
 		</style>
 	</head>
 	<body>
@@ -77,13 +90,15 @@
 			<div class="slides">
 				<section data-markdown="slides/00-start/index.md" data-separator-vertical="^-----\n"></section>
 				<section data-markdown="slides/01-what-is-graphql/index.md" data-separator-vertical="^-----\n"></section>
-				<section data-markdown="slides/02-how-to-query/index.md" data-separator-vertical="^-----\n"></section>
-				<section data-markdown="slides/03-client/index.md" data-separator-vertical="^-----\n"></section>
-				<section data-markdown="slides/04-client-build-query/index.md" data-separator-vertical="^-----\n"></section>
-				<section data-markdown="slides/05-client-network/index.md" data-separator-vertical="^-----\n"></section>
-				<section data-markdown="slides/06-client-data-store/index.md" data-separator-vertical="^-----\n"></section>
+				<section data-markdown="slides/02-server/index.md" data-separator-vertical="^-----\n"></section>
+				<section data-markdown="slides/03-how-to-query/index.md" data-separator-vertical="^-----\n"></section>
+				<section data-markdown="slides/04-client/index.md" data-separator-vertical="^-----\n"></section>
+				<section data-markdown="slides/05-client-build-query/index.md" data-separator-vertical="^-----\n"></section>
+				<section data-markdown="slides/06-client-network/index.md" data-separator-vertical="^-----\n"></section>
+				<section data-markdown="slides/07-client-data-store/index.md" data-separator-vertical="^-----\n"></section>
 				<section data-markdown="slides/10-end/index.md" data-separator-vertical="^-----\n"></section>
 			</div>
+			<div class="twitter-link"><a href="https://twitter.com/nodkz" target="_blank"><img src="./slides/assets/logo/twitter.png" style="height: 1.4em; border: none; background: none; box-shadow: none; vertical-align: middle;" /> nodkz</a></div>
 		</div>
 
 		<script src="reveal.js/lib/js/head.min.js"></script>
