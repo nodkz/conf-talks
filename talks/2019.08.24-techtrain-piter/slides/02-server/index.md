@@ -213,3 +213,13 @@ GraphQL требует от бекендеров описать набор фу�
 ![not my problems](./graphql-rest-rpc.svg) <!-- .element: style="width: 600px;" class="plain"  -->
 
 Авторизация, оптимизация, кэширование <br />– это за пределами GraphQL
+
+-----
+
+### REST API vs GraphQL
+
+![graphqlcity.png](./graphqlcity.png) <!-- .element: style="width: 1200px;" class="plain"  -->
+
+<div class="grey" style="font-size:0.7em">
+  Source: <a href="https://crystallize.com/comics/rest-vs-graphql" target="_blank">crystallize.com</a> – is a blazing fast headless commerce service
+</div>

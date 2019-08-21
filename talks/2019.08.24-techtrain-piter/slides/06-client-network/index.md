@@ -12,13 +12,15 @@
 
 -----
 
-## Который берёт на себя все проблемы по хитрой отправке GraphQL-запросов на сервер.
+## Который берёт на себя все проблемы по <span class="orange">хитрой отправке GraphQL-запросов</span> на сервер.
 
 -----
 
 ## Таким фетчем в ApolloClient является <br/>[apollo-link](https://www.apollographql.com/docs/link/)
 
-<span class="gray">(мы его минут 10 назад смотрели)</span>
+<span class="gray">мы его минут 10 назад смотрели</span>
+
+<span class="gray">он работает как на сервере, так и на клиенте</span>
 
 -----
 
@@ -62,7 +64,7 @@ export const apolloClient = new ApolloClient({ cache, link });
 
 -----
 
-## В Relay это <br/>[react-relay-network-modern](https://github.com/relay-tools/react-relay-network-modern)
+## В Relay такой фетчер <br/>[react-relay-network-modern](https://github.com/relay-tools/react-relay-network-modern)
 
 -----
 
