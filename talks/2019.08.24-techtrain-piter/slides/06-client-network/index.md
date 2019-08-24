@@ -68,7 +68,7 @@ export const apolloClient = new ApolloClient({ cache, link });
 
 -----
 
-## В разных проектах <br/><span class="red">свои тараканы с логикой,</span> <br/>поэтому надо фетчить по-разному
+## В разных проектах <br/><span class="red">свои тараканы с требованиями,</span> <br/>поэтому надо фетчить по-разному
 
 -----
 

@@ -122,7 +122,7 @@ execute(link, { query }).subscribe(res => {
 
 -----
 
-## Либо через навёрнутый <br/>GraphQL-клиент
+### А лучше всего на клиенте работать с GraphQL через навёрнутый GraphQL-клиент
 
 - `Relay` – amazing performance (complexity)
 - `ApolloClient` – balance between features and complexity
