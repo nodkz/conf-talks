@@ -1,14 +1,24 @@
 # Не всё так просто с GraphQL
 
+- Секция A) Британ... Бразильские ученные (10 минут)
+- Секция B) Ошибки фронтендера (10 минут)
+- Секция C) Фрагментная модель (30 минут)
+
 ## Секция A) Британ... Бразильские ученные
 
-[Migrating to GraphQL: A Practical Assessment](https://arxiv.org/abs/1906.07535?fbclid=IwAR2bxA2sXbAQSuRLPR5kTpX30fwbJ6cxIJZMLFN-4TggOMDo2-nref2OGL0).
+В академической среде стали появляться "серые" научные работы, которые уж больно круто описывают возможности GraphQL:
+
+As our key result, we show that GraphQL can reduce the size of the JSON documents returned by REST APIs in 94% (in number of fields) and in 99% (in number of bytes), both median results.
+
+Только в их "лабораторных" условиях, получилось выжать такие результаты. Случайность? Я так не думаю. Кому-то выгодно так пиарить GraphQL. Он конечно хорош, но не настолько.
+
+Ссылка на научную работу: [Migrating to GraphQL: A Practical Assessment](https://arxiv.org/abs/1906.07535?fbclid=IwAR2bxA2sXbAQSuRLPR5kTpX30fwbJ6cxIJZMLFN-4TggOMDo2-nref2OGL0).
+
+Авторы:
 
 - Gleison Brito, PhD 1993 года рождения, <https://twitter.com/glebritto>
 - Thais Mombach
 - Marco Tulio Valente, Associate Professor (Доцент), <https://twitter.com/mtov>, <https://homepages.dcc.ufmg.br/~mtov/>
-
-As our key result, we show that GraphQL can reduce the size of the JSON documents returned by REST APIs in 94% (in number of fields) and in 99% (in number of bytes), both median results.
 
 ## Секция B) Ошибки фронтендера
 
@@ -264,34 +274,6 @@ TODO: 16-35
 ### 4) Fragment Models
 
 TODO:
-
------
-
-Допустим мы начали разрабатывать некое приложение с использованием компонентного подхода. И нам необходимо отобразить фотографию и подпись под ней:
-
-<img width="810" alt="Screen Shot 2019-08-27 at 9 43 16 PM" src="https://user-images.githubusercontent.com/1946920/63786365-c3ea8900-c913-11e9-898b-faad03901332.png">
-
-Для отображения такой компоненты нам необходим следующий JSON ответ от сервера:
-
-```json
-{
-  "picture": {
-    "url": "https://some-cdn.de/1234"
-  },
-  "about": "I am clearly not a designer"
-}
-```
-
-Получение такого вида данных можно описать с помощью следующего GraphQL-фрагмента
-
-```graphql
-fragment UserProfile on User {
-  picture(width: 40) {
-    url
-  }
-  about
-}
-```
 
 -----
 
