@@ -7,7 +7,7 @@
     "test": "yarn jest",
     "watch": "yarn jest --watch",
     "lint": "eslint --ext .js ./articles",
-    "start-piter": "yarn --cwd ./talks/2019.08.24-techtrain-piter start"
+    "start": "yarn --cwd ./talks/2019.10.05-kharkivjs start"
   },
   "repository": {
     "type": "git",
