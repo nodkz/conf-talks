@@ -30,7 +30,7 @@
   - чтоб задать правила валидации размера файла и content-type
   - чтоб передать дополнительные метаданные (id пользователя)
   - чтоб указать место куда и с каким именем положить картинку в bucket'е на S3
-- в Amazon S3 настраиваете hook на появление нового файла, который вызовет lambda-функцию с нарезкой картинки в нужные размеры. Как это делается можно очитать можно [тут](https://aws.amazon.com/ru/blogs/networking-and-content-delivery/resizing-images-with-amazon-cloudfront-lambdaedge-aws-cdn-blog/) и [тут](https://read.acloud.guru/serverless-image-optimization-and-delivery-510b6c311fe5)
+- в Amazon S3 настраиваете hook на появление нового файла, который вызовет lambda-функцию с нарезкой картинки в нужные размеры. Как это делается можно почитать [тут](https://aws.amazon.com/ru/blogs/networking-and-content-delivery/resizing-images-with-amazon-cloudfront-lambdaedge-aws-cdn-blog/) и [тут](https://read.acloud.guru/serverless-image-optimization-and-delivery-510b6c311fe5)
 - для вашего клиента пишем скрипт помогайку, который на входе получает объект файла, лезет на сервак за подписанной ссылкой для загрузки, загружает картинку, отслеживает прогресс и сообщает о завершении. Пример смотрите в [GIST'е](https://gist.github.com/nodkz/6b4aa7678ec1ab2c1aa8e46a61630d9e#file-3-client-s3uploadapi-js).
 - если используете React, то можно обернуть апи загрузки файла в компоненту. Опять пример есть в [GIST'е](https://gist.github.com/nodkz/6b4aa7678ec1ab2c1aa8e46a61630d9e#file-4-client-react-photoupload-js)
 - и вот уже после успешной загрузки можем отправить в наш GraphQL ссылки на загруженные и нарезанные картинки.
