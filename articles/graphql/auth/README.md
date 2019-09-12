@@ -71,6 +71,10 @@ https://blogs.adobe.com/security/2017/03/critical-vulnerability-uncovered-in-jso
 - ![Stop using JWT](./jwt2.jpg)
 - ![JWT and sessions](./jwt1.jpg)
 
+Кстати, по JWT рекомендую почитать хорошую обзорную статью от @zmts: [Про токены, JSON Web Tokens (JWT), аутентификацию и авторизацию. Token-Based Authentication](https://gist.github.com/zmts/802dc9c3510d79fd40f9dc38a12bccfc).
+
+В общем для индетификации воспользоваться лучше всего старыми добрыми сессиями, такими как [express-session](https://github.com/expressjs/session) и его аналогами. Если нашли что-то что можно посоветовать "потомкам", обязательно добавьте ссылку в эту статью.
+
 ## 3. Авторизация — Прикручиваем ACL
 
 А вот теперь самый важный и интересный момент по поводу авторизации. Ее можно и нужно настраивать на следующих трех уровнях:
