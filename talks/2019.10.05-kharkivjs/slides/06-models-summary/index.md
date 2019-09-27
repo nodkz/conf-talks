@@ -11,9 +11,13 @@
 
 `Relay` использует `Fragment Models`
 
+TODO: Example
+
 -----
 
-C `ApolloClient` можно использовать фрагментную модель. Но она реализована на порядок слабее (проблема с обновлением данных).
+`ApolloClient` еще на этапе `Response Models`
+
+TODO: Example
 
 -----
 
