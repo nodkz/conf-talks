@@ -2,17 +2,27 @@
 
 -----
 
-По спецификации GraphQL возвращает JSON. И чтобы работать с ответом от сервера, вы первым делом захотите переиспользовать практики наработанные с REST API. К примеру, воспользуетесь JSON моделью:
+## По спецификации <br/>GraphQL возвращает <br/>ответ в виде JSON <!-- .element: class="orange" -->
 
-```java
+-----
+
+## Напишем простую читалку JSONModel
+
+```typescript
 interface JSONModel {
-  @Nullable String getString(String key);
-  @Nullable Int getInt(String key);
-  @Nullable JSONModel getJSON(String key);
+  getJSON(key: string): JSONModel | null | void;
+  getString(key: string): string | null | void;
+  getInt(key: string): number | null | void;
+  // ...
 }
+
 ```
 
-И когда захотите прочитать следующий ответ:
+чтоб значения в компонентах были явно типизированные <!-- .element: class="fragment" -->
+
+-----
+
+### И когда захотите прочитать следующий ответ:
 
 ```graphql
 fragment UserProfile on User {
@@ -21,94 +31,134 @@ fragment UserProfile on User {
     about
   }
 }
+
 ```
 
-То ваш код компоненты с JSON моделью будет выглядеть так:
+### То код компоненты будет примерно таким:
 
-```java
-class UserProfileComponent {
-  Component render(JSONModel model) {
-    JSONModel pic = model.getJSON("picture");
-    String uri = pic.getString("uri");
-    int about = model.getInt("about");
-  }
+```typescript
+const UserProfileComponent = (model: JSONModel) => {
+  const pic = model.getJSON("picture") as JSONModel;
+  const uri = pic.getString("uri") as string;
+  const about = model.getInt("about") as number;
+
+  return <img src={uri} alt={about} />;
 }
+
 ```
 
-И при таком подходе мы столкнемся со следующими проблемами:
+<span class="fragment" data-code-focus="2" data-code-block="1" />
+<span class="fragment" data-code-focus="2" data-code-block="2" />
+<span class="fragment" data-code-focus="3-4" data-code-block="1" />
+<span class="fragment" data-code-focus="3-4" data-code-block="2" />
+<span class="fragment" data-code-focus="6" data-code-block="2" />
+
+Ага, в этом коде куча ошибок и проблем! <!-- .element: class="fragment red" -->
+
+-----
 
 #### Проблема 1.1: Опечатки (typos)
 
-Запрашиваем `url`, а считываем в модели `uri`:
-
 ```diff
 fragment UserProfile on User {
   picture {
--    url
-+    url
+    url
     about
   }
 }
 
-class UserProfileComponent {
-  Component render(JSONModel model) {
-    JSONModel pic = model.getJSON("picture");
--    String uri = pic.getString("uri");
-+    String url = pic.getString("url");
-    int about = model.getInt("about");
-  }
+const UserProfileComponent = (model: JSONModel) => {
+  const pic = model.getJSON("picture") as JSONModel;
+- const uri = pic.getString("uri") as string;
++ const url = pic.getString("url") as string;
+  const about = model.getInt("about") as number;
+
+  return <img src={uri} alt={about} />;
 }
+
 ```
 
-#### Проблема 1.2: Отсутствие типовой безопасности (type safety):
+Запрашиваем `url`, а считываем в модели `uri`
 
-Запрашиваем поле `about: String`, а в моделе оно считывается как `Int`:
+-----
+
+#### Проблема 1.2: Отсутствие типовой безопасности (type&nbsp;safety):
 
 ```diff
 fragment UserProfile on User {
   picture {
     url
--    about
-+    about
+    about
   }
 }
 
-class UserProfileComponent {
-  Component render(JSONModel model) {
-    JSONModel pic = model.getJSON("picture");
-    String url = pic.getString("url");
--    int about = model.getInt("about");
-+    String about = model.getString("about");
+const UserProfileComponent = (model: JSONModel) => {
+  const pic = model.getJSON("picture") as JSONModel;
+  const uri = pic.getString("uri") as string;
+-  const about = model.getInt("about") as number;
++  const about = model.getString("about") as string;
+
+  return <img src={uri} alt={about} />;
+}
+
+```
+
+Запрашиваем поле `about: String`, <br/>а типизируем как `number`
+
+-----
+
+### Походу считываем еще и не с того объекта
+
+```diff
+fragment UserProfile on User {
+  picture {
+    url
+    about
   }
 }
+
+const UserProfileComponent = (model: JSONModel) => {
+  const pic = model.getJSON("picture") as JSONModel;
+  const uri = pic.getString("uri") as string;
+-  const about = model.getString("about") as string;
++  const about = pic.getString("about") as string;
+
+  return <img src={uri} alt={about} />;
+}
+
 ```
+
+-----
+
+## А еще могут быть следующие проблемы
+
+-----
 
 #### Проблема 1.3: Недополучения данных (underfetch):
 
-Это когда мы используем данные в нашей компоненте, но при этом их не запрашиваем/получаем с сервера:
-
 ```diff
 fragment UserProfile on User {
   picture {
     url
     about
-+    width
   }
 }
 
-class UserProfileComponent {
-  Component render(JSONModel model) {
-    JSONModel pic = model.getJSON("picture");
-    String url = pic.getString("url");
--    int width = model.getInt("width");
-+    int width = model.getInt("width");
-  }
+const UserProfileComponent = (model: JSONModel) => {
+  const pic = model.getJSON("picture") as JSONModel;
+  const uri = pic.getString("uri") as string;
++  const width = pic.getInt("width") as number;
+
+  return <img src={uri} width={width} />;
 }
+
 ```
 
-#### Проблема 1.4: Получение лишних данных (overfetch):
+Это когда мы используем данные в нашей компоненте, <br/>но при этом не запрашиваем их в GraphQL-фрагменте
 
-C JSON очень легко получить больше данных, чем вам надо. Обычно это не считают проблемой, НО запрос каждого лишнего поля тратит время на получение его из базы, передачи по сети и парсинге значения на клиенте **(страдают впустую все, кроме ленивого разработчика 🤓)**:
+-----
+
+#### Проблема 1.4: Получение лишних данных (overfetch):
 
 ```diff
 fragment UserProfile on User {
@@ -120,28 +170,54 @@ fragment UserProfile on User {
   }
 }
 
-class UserProfileComponent {
-  Component render(JSONModel model) {
-    JSONModel pic = model.getJSON("picture");
-    String url = pic.getString("url");
-    int width = model.getInt("width");
-  }
+const UserProfileComponent = (model: JSONModel) => {
+  const pic = model.getJSON("picture") as JSONModel;
+  const uri = pic.getString("uri") as string;
+  const about = pic.getString("about") as string;
+
+  return <img src={uri} alt={about} />;
 }
 ```
 
-#### Вывод по JSON Models
+C JSON очень легко получить больше данных, чем вам надо
 
-С `JSON Models` вы получите следующие ошибки:
+-----
 
-- Опечатки (typos)
-- Отсутствие типовой безопасности (type safety)
-- Недополучения данных (underfetch)
-- Получение лишних данных (overfetch)
+## Обычно фронтендеры не считают получение лишних данных проблемой <!-- .element: class="orange" -->
 
-Не желательно использовать JSON Models в больших приложениях и командах. С горем пополам можно использовать если:
+-----
 
-- код пишет один человек
-- контролируете код и сервера, и клиента
-- стабильные типы, редко меняющиеся
-- очень мальнькие запросы
-- можете протестировать каждое изменение
+## НО запрос каждого лишнего поля тратит время <!-- .element: class="orange" -->
+
+- на получение его из базы
+- передачи по сети
+- парсинге значения на клиенте
+
+**страдают впустую все, кроме ленивого разработчика 🤓** <!-- .element: class="fragment red" -->
+
+-----
+
+## Вывод по JSON Models
+
+-----
+
+## С `JSON Models` вы получите следующие ошибки:
+
+- Опечатки (typos) <!-- .element: class="fragment red" -->
+- Отсутствие типовой безопасности (type safety) <!-- .element: class="fragment red" -->
+- Недополучения данных (underfetch) <!-- .element: class="fragment red" -->
+- Получение лишних данных (overfetch) <!-- .element: class="fragment red" -->
+
+-----
+
+## С горем пополам, JSON Models можно использовать если:
+
+- код пишет один человек <!-- .element: class="fragment" -->
+- контролируете код и сервера, и клиента <!-- .element: class="fragment" -->
+- стабильные типы, редко меняющиеся <!-- .element: class="fragment" -->
+- очень мальнькие запросы <!-- .element: class="fragment" -->
+- можете протестировать каждое изменение <!-- .element: class="fragment" -->
+
+-----
+
+## На больших проектах <br/>JSON Models – это АД <!-- .element: class="red" -->
