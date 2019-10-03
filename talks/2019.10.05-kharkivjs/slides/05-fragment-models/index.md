@@ -2,9 +2,59 @@
 
 -----
 
-`Fragment Models` отличается от `Response Models` только тем, что любой GraphQL-фрагмент который разворачивается, становится черной коробкой. Т.е. вместо наследования интерфейсов, используются явные методы получения данных для вложенных фрагментов. У вас как бы в моделях нет всех тех полей, которые запрошены на нижнем уровне; у вас под каждый вложенный фрагмент есть метод, который возвращает только его данные.
+### `Fragment Models` отличается <br/>от `Response Models` только тем,
+
+## что любой GraphQL-фрагмент который разворачивается, становится черной коробкой. <!-- .element: class="fragment green" -->
+
+-----
+
+## Т.е. вместо наследования интерфейсов, используются явные методы получения данных для вложенных фрагментов.
+
+-----
+
+## Под каждый вложенный фрагмент есть метод, который возвращает только его данные.
+
+<!-- TODO: нужен пример на компонентах -->
+
+-----
 
 ```graphql
+fragment CoreImage on Image {
+  url
+}
+
+fragment UserProfile on User {
+  nickname
+  avatar {
+    size
+    ...CoreImage
+  }
+}
+
+```
+
+```typescript
+export interface CoreImage {
+  url: string | null;
+}
+
+export interface UserProfile {
+  nickname: string;
+  avatar: {
+    size: number;
+    _asCoreImage(): CoreImage
+  }
+}
+
+```
+
+<span class="fragment" data-code-focus="8" data-code-block="1" />
+<span class="fragment" data-code-focus="8" data-code-block="2" />
+<span class="fragment" data-code-focus="9" data-code-block="1" />
+<span class="fragment" data-code-focus="9" data-code-block="2" />
+
+Note:
+<!-- ```graphql
 fragment UserProfile on User {
   ...AppPic
 }
@@ -32,15 +82,23 @@ interface AppPic {
     CoreImage asCoreImage();
   }
 }
-```
+``` -->
 
-#### Вывод по Fragment Models
+-----
 
-- ~~Опечатки (typos)~~
-- ~~Отсутствие типовой безопасности (type safety)~~
-- ~~Недополучения данных (underfetch)~~
-- ~~Получение лишних данных (overfetch)~~
+## Вывод по Fragment Models
 
-Вы в своей компоненте, перестаете видить "чужие" данные из соседней компоненты. Теперь вы спокойно можете удалять поля из своего фрагмента, зная что кроме вас его никто не может использовать вверх по дереву.
+- ~~Опечатки (typos)~~ <!-- .element: class="fragment green" -->
+- ~~Отсутствие типовой безопасности (type safety)~~ <!-- .element: class="fragment green" -->
+- ~~Недополучения данных (underfetch)~~ <!-- .element: class="fragment green" -->
+- ~~Получение лишних данных (overfetch)~~ <!-- .element: class="fragment green" -->
 
-TODO: need find more references and other articles about pros and cons of fragment models
+-----
+
+## Вы в своей компоненте, перестаете видить "чужие" данные из соседней компоненты. <!-- .element: class="green" -->
+
+-----
+
+## Теперь вы спокойно можете удалять поля из своего фрагмента,
+
+## зная, что кроме вас их никто не может использовать вверх по дереву. <!-- .element: class="fragment orange" -->

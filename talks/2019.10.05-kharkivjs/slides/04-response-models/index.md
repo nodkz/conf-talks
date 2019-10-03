@@ -114,7 +114,7 @@ fragment UserProfile on User {
 
 ```typescript
 export interface UserProfile extends SquarePic {
-  nickname
+  nickname: string | null;
   // lilPic: { size: number } & CoreImage; <-- через extends
 }
 
@@ -134,7 +134,7 @@ export interface SquarePic {
 }
 
 export interface UserProfile extends SquarePic {
-  nickname
+  nickname: string;
 }
 
 ```

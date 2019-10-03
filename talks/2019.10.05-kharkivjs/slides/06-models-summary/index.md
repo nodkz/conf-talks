@@ -2,10 +2,10 @@
 
 -----
 
-- JSON Models (адский ручной труд)
-- Type Models (использование типизации из серверной схемы)
-- Response Models (типизация на уровне запроса)
-- Fragment Models (инкапсуляция необходимых данных)
+- JSON Models (адский ручной труд) <!-- .element: class="red" -->
+- Type Models (типизация на уровне всей схемы) <!-- .element: class="fragment orange" -->
+- Response Models (типизация на уровне запроса) <!-- .element: class="fragment" style="color: #ffff00" -->
+- Fragment Models (инкапсуляция необходимых данных) <!-- .element: class="fragment" style="color: #7fff00" -->
 
 -----
 
@@ -15,7 +15,7 @@
 
 -----
 
-## `ApolloClient` еще на этапе `Response Models`
+## `ApolloClient` пока еще на этапе `Response Models`
 
 <!-- TODO: Example -->
 
