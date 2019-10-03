@@ -38,9 +38,9 @@ fragment UserProfile on User {
 
 ```typescript
 const UserProfileComponent = (model: JSONModel) => {
-  const pic = model.getJSON("picture") as JSONModel;
-  const uri = pic.getString("uri") as string;
-  const about = model.getInt("about") as number;
+  const pic = model.getJSON('picture'); // as JSONModel;
+  const uri = pic.getString('uri'); // as string;
+  const about = model.getInt('about'); // as number;
 
   return <img src={uri} alt={about} />;
 }
@@ -68,12 +68,12 @@ fragment UserProfile on User {
 }
 
 const UserProfileComponent = (model: JSONModel) => {
-  const pic = model.getJSON("picture") as JSONModel;
-- const uri = pic.getString("uri") as string;
-+ const url = pic.getString("url") as string;
-  const about = model.getInt("about") as number;
+  const pic = model.getJSON('picture'); // as JSONModel;
+- const uri = pic.getString('uri'); // as string;
++ const url = pic.getString('url'); // as string;
+  const about = model.getInt('about'); // as number;
 
-  return <img src={uri} alt={about} />;
+  return <img src={url} alt={about} />;
 }
 
 ```
@@ -93,12 +93,12 @@ fragment UserProfile on User {
 }
 
 const UserProfileComponent = (model: JSONModel) => {
-  const pic = model.getJSON("picture") as JSONModel;
-  const uri = pic.getString("uri") as string;
--  const about = model.getInt("about") as number;
-+  const about = model.getString("about") as string;
+  const pic = model.getJSON('picture'); // as JSONModel;
+  const url = pic.getString('url'); // as string;
+-  const about = model.getInt('about'); // as number;
++  const about = model.getString('about'); // as string;
 
-  return <img src={uri} alt={about} />;
+  return <img src={url} alt={about} />;
 }
 
 ```
@@ -118,12 +118,12 @@ fragment UserProfile on User {
 }
 
 const UserProfileComponent = (model: JSONModel) => {
-  const pic = model.getJSON("picture") as JSONModel;
-  const uri = pic.getString("uri") as string;
--  const about = model.getString("about") as string;
-+  const about = pic.getString("about") as string;
+  const pic = model.getJSON('picture'); // as JSONModel;
+  const url = pic.getString('url'); // as string;
+-  const about = model.getString('about'); // as string;
++  const about = pic.getString('about'); // as string;
 
-  return <img src={uri} alt={about} />;
+  return <img src={url} alt={about} />;
 }
 
 ```
@@ -145,11 +145,11 @@ fragment UserProfile on User {
 }
 
 const UserProfileComponent = (model: JSONModel) => {
-  const pic = model.getJSON("picture") as JSONModel;
-  const uri = pic.getString("uri") as string;
-+  const width = pic.getInt("width") as number;
+  const pic = model.getJSON('picture'); // as JSONModel;
+  const url = pic.getString('url'); // as string;
++  const width = pic.getInt('width'); // as number;
 
-  return <img src={uri} width={width} />;
+  return <img src={url} width={width} />;
 }
 
 ```
@@ -164,18 +164,18 @@ const UserProfileComponent = (model: JSONModel) => {
 fragment UserProfile on User {
   picture {
     url
-    width
--    about
--    createdAt
+    about
+-   width
+-   createdAt
   }
 }
 
 const UserProfileComponent = (model: JSONModel) => {
-  const pic = model.getJSON("picture") as JSONModel;
-  const uri = pic.getString("uri") as string;
-  const about = pic.getString("about") as string;
+  const pic = model.getJSON("picture"); // as JSONModel
+  const url = pic.getString("url"); // as string;
+  const about = pic.getString("about"); // as string;
 
-  return <img src={uri} alt={about} />;
+  return <img src={url} alt={about} />;
 }
 ```
 
@@ -201,7 +201,7 @@ C JSON очень легко получить больше данных, чем 
 
 -----
 
-## С `JSON Models` вы получите следующие ошибки:
+## С `JSON Models` вы получите следующие проблемы:
 
 - Опечатки (typos) <!-- .element: class="fragment red" -->
 - Отсутствие типовой безопасности (type safety) <!-- .element: class="fragment red" -->

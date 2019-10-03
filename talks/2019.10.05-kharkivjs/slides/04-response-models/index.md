@@ -2,78 +2,181 @@
 
 -----
 
-GraphQL-ответы это дерево, и мы должны быть уверены, что имеем доступ к каждому кусочку этого дерева. Допустим наше приложение имеет следующие франменты:
+## Основа в `Response Models` это генерация моделей из GraphQL-запроса
+
+-----
+
+## Берется интроспекция схемы с сервера <!-- .element: class="green" -->
+
+## и по ней определяются типы для запрашиваемых полей в запросе. <!-- .element: class="fragment" -->
+
+-----
+
+### GraphQL-ответы это дерево, и мы должны быть уверены, что имеем доступ к каждому кусочку этого дерева.
+
+-----
+
+#### Допустим наше приложение имеет следующие фрагменты:
 
 ```graphql
-fragment UserProfile on User {
-  ...SquarePic
+fragment CoreImage on Image {
+  url
 }
 
 fragment SquarePic on HasPic {
   lilPic: picture(width: 40) {
     ...CoreImage
+    size
   }
 }
 
+fragment UserProfile on User {
+  nickname
+  ...SquarePic
+}
+
+```
+
+<span class="fragment">Важно что <code>один фрагмент</code> === <code>один компонент</code></span>
+
+-----
+
+## Для `Response Models` генерируется интерфейс для каждого фрагмента.
+
+### Потом этим интерфейсом можно описать пропсы компоненты <!-- .element: class="green fragment" -->
+
+-----
+
+### SDL (c сервера)
+
+```graphql
+type Image {
+  url: String
+  size: Int!
+}
+
+```
+
+### GraphQL-фрагмент
+
+```graphql
 fragment CoreImage on Image {
   url
 }
+
 ```
 
-Для `Response Models` создается (генерируется) один интерфейс для каждого фрагмента:
+### Сгенерированный код
 
-```java
-interface UserProfile extends SquarePic {
+```typescript
+export interface CoreImage {
+  url: string | null;
 }
 
-interface SquarePic {
-  SquarePic.LilPic getLilPic();
+```
 
-  interface LilPic extends CoreImage {
+-----
+
+### GraphQL-фрагмент
+
+```graphql
+fragment SquarePic on HasPic {
+  lilPic: picture(width: 40) {
+    ...CoreImage
+    size
   }
 }
 
-interface CoreImage {
-  @Nullable URL getUrl();
-}
 ```
 
-Как вы видите используется наследование интерфейсов, чтобы представить разворачивание/развертывание фрагментов.
+### Сгенерированный код
 
-Такой подход позволяет включить в работу большое количество команд. Т.к. мы точно уверены, что вызываем поля из моделей, которые реально были запрошены с сервера.
+```typescript
+export interface SquarePic {
+  lilPic: { size: number } & CoreImage;
+}
 
-К тому же, т.к. используется наследование мы можем данные из фрагмента `UserProfile` передать сразу двум компонентам:
+```
+
+-----
+
+### GraphQL-фрагмент
 
 ```graphql
 fragment UserProfile on User {
+  nickname
   ...SquarePic
 }
+
 ```
 
-```java
-interface UserProfile extends SquarePic {}
+### Сгенерированный код
 
-Component renderProfile(UserProfile model) {
-  URL url = model.getLilPic().getUrl();
-  renderSquarePic(model); // <-- pass here `UserProfile`
+```typescript
+export interface UserProfile extends SquarePic {
+  nickname
+  // lilPic: { size: number } & CoreImage; <-- через extends
 }
 
-Component renderSquarePic(SquarePic model) { // <-- accept `UserProfile`
-  LilPic lilPic = model.getLilPic();
-  Component image = renderCoreImage(lilPic);
-}
 ```
 
-Это позволяет избавиться от проблемы `underfetch`, т.к. все проперти теперь у вас статически типизированы согласно ваших GraphQL-запросов. Если вы не запросили поле в GraphQL-запросе, то его просто не будет в ваших интерфейсах у `Response Models`. И соответственно, на этапе анализа, линтинга или сборки приложения вы получите ошибку о том, что используете поле, которое не существует.
+-----
 
-#### Вывод по Response Models
+#### В итоге имеем такие сгенерированные дефинишены
 
-- ~~Опечатки (typos)~~
-- ~~Отсутствие типовой безопасности (type safety)~~
-- ~~Недополучения данных (underfetch)~~
-- Получение лишних данных (overfetch)
+```typescript
+export interface CoreImage {
+  url: string | null;
+}
 
-Остается проблема `overfetch`, когда вы используете чужие данные из дерева наследования:
+export interface SquarePic {
+  lilPic: { size: number } & CoreImage;
+}
 
-- Если в дочернем фрагменте удалили поле, то дожны пофиксить все родительские компоненты которые используют эти данные
-- TODO: решение проблемы инкапсуляции.
+export interface UserProfile extends SquarePic {
+  nickname
+}
+
+```
+
+- Используется пересечение типов <!-- .element: class="fragment" data-code-focus="6" -->
+- Или множественное наследование <!-- .element: class="fragment" data-code-focus="9" -->
+
+-----
+
+<!-- TODO: Пример такой компоненты -->
+
+-----
+
+## Такой подход позволяет включить в работу большое количество команд. <!-- .element: class="green" -->
+
+-----
+
+## Теперь мы точно уверены, <!-- .element: class="green" -->
+
+## что вызываем поля из моделей, <!-- .element: class="fragment" -->
+
+## которые реально были запрошены с сервера. <!-- .element: class="fragment orange" -->
+
+-----
+
+## Это позволяет избавиться от проблемы `underfetch`, т.к. все проперти теперь статически типизированы согласно GraphQL-запроса.
+
+-----
+
+## Вывод по Response Models
+
+- ~~Опечатки (typos)~~ <!-- .element: class="fragment green" -->
+- ~~Отсутствие типовой безопасности (type safety)~~ <!-- .element: class="fragment green" -->
+- ~~Недополучения данных (underfetch)~~ <!-- .element: class="fragment green" -->
+- Получение лишних данных (overfetch) <!-- .element: class="fragment red" -->
+
+-----
+
+## Остается проблема `overfetch`, когда вы используете чужие данные из дерева наследования
+
+-----
+
+## Если в дочернем фрагменте удалили поле, то дожны пофиксить все родительские компоненты, которые используют эти данные.
+
+Решение проблемы – инкапсуляция. <!-- .element: class="fragment green" -->
