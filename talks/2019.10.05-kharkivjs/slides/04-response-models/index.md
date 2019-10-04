@@ -175,7 +175,7 @@ function UserProfile(props: UserProfileFragment) {
 
 -----
 
-## Такой подход позволяет включить в работу большое количество команд. <!-- .element: class="green" -->
+## Подход `Response models` позволяет включить в работу большое количество команд. <!-- .element: class="green" -->
 
 -----
 

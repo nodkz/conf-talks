@@ -36,3 +36,12 @@
 </div>
 
 ![Photo](../assets/nodkz-photo.jpg) <!-- .element: style="max-width: 400px; border: none" -->
+
+-----
+
+## Как заставить бэкендеров запилить GraphQL? <!-- .element: class="orange" -->
+
+1. <span>Разговаривайте с ними</span> <!-- .element: class="fragment" -->
+2. <span>Разговаривайте с руководством</span>  <!-- .element: class="fragment" -->
+3. <span>Пилите свой BFF (backend for frontend)</span>  <!-- .element: class="fragment" -->
+4. <span>[Ищите новую работу](https://graphql.jobs/), где уже есть GraphQL</span> <!-- .element: class="fragment" -->
