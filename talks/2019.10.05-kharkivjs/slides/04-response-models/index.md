@@ -1,4 +1,4 @@
-# Response Models
+# 3. Response Models
 
 -----
 
@@ -6,13 +6,15 @@
 
 -----
 
-## Берется интроспекция схемы с сервера <!-- .element: class="green" -->
-
-## и по ней определяются типы для запрашиваемых полей в запросе. <!-- .element: class="fragment" -->
+### GraphQL-ответы это дерево, и мы должны быть уверены, что имеем доступ к каждому кусочку этого дерева.
 
 -----
 
-### GraphQL-ответы это дерево, и мы должны быть уверены, что имеем доступ к каждому кусочку этого дерева.
+## TypeDefinitions = <br/>f(<span class="green">GraphQL_Schema</span>, <span class="orange">GraphQL_query</span>)
+
+<h3 class="fragment">Берется <span class="green">интроспекция схемы с сервера</span></h3>
+
+<h3 class="fragment"> и по ней определяются типы для запрашиваемых <span class="orange">полей в запросе</span>.</h3>
 
 -----
 
@@ -47,7 +49,7 @@ fragment UserProfile on User {
 
 -----
 
-### SDL (c сервера)
+#### SDL c сервера
 
 ```graphql
 type Image {
@@ -57,7 +59,7 @@ type Image {
 
 ```
 
-### GraphQL-фрагмент
+#### GraphQL-фрагмент
 
 ```graphql
 fragment CoreImage on Image {
@@ -66,11 +68,20 @@ fragment CoreImage on Image {
 
 ```
 
-### Сгенерированный код
+#### Сгенерированный тайп дефинишн
 
 ```typescript
-export interface CoreImage {
+export interface CoreImageFragment {
   url: string | null;
+}
+
+```
+
+#### Компонента
+
+```typescript
+function CoreImage(props: CoreImageFragment) {
+  // your code
 }
 
 ```
@@ -92,8 +103,8 @@ fragment SquarePic on HasPic {
 ### Сгенерированный код
 
 ```typescript
-export interface SquarePic {
-  lilPic: { size: number } & CoreImage;
+export interface SquarePicFragment {
+  lilPic: { size: number } & CoreImageFragment;
 }
 
 ```
@@ -113,9 +124,9 @@ fragment UserProfile on User {
 ### Сгенерированный код
 
 ```typescript
-export interface UserProfile extends SquarePic {
+export interface UserProfileFragment extends SquarePicFragment {
   nickname: string | null;
-  // lilPic: { size: number } & CoreImage; <-- через extends
+  // lilPic: { size: number } & CoreImageFragment; <-- через extends
 }
 
 ```
@@ -125,16 +136,17 @@ export interface UserProfile extends SquarePic {
 #### В итоге имеем такие сгенерированные дефинишены
 
 ```typescript
-export interface CoreImage {
+export interface CoreImageFragment {
   url: string | null;
 }
 
-export interface SquarePic {
-  lilPic: { size: number } & CoreImage;
+export interface SquarePicFragment {
+  lilPic: { size: number } & CoreImageFragment;
 }
 
-export interface UserProfile extends SquarePic {
+export interface UserProfileFragment extends SquarePicFragment {
   nickname: string;
+  // lilPic: { size: number } & CoreImageFragment; <-- через extends
 }
 
 ```
@@ -144,7 +156,22 @@ export interface UserProfile extends SquarePic {
 
 -----
 
-<!-- TODO: Пример такой компоненты -->
+### Теперь можно типизировать пропсы наших компонент:
+
+```typescript
+function CoreImage(props: CoreImageFragment) {
+  return <img src={props.url} />
+}
+
+function SquarePic(props: SquarePicFragment) {
+  return <CoreImage url={props.lilPic} />
+}
+
+function UserProfile(props: UserProfileFragment) {
+  return <SquarePic lilPic={props.lilPic} />
+}
+
+```
 
 -----
 
@@ -152,15 +179,15 @@ export interface UserProfile extends SquarePic {
 
 -----
 
-## Теперь мы точно уверены, <!-- .element: class="green" -->
+## Мы точно уверены, <!-- .element: class="green" -->
 
-## что вызываем поля из моделей, <!-- .element: class="fragment" -->
+## что используем поля, <!-- .element: class="fragment" -->
 
 ## которые реально были запрошены с сервера. <!-- .element: class="fragment orange" -->
 
 -----
 
-## Это позволяет избавиться от проблемы `underfetch`, т.к. все проперти теперь статически типизированы согласно GraphQL-запроса.
+## Это позволяет избавиться от проблемы `underfetch`, т.к. все проперти теперь статически типизированы согласно GraphQL-запросу.
 
 -----
 
@@ -174,6 +201,42 @@ export interface UserProfile extends SquarePic {
 -----
 
 ## Остается проблема `overfetch`, когда вы используете чужие данные из дерева наследования
+
+-----
+
+```typescript
+fragment CoreImage on User {
+  url
+  size
+}
+
+function CoreImage(props: CoreImageFragment) {
+  return <img src={props.url} />
+}
+
+```
+
+```typescript
+fragment UserProfile on User {
+  nickname
+  avatar {
+    ...SquarePic
+  }
+}
+
+function UserProfile(props: UserProfileFragment) {
+  return (
+    <div>
+      <CoreImage {...props.avatar} />
+      Size: {props.avatar.size}
+    </div>
+  );
+}
+
+```
+
+<span class="fragment" data-code-focus="3" data-code-block="1" />
+<span class="fragment" data-code-focus="12" data-code-block="2" />
 
 -----
 

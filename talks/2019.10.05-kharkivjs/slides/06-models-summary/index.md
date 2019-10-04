@@ -5,7 +5,7 @@
 - JSON Models (адский ручной труд) <!-- .element: class="red" -->
 - Type Models (типизация на уровне всей схемы) <!-- .element: class="fragment orange" -->
 - Response Models (типизация на уровне запроса) <!-- .element: class="fragment" style="color: #ffff00" -->
-- Fragment Models (инкапсуляция необходимых данных) <!-- .element: class="fragment" style="color: #7fff00" -->
+- Fragment Models (типизация и инкапсуляция на уровне компонента) <!-- .element: class="fragment" style="color: #7fff00" -->
 
 -----
 
