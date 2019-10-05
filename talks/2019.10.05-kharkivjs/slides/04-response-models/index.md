@@ -205,16 +205,18 @@ function UserProfile(props: UserProfileFragment) {
 -----
 
 ```typescript
-fragment CoreImage on User {
+fragment CoreImage on Image {
   url
   size
 }
 
 function CoreImage(props: CoreImageFragment) {
-  return <img src={props.url} />
+  return <img src={props.url} alt={props.size} />
 }
 
 ```
+
+<hr />
 
 ```typescript
 fragment UserProfile on User {

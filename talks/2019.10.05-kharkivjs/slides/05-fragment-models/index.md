@@ -21,6 +21,7 @@
 ```graphql
 fragment CoreImage on Image {
   url
+  size
 }
 
 fragment UserProfile on User {
@@ -48,9 +49,9 @@ export interface UserProfile {
 
 ```
 
-<span class="fragment" data-code-focus="8" data-code-block="1" />
-<span class="fragment" data-code-focus="8" data-code-block="2" />
 <span class="fragment" data-code-focus="9" data-code-block="1" />
+<span class="fragment" data-code-focus="8" data-code-block="2" />
+<span class="fragment" data-code-focus="10" data-code-block="1" />
 <span class="fragment" data-code-focus="9" data-code-block="2" />
 
 Note:
@@ -83,6 +84,31 @@ interface AppPic {
   }
 }
 ``` -->
+
+-----
+
+### Пример на React + Relay
+
+```jsx
+function UserProfile({ user }: Props) {
+  return <b>{user.nickname} ({user.avatar.size})</b>;
+}
+
+export default createFragmentContainer(UserProfile, {
+  user: graphql`
+    fragment UserProfile_user on User {
+      nickname
+      avatar {
+        size
+        ...CoreImage
+      }
+    }
+  `,
+});
+
+```
+
+<span class="fragment" data-code-focus="1,5" data-code-block="1" />
 
 -----
 
