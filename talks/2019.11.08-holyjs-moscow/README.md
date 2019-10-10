@@ -1,6 +1,6 @@
-# [Презентация](https://nodkz.github.io/conf-talks/talks/2019.11.08-holyjs-moskow/index.html) – жмите ПРОБЕЛ, чтоб листать слайды
+# [Презентация](https://nodkz.github.io/conf-talks/talks/2019.11.08-holyjs-moscow/index.html) – жмите ПРОБЕЛ, чтоб листать слайды
 
-Также презентация доступна в [светлой теме](https://nodkz.github.io/conf-talks/talks/2019.11.08-holyjs-moskow/white.html).
+Также презентация доступна в [светлой теме](https://nodkz.github.io/conf-talks/talks/2019.11.08-holyjs-moscow/white.html).
 
 Пробел листает слайды, стрелки влево и вправо листают секции.
 
