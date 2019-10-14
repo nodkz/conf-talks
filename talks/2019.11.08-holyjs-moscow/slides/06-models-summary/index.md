@@ -28,3 +28,9 @@
 <https://youtu.be/VdoPraj0QqU>
 
 HolyJS Piter 2019
+
+-----
+
+### Мысылъ года <!-- .element: class="gray" -->
+
+## Микросервисная реализация, <br />монолитная статическая типизация! <!-- .element: class="green" -->
