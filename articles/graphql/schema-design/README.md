@@ -900,7 +900,7 @@ type Mutation {
 
 ```diff
 type CreatePersonPayload {
-+  recordId: ID!
++  recordId: ID
 +  record: Person
   # ... любые другие поля, которые пожелаете
 }
