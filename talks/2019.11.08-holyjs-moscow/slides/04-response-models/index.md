@@ -6,15 +6,19 @@
 
 -----
 
-### GraphQL-ответы это дерево, и мы должны быть уверены, что имеем доступ к каждому кусочку этого дерева.
+### <span class="green">GraphQL-ответы это дерево данных</span>, которое запросил клиент.
+
+### И эти <span class="green">данные должны быть статически типизированы</span>, чтоб можно было их использовать вместо PropTypes.
 
 -----
 
-## TypeDefinitions = <br/>f(<span class="green">GraphQL_Schema</span>, <span class="orange">GraphQL_query</span>)
+## <span class="apollo">TypeDefinitions</span> = <br/>f(<span class="green">GraphQL_Schema</span>, <span class="orange">GraphQL_query</span>)
 
-<h3 class="fragment">Берется <span class="green">интроспекция схемы с сервера</span></h3>
+<h3 class="fragment"><br/>Чтобы получить <span class="apollo">TypeDefinitions</span> для компонент</h3>
 
-<h3 class="fragment"> и по ней определяются типы для запрашиваемых <span class="orange">полей в запросе</span>.</h3>
+<h3 class="fragment">мы берем <span class="green">интроспекцию схемы с сервера</span></h3>
+
+<h3 class="fragment"> и для каждого <span class="orange">поля из GraphQL-запроса</span> определяем тип данных.</h3>
 
 -----
 
@@ -39,8 +43,6 @@ fragment UserProfile on User {
 
 ```
 
-<span class="fragment">Важно что <code>один фрагмент</code> === <code>один компонент</code></span>
-
 -----
 
 ## Для `Response Models` генерируется интерфейс для каждого фрагмента.
@@ -49,7 +51,7 @@ fragment UserProfile on User {
 
 -----
 
-#### SDL c сервера
+#### SDL c сервера <!-- .element: style="line-height: 0.8" -->
 
 ```graphql
 type Image {
@@ -59,7 +61,7 @@ type Image {
 
 ```
 
-#### GraphQL-фрагмент
+#### GraphQL-фрагмент <!-- .element: style="line-height: 0.8" -->
 
 ```graphql
 fragment CoreImage on Image {
@@ -68,7 +70,7 @@ fragment CoreImage on Image {
 
 ```
 
-#### Сгенерированный тайп дефинишн
+#### Сгенерированный тайп дефинишн <!-- .element: style="line-height: 0.8" -->
 
 ```typescript
 export interface CoreImageFragment {
@@ -77,7 +79,7 @@ export interface CoreImageFragment {
 
 ```
 
-#### Компонента
+#### Компонента <!-- .element: style="line-height: 0.8" -->
 
 ```typescript
 function CoreImage(props: CoreImageFragment) {
@@ -109,6 +111,10 @@ export interface SquarePicFragment {
 
 ```
 
+Если фрагмент спредится на поле, <!-- .element: class="fragment orange" data-code-focus="3" data-code-block="1" -->
+
+то используем пересечение типов <!-- .element: class="fragment orange" data-code-focus="2" data-code-block="2" -->
+
 -----
 
 ### GraphQL-фрагмент
@@ -130,6 +136,10 @@ export interface UserProfileFragment extends SquarePicFragment {
 }
 
 ```
+
+Если фрагмент спредится в типе, <!-- .element: class="fragment orange" data-code-focus="3" data-code-block="1" -->
+
+то используем множественное наследование <!-- .element: class="fragment orange" data-code-focus="1" data-code-block="2" -->
 
 -----
 
@@ -173,6 +183,8 @@ function UserProfile(props: UserProfileFragment) {
 
 ```
 
+<span class="fragment">Важно что <code>один фрагмент</code> === <code>один компонент</code></span>
+
 -----
 
 ## Подход `Response models` позволяет включить в работу большое количество команд. <!-- .element: class="green" -->
@@ -188,6 +200,10 @@ function UserProfile(props: UserProfileFragment) {
 -----
 
 ## Это позволяет избавиться от проблемы `underfetch`, т.к. все проперти теперь статически типизированы согласно GraphQL-запросу.
+
+-----
+
+## Мы больше не генерируем лишнего кода из серверной схемы. Только то что запросили.
 
 -----
 
@@ -244,4 +260,16 @@ function UserProfile(props: UserProfileFragment) {
 
 ## Если в дочернем фрагменте удалили поле, то дожны пофиксить все родительские компоненты, которые используют эти данные.
 
-Решение проблемы – инкапсуляция. <!-- .element: class="fragment green" -->
+-----
+
+<table>
+  <tr>
+    <td>
+      <img src="../manager-happy-semi.png" class="plain" style="min-width: 200px" />
+    </td>
+    <td style="vertical-align: middle;">
+      <h2>Задача: </h2>
+      <h2 class="orange">Как бы не задевать соседние компоненты при рефакторинге?!</h2>
+    </td>
+  </tr>
+</table>

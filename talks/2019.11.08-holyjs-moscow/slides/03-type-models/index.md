@@ -2,7 +2,7 @@
 
 -----
 
-## Основа в `Type Models` это генерация моделей из схемы, которую предоставил вам сервер.
+## Основа в `Type Models` это <span class="green">генерация</span> моделей из схемы, которую предоставил вам сервер.
 
 -----
 
@@ -27,7 +27,7 @@ type Image {
 
 ```typescript
 interface ImageModel {
-  getUrl(): URL;
+  getUrl(): string;
   getWidth(): number;
   // ... и еще 100500 методов
   // ... и еще 100500 методов
@@ -48,27 +48,51 @@ interface ImageModel {
 
 -----
 
-### Проблема 2.1: Алиасы в GraphQL-запросе
+### Проблема 3: Недополучения данных (underfetch)
 
-```graphql
-fragment SquareImage on HasImage {
-  smallPic: image(width: 40) {
-    url
-  }
-  bigPic: image(width: 400) {
-    url
-  }
+```diff
+fragment SquareImage on Image {
+  url
++ about
+}
+
+const SquareImageComponent = (model: SquareImage) => {
+  const url = model.getUrl();
+  const about = model.getAbout();
+
+  return <img src={url} alt={about} />;
 }
 
 ```
 
-<span class="fragment">Поле `image` будет сгенерировано из серверной схемы.</span>
-
-<span class="fragment">А вот `smallPic` или `bigPic` придется ручками в модель добавлять. Опять черевато ошибками!</span>
+Серверный тип `Image` имеет поле `about`, <br/>а в запросе мы его забыли запросить.
 
 -----
 
-### Проблема 2.2: Масштабирование
+### Проблема 4: Получение лишних данных (overfetch)
+
+```diff
+fragment SquareImage on Image {
+  url
+  about
+- width
+- createdAt
+}
+
+const SquareImageComponent = (model: SquareImage) => {
+  const url = model.getUrl();
+  const about = model.getAbout();
+
+  return <img src={url} alt={about} />;
+}
+
+```
+
+`width` и `createdAt` тянем с сервера, <br />а в компоненте не используем.
+
+-----
+
+### Проблема 5: Масштабирование
 
 ### <br/>В Фейсбуке приблизительно <!-- .element: class="orange" -->
 
@@ -87,13 +111,34 @@ fragment SquareImage on HasImage {
 
 -----
 
+### Проблема 6: Алиасы в GraphQL-запросе
+
+```graphql
+fragment SquareImage on HasImage {
+  smallPic: image(width: 40) {
+    url
+  }
+  bigPic: image(width: 400) {
+    url
+  }
+}
+
+```
+
+<span class="fragment">Поле `image` будет сгенерировано из серверной схемы.</span>
+
+<span class="fragment">А вот `smallPic` или `bigPic` придется ручками в модель добавлять. Опять чревато ошибками!</span>
+
+-----
+
 ## Выводы по Type Models
 
 - ~~Опечатки (typos)~~ <!-- .element: class="fragment green" -->
 - ~~Отсутствие типовой безопасности (type safety)~~ <!-- .element: class="fragment green" -->
 - Недополучения данных (underfetch) <!-- .element: class="fragment red" -->
 - Получение лишних данных (overfetch) <!-- .element: class="fragment red" -->
-- Возможна куча сгенерированного кода <!-- .element: class="fragment red" -->
+- Куча ненужного сгенерированного кода <!-- .element: class="fragment red" -->
+- С алиасами опять опечатки <!-- .element: class="fragment red" -->
 
 Note:
 Генерация моделей из серверной схемы спасает от опечаток (typos) и отсутствия типовой безопасности (type safety).
@@ -104,7 +149,7 @@ Note:
 
 -----
 
-### Когда много комманд на одном приложении
+### Когда много команд на одном приложении
 
 - ИЛИ все команды шарят между собой одну гигантскую библиотеку моделей <!-- .element: class="fragment" -->
 - ИЛИ когда нет переиспользуемых компонентов/запросов между командами <!-- .element: class="fragment" -->
@@ -113,3 +158,17 @@ Note:
 <!-- ## Самое гадкое
 
 Билды приложения могу ломаться, если другие команды удаляют поля из GraphQL-запросов .element: class="fragment red" -->
+
+-----
+
+<table>
+  <tr>
+    <td>
+      <img src="../manager-angry-semi.png" class="plain" style="min-width: 200px" />
+    </td>
+    <td style="vertical-align: middle;">
+      <h2>Задача: </h2>
+      <h2 class="red">Надо с underfetch разобраться! А тут еще и проблему лишнего кода подкинули.</h2>
+    </td>
+  </tr>
+</table>

@@ -2,6 +2,10 @@
 
 -----
 
+![page1](./page1.png)
+
+-----
+
 ### [Migrating to GraphQL: A Practical Assessment](https://arxiv.org/abs/1906.07535)
 
 ### В академической среде появилась <span class="gray">"серая"</span> научная работа, которая уж больно круто описывает возможности GraphQL:
@@ -52,7 +56,7 @@
 
 -----
 
-### Заголовок, авторы, две колонки, RQ'шки <!-- .element: class="green" -->
+<h3 class="green">Заголовок, авторы, две колонки, <span title="Research Questions">RQ'шки</span></h3>
 
 ![page1](./page1.png)
 
@@ -173,7 +177,7 @@
 
 -----
 
-#### Вывели графики с логарифмической шкалой
+#### Вывели графики с `логарифмической` шкалой
 
 ![hg6](./hg6.png) <!-- .element: style="max-width: 1000px" -->
 
@@ -203,7 +207,7 @@
 
 -----
 
-Ссылка на научную работу: 
+Ссылка на научную работу для самостоятельного изучения:
 
 [Migrating to GraphQL: A Practical Assessment](https://arxiv.org/abs/1906.07535)
 

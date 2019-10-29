@@ -191,9 +191,9 @@ export default function AvatarRound({ data }) {
 
 -----
 
-### Помните про композицию компонентов и фрагментов <!-- .element: class="green" -->
+#### Помните про композицию компонентов и фрагментов <!-- .element: class="green" -->
 
-#### User.jsx <!-- .element: class="gray" -->
+##### User.jsx <!-- .element: class="gray" -->
 
 ```js
 import AvatarRound, { fragment } from './AvatarRound.jsx';
@@ -290,3 +290,12 @@ function UsersPage() {
 - свой механизм получения данных от сервера <!-- .element: class="fragment green" -->
 
 ### <br/>Забываем как страшный сон <br />эти самые экшены и редьюсеры! <!-- .element: class="fragment orange" -->
+
+-----
+
+## Recap: <!-- .element: class="green" -->
+
+- <span class="fragment">Нельзя переиспользовать фрагменты</span>
+- <span class="fragment">Нельзя фрагмент держать в другом файле</span>
+- <span class="fragment">Не забывать &lt;Query/&gt; связывать с роутингом</span>
+- <span class="fragment">Не крутить Redux к ApolloClient или Relay</span>
