@@ -265,7 +265,8 @@ function UserProfile(props: UserProfileFragment) {
 <table>
   <tr>
     <td>
-      <img src="../manager-happy-semi.png" class="plain" style="min-width: 200px" />
+      <img src="../manager-happy-semi.png" class="plain" style="max-width: 200px" />
+      Басқарма
     </td>
     <td style="vertical-align: middle;">
       <h2>Задача: </h2>

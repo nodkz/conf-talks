@@ -28,9 +28,9 @@ export default function AvatarInfo(props) {
 
 -----
 
-### Ошибка: использовать общий фрагмент для двух компонент <!-- .element: class="red" -->
+#### Ошибка: использовать общий фрагмент для двух компонент <!-- .element: class="red" -->
 
-#### Avatar_data.graphql <!-- .element: class="gray" -->
+#### Avatar_data.graphql <!-- .element: class="gray" style="line-height: 0.8" -->
 
 ```js
 export const fragment = gql`fragment Avatar_data on Image {
@@ -40,7 +40,7 @@ export const fragment = gql`fragment Avatar_data on Image {
 
 ```
 
-#### AvatarRound.jsx <!-- .element: class="gray" -->
+#### AvatarRound.jsx <!-- .element: class="gray" style="line-height: 0.8" -->
 
 ```js
 import { fragment } from './Avatar_data.graphql';
@@ -51,7 +51,7 @@ export default function AvatarRound(props) {
 
 ```
 
-#### AvatarInfo.jsx <!-- .element: class="gray" -->
+#### AvatarInfo.jsx <!-- .element: class="gray" style="line-height: 0.8" -->
 
 ```js
 import { fragment } from './Avatar_data.graphql';
@@ -64,9 +64,9 @@ export default function AvatarInfo(props) {
 
 -----
 
-### Решение: завести свой фрагмент для каждого компонента <!-- .element: class="green" -->
+#### Решение: завести свой фрагмент для каждого компонента <!-- .element: class="green" -->
 
-#### AvatarRound.jsx <!-- .element: class="gray" -->
+#### AvatarRound.jsx <!-- .element: class="gray" style="line-height: 0.8" -->
 
 ```js
 const fragment = gql`fragment AvatarRound_data on Image {
@@ -80,7 +80,7 @@ export default function AvatarRound(props) {
 
 ```
 
-#### AvatarInfo.jsx <!-- .element: class="gray" -->
+#### AvatarInfo.jsx <!-- .element: class="gray" style="line-height: 0.8" -->
 
 ```js
 const fragment = gql`fragment AvatarInfo_data on Image {
@@ -98,7 +98,9 @@ export default function AvatarInfo(props) {
 
 -----
 
-### Мы инвестируем в безболезненный рефакторинг в будущем. <!-- .element: class="green" -->
+## Мы инвестируем в безболезненный рефакторинг в будущем. <!-- .element: class="green" -->
+
+-----
 
 #### Первая компонента осталась без изменений
 
@@ -130,9 +132,7 @@ export default function AvatarInfo(props) {
 
 -----
 
-## Ошибка 1: Нельзя переиспользовать фрагменты <!-- .element: class="red" -->
-
-### Один компонент = один фрагмент <!-- .element: class="fragment" -->
+### Один компонент = один фрагмент
 
 ### Это позволяет изменять фрагменты и не бояться, что где-то что-то сломается в другом месте <!-- .element: class="fragment green" -->
 
@@ -144,7 +144,7 @@ export default function AvatarInfo(props) {
 
 ## Это плохо <!-- .element: class="red" -->
 
-#### Avatar_data.graphql <!-- .element: class="gray" -->
+#### Avatar_data.graphql <!-- .element: class="gray" style="line-height: 0.8" -->
 
 ```js
 export const fragment = gql`fragment Avatar_data on Image {
@@ -154,7 +154,7 @@ export const fragment = gql`fragment Avatar_data on Image {
 
 ```
 
-#### AvatarRound.jsx <!-- .element: class="gray" -->
+#### AvatarRound.jsx <!-- .element: class="gray" style="line-height: 0.8" -->
 
 ```js
 import { fragment } from './Avatar_data.graphql';
@@ -169,7 +169,7 @@ export default function AvatarRound({ data }) {
 
 ## Это хорошо <!-- .element: class="green" -->
 
-#### AvatarRound.jsx <!-- .element: class="gray" -->
+#### AvatarRound.jsx <!-- .element: class="gray" style="line-height: 0.8 -->
 
 ```js
 export const fragment = gql`
@@ -193,7 +193,7 @@ export default function AvatarRound({ data }) {
 
 #### Помните про композицию компонентов и фрагментов <!-- .element: class="green" -->
 
-##### User.jsx <!-- .element: class="gray" -->
+##### User.jsx <!-- .element: class="gray" style="line-height: 0.8 -->
 
 ```js
 import AvatarRound, { fragment } from './AvatarRound.jsx';

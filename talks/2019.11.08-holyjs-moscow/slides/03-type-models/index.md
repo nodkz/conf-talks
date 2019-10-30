@@ -114,7 +114,7 @@ const SquareImageComponent = (model: SquareImage) => {
 ### Проблема 6: Алиасы в GraphQL-запросе
 
 ```graphql
-fragment SquareImage on HasImage {
+fragment UserProfile on User {
   smallPic: image(width: 40) {
     url
   }
@@ -165,6 +165,7 @@ Note:
   <tr>
     <td>
       <img src="../manager-angry-semi.png" class="plain" style="min-width: 200px" />
+      Басқарма
     </td>
     <td style="vertical-align: middle;">
       <h2>Задача: </h2>
