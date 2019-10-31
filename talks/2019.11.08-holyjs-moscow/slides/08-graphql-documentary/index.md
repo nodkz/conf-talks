@@ -4,15 +4,27 @@
 
 -----
 
-## Респект [Honeypot](https://www.honeypot.io) за прекрасно снятый фильм.
+## Респект [Honeypot](https://www.honeypot.io) <br/>за прекрасно снятый фильм, <br/>за согласие на перевод <br/>и предоставление материалов.
+
+![logo](./honeypot.png) <!-- .element: class="plain" style="max-width: 200px;" -->
 
 -----
 
-## Респект Александру Канунникову <br/>за то, что всех собрал и организовал перевод этого фильма.
+![logo](./alex.jpg) <!-- .element: class="plain" style="max-width: 200px; border-radius: 50%;" -->
+![logo](./holy.png) <!-- .element: class="plain" style="max-width: 200px; border-radius: 50%;" -->
+
+<!-- ## Респект <br/>Саше и Холи<br/>за организацию перевода этого фильма. -->
+<!-- ## Респект <br/>Александру Канунникову <br/>и HolyJS <br/>за организацию перевода этого фильма. -->
+## Респект HolyJS,<br/>Александру Канунникову и команде <br/>за организацию перевода фильма.
+
+![logo](./pasha.png) <!-- .element: class="plain" style="max-width: 100px; border-radius: 50%;" -->
+![logo](./andrii.png) <!-- .element: class="plain" style="max-width: 100px; border-radius: 50%;" -->
+![logo](./tanya.png) <!-- .element: class="plain" style="max-width: 100px; border-radius: 50%;" -->
+![logo](./dima.png) <!-- .element: class="plain" style="max-width: 100px; border-radius: 50%;" -->
 
 -----
 
-## Респект Нику Шроку за то, что прояснял реальный смысл слов
+## Респект Нику Шроку <br/>за прояснение реального смысла слов
 
 <a href="https://twitter.com/nodkz/status/1163703053503094785" target="_blank"><img src="./nick.png" style="max-width: 600px; border: 0px" /></a>
 
@@ -26,6 +38,10 @@
 
 -----
 
-# Сегодня в 20-30
+## GraphQL: The Documentary <!-- .element: class="orange" -->
 
-## во 2-м зале
+### Русская версия <!-- .element: class="orange" -->
+
+# <br/>Сегодня в 20-30 <!-- .element: class="green" -->
+
+### во 2-м зале <!-- .element: class="green" -->

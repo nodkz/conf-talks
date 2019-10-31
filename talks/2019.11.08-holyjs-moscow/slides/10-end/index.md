@@ -38,3 +38,4 @@
 2. <span>Разговаривайте с руководством</span>  <!-- .element: class="fragment" -->
 3. <span>Пилите свой BFF (backend for frontend)</span>  <!-- .element: class="fragment" -->
 4. <span>[Ищите новую работу](https://graphql.jobs/), где уже есть GraphQL</span> <!-- .element: class="fragment" -->
+5. <span>Или ждите, пока другие навнедряются, <br />прежде чем ваши захотят</span> <!-- .element: class="fragment" -->
