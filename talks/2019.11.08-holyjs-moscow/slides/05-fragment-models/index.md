@@ -17,7 +17,7 @@
 -----
 
 ```graphql
-fragment CoreImage on Image {
+fragment CoreImage_data on Image {
   url
   size
 }
@@ -25,8 +25,7 @@ fragment CoreImage on Image {
 fragment UserProfile on User {
   nickname
   avatar {
-    size
-    ...CoreImage
+    ...CoreImage_data
   }
 }
 
@@ -40,8 +39,7 @@ export interface CoreImage {
 export interface UserProfile {
   nickname: string;
   avatar: {
-    size: number;
-    _asCoreImage(): CoreImage
+    _asCoreImageData(): CoreImage
   }
 }
 
@@ -49,8 +47,6 @@ export interface UserProfile {
 
 <span class="fragment" data-code-focus="9" data-code-block="1" />
 <span class="fragment" data-code-focus="8" data-code-block="2" />
-<span class="fragment" data-code-focus="10" data-code-block="1" />
-<span class="fragment" data-code-focus="9" data-code-block="2" />
 
 Note:
 <!-- ```graphql
@@ -87,32 +83,70 @@ interface AppPic {
 
 ## Под каждый вложенный фрагмент есть метод, который возвращает только его данные.
 
-<!-- TODO: нужен пример на компонентах -->
-
 -----
 
 ### Пример на React + Relay
 
 ```jsx
-function UserProfile({ user }: Props) {
-  return <b>{user.nickname} ({user.avatar.size})</b>;
+function CoreImage({ data }: Props) {
+  return <img src={data.url} alt={data.size}></img>;
 }
 
-export default createFragmentContainer(UserProfile, {
-  user: graphql`
-    fragment UserProfile_user on User {
-      nickname
-      avatar {
-        size
-        ...CoreImage
-      }
+export default createFragmentContainer(CoreImage, {
+  data: graphql`
+    fragment CoreImage_data on Image {
+      url
+      size
     }
   `,
 });
 
 ```
 
-<span class="fragment" data-code-focus="1,5" data-code-block="1" />
+<span class="fragment" data-code-focus="5" data-code-block="1">
+  <code>createFragmentContainer</code> – это HOC, который вызывает метод <code>_asCoreImageData</code> для получения инкапсулированных данных от родителя
+</span>
+
+-----
+
+<span class="fragment" style="position: absolute; width: 100%; margin-left: -50%">
+  <img src="./fmodel1.svg" class="plain" />
+</span>
+  
+<span class="fragment" style="position: absolute; width: 100%; margin-left: -50%">
+  <img src="./fmodel2.svg" class="plain" />
+</span>
+
+<span class="fragment" style="position: absolute; width: 100%; margin-left: -50%">
+  <img src="./fmodel3.svg" class="plain" />
+</span>
+
+<span class="fragment" style="position: absolute; width: 100%; margin-left: -50%">
+  <img src="./fmodel4.svg" class="plain" />
+</span>
+
+<span class="fragment" style="position: absolute; width: 100%; margin-left: -50%">
+  <img src="./fmodel5.svg" class="plain" />
+</span>
+
+<span class="fragment" style="position: absolute; width: 100%; margin-left: -50%">
+  <img src="./fmodel6.svg" class="plain" />
+</span>
+
+-----
+
+
+## Вы в своей компоненте, перестаете видеть "чужие" данные из соседней компоненты. <!-- .element: class="green" -->
+
+-----
+
+## Теперь вы спокойно можете удалять поля из своего фрагмента,
+
+## зная, что кроме вас их никто не может использовать вверх по дереву. <!-- .element: class="fragment orange" -->
+
+-----
+
+## Если `UserProfile` пекут в США, <br/> а `CoreImage` в Китае <br/>– то отсутствие возможности сломать друг друга код дорогого стоит.  
 
 -----
 
@@ -125,18 +159,8 @@ export default createFragmentContainer(UserProfile, {
 
 -----
 
-## Вы в своей компоненте, перестаете видеть "чужие" данные из соседней компоненты. <!-- .element: class="green" -->
-
------
-
-## Теперь вы спокойно можете удалять поля из своего фрагмента,
-
-## зная, что кроме вас их никто не может использовать вверх по дереву. <!-- .element: class="fragment orange" -->
-
------
-
 ### В общем, как понимаете, с Fragment Models
 
-## <br/>И басқарма сыты и қызметкерлер целы! <!-- .element: class="green" -->
+## <br/>И бастықи сыты и қызметкерлер целы! <!-- .element: class="green" -->
 
 # <br/> 👍

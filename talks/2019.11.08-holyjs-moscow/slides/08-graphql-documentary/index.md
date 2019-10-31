@@ -6,7 +6,7 @@
 
 ## Респект [Honeypot](https://www.honeypot.io) <br/>за прекрасно снятый фильм, <br/>за согласие на перевод <br/>и предоставление материалов.
 
-![logo](./honeypot.png) <!-- .element: class="plain" style="max-width: 200px;" -->
+![logo](./honeypot.png) <!-- .element: class="plain" style="max-width: 300px; border-radius: 50%;" -->
 
 -----
 

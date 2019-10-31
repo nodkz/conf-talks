@@ -11,7 +11,7 @@
     <td>
       <img src="../manager-happy-semi.png" class="plain" style="min-width: 250px" />
       <br/>
-      Басқарма <span class="gray fragment"><br/>– это начальник по-казахски</span>
+      Бастық <span class="gray fragment"><br/>– это начальство по-казахски</span>
     </td>
     <td style="vertical-align: middle;">
       <h2 class="orange fragment">Слушайте ребята, <br/>у нас ответы от сервера не типизированы!</h2>

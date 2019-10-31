@@ -165,7 +165,7 @@ Note:
   <tr>
     <td>
       <img src="../manager-angry-semi.png" class="plain" style="min-width: 200px" />
-      Басқарма
+      Бастық
     </td>
     <td style="vertical-align: middle;">
       <h2>Задача: </h2>

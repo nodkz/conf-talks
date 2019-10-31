@@ -266,7 +266,7 @@ function UserProfile(props: UserProfileFragment) {
   <tr>
     <td>
       <img src="../manager-happy-semi.png" class="plain" style="max-width: 200px" />
-      Басқарма
+      Бастық
     </td>
     <td style="vertical-align: middle;">
       <h2>Задача: </h2>
