@@ -209,10 +209,12 @@ function UserProfile(props: UserProfileFragment) {
 
 ## Вывод по Response Models
 
-- ~~Опечатки (typos)~~ <!-- .element: class="fragment green" -->
-- ~~Отсутствие типовой безопасности (type safety)~~ <!-- .element: class="fragment green" -->
-- ~~Недополучения данных (underfetch)~~ <!-- .element: class="fragment green" -->
-- Получение лишних данных (overfetch) <!-- .element: class="fragment red" -->
+<ul>
+<li class="fragment green visible" data-fragment-index="0"><del>Опечатки (typos)</del> <!-- --></li>
+<li class="fragment green visible" data-fragment-index="1"><del>Отсутствие типовой безопасности (type safety)</del> <!-- --></li>
+<li class="fragment green visible" data-fragment-index="2"><del>Недополучения данных (underfetch)</del> <!-- --></li>
+<li class="fragment red visible current-fragment" data-fragment-index="3">Получение лишних данных (overfetch) <!-- --></li>
+</ul>
 
 -----
 

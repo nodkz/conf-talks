@@ -143,7 +143,7 @@ export default createFragmentContainer(CoreImage, {
 
 ## C Fragment models вы спокойно можете удалять поля из своего фрагмента,
 
-## зная, что кроме вас их никто не может использовать вверх по дереву. <!-- .element: class="fragment orange" -->
+## зная, что больше никто не сможет использовать данные этих полей. <!-- .element: class="fragment orange" -->
 
 -----
 
@@ -153,10 +153,12 @@ export default createFragmentContainer(CoreImage, {
 
 ## Вывод по Fragment Models
 
-- ~~Опечатки (typos)~~ <!-- .element: class="fragment green" -->
-- ~~Отсутствие типовой безопасности (type safety)~~ <!-- .element: class="fragment green" -->
-- ~~Недополучения данных (underfetch)~~ <!-- .element: class="fragment green" -->
-- ~~Получение лишних данных (overfetch)~~ <!-- .element: class="fragment green" -->
+<ul>
+<li class="fragment green visible" data-fragment-index="0"><del>Опечатки (typos)</del> <!-- --></li>
+<li class="fragment green visible" data-fragment-index="1"><del>Отсутствие типовой безопасности (type safety)</del> <!-- --></li>
+<li class="fragment green visible" data-fragment-index="2"><del>Недополучения данных (underfetch)</del> <!-- --></li>
+<li class="fragment green visible" data-fragment-index="3"><del>Получение лишних данных (overfetch)</del> <!-- --></li>
+</ul>
 
 -----
 

@@ -295,7 +295,9 @@ function UsersPage() {
 
 ## Recap: <!-- .element: class="green" -->
 
-- <span class="fragment">Нельзя переиспользовать фрагменты</span>
-- <span class="fragment">Нельзя фрагмент держать в другом файле</span>
-- <span class="fragment">Не забывать &lt;Query/&gt; связывать с роутингом</span>
-- <span class="fragment">Не крутить Redux к ApolloClient или Relay</span>
+<ul>
+<li class="fragment" data-fragment-index="0"><span>Нельзя переиспользовать фрагменты</span></li>
+<li class="fragment" data-fragment-index="1"><span>Нельзя фрагмент держать в другом файле</span></li>
+<li class="fragment" data-fragment-index="2"><span>Не забывать &lt;Query/&gt; связывать с роутингом</span></li>
+<li class="fragment" data-fragment-index="3"><span>Не крутить Redux к ApolloClient или Relay</span></li>
+</ul>

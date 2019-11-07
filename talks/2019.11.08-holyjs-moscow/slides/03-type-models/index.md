@@ -133,12 +133,14 @@ fragment UserProfile on User {
 
 ## Выводы по Type Models
 
-- ~~Опечатки (typos)~~ <!-- .element: class="fragment green" -->
-- ~~Отсутствие типовой безопасности (type safety)~~ <!-- .element: class="fragment green" -->
-- Недополучения данных (underfetch) <!-- .element: class="fragment red" -->
-- Получение лишних данных (overfetch) <!-- .element: class="fragment red" -->
-- Куча ненужного сгенерированного кода <!-- .element: class="fragment red" -->
-- С алиасами опять опечатки <!-- .element: class="fragment red" -->
+<ul>
+<li class="fragment green" data-fragment-index="0"><del>Опечатки (typos)</del> <!-- --></li>
+<li class="fragment green" data-fragment-index="1"><del>Отсутствие типовой безопасности (type safety)</del> <!-- --></li>
+<li class="fragment red" data-fragment-index="2">Недополучения данных (underfetch) <!-- --></li>
+<li class="fragment red" data-fragment-index="3">Получение лишних данных (overfetch) <!-- --></li>
+<li class="fragment red" data-fragment-index="4">Куча ненужного сгенерированного кода <!-- --></li>
+<li class="fragment red current-fragment" data-fragment-index="5">С алиасами опять опечатки <!-- --></li>
+</ul>
 
 Note:
 Генерация моделей из серверной схемы спасает от опечаток (typos) и отсутствия типовой безопасности (type safety).
