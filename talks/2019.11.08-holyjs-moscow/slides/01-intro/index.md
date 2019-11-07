@@ -4,6 +4,16 @@
 
 -----
 
+### Этот доклад в продолжение моего доклада
+
+<a href="https://youtu.be/VdoPraj0QqU" target="_blank"><img src="https://img.youtube.com/vi/VdoPraj0QqU/0.jpg" alt="ApolloClient или Relay с фрагментами, «волосатый» GraphQL" style="max-width: 580px" class="plain" /></a>
+
+<https://youtu.be/VdoPraj0QqU>
+
+HolyJS Piter 2019
+
+-----
+
 ### Посмотрим на простой GraphQL-запрос
 
 ![simple query](./query.png)

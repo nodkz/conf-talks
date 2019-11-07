@@ -241,6 +241,8 @@ C JSON очень легко получить больше данных, чем 
   <tr>
     <td>
       <img src="../manager-angry.png" class="plain" style="max-width: 200px" />
+      <br/>
+      Бастық
     </td>
     <td style="vertical-align: middle;">
       <h2>Задача: </h2>

@@ -238,7 +238,7 @@ function CoreImage(props: CoreImageFragment) {
 fragment UserProfile on User {
   nickname
   avatar {
-    ...SquarePic
+    ...CoreImage
   }
 }
 
