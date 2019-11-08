@@ -4,7 +4,7 @@
 
 # 🤣
 
-## Lightning talk в 21-00 <!-- .element: class="green" -->
+<h4>Pavel Chertorogov :: <a href="https://twitter.com/nodkz" target="_blank">@nodkz</a></h4>
 
 -----
 
