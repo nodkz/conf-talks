@@ -162,8 +162,8 @@ export default createFragmentContainer(CoreImage, {
 
 -----
 
-### В общем, как понимаете, с Fragment Models
+## Fragment Models
 
-## <br/>И бастықи сыты и қызметкерлер целы! <!-- .element: class="green" -->
+## <br/>самый топ для больших распределённых команд! <!-- .element: class="green" -->
 
 # <br/> 👍

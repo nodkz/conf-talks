@@ -203,7 +203,9 @@ function UserProfile(props: UserProfileFragment) {
 
 -----
 
-## Мы больше не генерируем лишнего кода из серверной схемы. Только то что запросили.
+## Мы больше не генерируем лишнего кода из серверной схемы.
+
+### <br/>Только то, что запросили. <!-- .element: class="fragment" -->
 
 -----
 
@@ -219,6 +221,27 @@ function UserProfile(props: UserProfileFragment) {
 -----
 
 ## Остается проблема `overfetch`, когда вы используете чужие данные из дерева наследования
+
+-----
+
+```typescript
+function CoreImage(props: CoreImageFragment) {
+  return <img src={props.url} alt={props.size} />
+}
+
+function UserProfile(props: UserProfileFragment) {
+  return (
+    <div>
+      <CoreImage {...props.avatar} />
+      Size: {props.avatar.size}
+    </div>
+  );
+}
+
+```
+
+<span class="fragment" data-code-focus="1" data-code-block="1" />
+<span class="fragment" data-code-focus="8" data-code-block="1" />
 
 -----
 

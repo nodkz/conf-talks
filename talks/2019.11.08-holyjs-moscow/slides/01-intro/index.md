@@ -14,6 +14,10 @@ HolyJS Piter 2019
 
 -----
 
+### Что же такое GraphQL-фрагменты?
+
+-----
+
 ### Посмотрим на простой GraphQL-запрос
 
 ![simple query](./query.png)
