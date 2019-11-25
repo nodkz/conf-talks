@@ -26,13 +26,13 @@ PS. Куча орфографических и грамматических ош
 
 ## Предстоящие выступления (в планах)
 
-- 8-9 ноября 2019, Москва, HolyJS (✈️️ подтверждено)
-- 10 ноября 2019, Москва, Workshop по GraphQL на клиенте (в планах)
-- 11-12 ноября 2019, Москва, есть возможность провести корпоративные тренинги по GraphQL ([открыт](https://t.me/nodkz) к предложениям)
-- 7 декабря 2019, Краснодар, GDG Krasnodar DevFest 2019 (на этапе переговоров)
+- 10-11 апреля 2020, Санкт-Петербург, HolyJS (на этапе переговоров)
+- 8-9 апреля 2020, Санкт-Петербург, Workshop по GraphQL (на этапе переговоров)
+- 7 декабря 2019, Краснодар, GDG Krasnodar DevFest 2019 (✈️ подтверждено)
 
 ## Прошедшие мероприятия за 2019-18 года
 
+- 8-9 ноября 2019, Москва, [HolyJS](https://holyjs-moscow.ru/people/5sspmntbo4kaeioeywg86m/)
 - 5-6 октября 2019, Харьков, [KharkivJS](https://kharkivjs.org/) <!-- https://kharkivjs.org/index-2019.html -->
 - 24 августа, Санкт-Петербург, [TechTrain](https://techtrain.ru/2019/talks/16mjji8u09ybzcd9ecpgna/)
 - 29 июня 2019, Алматы, [AlmatyJS](https://almatyjs.timepad.ru/event/996360/)
@@ -51,6 +51,30 @@ PS. Куча орфографических и грамматических ош
 - [24 ноября 2018](https://2018.holyjs-moscow.ru/talks/5ulreiooe80eao6qwwkyyi/), Москва, HolyJS 2018
 
 ## Видео моих выступлений
+
+### GraphQL и как его боготворит академическая среда (HolyJS Moscow 2019)
+
+в академической среде стали появляться «серые» научные работы, которые уж больно круто описывают возможности GraphQL: "We'll show that GraphQL can reduce the size of the JSON documents returned by REST APIs in 94% (in number of fields) and in 99% (in number of bytes), both median results". GraphQL конечно хорош, но не настолько. [Ссылка на презентацию](http://bit.ly/fragment-model#/10).
+
+Продолжительность 11 минут.
+
+<a href="https://www.youtube.com/watch?v=1L7tGvtCzPY" target="_blank"><img src="https://img.youtube.com/vi/1L7tGvtCzPY/0.jpg" alt="GraphQL и как его боготворит академическая среда (HolyJS Moscow 2019)" style="max-width: 480px" /></a>
+
+### GraphQL-фрагменты на клиенте: История появления, ошибки использования (HolyJS Moscow 2019)
+
+В докладе будут разобраны следующие подходы: JSON Models (тяжелый ручной труд), Type Models (похоже на генерацию моделей из Swagger), Response Models (подход ApolloClient), Fragment Models (подход Relay). Спикер также поделится частыми ошибками фронтендеров, которые совершаются при работе с GraphQL-фрагментами. [Ссылка на презентацию](http://bit.ly/fragment-model). Feedback (<a href="https://github.com/nodkz/conf-talks/raw/master/misc/2019-holyjs-moscow-feedback-chart.png" target="_blank">chart</a>, <a href="https://github.com/nodkz/conf-talks/blob/master/misc/2019-holyjs-moscow-feedback.csv" target="_blank">отзывы</a>).
+
+Продолжительность 60 минут.
+
+<a href="https://www.youtube.com/watch?v=0bpZiMVJh14" target="_blank"><img src="https://img.youtube.com/vi/0bpZiMVJh14/0.jpg" alt="GraphQL-фрагменты на клиенте: История появления, ошибки использования (HolyJS Moscow 2019)" style="max-width: 480px" /></a>
+
+### GraphQL: фрагментная модель на клиенте (KharkivJSx10)
+
+В языке GraphQL запросов присутствуют фрагменты, но далеко не все понимают зачем именно они нужны. Фейсбук работает с GraphQL на клиентах с так называемой фрагментной моделью, которая помогает масштабироваться и предотвращать ошибки ещё на этапе разработки. Что это за зверь, будем разбираться вместе. [Ссылка на презентацию](http://bit.ly/graphql-fragment-model).
+
+Продолжительность 57 минут.
+
+<a href="https://www.youtube.com/watch?v=RQR_6NW_xvo" target="_blank"><img src="https://img.youtube.com/vi/RQR_6NW_xvo/0.jpg" alt="GraphQL: фрагментная модель на клиенте (KharkivJSx10)" style="max-width: 480px" /></a>
 
 ### Формируем картину GraphQL-мира (TechTrain 2019)
 
@@ -129,3 +153,13 @@ GraphQL-схема может обернуться головой болью и 
 Мой самый первый доклад. Рекомендую пропустить первые 10 минут бла-бла-бла.
 
 <a href="https://youtu.be/i6i1xGlaVwY?t=614" target="_blank"><img src="https://img.youtube.com/vi/i6i1xGlaVwY/0.jpg" alt="Бэкенд, Фронтенд — всё смешалось. Обзорная экскурсия в будущее веб-разработки (FrontendFellows, Almaty 2016)" style="max-width: 480px" /></a>
+
+## Переводы
+
+### GraphQL: The Documentary (Русская версия)
+
+В рамках HolyJS 2019 Moscow участвовал в переводе фильма.
+
+Ли Байрон, Дэн Шафер и Ник Шрок (создатели GraphQL) и другие известные участники сообщества #GraphQL, "GraphQL: The Documentary" рассказывает историю возникновения GraphQL, его влияния на всю индустрию веб-разработки и на таких технологических гигантов как Facebook, Twitter, Airbnb и Github.
+
+<a href="https://www.youtube.com/watch?v=i_rsfHMF3x4" target="_blank"><img src="https://img.youtube.com/vi/i_rsfHMF3x4/0.jpg" alt="GraphQL: The Documentary (Русская версия)" style="max-width: 480px" /></a>
