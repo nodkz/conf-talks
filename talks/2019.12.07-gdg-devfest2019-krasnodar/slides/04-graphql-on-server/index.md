@@ -1,0 +1,13 @@
+- Что такое GraphQL на сервере?
+  - graphql package
+    - graphql schema
+    - graphql query execution
+  - graphql server
+    - парсинг реквеста
+      - куки
+      - заголовки
+      - body
+    - базовая авторизация
+    - формирование контекста
+    - логирование
+    - упаковка ответа

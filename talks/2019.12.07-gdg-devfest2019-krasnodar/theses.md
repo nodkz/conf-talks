@@ -1,4 +1,4 @@
-# Что такое GraphQL для бэкендера
+# Что такое GraphQL для бэкендера?
 
 - Что такое GraphQL?
   - Не база
@@ -8,22 +8,20 @@
     - это язык запросов к вашему АПИ
   - Контракт между клиентом и сервером
 
-- Интроспекция
-  - сервер рассказывает о своих возможностях
-  - клиент заявляет о своих потребностях
-
 - Фичи GraphQL
   - Язык запросов для API (что просите, то получаете)
   - Интроспекция API из коробки (документация)
   - Удобная IDE в браузере (на поиграть с API)
   - Ваше API статически типизированное (интерпрайзненько)
   - Получить несколько ресурсов за 1 запрос (REST must die)
-
-- Does your GraphQL replacement have a type system, schema introspection, and GraphiQL-like API explorer that works out of the box with every API? You need these to replace GraphQL
-  - <https://twitter.com/southpolesteve/status/1183846300690898951>
-  - <https://medium.com/@__xuorig__/is-graphql-still-relevant-in-an-http2-world-64964f207b8>
+  - Does your GraphQL replacement have a type system, schema introspection, and GraphiQL-like API explorer that works out of the box with every API? You need these to replace GraphQL
+    - <https://twitter.com/southpolesteve/status/1183846300690898951>
+    - <https://medium.com/@__xuorig__/is-graphql-still-relevant-in-an-http2-world-64964f207b8>
 
 - Как запрашивать данные с GraphQL-сервера
+  - Интроспекция
+    - сервер рассказывает о своих возможностях
+    - клиент заявляет о своих потребностях
   - через GraphiQL и производные тулзы
   - postman & insomnia
   - curl на сервере

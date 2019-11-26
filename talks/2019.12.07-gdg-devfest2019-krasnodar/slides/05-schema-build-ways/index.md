@@ -1,0 +1,7 @@
+- Подходы в построении GraphQL-схем на NodeJS
+  - graphql
+  - graphql-tools
+  - graphql-compose
+  - type-graphql
+  - nexus
+  - сравнение <https://nodkz.github.io/conf-talks/talks/2019.05.12-zlit-tech-kyiv/index.html#/13/1>
