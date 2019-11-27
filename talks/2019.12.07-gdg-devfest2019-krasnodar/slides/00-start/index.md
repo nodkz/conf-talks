@@ -5,6 +5,7 @@
         <h3 class="green">Что такое GraphQL для бэкендера?</h3>
         <hr/>
         <h4>Pavel Chertorogov :: <a href="https://twitter.com/nodkz" target="_blank">@nodkz</a></h4>
+        <h4><a href="http://bit.ly/graphql-krasnodar" target="_blank">http://bit.ly/graphql-krasnodar</a></h4>
       </div>
     </td>
     <td>
