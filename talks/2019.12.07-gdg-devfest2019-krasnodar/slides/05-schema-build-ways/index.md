@@ -226,6 +226,29 @@ export default schema;
 
 -----
 
+### `graphql-compose` — like in `graphql-tools`
+
+```js
+import { TypeComposer, schemaComposer } from 'graphql-compose';
+import { authors, articles } from './data';
+
+const typeDefs = `...`; // like in `graphql-tools`
+const resolvers = { ... }; // like in `graphql-tools`
+
+schemaComposer.addTypeDefs(typeDefs);
+schemaComposer.addResolveMethods(resolvers);
+
+const schema = schemaComposer.buildSchema();
+export default schema;
+
+```
+
+<span class="fragment" data-code-focus="4,7" />
+<span class="fragment" data-code-focus="5,8" />
+<span class="fragment" data-code-focus="10-11" />
+
+-----
+
 ### `type-graphql` — decorators (TypeScript)
 
 ```js
@@ -262,15 +285,31 @@ class Article {
 }
 
 @Resolver(of => Article)
-class ArticleResolver implements ResolverInterface<Article> {
+class ArticleResolver {
   @Query(returns => [Article])
+  articles(@Arg('limit', { nullable: true, defaultValue: 3 }) limit: number): Array<Article> {
+    return articles.slice(0, limit) as any;
+  }
 
-  // SyntaxError: Stage 2 decorators cannot be used to decorate parameters (36:17)
-  // Waiting fresh Babel implementation for decorators plugin
-  async articles(@Arg('limit') limit: string): Array<Article> {
-    return articles.slice(0, limit);
+  @FieldResolver()
+  author(@Root() article: Article) {
+    return authors.find(o => o.id === article.authorId);
   }
 }
+
+@Resolver(of => Author)
+class AuthorResolver {
+  @Query(returns => [Author])
+  authors(): Array<Author> {
+    return authors as any;
+  }
+}
+
+const schema = await buildSchema({
+  resolvers: [ArticleResolver, AuthorResolver],
+  // Or it may be a GLOB mask:
+  // resolvers: [__dirname + '/**/*.ts'],
+});
 
 ```
 
@@ -279,7 +318,9 @@ class ArticleResolver implements ResolverInterface<Article> {
 <span class="fragment" data-code-focus="1-5" />
 <span class="fragment" data-code-focus="7-14" />
 <span class="fragment" data-code-focus="16-30" />
-<span class="fragment" data-code-focus="33-42" />
+<span class="fragment" data-code-focus="33-44" />
+<span class="fragment" data-code-focus="46-52" />
+<span class="fragment" data-code-focus="54-58" />
 
 -----
 
@@ -464,10 +505,10 @@ export default schema;
 
 -----
 
-### А еще я готовлю 6-ой подход
+#### А еще я готовлю 6-ой подход
 
-## [graphql-compose-modules](https://github.com/graphql-compose/graphql-compose-modules)
+### [graphql-compose-modules](https://github.com/graphql-compose/graphql-compose-modules)
 
-### Импортирование FieldConfigs из папок.  <!-- .element: class="green fragment"  -->
+![img](./graphql-compose-modules.png) <!-- .element: class="plain"  -->
 
-### Надо ещё опробировать <br/>и потом рассказать отдельно. <!-- .element: class="orange fragment" -->
+#### Надо ещё опробировать и потом рассказать отдельно. <!-- .element: class="orange fragment" -->

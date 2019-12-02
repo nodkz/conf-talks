@@ -2,10 +2,12 @@
   <tr>
     <td style="vertical-align: middle">
         <div style="transform: rotate(-10deg); vertical-align: text-top;">
-        <h3 class="green">Что такое GraphQL для бэкендера?</h3>
-        <hr/>
-        <h4>Pavel Chertorogov :: <a href="https://twitter.com/nodkz" target="_blank">@nodkz</a></h4>
+        <h2 class="green">Что такое GraphQL для бэкендера?</h3>
         <h4><a href="http://bit.ly/graphql-krasnodar" target="_blank">http://bit.ly/graphql-krasnodar</a></h4>
+        <hr/>
+        <h4>🇰🇿🇷🇺 Павел Черторогов</h4>
+        <h4>🇺🇸🇬🇧 Pablo Damnhorns</h4>
+        <h4><img src="../assets/logo/twitter.png" style="height: 70px;border: none;background: none;box-shadow: none;float: left;margin: 0 11px;position: relative;top: -11px;" /> <a href="https://twitter.com/nodkz" target="_blank">@nodkz</a></h4>
       </div>
     </td>
     <td>

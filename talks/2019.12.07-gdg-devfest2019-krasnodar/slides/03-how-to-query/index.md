@@ -39,7 +39,7 @@
 ## Через CURL в терминале
 
 ```bash
-curl \
+$ curl \
   -X POST \
   -H "Content-Type: application/json" \
   --data '{ "query": "{ userMany { name gender age } }" }' \
@@ -70,7 +70,7 @@ fetch('https://graphql-compose.herokuapp.com/user/', {
   body: JSON.stringify({ query: '{ userMany { name gender age } }' }),
 })
   .then(res => res.json())
-  .then(res => console.log(res));
+  .then(json => console.log(json));
 
 ```
 
@@ -79,7 +79,7 @@ fetch('https://graphql-compose.herokuapp.com/user/', {
 ## Через чутка поумневший (обёрнутый) `fetch`
 
 - 🛵 Отправили запрос получили ответ <!-- .element: class="fragment" -->
-- 🚜 Возможно, по строке запроса закешировали <!-- .element: class="fragment" -->
+- 🚜 Возможно, по строке запроса закешировали данные <!-- .element: class="fragment" -->
 - 🚕 Возможно, во время запроса сообщали о текущем состоянии, вызывая коллбэки и хуки <!-- .element: class="fragment" -->
 
 -----
