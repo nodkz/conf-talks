@@ -19,17 +19,17 @@
 
 -----
 
+#### Official description  <!-- .element: class="gray" -->
+
+## GraphQL – это <br/>язык запросов к вашему API <!-- .element: class="green" -->
+
+-----
+
 #### Unofficial description <!-- .element: class="gray" -->
 
 ### GraphQL – это набор функций со статически типизированными аргументами и результатом. <!-- .element: class="orange" -->
 
 ### Где на полученном результате, можно сразу вызывать вложенные функции.
-
------
-
-#### Official description  <!-- .element: class="gray" -->
-
-## GraphQL – это <br/>язык запросов к вашему API <!-- .element: class="green" -->
 
 -----
 
