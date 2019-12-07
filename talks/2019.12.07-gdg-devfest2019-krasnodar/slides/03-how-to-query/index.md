@@ -22,6 +22,12 @@
 
 -----
 
+##### Либо пилите своё (by Rikki Schulte)<br/> <https://codesandbox.io/s/graphiql-example-nhzvc>
+
+![tool](./own-tool.png)  <!-- .element: class="plain" -->
+
+-----
+
 ## Через Postman <span class="red">(боже упаси)</span>
 
 В 7.2 добавили поддержку GraphQL (космолет не меньше 🤣) <!-- .element: class="fragment" -->
@@ -137,6 +143,12 @@ execute(link, { query }).subscribe(res => {
 
 -----
 
-### Сравнение архитектур ApolloClient и Relay на HolyJS Piter 2019 <br/> [https://youtu.be/VdoPraj0QqU](https://youtu.be/VdoPraj0QqU)
+### Сравнение архитектур Relay и ApolloClient на HolyJS Piter 2019 <br/> [https://youtu.be/VdoPraj0QqU](https://youtu.be/VdoPraj0QqU)
 
 <a href="https://youtu.be/VdoPraj0QqU" target="_blank"><img src="https://img.youtube.com/vi/VdoPraj0QqU/0.jpg" alt="ApolloClient или Relay с фрагментами, «волосатый» GraphQL" style="max-width: 600px" class="plain" /></a>
+
+-----
+
+### Сравнение архитектур Relay и ApolloClient на HolyJS Piter 2019 <br/> [https://youtu.be/VdoPraj0QqU](https://youtu.be/VdoPraj0QqU)
+
+![relay-vs-apollo](./relay-vs-apollo.png)  <!-- .element: class="plain" style="max-width: 700px" -->
