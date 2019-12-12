@@ -654,6 +654,8 @@ export default schema;
 </tr>
 </tbody></table>
 
+Обратите внимание, пакет type-graphql на данный момент не имеет возможности использовать [Namespaced-мутации](https://github.com/nodkz/conf-talks/tree/master/articles/graphql/schema-design#rule-6.1).
+
 Также рекомендую прочитать хорошую статью [про разницу в подходах Schema-first и Code-first](https://www.prisma.io/blog/the-problems-of-schema-first-graphql-development-x1mn4cb0tyl3)
 
 ## На закуску — Генераторы
