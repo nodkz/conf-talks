@@ -28,10 +28,11 @@ PS. Куча орфографических и грамматических ош
 
 - 10-11 апреля 2020, Санкт-Петербург, HolyJS (на этапе переговоров)
 - 8-9 апреля 2020, Санкт-Петербург, Workshop по GraphQL (на этапе переговоров)
-- 7 декабря 2019, Краснодар, GDG Krasnodar DevFest 2019 (✈️ подтверждено)
+- 29 февраля 2020, Москва, Я❤️Фронтенд (на этапе переговоров)
 
 ## Прошедшие мероприятия за 2019-18 года
 
+- 7 декабря 2019, Краснодар, [GDG Krasnodar DevFest 2019](https://www.meetup.com/gdgkrasnodar/events/264023548/)
 - 8-9 ноября 2019, Москва, [HolyJS](https://holyjs-moscow.ru/people/5sspmntbo4kaeioeywg86m/)
 - 5-6 октября 2019, Харьков, [KharkivJS](https://kharkivjs.org/) <!-- https://kharkivjs.org/index-2019.html -->
 - 24 августа, Санкт-Петербург, [TechTrain](https://techtrain.ru/2019/talks/16mjji8u09ybzcd9ecpgna/)
