@@ -1,5 +1,16 @@
 # ApolloClient 3 – прощаемся с Redux, REST API и Relay.
 
+Старичку REST API уже как минимум 20 лет, и за это время сложность и требования к передачи данных с сервера на клиент многократно выросли. Также выросли требования к кешированию и обновлению данных на клиенте. Всем важна скорость – и пользователям, и разработчикам, и бизнесу. Ещё не все успели у себя попробовать Redux, но первопроходцы его уже с удовольствием выпиливают.
+
+На что можно поменять Redux с REST API? На GraphQL и ApolloClient 3.
+
+В докладе речь пойдет:
+- коротко о текущих болячках REST API и Redux;
+- как с GraphQL совершенно на новый уровень поднимается Developer Experience у разработчиков;
+- что нового и хорошего появилось в ApolloClient 3 (после чего я разлюбил Relay).
+
+## Тезисный план
+
 - За что мы не любим Redux
   - Опрос <https://docs.google.com/spreadsheets/d/1JsjzDeiUiPkapN2q5ueN5cOYwLNbjNnjwagon3sniJE/edit?usp=sharing>
   - Статья <https://github.com/nodkz/conf-talks/tree/master/articles/redux>
@@ -11,7 +22,7 @@
   - Скорость получения связных данных
   - Опыт Paypal (1/3 времени на разработку, 2/3 на болтавню о том что, где и как взять).
     - <https://github.com/nodkz/graphql-podcast/blob/master/2019-11-paypal/index.md#graphql-a-success-story-for-paypal-checkout>
-- GraphQL алтернативный подход
+- GraphQL альтернативный подход
   - На сервере другая реализация
     - GraphQL-сервер пишется с нуля.
     - GraphQL-сервер оборачивает существующие REST-эндпоинты.
@@ -19,8 +30,6 @@
     - ApolloClient, Relay
   - Совершенно новый уровень Developer Experience
     - One endpoint to fetch all resources.
-    - Avoid over fetching of data (getting too many fields when only a few fields are needed).
-    - Avoid under fetching of data (having to call multiple APIs because one API doesn't give back all the information needed).
     - Сервер объявляет о своих возможностях, клиент заявляет о своих потребностях
       - Удобное написание запросов, браузерные IDE
       - Документация
@@ -32,7 +41,9 @@
         - Моя мысылъ прошлого года: Микросервисная реализация, монолитная статическая типизация!
     - В рантайме
       - Что просите, только то и получаете (вы готовы если АПИ будет пухнуть)
-- ApolloClient3
+      - Avoid over fetching of data (getting too many fields when only a few fields are needed).
+      - Avoid under fetching of data (having to call multiple APIs because one API doesn't give back all the information needed).
+- ApolloClient 3
   - На 9 января 2019 пока еще в BETA (но вот-вот будет релиз)
   - Нововведения в 3-тьей версии
     - Новая логика нормализованного стора `EntityCache`
@@ -83,7 +94,7 @@
       - Если у вас возник вопрос или проблема, то инженеры Фейсбука практически не отвечают в ишьюсах
       - Слабое комьюнити
       - Тяжело изучить самостоятельно и по статьям в интернете
-      - Достаточно сложный внутренний код
+      - Достаточно сложный внутренний код (KISS не про Relay)
       - Внутри Flowtype (и его тоже я перестал любить за его тормознутости и жесткость)
 - Подготовить пример рабочего приложения.
 

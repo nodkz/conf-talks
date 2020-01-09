@@ -5,5 +5,6 @@
   },
   "no-inline-html": false,
   "ol-prefix": false,
-  "first-line-h1": false
+  "first-line-h1": false,
+  "blanks-around-lists": false
 }
