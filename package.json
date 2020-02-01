@@ -7,7 +7,7 @@
     "test": "yarn jest",
     "watch": "yarn jest --watch",
     "lint": "eslint --ext .js ./articles",
-    "start": "yarn --cwd ./talks/2019.12.07-gdg-devfest2019-krasnodar start"
+    "start": "yarn --cwd ./talks/2020.02.29-i-love-frontend-moscow start"
   },
   "repository": {
     "type": "git",
