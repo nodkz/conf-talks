@@ -77,7 +77,7 @@ In fact these are pretty strong constraints...
 
 ### Что бы вы посоветовали использовать вместо Redux? <!-- .element: class="orange" -->
 
-- 38% – Mobx (стал "расходиться" с React)
+- 38% – Mobx <span class="red">(стал "расходиться" с React)</span>
 - 23% – лучше Redux, только Redux
 - 15% – Cerebral
 - 15% – Apollo
@@ -110,7 +110,7 @@ In fact these are pretty strong constraints...
 
 <br/>
 
-Фигово, если АПИ часто меняется. Надо городить что-то свое и хорошо покрывать тестами. Пляски со статической типизацией. Здорово, если есть Swagger. <!-- .element: class="fragment" -->
+Фигово, если АПИ часто меняется. <br/>Надо хорошо покрывать тестами. <br/>Пляски со статической типизацией. <br/>Здорово, если есть Swagger. <!-- .element: class="fragment" -->
 
 -----
 
@@ -118,15 +118,25 @@ In fact these are pretty strong constraints...
 
 - не строить Стор руками <!-- .element: class="fragment" -->
 - не писать никакого маппера данных с сервера в Стор <!-- .element: class="fragment" -->
-- иметь статический анализ для данных полученных с сервера <!-- .element: class="fragment" -->
+- иметь статический анализ для серверных данных <!-- .element: class="fragment" -->
 
 -----
 
-### Если вы активно работаете с сервером <!-- .element: class="orange" -->
+## ApolloClient и GraphQL <br/> берут на себя проблемы получения и хранения данных в Сторе.
 
-### Бекендеры могут предоставить вам GraphQL API <!-- .element: class="fragment green" -->
+-----
 
-### То однозначно пробуйте Apollo Client. <!-- .element: class="fragment apollo" -->
+### Если получаете много разных данных с сервера <!-- .element: class="orange" -->
+
+### И бекендеры могут дать GraphQL API <!-- .element: class="fragment" -->
+
+### То однозначно пробуйте Apollo Client! <!-- .element: class="fragment green" -->
+
+-----
+
+### C Redux вы императивно управляете Стором. <!-- .element: class="orange" -->
+
+## А с ApolloClient – декларативно! <!-- .element: class="green fragment" -->
 
 -----
 
