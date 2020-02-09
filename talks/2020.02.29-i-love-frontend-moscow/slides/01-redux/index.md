@@ -28,15 +28,15 @@ Redux по сути очень прост. И его концепт велико
 
 -----
 
-### Redux asks you to:
+### Redux просит вас:
 
-- Describe application state as plain objects and arrays.
-- Describe changes in the system as plain objects.
-- Describe the logic for handling changes as pure functions.
+- описывать состояние простыми объектами и массивами
+- описывать изменения в системе простыми объектами
+- описывать логику изменений в чистых (pure) функциях
 
 -----
 
-In fact these are pretty strong constraints...
+На самом деле это довольно сильные ограничения...
 
 <https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367>
 
@@ -72,6 +72,8 @@ In fact these are pretty strong constraints...
 - 41.1% – REST
 - 20.7% – REST + Swagger
 - 13.8% – GraphQL
+- 12.4% – rpc, protobuf, вебсокеты
+- 8.2% – ни с каким
 
 -----
 
@@ -79,7 +81,7 @@ In fact these are pretty strong constraints...
 
 - 38% – Mobx <span class="red">(стал "расходиться" с React)</span>
 - 23% – лучше Redux, только Redux
-- 15% – Cerebral
+- 15% – Cerébral (Overmind)
 - 15% – Apollo
 
 -----
@@ -114,9 +116,9 @@ In fact these are pretty strong constraints...
 
 -----
 
-## А что если с Сервером и Стором работать иначе? <!-- .element: class="green" -->
+## А что если с Сервером и Стором <br/> всё-таки работать иначе? <!-- .element: class="green" -->
 
-- не строить Стор руками <!-- .element: class="fragment" -->
+- не строить Стор ручками <!-- .element: class="fragment" -->
 - не писать никакого маппера данных с сервера в Стор <!-- .element: class="fragment" -->
 - иметь статический анализ для серверных данных <!-- .element: class="fragment" -->
 

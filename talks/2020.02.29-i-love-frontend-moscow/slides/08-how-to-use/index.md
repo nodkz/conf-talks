@@ -1,4 +1,6 @@
-# Как заюзать ApolloClient 3
+# ApolloClient 3 <!-- .element: class="grey" -->
+
+# Как установить?
 
 -----
 
@@ -17,15 +19,17 @@
 
 ## Как все запустить
 
-- `npm install @apollo/client@beta`
-- `npm remove apollo-client apollo-utilities apollo-cache apollo-cache-inmemory apollo-link apollo-link-http react-apollo @apollo/react graphql-tag`
+- `npm install @apollo/client@beta` <!-- .element: class="fragment" -->
+- npm remove apollo-client apollo-utilities apollo-cache apollo-cache-inmemory apollo-link apollo-link-http react-apollo @apollo/react graphql-tag <!-- .element: class="fragment" -->
 
 -----
+
+<https://github.com/apollographql/apollo-client/tree/release-3.0>
 
 ## Документацию можно найти в ветке `release-3.0`
 
 - [Cache configuration](https://github.com/apollographql/apollo-client/blob/release-3.0/docs/source/caching/cache-configuration.md)
-- [Fragment matching](https://github.com/apollographql/apollo-client/blob/release-3.0/docs/source/data/fragments.md)
+- [Using fragments with unions and interfaces](https://github.com/apollographql/apollo-client/blob/release-3.0/docs/source/data/fragments.md)
 
 -----
 

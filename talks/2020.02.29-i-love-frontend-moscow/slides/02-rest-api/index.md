@@ -20,9 +20,7 @@
 
 ### О том, что REST API наваливает кучу данных:
 
-## reduce the number of fields in 94% <!-- .element: class="orange" -->
-
-## reduce the number of bytes in 99% <!-- .element: class="orange" -->
+### reduce the number of fields in 94% <br/>reduce the number of bytes in 99% <!-- .element: class="orange" -->
 
 <a href="https://www.youtube.com/watch?v=1L7tGvtCzPY" target="_blank"><img src="https://img.youtube.com/vi/1L7tGvtCzPY/0.jpg" alt="GraphQL и как его боготворит академическая среда (HolyJS Moscow 2019)" class="plain" style="max-width: 480px" /></a>
 
@@ -78,7 +76,7 @@
 
 -----
 
-### PayPay experiense
+### PayPal experiense
 
 When we took a closer look, we found that UI developers were spending less than 1/3 of their time actually building UI. The rest of that time spent was figuring out where and how to fetch data, filtering/mapping over that data and orchestrating many API calls.
 
@@ -88,7 +86,7 @@ When we took a closer look, we found that UI developers were spending less than 
 
 ### Проще говоря <!-- .element: class="gray" -->
 
-### Paypal посчитал, что фронтендеры тратят
+### PayPal посчитал, что фронтендеры тратят
 
 - 1/3 времени на реальную разработку UI <!-- .element: class="green" -->
 - 2/3 на прояснение того что, где и как взять <!-- .element: class="red" -->
