@@ -2,6 +2,20 @@
 
 -----
 
+### GraphQL – это язык запросов для API
+
+![Query](./query.png) <!-- .element: class="plain" style="width: 800px" -->
+
+#### Что запрашиваете, только то и получаете <!-- .element: class="green fragment" -->
+
+-----
+
+### GraphQL – статически типизированный
+
+![Static](./static.png) <!-- .element: class="plain" style="width: 800px" -->
+
+-----
+
 ### Один эндпоинт для получения и изменения данных <!-- .element: class="green" -->
 
 Нет проблем с определением адреса куда стучаться. <!-- .element: class="fragment" -->

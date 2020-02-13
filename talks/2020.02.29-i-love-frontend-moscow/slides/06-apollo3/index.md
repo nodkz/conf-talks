@@ -2,9 +2,9 @@
 
 -----
 
-## На 4 февраля 2019 пока еще в BETA <!-- .element: class="orange" -->
+## На 13 февраля 2019 пока еще в BETA <!-- .element: class="orange" -->
 
-- v3.0.0-beta.32 и обновляется каждые пару дней <!-- .element: class="fragment" -->
+- v3.0.0-beta.34 и обновляется каждые пару дней <!-- .element: class="fragment" -->
 - Ben Newman шабашит 6 дней в неделю <!-- .element: class="fragment" -->
 
 -----
@@ -33,19 +33,9 @@
 
 -----
 
-## Как все запустить
+## Документацию можно найти по ссылке
 
-- `npm install @apollo/client@beta` <!-- .element: class="fragment" -->
-- npm remove apollo-client apollo-utilities apollo-cache apollo-cache-inmemory apollo-link apollo-link-http react-apollo @apollo/react graphql-tag <!-- .element: class="fragment" -->
-
------
-
-<https://github.com/apollographql/apollo-client/tree/release-3.0>
-
-## Документацию можно найти в ветке `release-3.0`
-
-- [Cache configuration](https://github.com/apollographql/apollo-client/blob/release-3.0/docs/source/caching/cache-configuration.md)
-- [Using fragments with unions and interfaces](https://github.com/apollographql/apollo-client/blob/release-3.0/docs/source/data/fragments.md)
+<https://www.apollographql.com/docs/react/v3.0-beta/caching/cache-configuration/>
 
 -----
 
