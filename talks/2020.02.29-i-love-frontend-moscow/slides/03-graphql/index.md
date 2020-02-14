@@ -115,9 +115,9 @@
 
 - Сервер <!-- .element: class="fragment" -->
   - Писать GraphQL-сервер с нуля <!-- .element: class="orange fragment" -->
-  - Но можно и оборнуть существующие REST-эндпоинты <!-- .element: class="orange fragment" -->
+  - Но можно и обернуть существующие REST-эндпоинты <!-- .element: class="orange fragment" -->
   - Самое главное хорошо задизайнить GraphQL-схему <!-- .element: class="red fragment" -->
 - Клиент <!-- .element: class="fragment" -->
   - Для работы со стейтом брать ApolloClient или Relay <!-- .element: class="orange fragment" -->
   - Писать GraphQL-запросы <!-- .element: class="orange fragment" -->
-  - Самое главное хорошо настротить Tooling (DX) <!-- .element: class="red fragment" -->
+  - Самое главное хорошо настроить Tooling (DX) <!-- .element: class="red fragment" -->
