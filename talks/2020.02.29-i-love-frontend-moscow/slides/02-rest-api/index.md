@@ -28,7 +28,7 @@
 
 -----
 
-## Ученные брали <span class="red">"жирнючий"</span> <span class="green">GitHub</span>'абовский <span class="red">REST API</span> v3 и сравнивали его с GraphQL v4
+## Учёные брали <span class="red">"жирнючий"</span> <span class="green">GitHub</span>'абовский <span class="red">REST API</span> v3 и сравнивали его с GraphQL v4
 
 -----
 
@@ -76,7 +76,7 @@
 
 -----
 
-### PayPal experiense
+### PayPal experience
 
 When we took a closer look, we found that UI developers were spending less than 1/3 of their time actually building UI. The rest of that time spent was figuring out where and how to fetch data, filtering/mapping over that data and orchestrating many API calls.
 
@@ -86,7 +86,7 @@ When we took a closer look, we found that UI developers were spending less than 
 
 ### Проще говоря <!-- .element: class="gray" -->
 
-### PayPal посчитал, что фронтендеры тратят
+### PayPal подсчитал, что фронтендеры тратят
 
 - 1/3 времени на реальную разработку UI <!-- .element: class="green" -->
 - 2/3 на прояснение того что, где и как взять <!-- .element: class="red" -->
