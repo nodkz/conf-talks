@@ -76,7 +76,7 @@
 
 -----
 
-### PayPal experiense
+### PayPal experience
 
 When we took a closer look, we found that UI developers were spending less than 1/3 of their time actually building UI. The rest of that time spent was figuring out where and how to fetch data, filtering/mapping over that data and orchestrating many API calls.
 
