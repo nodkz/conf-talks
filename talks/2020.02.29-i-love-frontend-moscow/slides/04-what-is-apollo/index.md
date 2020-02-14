@@ -35,7 +35,7 @@
 - Серверный кэш – в ApolloClient'е <!-- .element: class="fragment" -->
 - Роутинг – в браузерной строке <!-- .element: class="fragment" -->
 - Формочки – в React-стейте или в final-forms <!-- .element: class="fragment" -->
-- Авторизация, региональные настройки – в свои классах EvenEmitter'ах <!-- .element: class="fragment" -->
+- Авторизация, региональные настройки – в свои классах EventEmitter'ах <!-- .element: class="fragment" -->
 - А больше у меня нет мест, куда бы Redux сгодился <!-- .element: class="fragment orange" -->
 
 -----
@@ -53,12 +53,12 @@
 
 ## What we deleted <!-- .element: class="red" -->
 
-- Matches reducer (~300 lines of code) <!-- .element: class="fragment" -->
-- Data fetching action creators (~800 LOC) <!-- .element: class="fragment" -->
-- Batching logic & socket updates (~750 LOC) <!-- .element: class="fragment" -->
-- Local storage action creators (~1000 LOC) <!-- .element: class="fragment" -->
-- Redux logic separated from UI components (~1000 LOC) <!-- .element: class="fragment" -->
-- Tests with all of the above (~1000 LOC) <!-- .element: class="fragment" -->
+- Matches reducer (~300 lines of code)
+- Data fetching action creators (~800 LOC)
+- Batching logic & socket updates (~750 LOC)
+- Local storage action creators (~1000 LOC)
+- Redux logic separated from UI components (~1000 LOC)
+- Tests with all of the above (~1000 LOC)
 
 -----
 

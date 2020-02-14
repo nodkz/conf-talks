@@ -9,7 +9,7 @@
 
 -----
 
-## Нововведения в 3-тьей версии <!-- .element: class="orange" -->
+## Нововведения в 3-ей версии <!-- .element: class="orange" -->
 
 - Новая логика нормализованного стора EntityCache <!-- .element: class="fragment" -->
 - Garbage collection и возможность выборочной чистки кэша <!-- .element: class="fragment" -->

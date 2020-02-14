@@ -45,7 +45,7 @@
       - Avoid under fetching of data (having to call multiple APIs because one API doesn't give back all the information needed).
 - ApolloClient 3
   - На 9 января 2019 пока еще в BETA (но вот-вот будет релиз)
-  - Нововведения в 3-тьей версии
+  - Нововведения в 3-ей версии
     - Новая логика нормализованного стора `EntityCache`
       - Идеи и наработки взяты у Ian MacLeod (@nevir) из <https://github.com/convoyinc/apollo-cache-hermes>
         - <https://github.com/convoyinc/apollo-cache-hermes/blob/master/docs/Motivation.md>

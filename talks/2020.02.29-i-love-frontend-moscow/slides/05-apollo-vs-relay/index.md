@@ -28,13 +28,15 @@ HolyJS Piter 2019
 
 -----
 
-## И с Relay'ем их дорожки разошлись!
+## ApolloClient 3 и Relay – их дорожки разошлись!
 
-Аполловцы ударились в производительность и скорость работы кэша c EntityCache. <!-- .element: class="fragment green" -->
+Аполловцы ударились в производительность и скорость работы кэша c EntityCache. <!-- .element: class="fragment green" --> 
 
-А для FragmentModels, как в Relay, нужна глубокая нормализация кэша. <!-- .element: class="fragment orange" -->
+И скорее всего не будут поддерживать FragmentModels<!-- .element: class="fragment orange" -->
 
-PS. Apollo поддерживал и будет поддерживать <br/>GraphQL-фрагменты (не путать с FragmentModels). <!-- .element: class="fragment red" -->
+А для FragmentModels, как в Relay, нужна глубокая нормализация кэша. <!-- .element: class="fragment red" -->
+
+PS. Apollo поддерживал и будет поддерживать <br/>GraphQL-фрагменты (не путать с FragmentModels). <!-- .element: class="fragment" -->
 
 -----
 
@@ -70,4 +72,4 @@ HolyJS Moscow 2019
 
 -----
 
-## ApolloClient – уже серьезный интерпрайзный инструмент
+## ApolloClient – уже серьезный энтерпрайзный инструмент
