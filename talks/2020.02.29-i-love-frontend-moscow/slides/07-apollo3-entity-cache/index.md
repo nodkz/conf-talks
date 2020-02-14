@@ -92,4 +92,4 @@
 
 ![cache_v3_not_bad](./cache_v3_not_bad.png) <!-- .element: class="plain" -->
 
-#### то ничего не нормализуется 👍 <!-- .element: class="fragment" -->
+#### то ничего не нормализуется, <br/>и это гораздо лучше чем в ApolloClient 2 👍 <!-- .element: class="fragment" -->
