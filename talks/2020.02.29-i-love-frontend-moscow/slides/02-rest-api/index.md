@@ -28,7 +28,7 @@
 
 -----
 
-## Ученные брали <span class="red">"жирнючий"</span> <span class="green">GitHub</span>'абовский <span class="red">REST API</span> v3 и сравнивали его с GraphQL v4
+## Учёные брали <span class="red">"жирнючий"</span> <span class="green">GitHub</span>'абовский <span class="red">REST API</span> v3 и сравнивали его с GraphQL v4
 
 -----
 
