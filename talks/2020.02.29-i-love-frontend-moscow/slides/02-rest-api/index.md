@@ -86,7 +86,7 @@ When we took a closer look, we found that UI developers were spending less than 
 
 ### Проще говоря <!-- .element: class="gray" -->
 
-### PayPal посчитал, что фронтендеры тратят
+### PayPal подсчитал, что фронтендеры тратят
 
 - 1/3 времени на реальную разработку UI <!-- .element: class="green" -->
 - 2/3 на прояснение того что, где и как взять <!-- .element: class="red" -->
