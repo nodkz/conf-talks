@@ -28,7 +28,7 @@
 
 -----
 
-## Учёные брали <span class="red">"жирнючий"</span> <span class="green">GitHub</span>'абовский <span class="red">REST API</span> v3 и сравнивали его с GraphQL v4
+## Учёные брали <span class="red">«жирнючий»</span> <span class="green">GitHub</span>'абовский <span class="red">REST API</span> v3 и сравнивали его с GraphQL v4
 
 -----
 
@@ -40,7 +40,7 @@
 
 ## Просто со временем в АПИ добавляются новые поля. 
 
-## И "сказка" начинает заплывать жиром. <!-- .element: class="fragment red" -->
+## И «сказка» начинает заплывать жиром. <!-- .element: class="fragment red" -->
 
 -----
 
@@ -88,8 +88,8 @@ When we took a closer look, we found that UI developers were spending less than 
 
 ### PayPal подсчитал, что фронтендеры тратят
 
-- 1/3 времени на реальную разработку UI <!-- .element: class="green" -->
-- 2/3 на прояснение того что, где и как взять <!-- .element: class="red" -->
+- ⅓ времени на реальную разработку UI <!-- .element: class="green" -->
+- ⅔ на прояснение того что, где и как взять <!-- .element: class="red" -->
 
 -----
 

@@ -10,8 +10,8 @@
 
 ## Как работает GC? <!-- .element: class="green" -->
 
-- Начиная с ROOT_QUERY бежит вглубь собирая __ref в какой-нить Set <!-- .element: class="fragment" -->
-- Вторым проходом пробегается по всем ключам в нормализованном кэше и удаляет те записи <!-- .element: class="fragment" -->
+- Начиная с ROOT_QUERY, бежит вглубь, собирая __ref в какой-нить Set <!-- .element: class="fragment" -->
+- Вторым проходом пробегается по всем ключам в нормализованном кэше и удаляет те записи: <!-- .element: class="fragment" -->
   - которых нет в Set'е <!-- .element: class="fragment" -->
   - и нет в retain-set'е <!-- .element: class="fragment" -->
 
