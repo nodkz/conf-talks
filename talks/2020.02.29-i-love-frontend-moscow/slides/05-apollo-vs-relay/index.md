@@ -32,7 +32,7 @@ HolyJS Piter 2019
 
 Аполловцы ударились в производительность и скорость работы кэша c EntityCache. <!-- .element: class="fragment green" --> 
 
-И скорее всего не будут поддерживать FragmentModels<!-- .element: class="fragment orange" -->
+И, скорее всего, не будут поддерживать FragmentModels<!-- .element: class="fragment orange" -->
 
 А для FragmentModels, как в Relay, нужна глубокая нормализация кэша. <!-- .element: class="fragment red" -->
 
