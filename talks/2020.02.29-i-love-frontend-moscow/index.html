@@ -176,6 +176,14 @@
 				},
 			});
 
+			// Open all links in new window
+			Reveal.addEventListener('ready', function(event) {
+				var links = document.links;
+				for (var i = 0, linksLength = links.length; i < linksLength; i++) {
+					links[i].target = '_blank';
+				}
+			});			
+
 			// Set 0 index for vertical slide
 			// var stateHolder = 0;
 			// try {
