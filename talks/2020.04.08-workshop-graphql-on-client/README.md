@@ -1,6 +1,6 @@
 # GraphQL на клиентской стороне с ApolloClient 3
 
-## Слайды: [тёмная тема](https://nodkz.github.io/conf-talks/talks/2020.04.08-workshop-graphql-on-client.html), [светлая тема](https://nodkz.github.io/conf-talks/talks/2020.04.08-workshop-graphql-on-client/index.html)
+## Слайды: [тёмная тема](https://nodkz.github.io/conf-talks/talks/2020.04.08-workshop-graphql-on-client.html) или [светлая тема](https://nodkz.github.io/conf-talks/talks/2020.04.08-workshop-graphql-on-client/white.html)
 
 Workshop может дать существенный толчок в изучении GraphQL начинающим специалистам. А так же заинтересовать и опытных специалистов. Вас ждет много интересного материала простым и доступным языком.
 
@@ -11,7 +11,7 @@ Workshop может дать существенный толчок в изуче
 - Павел Черторогов – один из ведущих специалистов по GraphQL, который работает с ним больше 4-х лет и сделал более 15 докладов о данной технологии.
 - Алексей Золотых – teamlead Infobip, член программного коммитета HolyJS, спикер и самый крупный фронтендер.
 
-## GraphQL на клиенте (программа воркшопа 2го дня):
+## Программа воркшопа (GraphQL на клиенте):
 
 ### 1) Знакомство со стеком
 
