@@ -4,18 +4,18 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-		<title>Workshop: GraphQL на клиентской стороне с ApolloClient 3. Pavel Chertorogov, 2020</title>
+		<title>Workshop: GraphQL-сервер на NodeJS. Pavel Chertorogov, 2020</title>
 
 		<link rel="stylesheet" href="reveal.js/css/reveal.css" />
-		<link rel="stylesheet" href="reveal.js/css/theme/nodkz-white.css" />
+		<link rel="stylesheet" href="reveal.js/css/theme/nodkz.css" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono">
 
 		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="reveal.js/lib/css/purebasic.css" />
+		<link rel="stylesheet" href="reveal.js/lib/css/atom-one-dark.css" />
 
 		<style>
 			.line { display: block; }
-			.line.focus { background: #fdff89; color: #657b83; }
+			.line.focus { background: #fdf6e3; color: #657b83; }
 			.line.focus .hljs-comment, .line.focus .hljs-quote { color: #93a1a1; }
 
 			code {
@@ -27,7 +27,7 @@
 			code > span:before {
 				content: counter(line);
 				text-align: right;
-				color: #dadada;
+				color: #454f60;
 				/* border-right: 1px solid #555; */
 				width: 40px;
 				padding-right: 8px;
@@ -82,7 +82,7 @@
 				line-height: 1;
 				color: #8093b3;
 				padding: 5px;
-			} 
+			}
 		</style>
 	</head>
 	<body>
@@ -90,8 +90,8 @@
 			<div class="slides">
 				<section data-markdown="slides/00-start/index.md" data-separator-vertical="^-----\n"></section>
 				<section data-markdown="slides/01-intro/index.md" data-separator-vertical="^-----\n"></section>
-				<section data-markdown="slides/02-read/index.md" data-separator-vertical="^-----\n"></section>
-				<section data-markdown="slides/03-write/index.md" data-separator-vertical="^-----\n"></section>
+				<section data-markdown="slides/02-creating-schema/index.md" data-separator-vertical="^-----\n"></section>
+				<section data-markdown="slides/03-solving-problems/index.md" data-separator-vertical="^-----\n"></section>
 				<section data-markdown="slides/04-misc/index.md" data-separator-vertical="^-----\n"></section>
 				<section data-markdown="slides/10-end/index.md" data-separator-vertical="^-----\n"></section>
 			</div>
@@ -103,6 +103,7 @@
 
 		<script>
 			Reveal.initialize({
+				pdfSeparateFragments: false,
 				dependencies: [
 					{ src: 'reveal.js/plugin/fixedMarkdown/marked.js' },
 					{ src: 'reveal.js/plugin/fixedMarkdown/markdown.js' },
@@ -161,15 +162,15 @@
 				slideNumber: true,
 				showSlideNumber: 'all',
 				keyboard: {
-					13: () => { // pause/resume time when Enter is pressed
+					13: function () { // pause/resume time when Enter is pressed
 						ElapsedTimeBar.isPaused ? ElapsedTimeBar.resume() : ElapsedTimeBar.pause();
 					},
-					82: () => { // reset timer when 'r' is pressed
+					82: function () { // reset timer when 'r' is pressed
 						ElapsedTimeBar.reset();
 					}
 				},
 			});
-
+			
 			// Open all links in new window
 			Reveal.addEventListener('ready', function(event) {
 				var links = document.links;
