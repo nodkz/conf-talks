@@ -1,6 +1,6 @@
 # GraphQL на клиентской стороне с ApolloClient 3
 
-## Слайды: [тёмная тема](https://nodkz.github.io/conf-talks/talks/2020.04.08-workshop-graphql-on-client.html) или [светлая тема](https://nodkz.github.io/conf-talks/talks/2020.04.08-workshop-graphql-on-client/white.html)
+## Слайды: [тёмная тема](https://nodkz.github.io/conf-talks/talks/2020.04.08-workshop-graphql-on-client/index.html) или [светлая тема](https://nodkz.github.io/conf-talks/talks/2020.04.08-workshop-graphql-on-client/white.html)
 
 Workshop может дать существенный толчок в изучении GraphQL начинающим специалистам. А так же заинтересовать и опытных специалистов. Вас ждет много интересного материала простым и доступным языком.
 
@@ -15,10 +15,7 @@ Workshop может дать существенный толчок в изуче
 
 ### 1) Знакомство со стеком
 
-- ApolloClient 3
-- React, React Hooks, ant-design
-- NextJS: Разработка, Сборка, Роутинг, SSR
-- Пишем болванку приложения с mock-страницами
+- Что такое GraphQL?
 - Пишем GraphQL-запросы руками
   - GraphiQL, GraphQL Playground, Altair, Insomnia, OneGraph, Voyager
   - интроспекция, документация
@@ -26,11 +23,9 @@ Workshop может дать существенный толчок в изуче
   - поля, аргументы
   - алиасы полей
   - переменные
+- GraphQL фрагменты
 - В болванку приложения тянем данные из GraphQL через обычный fetch
   - дать ссылки на умные-fetch обертки для GraphQL
-- Настройка VSCode
-  - Настраиваем eslint для проверки GraphQL-запросов
-  - Плагин GraphQL for VSCode Apollo GraphQL
 
 ### 2) Чтение данные с GraphQL-сервера через ApolloClient
 
@@ -38,10 +33,17 @@ Workshop может дать существенный толчок в изуче
   - Network Layer (HttpLink и прочие миддлвары)
   - Нормализованный Store
   - Разница в сторах ApolloClient 2, Relay, ApolloClient 3 (примеры ужасных сторов)
+- Пишем болванку приложения с mock-страницами
+  - ApolloClient 3
+  - React, React Hooks, ant-design
+  - NextJS: Разработка, Сборка, Роутинг, SSR
 - Настраиваем ApolloClient
   - Делаем запрос на сервер напрямую через ApolloClient
   - Что такое graphql-tag, оптимизация через babel-macros
   - Настройка Store через type & field policies.
+- Настройка VSCode
+  - Настраиваем eslint для проверки GraphQL-запросов
+  - Плагин GraphQL for VSCode Apollo GraphQL
 - Настраиваем SSR для ApolloClient в NextJS
 - Написание простого запроса на получение данных
   - &lt;Query&gt;, useQuery(), useLazyQuery()

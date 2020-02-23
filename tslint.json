@@ -1,4 +1,13 @@
 {
   "extends": ["tslint:recommended"],
   "defaultSeverity": "warning",
+  "rules": {
+    "ordered-imports": false,
+    "member-ordering": false,
+    "quotemark": false,
+    "object-literal-sort-keys": false,
+    "no-console": false,
+    "member-access": false,
+    "array-type": false
+  }
 }

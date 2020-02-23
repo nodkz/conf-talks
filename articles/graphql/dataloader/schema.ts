@@ -1,5 +1,3 @@
-// @flow
-
 import { GraphQLSchema, GraphQLList, GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql';
 import { articleModel, authorModel } from './data';
 
@@ -19,7 +17,7 @@ const ArticleType = new GraphQLObjectType({
     authorId: { type: GraphQLString },
     author: {
       type: AuthorType,
-      resolve: source => {
+      resolve: (source) => {
         return authorModel.findById(source.authorId);
       },
     },

@@ -25,6 +25,7 @@
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
     "apollo-server": "^2.4.0",
     "dataloader": "^1.4.0",
+    "dedent": "^0.7.0",
     "graphql": "14.0.2",
     "graphql-compose": "^5.10.4",
     "graphql-tools": "^4.0.4",

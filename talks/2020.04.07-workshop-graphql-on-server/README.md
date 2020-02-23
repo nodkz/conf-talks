@@ -1,6 +1,6 @@
 # Создаем свой GraphQL-сервер на NodeJS
 
-## Слайды: [тёмная тема](https://nodkz.github.io/conf-talks/talks/2020.04.07-workshop-graphql-on-server.html) или [светлая тема](https://nodkz.github.io/conf-talks/talks/2020.04.07-workshop-graphql-on-server/white.html)
+## Слайды: [тёмная тема](https://nodkz.github.io/conf-talks/talks/2020.04.07-workshop-graphql-on-server/index.html) или [светлая тема](https://nodkz.github.io/conf-talks/talks/2020.04.07-workshop-graphql-on-server/white.html)
 
 Workshop может дать существенный толчок в изучении GraphQL начинающим специалистам. А так же заинтересовать и опытных специалистов. Вас ждет много интересного материала простым и доступным языком.
 
@@ -69,3 +69,4 @@ Workshop может дать существенный толчок в изуче
 - Производительность GraphQL
 - Как прикрутить GraphQL к существующему REST API
 - Микросервисная архитектура: schema-stiching, Apollo Federation
+  - [How to GraphQL in Kotlin and create a single endpoint to access microservices' APIs](https://romankudryashov.com/blog/2020/02/how-to-graphql/)

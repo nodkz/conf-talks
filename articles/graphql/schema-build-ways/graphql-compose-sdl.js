@@ -1,8 +1,8 @@
 // @flow
 
-import { ApolloServer } from "apollo-server";
-import { schemaComposer } from "graphql-compose";
-import { authors, articles } from "./data";
+import { ApolloServer } from 'apollo-server';
+import { schemaComposer } from 'graphql-compose';
+import { authors, articles } from './data';
 
 const typeDefs = `
   "Author data"
@@ -36,19 +36,19 @@ const typeDefs = `
 
 const resolvers = {
   Article: {
-    author: source => {
+    author: (source) => {
       const { authorId } = source;
-      return authors.find(o => o.id === authorId);
-    }
+      return authors.find((o) => o.id === authorId);
+    },
   },
   Query: {
     articles: (_, args) => {
       const { limit } = args;
-      return [{ title: JSON.stringify(args) }];
+      // return [{ title: JSON.stringify(args) }];
       return articles.slice(0, limit);
     },
-    authors: () => authors
-  }
+    authors: () => authors,
+  },
 };
 
 schemaComposer.addTypeDefs(typeDefs);

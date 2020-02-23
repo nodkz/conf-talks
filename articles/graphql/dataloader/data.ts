@@ -1,5 +1,3 @@
-// @flow
-
 const articles = [
   { id: 1, title: 'Article 1', authorId: 1 },
   { id: 2, title: 'Article 2', authorId: 7 },
@@ -28,16 +26,16 @@ const authors = [
   { id: 7, name: 'User 7', email: '7@example.com' },
 ];
 
-function createModel(data: Array<Object>, modelName: string) {
+function createModel(data: Array<Record<string, any>>, modelName: string) {
   return class MockDB {
     static findById(id: number) {
       this.log(`findById(${id})`);
-      return data.find(o => o.id === id);
+      return data.find((o) => o.id === id);
     }
 
     static findByIds(ids: Array<number>): any {
       this.log(`findByIds(${ids.join(', ')})`);
-      return data.filter(o => ids.includes(o.id));
+      return data.filter((o) => ids.includes(o.id));
     }
 
     static findMany() {
@@ -47,7 +45,9 @@ function createModel(data: Array<Object>, modelName: string) {
 
     static debug = true;
     static log(msg: string) {
-      if (this.debug) console.log(`Run ${modelName} query: ${msg}`);
+      if (this.debug) {
+        console.log(`Run ${modelName} query: ${msg}`);
+      }
     }
   };
 }

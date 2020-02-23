@@ -1,5 +1,4 @@
 {
-  "prettier.eslintIntegration": true,
   "eslint.validate": [
     "javascript",
   ],

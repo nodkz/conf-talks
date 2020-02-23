@@ -1,9 +1,8 @@
-// @flow
-
 // Server with DataLoader
 // Run: ./node_modules/.bin/babel-node ./articles/graphql/dataloader/dl-server.js
 
 import { ApolloServer } from 'apollo-server';
+import dedent from 'dedent';
 import schema from './dl-schema';
 
 const server = new ApolloServer({
@@ -23,4 +22,17 @@ server
   })
   .then(({ url }) => {
     console.log(`🚀  Server ready at ${url}`);
+
+    console.log(dedent`
+    Try to run the following query:
+
+    {
+      articles {
+        title
+        author {
+          name
+        }
+      }
+    }
+    `);
   });

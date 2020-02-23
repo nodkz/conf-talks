@@ -4,13 +4,9 @@
 
 -----
 
-## 👀 Изучаем болванку приложения
+## 👀 Что такое GraphQL?
 
-- ApolloClient 3
-- React, React Hooks, ant-design
-- NextJS: Разработка, Сборка, Роутинг, SSR
-
-<https://github.com/nodkz/example-apollo3>
+<https://nodkz.github.io/conf-talks/talks/2019.06.29-almatyjs-almaty/index.html#/2>
 
 -----
 
@@ -30,11 +26,26 @@
 - алиасы полей
 - переменные
 
+<https://graphql-compose.herokuapp.com/northwind-altair/>
+
+-----
+
+### 👀 GraphQL фрагменты
+
+<https://nodkz.github.io/conf-talks/talks/2019.05.24-holyjs-piter/index.html#/5>
+
+-----
+
+### 👏 GraphQL фрагменты
+
+<https://graphql-compose.herokuapp.com/northwind-altair/>
+
 -----
 
 ### 👀 Как запрашивать данные с GraphQL-сервера?
 
 <https://nodkz.github.io/conf-talks/talks/2019.06.29-almatyjs-almaty/index.html#/3>
+<https://nodkz.github.io/conf-talks/talks/2020.02.29-i-love-frontend-moscow/index.html>
 
 -----
 
@@ -43,12 +54,7 @@
 - через обычный fetch
 - через ApolloLink
 
------
-
-## 👀 Настройка VSCode
-
-- Настраиваем eslint для проверки GraphQL-запросов
-- Плагин GraphQL for VSCode Apollo GraphQL (смотрим конфиг)
+<https://github.com/nodkz/graphql-workshop-client-2020-02>
 
 -----
 

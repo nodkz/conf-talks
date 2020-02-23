@@ -9,7 +9,7 @@
       "arrow-body-style": 0,
       "no-unused-expressions": 0,
       "no-plusplus": 0,
-      "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*-test.js"]}],
+      "import/no-extraneous-dependencies": 0,
       "import/named": 0,
       "import/no-cycle": 0,
       "no-prototype-builtins": 0,
@@ -32,7 +32,8 @@
       "no-use-before-define": ["error", { "functions": false }],
       "prefer-destructuring": 0,
       "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
-      "no-else-return": 0
+      "no-else-return": 0,
+      "no-console": 0
     },
     "env": {
       "jasmine": true,

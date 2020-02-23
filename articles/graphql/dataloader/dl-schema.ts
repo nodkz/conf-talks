@@ -1,5 +1,3 @@
-// @flow
-
 // Schema with DataLoader
 
 import { GraphQLSchema, GraphQLList, GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql';
@@ -40,7 +38,7 @@ const ArticleType = new GraphQLObjectType({
             // regular request to our database
             const rows = await authorModel.findByIds(ids);
             // IMPORTANT: we MUST return rows in the same order like we get ids
-            const sortedInIdsOrder = ids.map(id => rows.find(x => x.id === id));
+            const sortedInIdsOrder = ids.map((id) => rows.find((x) => x.id === id));
             return sortedInIdsOrder;
           });
           dataloaders.set(info.fieldNodes, dl);
