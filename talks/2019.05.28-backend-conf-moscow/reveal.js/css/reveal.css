@@ -1078,7 +1078,6 @@ body {
     visibility: visible !important;
     cursor: pointer;
     box-sizing: border-box; }
-  .reveal.overview .slides section:hover,
   .reveal.overview .slides section.present {
     outline: 30px solid #d653fd;
     outline-offset: 10px; }

@@ -134,7 +134,23 @@
 					},
 					82: function () { // reset timer when 'r' is pressed
 						ElapsedTimeBar.reset();
-					}
+					},
+					37: function () { // left
+						Reveal.isOverview() ? Reveal.navigateLeft() : Reveal.navigatePrev();
+					},
+					39: function () { // right
+						Reveal.isOverview() ? Reveal.navigateRight() : Reveal.navigateNext();
+					},
+					38: function () { // up
+						Reveal.isOverview() ? Reveal.navigateUp() : Reveal.navigatePrev();
+					},
+					40: function () { // down
+						Reveal.isOverview() ? Reveal.navigateDown() : Reveal.navigateNext();
+					},
+					33: 'navigatePrev', // page up
+					34: 'navigateNext', // page down
+					36: 'navigatePrev', // home
+					35: 'navigateNext', // end
 				},
 			});
 

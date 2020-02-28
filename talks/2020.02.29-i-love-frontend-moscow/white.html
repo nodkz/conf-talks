@@ -132,7 +132,7 @@
 					// { src: 'reveal.js/plugin/d3js.js'},
 				],
 				// https://github.com/tkrkt/reveal.js-elapsed-time-bar
-				allottedTime: 60 * 60000,
+				allottedTime: 40 * 60000,
 				progressBarHeight: 3,
 				barColor: 'rgb(66, 128, 246, 0.6)',
 				// https://github.com/denniskniep/reveal.js-plugin-spotlight
@@ -166,12 +166,28 @@
 				slideNumber: true,
 				showSlideNumber: 'all',
 				keyboard: {
-					13: () => { // pause/resume time when Enter is pressed
+					13: function () { // pause/resume time when Enter is pressed
 						ElapsedTimeBar.isPaused ? ElapsedTimeBar.resume() : ElapsedTimeBar.pause();
 					},
-					82: () => { // reset timer when 'r' is pressed
+					82: function () { // reset timer when 'r' is pressed
 						ElapsedTimeBar.reset();
-					}
+					},
+					37: function () { // left
+						Reveal.isOverview() ? Reveal.navigateLeft() : Reveal.navigatePrev();
+					},
+					39: function () { // right
+						Reveal.isOverview() ? Reveal.navigateRight() : Reveal.navigateNext();
+					},
+					38: function () { // up
+						Reveal.isOverview() ? Reveal.navigateUp() : Reveal.navigatePrev();
+					},
+					40: function () { // down
+						Reveal.isOverview() ? Reveal.navigateDown() : Reveal.navigateNext();
+					},
+					33: 'navigatePrev', // page up
+					34: 'navigateNext', // page down
+					36: 'navigatePrev', // home
+					35: 'navigateNext', // end
 				},
 			});
 
