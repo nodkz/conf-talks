@@ -16,7 +16,9 @@
 
 <br/>
 
-[ApolloClient или Relay с фрагментами, «волосатый» GraphQL (HolyJS Piter 2019)](https://youtu.be/VdoPraj0QqU) <!-- .element: class="fragment" -->
+<a href="https://youtu.be/VdoPraj0QqU" target="_blank"><img src="https://img.youtube.com/vi/VdoPraj0QqU/0.jpg" alt="ApolloClient или Relay с фрагментами, «волосатый» GraphQL" style="max-width: 580px" class="plain" /></a>
+
+[ApolloClient или Relay с фрагментами, «волосатый» GraphQL (HolyJS Piter 2019)](https://youtu.be/VdoPraj0QqU)
 
 -----
 
@@ -92,4 +94,4 @@
 
 ![cache_v3_not_bad](./cache_v3_not_bad.png) <!-- .element: class="plain" -->
 
-#### то ничего не нормализуется, <br/>и это гораздо лучше, чем в ApolloClient 2 👍 <!-- .element: class="fragment" -->
+#### то ничего не нормализуется, <br/>и это гораздо лучше, чем в ApolloClient 2 👍 <!-- .element: class="fragment green" -->

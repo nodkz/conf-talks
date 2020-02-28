@@ -6,12 +6,6 @@
 
 -----
 
-## Грубо говоря, они сравнялись по функциональности 🎉
-
-Теперь у ApolloClient 3 есть GC <!-- .element: class="green" -->
-
------
-
 ### Старое сравнение ApolloClient 2 и Relay
 
 <a href="https://youtu.be/VdoPraj0QqU" target="_blank"><img src="https://img.youtube.com/vi/VdoPraj0QqU/0.jpg" alt="ApolloClient или Relay с фрагментами, «волосатый» GraphQL" style="max-width: 580px" class="plain" /></a>
@@ -19,6 +13,24 @@
 <https://youtu.be/VdoPraj0QqU>
 
 HolyJS Piter 2019
+
+-----
+
+## Грубо говоря <!-- .element: class="gray" -->
+
+## На текущий момент они сравнялись по функциональности 🎉
+
+Теперь у ApolloClient 3 есть GC <!-- .element: class="green" -->
+
+-----
+
+### Что-нибудь слышали про FragmentModels?
+
+<a href="https://www.youtube.com/watch?v=0bpZiMVJh14" target="_blank"><img src="https://img.youtube.com/vi/0bpZiMVJh14/0.jpg" alt="GraphQL-фрагменты на клиенте: история появления, ошибки использования" style="max-width: 580px" class="plain" /></a>
+
+<https://youtu.be/0bpZiMVJh14>
+
+HolyJS Moscow 2019
 
 -----
 
@@ -30,23 +42,13 @@ HolyJS Piter 2019
 
 ## ApolloClient 3 и Relay – их дорожки разошлись!
 
-Аполловцы ударились в производительность и скорость работы кэша c EntityCache. <!-- .element: class="fragment green" --> 
+Аполловцы ударились в производительность и скорость работы кэша c EntityCache. <!-- .element: class="fragment green" -->
 
 И, скорее всего, не будут поддерживать FragmentModels<!-- .element: class="fragment orange" -->
 
 А для FragmentModels, как в Relay, нужна глубокая нормализация кэша. <!-- .element: class="fragment red" -->
 
 PS. Apollo поддерживал и будет поддерживать <br/>GraphQL-фрагменты (не путать с FragmentModels). <!-- .element: class="fragment" -->
-
------
-
-### Что такое Фрагментная модель?
-
-<a href="https://www.youtube.com/watch?v=0bpZiMVJh14" target="_blank"><img src="https://img.youtube.com/vi/0bpZiMVJh14/0.jpg" alt="GraphQL-фрагменты на клиенте: история появления, ошибки использования" style="max-width: 580px" class="plain" /></a>
-
-<https://youtu.be/0bpZiMVJh14>
-
-HolyJS Moscow 2019
 
 -----
 

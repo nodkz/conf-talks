@@ -2,9 +2,9 @@
 
 -----
 
-## На 13 февраля 2019 пока еще в BETA <!-- .element: class="orange" -->
+## На 29 февраля 2019 пока еще в BETA <!-- .element: class="orange" -->
 
-- v3.0.0-beta.34 и обновляется каждые пару дней <!-- .element: class="fragment" -->
+- v3.0.0-beta.38 и обновляется каждые пару дней <!-- .element: class="fragment" -->
 - Ben Newman шабашит 6 дней в неделю <!-- .element: class="fragment" -->
 
 -----
@@ -37,7 +37,7 @@
 
 <https://www.apollographql.com/docs/react/v3.0-beta/caching/cache-configuration/>
 
------
+Note:
 
 ## Следить за изменениями можно тут
 
