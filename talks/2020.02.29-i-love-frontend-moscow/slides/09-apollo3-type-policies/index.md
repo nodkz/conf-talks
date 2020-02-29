@@ -70,7 +70,7 @@ const cache = new InMemoryCache({
 
 -----
 
-ApolloClient 3 - `typePolicies.*.keyFields`
+ApolloClient 3 – `typePolicies.*.keyFields`
 
 ```js
 import { InMemoryCache } from '@apollo/client';

@@ -125,4 +125,8 @@
 
 -----
 
+## Но всё нужно готовить заново! <!-- .element: class="green" -->
+
+-----
+
 <video data-autoplay src="../00-start/fire.mp4" muted loop></video>

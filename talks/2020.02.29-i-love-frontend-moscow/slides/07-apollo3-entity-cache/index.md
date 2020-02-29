@@ -38,7 +38,7 @@
 - это ресурсоемкая операция! <!-- .element: class="fragment red" -->
   - хорошо потребляет CPU <!-- .element: class="fragment red" -->
   - хорошо кушает память <!-- .element: class="fragment red" -->
-- частенько ужасно нормализуется <!-- .element: class="fragment red" -->
+- частенько ужасно нормализуется 💩 <!-- .element: class="fragment red" -->
 
 -----
 
@@ -95,3 +95,22 @@
 ![cache_v3_not_bad](./cache_v3_not_bad.png) <!-- .element: class="plain" -->
 
 #### то ничего не нормализуется, <br/>и это гораздо лучше, чем в ApolloClient 2 👍 <!-- .element: class="fragment green" -->
+
+-----
+
+### Сравнение стора кэшей при наихудших условиях <!-- .element: class="gray" -->
+
+<table>
+  <tr>
+    <td align="center" style="border-bottom: none">AC2</td>
+    <td align="center" style="border-bottom: none">AC3</td>
+  </tr>
+  <tr>
+    <td style="vertical-align: middle;">
+      <img src="./cache_v2_bad.png" alt="cache_v2_bad" class="plain">
+    </td>
+    <td style="vertical-align: middle;">
+      <img src="./cache_v3_not_bad.png" alt="cache_v3_not_bad" class="plain">
+    </td>
+  </tr>
+<table>
