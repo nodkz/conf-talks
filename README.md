@@ -26,13 +26,14 @@ PS. Куча орфографических и грамматических ош
 
 ## Предстоящие выступления (в планах)
 
-- 10-11 апреля 2020, Санкт-Петербург, HolyJS (на этапе переговоров)
-- 7-8 апреля 2020, Санкт-Петербург, Workshop по GraphQL (на этапе переговоров)
+- 10-11 апреля 2020, Санкт-Петербург, [HolyJS](https://holyjs-piter.ru/2020/spb/talks/26ewxf0eetneqysa49i6sh/) (🛫подтверждено)
+- 8 апреля 2020, Санкт-Петербург, [Workshop GraphQL на клиенте](https://holyjs-piter.ru/2020/spb/workshops/graphql-on-the-client-side-with-apolloclient3/) (🛫подтверждено)
+- 7 апреля 2020, Санкт-Петербург, [Workshop GraphQL на сервере](https://holyjs-piter.ru/2020/spb/workshops/create-your-graphql-server-on-nodejs/) (🛫подтверждено)
 - 3-4 апреля 2020, Киев, [JSFest](https://jsfest.com.ua/) (🛫подтверждено)
-- 29 февраля 2020, Москва, [Я❤️Фронтенд](https://yandex.ru/promo/yandex4developers/yalovefrontend2020#form) (🛫подтверждено)
 
 ## Прошедшие мероприятия за 2019-18 года
 
+- 29 февраля 2020, Москва, [Я❤️Фронтенд](https://yandex.ru/promo/yandex4developers/yalovefrontend2020#form)
 - 7 декабря 2019, Краснодар, [GDG Krasnodar DevFest 2019](https://www.meetup.com/gdgkrasnodar/events/264023548/)
 - 8-9 ноября 2019, Москва, [HolyJS](https://holyjs-moscow.ru/people/5sspmntbo4kaeioeywg86m/)
 - 5-6 октября 2019, Харьков, [KharkivJS](https://kharkivjs.org/) <!-- https://kharkivjs.org/index-2019.html -->

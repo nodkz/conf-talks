@@ -71,7 +71,3 @@ PS. Apollo поддерживал и будет поддерживать <br/>Gr
 - пилят документашку <!-- .element: class="fragment" -->
 - отвечают на ишью <!-- .element: class="fragment" -->
 - активно принимают Pull Request'ы. <!-- .element: class="fragment" -->
-
------
-
-## ApolloClient – уже серьезный энтерпрайзный инструмент
