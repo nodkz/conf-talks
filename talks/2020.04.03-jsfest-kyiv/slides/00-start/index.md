@@ -2,7 +2,11 @@
   <tr>
     <td style="vertical-align: middle">
         <div style="vertical-align: text-top;">
-        <h2 class="green">ApolloClient 3 – лучше чем Redux с REST API. Минусы Relay и ApolloClient 2.</h3>
+        <h2>
+          <span class="green">ApolloClient 3
+          <br/>– лучше чем <br/>Redux с REST API.</span>
+          <br/><span class="red">Минусы Relay и ApolloClient 2.</span>
+        </h3>
         <h4><a href="http://bit.ly/apollo-vs-redux" target="_blank">http://bit.ly/apollo-vs-redux</a></h4>
         <hr/>
         <h4>🇰🇿 Павел Черторогов</h4>

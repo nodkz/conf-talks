@@ -69,14 +69,16 @@
 
 -----
 
-## Что важно запомнить:
+## Что важно запомнить: <!-- .element: class="gray" -->
 
-### Аполло только для кеша серверных данных, <br/>а Редакс для клиентского стейта. <!-- .element: class="fragment green" -->
+### Аполло только для кеша серверных данных, <!-- .element: class="fragment green" -->
+
+### а Редакс для клиентского стейта. <!-- .element: class="fragment orange" -->
 
 -----
 
 ## Ещё можно сравнить так: <!-- .element: class="gray" -->
 
-### Redux – ближе к паттерну проектирования
+### ApolloClient – ближе к фреймворку <!-- .element: class="fragment green" -->
 
-### ApolloClient – ближе к фреймворку
+### Redux – ближе к паттерну проектирования <!-- .element: class="fragment orange" -->

@@ -102,8 +102,8 @@
 
 <table>
   <tr>
-    <td align="center" style="border-bottom: none">AC2</td>
-    <td align="center" style="border-bottom: none">AC3</td>
+    <td align="center" style="border-bottom: none">AC2 👎</td>
+    <td align="center" style="border-bottom: none">AC3 👍</td>
   </tr>
   <tr>
     <td style="vertical-align: middle;">

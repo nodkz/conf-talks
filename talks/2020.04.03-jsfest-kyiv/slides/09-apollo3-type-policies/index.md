@@ -16,7 +16,7 @@
 
 ## `possibleTypes` – предоставляет информацию об Interfaces и Unions типах
 
-До сих пор до конца не понимаю, нафига козе баян <br/> <https://github.com/apollographql/apollo-client/issues/5750#issuecomment-595360603> <!-- .element: class="fragment" -->
+<span class="fragment gray">До сих пор до конца не понимаю, нафига козе баян <br/> <a href="https://github.com/apollographql/apollo-client/issues/5750#issuecomment-595360603">https://github.com/apollographql/apollo-client/issues/5750#issuecomment-595360603</a></span>
 
 -----
 
