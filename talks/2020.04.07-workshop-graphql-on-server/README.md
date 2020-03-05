@@ -70,3 +70,4 @@ Workshop может дать существенный толчок в изуче
 - Производительность GraphQL
 - Как прикрутить GraphQL к существующему REST API
 - Микросервисная архитектура: schema-stiching, Apollo Federation
+  - [How to GraphQL in Kotlin and create a single endpoint to access microservices' APIs](https://romankudryashov.com/blog/2020/02/how-to-graphql/)

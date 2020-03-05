@@ -7,7 +7,7 @@
     "test": "yarn jest",
     "watch": "yarn jest --watch",
     "lint": "eslint --ext .js ./articles",
-    "start": "yarn --cwd ./talks/2020.02.29-i-love-frontend-moscow start",
+    "start": "yarn --cwd ./talks/2020.04.03-jsfest-kyiv start",
     "w1": "yarn --cwd ./talks/2020.04.08-workshop-graphql-on-client start",
     "w2": "yarn --cwd ./talks/2020.04.07-workshop-graphql-on-server start"
   },
