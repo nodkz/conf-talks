@@ -16,6 +16,8 @@
 
 ## `possibleTypes` – предоставляет информацию об Interfaces и Unions типах
 
+До сих пор до конца не понимаю, нафига козе баян <br/> <https://github.com/apollographql/apollo-client/issues/5750#issuecomment-595360603> <!-- .element: class="fragment" -->
+
 -----
 
 ApolloClient 2 – `fragmentMatcher`
@@ -45,7 +47,7 @@ const cache = new InMemoryCache({
 
 -----
 
-## `typePolicies.keyFields` - какие поля использовать в качестве id <br/>
+## `typePolicies.keyFields` – какие поля использовать в качестве id <br/>
 
 ### (работает даже с алиасами полей) <!-- .element: class="gray" -->
 
@@ -129,7 +131,7 @@ query Feed($type: FeedType!, $offset: Int, $limit: Int) {
 
 -----
 
-ApolloClient 3 – один раз объявляем настройки 👍
+ApolloClient 3 – один раз объявляем настройки в кэше 👍
 
 ```js
 const cache = new InMemoryCache({

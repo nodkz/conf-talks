@@ -26,8 +26,6 @@
 
 ### <br/>Redux можно продолжать использовать для клиентского состояния (формы, игры и пр...) <!-- .element: class="fragment orange" -->
 
-### <br/>Но нужен ли ещё Redux?.. Решать вам! <!-- .element: class="fragment red" -->
-
 -----
 
 ## У себя я Redux выпилил <br/>ещё 3 года тому назад <!-- .element: class="red" -->
