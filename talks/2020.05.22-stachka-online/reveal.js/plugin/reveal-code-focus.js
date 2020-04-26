@@ -3,23 +3,28 @@
  * Copyright 2015-2018 Benjamin Tan <https://bnjmnt4n.now.sh/>
  * Available under MIT license <https://github.com/bnjmnt4n/reveal-code-focus/blob/master/LICENSE>
  */
-;(function(window, Reveal, hljs) {
+(function(window, Reveal, hljs) {
   if (typeof window.RevealCodeFocus == 'function') {
     return;
   }
 
-  var currentSlide, currentFragments, scrollToFocused = true, prevSlideData = null;
+  var currentSlide,
+    currentFragments,
+    scrollToFocused = true,
+    prevSlideData = null;
 
   // Iterates through `array`, running `callback` for each `array` element.
   function forEach(array, callback) {
-    var i = -1, length = array ? array.length : 0;
+    var i = -1,
+      length = array ? array.length : 0;
     while (++i < length) {
       callback(array[i]);
     }
   }
 
   function indexOf(array, elem) {
-    var i = -1, length = array ? array.length : 0;
+    var i = -1,
+      length = array ? array.length : 0;
     while (++i < length) {
       if (array[i] === elem) {
         return i;
@@ -64,7 +69,7 @@
 
         // Match all HTML `<span>` tags.
         reHtmlTag.lastIndex = 0;
-        while (openTag = reHtmlTag.exec(string)) {
+        while ((openTag = reHtmlTag.exec(string))) {
           // If it is a closing tag, remove the opening tag from the list.
           if (openTag[1]) {
             openTags.pop();
@@ -113,10 +118,8 @@
     if (
       currentFragments.length &&
       prevSlideData &&
-      (
-        prevSlideData.indexh > e.indexh ||
-        (prevSlideData.indexh == e.indexh && prevSlideData.indexv > e.indexv)
-      )
+      (prevSlideData.indexh > e.indexh ||
+        (prevSlideData.indexh == e.indexh && prevSlideData.indexv > e.indexv))
     ) {
       // …return to the last fragment and highlight the code.
       while (Reveal.nextFragment()) {}
@@ -127,8 +130,8 @@
 
     // Update previous slide information.
     prevSlideData = {
-      'indexh': e.indexh,
-      'indexv': e.indexv
+      indexh: e.indexh,
+      indexv: e.indexv,
     };
   }
 
@@ -173,7 +176,8 @@
       if (lines.length == 1) {
         focusLine(lines[0]);
       } else {
-        var i = lines[0] - 1, j = lines[1];
+        var i = lines[0] - 1,
+          j = lines[1];
 
         while (++i <= j) {
           focusLine(i);
@@ -207,7 +211,7 @@
     }
 
     if (scrollToFocused && topLineNumber != null) {
-      var topLine =  code[topLineNumber];
+      var topLine = code[topLineNumber];
       var bottomLine = code[bottomLineNumber];
       var codeParent = topLine.parentNode;
       var scrollTop = topLine.offsetTop;
@@ -218,7 +222,7 @@
 
   function RevealCodeFocus(options) {
     if (!options) {
-      options = { 'scrollToFocused': true };
+      options = { scrollToFocused: true };
     }
 
     if (options.scrollToFocused != null) {
@@ -226,11 +230,11 @@
     }
 
     if (Reveal.isReady()) {
-      initialize({ 'currentSlide': Reveal.getCurrentSlide() });
+      initialize({ currentSlide: Reveal.getCurrentSlide() });
     } else {
       Reveal.addEventListener('ready', initialize);
     }
   }
 
   window.RevealCodeFocus = RevealCodeFocus;
-}(this, this.Reveal, this.hljs));
+})(this, this.Reveal, this.hljs);

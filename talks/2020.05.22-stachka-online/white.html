@@ -21,10 +21,10 @@
 			code {
 				counter-reset: line;
 			}
-			code > span {
+			code > span.line, code > span.line > span.line {
 				counter-increment: line;
 			}
-			code > span:before {
+			code > span.line:before, code > span.line > span.line:before {
 				content: counter(line);
 				text-align: right;
 				color: #dadada;
