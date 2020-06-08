@@ -17,6 +17,8 @@ PS. Куча орфографических и грамматических ош
 - [DataLoader - правильно решаем проблему N+1 запросов](./articles/graphql/dataloader)
 - **PRO:** [Дизайн GraphQL-схем — делаем АПИ удобным, избегаем боль и страдания](./articles/graphql/schema-design) 🌶🌶🌶
 - [GraphQL на фронтенде](./articles/graphql/clients)
+- [Почему в graphql есть проблема с N+1](./articles/graphql/dataloader/N+1.md)
+- [Что такое Node Interface?](./articles/graphql/schema-design/NodeInterface.md)
 
 ### Другое
 
@@ -31,11 +33,11 @@ PS. Куча орфографических и грамматических ош
 - 7 апреля 2020, Санкт-Петербург, [Workshop GraphQL на сервере](https://holyjs-piter.ru/2020/spb/workshops/create-your-graphql-server-on-nodejs/) (🛫подтверждено)
 -->
 - 30-31 октября 2020, Киев, [JSFest](https://jsfest.com.ua/) (на этапе переговоров)
-- 16-17 июня 2020, Санкт-Петербург (онлайн), [HolyJS](https://holyjs-piter.ru/2020/spb/talks/26ewxf0eetneqysa49i6sh/) (на этапе переговоров)
-- 22-25 мая 2020, Ульяновск (онлайн), [Стачка.Frontend](https://nastachku.ru/apolloclient-graphql-codegen-i-kodogeneraciya-tipizirovannyh-hookov) (на этапе переговоров)
+- 22-26 июня 2020, Санкт-Петербург (онлайн), [HolyJS](https://holyjs-piter.ru/2020/spb/talks/26ewxf0eetneqysa49i6sh/) (на этапе переговоров)
 
-## Прошедшие мероприятия за 2019-18 года
+## Прошедшие мероприятия
 
+- 19 мая 2020, Онлайн, [Тяжелое утро с HolyJS #2](https://www.youtube.com/watch?v=ZIE2_c6MRZ0)
 - 29 февраля 2020, Москва, [Я❤️Фронтенд](https://yandex.ru/promo/yandex4developers/yalovefrontend2020#form)
 - 7 декабря 2019, Краснодар, [GDG Krasnodar DevFest 2019](https://www.meetup.com/gdgkrasnodar/events/264023548/)
 - 8-9 ноября 2019, Москва, [HolyJS](https://holyjs-moscow.ru/people/5sspmntbo4kaeioeywg86m/)
