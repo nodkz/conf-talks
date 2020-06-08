@@ -1,6 +1,10 @@
 # Оборачиваем существующее REST API в GraphQL
 
-<!-- Оборачиваем существующее REST API в GraphQL. И склеиваем несколько GraphQL-серверов в один через Apollo Federation. -->
+Презентация доступна по следующим ссылкам:
+- [темная тема](https://nodkz.github.io/conf-talks/talks/2020.06.24-holyjs-online/index.html)
+- [светлая теме](https://nodkz.github.io/conf-talks/talks/2020.06.24-holyjs-online/white.html)
+
+<!-- Оборачиваем существующее REST API в GraphQL. И склеиваем несколько GraphQL-серверов в один через Apollo Federation, GraphQL Mesh. -->
 
 Фронтендерам нужен GraphQL если:
 Очень много REST эндпоинтов? Тяжело понять откуда брать данные? Не известно как данные связаны между собой? Тяжелые ответы с кучей полей? Надо сделать кучу запросов к API, чтоб отрисовать страницу?
