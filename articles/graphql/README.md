@@ -38,4 +38,3 @@ GraphQL это не база данных. Это просто "умная" пр
 Дополнительно, рекомендую к ознакомлению хорошие статьи на русском:
 
 - [Что же такое этот GraphQL?](https://habr.com/post/326986/), Sacha Greif перевод от @aliksend
-- [Что такое GraphQL?](https://codenative.ru/article/chto_takoe_graphql), Paige Niedringhaus перевод от codenative.ru

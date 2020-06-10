@@ -1,0 +1,7 @@
+- M2) Описание общих GraphQL-типов `schema/types`
+  - Что такое `graphql-compose`?
+    - Это type registry, с возможность редактирования и клонирования типов для написания генераторов GraphQL-схем.
+    - Это и schema-first и code-first в одном флаконе
+  - Скаляры
+  - Enum
+  - Output и Input

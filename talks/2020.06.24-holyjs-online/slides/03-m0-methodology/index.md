@@ -1,0 +1,10 @@
+- Методология (cтруктура GraphQL-прокси со средним временем на реализацию)
+  - Практическая методология – это алгоритм, набор приёмов и способов того, как достичь желаемой практической цели.
+  - M1) Создание `vendor` (обертка к REST API)
+  - M2) Описание общих GraphQL-типов `schema/types`
+  - M3) Описание Entity `schema/entities`
+  - M4) Описание точек входа в граф `schema/query`, `schema/mutation`
+  - M5) Расширение Entity прямыми связями по id
+  - M6) Создание DataLoaders (N+1) `schema/dataLoaders`
+  - M7) Создание Резолверов `schema/relations`
+  - M8) Прикручивание QueryCost (DDOS)

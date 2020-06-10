@@ -1,0 +1,10 @@
+- M4) Описание точек входа в граф
+  - Что такое `graphql-compose-modules`
+    - directoryToAst()
+    - astToSchema()
+    - изменение AST дерева
+  - Описываем входные точки
+    - `schema/query`
+    - `schema/mutation`
+    - `schema/subscription` (должны реализовываться отдельным этапом)
+  - По завершению этого этапа получаем RestQL (графкуэль без связей)
