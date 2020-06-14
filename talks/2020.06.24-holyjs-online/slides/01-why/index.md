@@ -22,7 +22,7 @@
 
 - вложенные запросы с аргументами <!-- .element: class="fragment" -->
 - статический анализ <!-- .element: class="fragment" -->
-- тулинг и DX <!-- .element: class="fragment" -->
+- туллинг и DX <!-- .element: class="fragment" -->
   - документация прям в редакторе запросов <br/>(Altair, Playground, Graphiql) <!-- .element: class="fragment" -->
   - валидация запросов (CI, IDE) <!-- .element: class="fragment" -->
   - генерация тайпингов из запросов (graphql-codegen) <!-- .element: class="fragment" -->

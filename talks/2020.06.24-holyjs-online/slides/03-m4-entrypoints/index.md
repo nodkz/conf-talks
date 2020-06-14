@@ -1,4 +1,4 @@
-- M4) Описание точек входа в граф
+- M4: Описание точек входа в граф
   - Что такое `graphql-compose-modules`
     - directoryToAst()
     - astToSchema()

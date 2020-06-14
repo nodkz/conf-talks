@@ -1,4 +1,4 @@
-- M6) Создание DataLoaders (N+1) `schema/dataLoaders`
+- M6: Создание DataLoaders (N+1) `schema/dataLoaders`
   - Проблема N+1 <https://github.com/nodkz/conf-talks/blob/master/articles/graphql/dataloader/N+1.md>
   - Даталоадеры позволяют решить проблему N+1 и сократить кол-во HTTP запросов к REST API.
   - Пишем генераторы DataLoader'ов
