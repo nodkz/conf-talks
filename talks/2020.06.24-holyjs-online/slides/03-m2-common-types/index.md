@@ -30,7 +30,7 @@
 - 35 Enums
 - 7 Output types
 - 14 Input types
-- ~ `⏱ 8 часов`
+- ~ `⏱ 10 часов`
 
 -----
 

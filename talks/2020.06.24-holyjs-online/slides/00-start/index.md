@@ -6,7 +6,10 @@
           <span>Оборачиваем существующее</span>
           <br/>
           <span class="green">REST&nbsp;API в GraphQL</span>
-        </h3>
+        <h2>
+        <h4>
+          <span class="orange">(методология за 1000000 рублей)</span>
+        </h4>
         <h4><a href="http://bit.ly/rest2graphql" target="_blank">http://bit.ly/rest2graphql</a></h4>
         <hr/>
         <h4>🇰🇿 Павел Черторогов</h4>
@@ -16,7 +19,7 @@
     </td>
     <td>
       <!-- QRCode generator: http://goqr.me/#t=url -->
-      <img src="slides/00-start/qrcode.png" alt="QRCode" class="plain" style="max-width: 500px" />
+      <img src="slides/00-start/qrcode.png" alt="QRCode" class="plain" style="max-width: 450px" />
     </td>
   </tr>
 </table>
