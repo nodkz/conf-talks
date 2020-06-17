@@ -12,7 +12,7 @@
 - <span class="fragment">M4: Описание точек входа в граф `schema/query`</span>
 - <span class="fragment">M5: Расширение Entity прямыми связями по id</span>
 - <span class="fragment">M6: Создание DataLoaders (N+1) `schema/dataLoaders`</span>
-- <span class="fragment">M7: Создание Резолверов `schema/relations`</span>
+- <span class="fragment">M7: Создание резолверов Реляций `schema/relations`</span>
 - <span class="fragment">M8: Прикручивание QueryCost (DDOS)</span>
 - <span class="fragment">M9: Авторизация</span>
 

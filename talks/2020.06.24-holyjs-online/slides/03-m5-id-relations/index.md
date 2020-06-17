@@ -43,13 +43,20 @@ TaskTC.addFields({
 
 ```
 
+<span class="fragment" data-code-focus="3">
+<span class="fragment" data-code-focus="4-10">
+<span class="fragment" data-code-focus="5">
+<span class="fragment" data-code-focus="8">
+
 -----
+
+### Добавили 51 связь, и GraphQL [преобразился](https://graphql-wrike.herokuapp.com/voyager)
 
 ![with-direct-relations](./with-direct-relations.png) <!-- .element: style="max-width: 1000px;" class="plain" -->
 
 -----
 
-### Грубая оценка
+### Грубая оценка M5
 
 - 51 связь
 - ~ `⏱ 10 часов`

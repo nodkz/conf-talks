@@ -24,16 +24,6 @@
 
 -----
 
-### Грубая оценка
-
-- 24 Scalars
-- 35 Enums
-- 7 Output types
-- 14 Input types
-- ~ `⏱ 10 часов`
-
------
-
 ### Для описания Типов я использую
 
 ### `graphql-compose`
@@ -42,6 +32,16 @@
 
 ### Что такое `graphql-compose`?
 
-- Это type registry, с возможность редактирования и клонирования типов для написания генераторов GraphQL-схем. <!-- .element: class="fragment" -->
-- Это прокаченная тулза для написания GraphQL-схем с кучей сахара<!-- .element: class="fragment" -->
+- Это прокаченная тулза на NodeJS для написания <br/>GraphQL-схем с кучей сахара <!-- .element: class="fragment" -->
+- Это type registry, с возможность редактирования и клонирования типов для написания генераторов <br/>GraphQL-схем. <!-- .element: class="fragment" -->
 - Это и schema-first и code-first в одном флаконе <!-- .element: class="fragment" -->
+
+-----
+
+### Грубая оценка M2
+
+- 24 Scalars
+- 35 Enums
+- 7 Output types
+- 14 Input types
+- ~ `⏱ 10 часов`

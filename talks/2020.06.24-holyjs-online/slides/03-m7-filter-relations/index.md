@@ -8,7 +8,7 @@
 
 -----
 
-### FieldConfig состоит из <!-- .element: class="orange" -->
+### GraphQL FieldConfig состоит из <!-- .element: class="orange" -->
 
 ### type, <br/>args, <br/>resolve, <br/><span class="gray">description, <br/>deprecationReason,<br/> extensions</span>
 
@@ -37,9 +37,11 @@ export function getRelationContactIds(
 
 ### Relations-резолверы позволяют избавиться от копипасты.
 
+### Т.е. из одного резолвера вы можете сгенерировать множество FieldConfigs для разных частей вашей схемы <!-- .element: class="fragment green" -->
+
 -----
 
-### Позволяют расширять логику реляций (например добавлять аргументы для фильтрации и сортировки)
+### А еще ваши Relations могут содержать аргументы для фильтрации и сортировки
 
 ```js
 export function getRelationTasksBySpaceId(
@@ -74,6 +76,12 @@ export function getRelationTasksBySpaceId(
 
 ```
 
+Представьте, что этот код вам надо переиспользовать несколько раз в вашей схеме <!-- .element: class="fragment red" -->
+
+-----
+
+### Резолверы позволяют генерировать FieldConfigs ☝️
+
 -----
 
 ## В демке `wrike-graphql` <!-- .element: class="orange" -->
@@ -83,18 +91,31 @@ export function getRelationTasksBySpaceId(
 
 -----
 
-## "Обратные" Relation – это те которые используют доступные фильтры из REST API.
-
-К примеру к entity `Contact` можно добавить поля `tasksAuthored`, `tasksResponsible`. И для этого необходимо будет воспользоваться фильтром `GET /tasks?authors=[]&responsibles=[]`
+### А ещё надо добавить <span class="red">"Обратные" Relations</span>
 
 -----
 
-### Грубая оценка
+## "Обратные" Relations – это те которые используют доступные фильтры из REST API.
+
+-----
+
+### Например, к entity `User` можно добавить поля
+
+- tasksAuthored
+- tasksResponsible
+
+<br/><br/>
+
+<span class="fragment">Если знать, что существует endpoint `GET /tasks`, <br/>который принимает два параметра <br/>для фильтрации тасков – `authors`, `responsibles`.</span>
+
+-----
+
+### Грубая оценка M7
 
 - 14 файлов
 - 1142 LoC
 - Рефакторинг M6 на M7
-- Поиск и добавление новых обратных связей с фильтрацией
+- Поиск и добавление обратных связей с фильтрацией
 - ~ `⏱ 20 часов`
 
 -----

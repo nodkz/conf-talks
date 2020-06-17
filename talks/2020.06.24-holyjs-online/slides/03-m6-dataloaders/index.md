@@ -1,4 +1,6 @@
-## M6: Создание DataLoaders (N+1)
+## M6: Создание DataLoaders
+
+## для решения проблемы N+1
 
 -----
 
@@ -22,6 +24,8 @@
 -----
 
 ### В нашем примере ДатаЛоадеры позволяют решить проблему N+1 и сократить кол-во HTTP запросов к REST API.
+
+![without_dataloader](./without_dataloader.png) <!-- .element: style="max-width: 1100px;" class="plain" -->
 
 -----
 
@@ -77,8 +81,9 @@ export function resolveOneViaDL(
 
 ```
 
-<span class="fragment" data-code-focus="8">и используем еще один генератор `getDataLoader()`</span>
-
+<span class="fragment" data-code-focus="5-9" />
+<span class="fragment" data-code-focus="3,6" />
+<span class="fragment" data-code-focus="2,8">и используем еще один генератор `getDataLoader()`</span>
 
 -----
 
@@ -153,13 +158,7 @@ export function contactDL(context: any, info: GraphQLResolveInfo) {
 
 -----
 
-#### Compare requests number with DataLoaders
-
-![without_dataloader](./without_dataloader.png) <!-- .element: style="max-width: 1100px;" class="plain" -->
-
------
-
-### Грубая оценка
+### Грубая оценка M6
 
 - 13 файлов
 - 291 LoC
