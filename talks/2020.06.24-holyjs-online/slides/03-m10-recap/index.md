@@ -16,8 +16,29 @@
 
 -----
 
+### Грубая оценка всей GraphQL прокси
+
+- 22 entity <!-- .element: class="orange" -->
+- 87 REST API методов <!-- .element: class="orange" -->
+- 160 часов
+- 8773 строчек кода
+- 275 файлов
+- 134 GraphQL-типа <!-- .element: class="green" -->
+- 1002 поля и аргумента <!-- .element: class="green" -->
+- 77 реляций (LEFT JOIN) <!-- .element: class="green" -->
+
+-----
+
 ## Итого нужно 160 часов, <br/> чтобы переварить 22 Еntity
 
 ## В среднем, на 1 entity<br/> уходит 1 человеко-день* <!-- .element: class="fragment green" -->
 
 <span class="fragment gray">* не забудьте умножить на коэффициент<br/> способности-и-производительности вашего человека-дня</span>
+
+-----
+
+# ПЛЮС  <!-- .element: class="red" -->
+
+## Пара недель - месяц <!-- .element: class="orange" -->
+
+## чтобы разобраться c самим GraphQL и с предложенной методологией.

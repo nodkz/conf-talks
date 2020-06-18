@@ -2,9 +2,7 @@
 
 -----
 
-### Описываем часто-используемые <br/>"конечные типы" (Leaf types), <br/>которые ни от кого не зависят
-
-### `schema/types`
+### Описываем часто-используемые <br/>"конечные типы" (Leaf types, common types), <br/>которые ни от кого не зависят
 
 -----
 
@@ -13,14 +11,6 @@
 - Скаляры <!-- .element: class="fragment" -->
 - Enum <!-- .element: class="fragment" -->
 - Output и Input (структуры) <!-- .element: class="fragment" -->
-
------
-
-### По ходу описания `Entities (M3)` <br/>мы будем в `schema/types` <br/>докидывать необходимые `Общие типы (M2)`
-
-<br/>
-
-Сразу нет смысла их выискивать <br/>по всей REST API документации <!-- .element: class="fragment red" -->
 
 -----
 
@@ -35,6 +25,10 @@
 - Это прокаченная тулза на NodeJS для написания <br/>GraphQL-схем с кучей сахара <!-- .element: class="fragment" -->
 - Это type registry, с возможность редактирования и клонирования типов для написания генераторов <br/>GraphQL-схем. <!-- .element: class="fragment" -->
 - Это и schema-first и code-first в одном флаконе <!-- .element: class="fragment" -->
+
+-----
+
+### Смотрим `schema/types`
 
 -----
 

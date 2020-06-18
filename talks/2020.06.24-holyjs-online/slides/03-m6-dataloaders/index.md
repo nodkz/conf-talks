@@ -6,17 +6,6 @@
 
 ### Что такое DataLoader?
 
-### `schema/dataLoaders`
-
------
-
-### DataLoader – это batch loader: <!-- .element: class="orange" -->
-
-- у него запрашивают кучу Entity по id <!-- .element: class="fragment" -->
-- возвращает Promise на каждый запрос <!-- .element: class="fragment" -->
-- на nextTick группирует все id и делает 1 запрос findMany(ids) <!-- .element: class="fragment" -->
-- получает ответ и разрезолвивает промисы в шаге 2 <!-- .element: class="fragment" -->
-
 -----
 
 ### Проблема N+1 хорошо расписана у меня в REPO: <https://github.com/nodkz/conf-talks/blob/master/articles/graphql/dataloader/N+1.md>
@@ -29,34 +18,100 @@
 
 -----
 
-### В RestAPI я выделяю 3 типа DataLoader'ов <!-- .element: class="orange" -->
+### DataLoader – это batch loader: <!-- .element: class="orange" -->
 
-- Глобальный на сервер
-- Глобальный на запрос
-- Локальный на поле в запросе
+- у него из разных мест запрашивают Entity по любому id <!-- .element: class="fragment" -->
+- он возвращает Promise на каждый запрос <!-- .element: class="fragment" -->
+- на nextTick группирует все id и делает 1 запрос findMany(ids) <!-- .element: class="fragment" -->
+- получает ответ и разрезолвивает промисы в шаге 2 <!-- .element: class="fragment" -->
+
+-----
+
+```ts
+import DataLoader from 'dataloader';
+import { taskFindByIds } from 'app/vendor/task/taskFindByIds';
+
+const dl = new DataLoader(async (ids) => {
+  const results = await taskFindByIds({ ids });
+  return ids.map(
+    (id) => results.find((x) => x.id === id) || new Error(`Task: no result for ${id}`)
+  );
+});
+
+const dataPromise1 = dl.load(1);
+const dataPromise2 = dl.load(2);
+const arrayDataPromise = dl.loadMany([2, 10, 15]);
+
+```
+
+-----
+
+### Существует 3 scope, где можно создать DataLoader'ы <!-- .element: class="orange" -->
+
+- Глобальный на сервер <span class="gray">(1 раз при старте сервера)</span>
+- Глобальный на операцию <span class="gray">(в рамках 1 http-запроса)</span>
+- Локальный на поле в запросе <span class="gray">(<span class="gray">(для конкретного 1го поля в 1ом запросе)</span>)</span>
 
 -----
 
 ### Дата-лоадеры в демо wrike-graphql <!-- .element: class="orange" -->
 
 - **0 глобальных на сервер** <span class="gray">(обычно жесткие справочники)</span>
-- **8 глобальных на запрос** <span class="gray">(записи возвращаются полностью, смело можно использовать глобально в рамках запроса)</span>
+- **8 глобальных на операцию** <span class="gray">(записи возвращаются полностью, смело можно использовать глобально в рамках запроса)</span>
 - **4 fieldNode-specific** <span class="gray">(зависят от запрошенных полей в запросе)</span>
 
 12 DataLoaders serves 51 direct relations ☝️ <!-- .element: class="fragment green" -->
 
 -----
 
-### Писать руками DataLoader'ы достаточно муторно, много копипасты – поэтому их генерируем через `resolveOneViaDL`:
+### Встраивать DataLoader'ы в resolve-методы достаточно муторно, много копипасты:
+
+```ts
+const ArticleType = new GraphQLObjectType({
+  name: 'Article',
+  fields: () => ({
+    author: {
+      type: AuthorType,
+      resolve: (source, args, context, info) => {
+        // context.dataloaders был создан на уровне сервера (см сниппет кода выше)
+        const { dataloaders } = context;
+
+        // единожды инициализируем DataLoader для получения авторов по ids
+        let dl = dataloaders.get(info.fieldNodes);
+        if (!dl) {
+          dl = new DataLoader(async (ids: any) => {
+            // обращаемся в базу чтоб получить авторов по ids
+            const rows = await authorModel.findByIds(ids);
+            // IMPORTANT: сортируем данные из базы в том порядке, как нам передали ids
+            const sortedInIdsOrder = ids.map(id => rows.find(x => x.id === id));
+            return sortedInIdsOrder;
+          });
+          // ложим инстанс дата-лоадера в WeakMap для повторного использования
+          dataloaders.set(info.fieldNodes, dl);
+        }
+
+        // юзаем метод `load` из нашего дата-лоадера
+        return dl.load(source.authorId);
+      },
+    },
+  }),
+});
+
+```
+
+-----
+
+### поэтому генерируем через `resolveOneViaDL`:
 
 ```diff
 TaskTC.addFields({
   author: {
     type: () => ContactTC,
+-    // Старый метод с N+1 проблемой
 -    resolve: async (source, args, context, info) => {
--      // метод из папки `vendor/`
 -      return contactFindById(source?.authorId, context);
 -    },
++    // Новый метод через DataLoader
 +    resolve: resolveOneViaDL('ContactID', (s) => s.authorId),
   },
 });
@@ -155,6 +210,10 @@ export function contactDL(context: any, info: GraphQLResolveInfo) {
 }
 
 ```
+
+-----
+
+### Смотрим `schema/dataLoaders`
 
 -----
 

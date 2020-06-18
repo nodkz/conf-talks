@@ -50,9 +50,23 @@ TaskTC.addFields({
 
 -----
 
+## Делаем что-то типа `LEFT JOIN` по id
+
+Вы когда пишете SQL запрос с JOIN'ами, то база за вас берет поле с одной таблицы (source) и по его значение фильтрует и вытягивает записи из другой.
+
+При этом вы можете и не знать этого значения.
+
+С REST API пока не получите значение, следующий запрос сделать не сможете.
+
+-----
+
 ### Добавили 51 связь, и GraphQL [преобразился](https://graphql-wrike.herokuapp.com/voyager)
 
 ![with-direct-relations](./with-direct-relations.png) <!-- .element: style="max-width: 1000px;" class="plain" -->
+
+-----
+
+### Смотрим `schema/entities/TaskTC.ts`
 
 -----
 

@@ -4,9 +4,9 @@
 
 ### Описываем входные точки
 
-- `schema/query`
-- `schema/mutation`
-- `schema/subscription`
+- `query`
+- `mutation`
+- `subscription`
 
 -----
 
@@ -30,6 +30,8 @@
 
 ![_](./modules1.drawio.svg) <!-- .element: style="max-width: 800px;" class="plain" -->
 
+TODO: улучшить графики
+
 -----
 
 ![_](./modules2.drawio.svg) <!-- .element: style="max-width: 800px;" class="plain" -->
@@ -42,6 +44,10 @@
 - легкий рефакторинг схемы <!-- .element: class="fragment" -->
 - удобный код ревью <!-- .element: class="fragment" -->
 - тестирование схемы по кускам <!-- .element: class="fragment" -->
+
+-----
+
+### Смотрим `schema/entrypoints` и `server.ts`
 
 -----
 

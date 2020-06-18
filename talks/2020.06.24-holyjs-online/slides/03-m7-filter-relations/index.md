@@ -4,8 +4,6 @@
 
 ### FieldConfig > Резолвер > Relations
 
-`schema/relations`
-
 -----
 
 ### GraphQL FieldConfig состоит из <!-- .element: class="orange" -->
@@ -110,6 +108,10 @@ export function getRelationTasksBySpaceId(
 
 -----
 
+### Смотрим `schema/relations`
+
+-----
+
 ### Грубая оценка M7
 
 - 14 файлов
@@ -123,6 +125,14 @@ export function getRelationTasksBySpaceId(
 ### 110 relations VS 135 relations (38 nodes)
 
 ![direct_and_back_relations](./direct_and_back_relations.png) <!-- .element: style="max-width: 1100px;" class="plain" -->
+
+-----
+
+### Особой разницы не видно.
+
+### Но ценность в передачи знания о новых 25 связях между Entity.
+
+### А в большой системе их порой ой-как сложно найти.
 
 -----
 

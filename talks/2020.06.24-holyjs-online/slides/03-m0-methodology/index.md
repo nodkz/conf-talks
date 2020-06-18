@@ -9,16 +9,24 @@
 - <span class="fragment">M1: Создание обёртки к REST API `vendor`</span>
 - <span class="fragment">M2: Описание общих GraphQL-типов `schema/types`</span>
 - <span class="fragment">M3: Описание Entity `schema/entities`</span>
-- <span class="fragment">M4: Описание точек входа в граф `schema/query`</span>
+- <span class="fragment">M4: Описание точек входа в граф `schema/entrypoints`</span>
 - <span class="fragment">M5: Расширение Entity прямыми связями по id</span>
 - <span class="fragment">M6: Создание DataLoaders (N+1) `schema/dataLoaders`</span>
 - <span class="fragment">M7: Создание резолверов Реляций `schema/relations`</span>
-- <span class="fragment">M8: Прикручивание QueryCost (DDOS)</span>
+- <span class="fragment">M8: Прикручивание QueryCost (DoS)</span>
 - <span class="fragment">M9: Авторизация</span>
 
 -----
 
-![code](./project-code.png) <!-- .element: style="max-width: 400px;" class="plain" -->
+### Types & fields are different ☝️
+
+- GraphQL types
+  - Entities
+  - Common types
+- GraphQL fields (FieldConfigs)
+  - Entrypoints
+  - Relations
+  - DataLoaders
 
 -----
 

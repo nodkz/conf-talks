@@ -1,4 +1,4 @@
-## M8: Прикручивание QueryCost (DDOS)
+## M8: Прикручивание QueryCost (DoS)
 
 -----
 
@@ -55,12 +55,22 @@
 
 (например в `Folders` нет лимита на кол-во возвращаемых данных. И чер его знает сколько там может вернуться записей, поэтому тяжело спрогнозировать сложность вложенного запроса
 
+-----
+
 ### Как workaround
 
 - если нет аргументов `limit` или `pageSize`
 - то ставим `extensions: { complexity: ({ childComplexity }) => childComplexity * 10 }`
 
 Cчитаем, что в списках в среднем возвращается 10 элементов.
+
+-----
+
+### Смотрим
+
+- `queryCostPlugin.ts`
+- `schema/entrypoints/query/taskFindMany.ts`
+- `schema/relations/task.ts`
 
 -----
 

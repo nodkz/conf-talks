@@ -4,8 +4,6 @@
 
 ### Что такое Entity?
 
-### `schema/entities`
-
 -----
 
 ### Это бизнес сущность с ID
@@ -74,6 +72,10 @@ TaskTC.addFields({
 <span class="fragment" data-code-focus="1" data-code-block="2">
 <span class="fragment" data-code-focus="5" data-code-block="1">
 <span class="fragment green" data-code-focus="5" data-code-block="2">С `graphql-compose` можно обернуть тип в arrow function</span>
+
+-----
+
+### Смотрим `schema/entities`
 
 -----
 
