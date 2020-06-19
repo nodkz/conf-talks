@@ -95,12 +95,10 @@
 
 -----
 
-TODO: нарисовать блоками модель данных
+### Например за один запрос можно получить (а-ля LEFT JOIN):
 
-TODO: упростить GraphQL-запрос под модель данных
-
-TODO: прикрутить возможность прогнать запросы через VSCode
+![demo-query](./demo-query.drawio.svg) <!-- .element: style="max-width: 500px; class="plain" -->
 
 -----
 
-<iframe src="https://graphql-wrike.herokuapp.com/?query=mutation%20CreateTask%20%7B%0A%20%20taskCreate%28%0A%20%20%20%20folderId%3A%20%22IEADMUW4I4OE37IV%22%2C%0A%20%20%20%20task%3A%20%7B%0A%20%20%20%20%20%20title%3A%20%22Make%20Holy%20JS%20Talk%22%2C%0A%20%20%20%20%20%20status%3A%20Deferred%2C%0A%20%20%20%20%20%20responsibles%3A%20%5B%22KUAHNM4I%22%5D%0A%20%20%20%20%7D%0A%20%20%29%20%7B%0A%20%20%20%20id%0A%20%20%20%20title%0A%20%20%20%20responsibles%20%7B%0A%20%20%20%20%20%20firstName%0A%20%20%20%20%20%20lastName%0A%20%20%20%20%20%20tasksResponsible%28%0A%20%20%20%20%20%20%20%20filter%3A%20%7B%20status%3A%20Deferred%20%7D%20%0A%20%20%20%20%20%20%20%20limit%3A%205%2C%20%0A%20%20%20%20%20%20%20%20sort%3A%20CREATED_DATE_DESC%29%20%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20%20%20title%0A%20%20%20%20%20%20%20%20%20%20status%0A%20%20%20%20%20%20%20%20%20%20description%0A%20%20%20%20%20%20%20%20%20%20createdDate%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D%0A%0Aquery%20CustomData%20%7B%0A%20%20lastTwoCompletedTasks%3A%20taskFindMany%28%0A%20%20%20%20filter%3A%20%7B%20status%3A%20Completed%20%7D%0A%20%20%20%20limit%3A%202%0A%20%20%20%20sort%3A%20COMPLETED_DATE_DESC%0A%20%20%29%20%7B%0A%20%20%20%20id%0A%20%20%20%20title%0A%20%20%20%20status%0A%20%20%20%20completedDate%0A%20%20%7D%0A%20%20lastTwoNewTasks%3A%20taskFindMany%28%0A%20%20%20%20filter%3A%20%7B%20status%3A%20Active%7D%0A%20%20%20%20limit%3A%203%0A%20%20%20%20sort%3A%20CREATED_DATE_DESC%0A%20%20%29%20%7B%0A%20%20%20%20id%0A%20%20%20%20title%0A%20%20%20%20status%0A%20%20%20%20createdDate%0A%20%20%7D%0A%7D" width="100%" height="720px" />
+<iframe src="https://graphql-wrike.herokuapp.com/?query=query%20UsersTasksWithComments%20%7B%0A%20%20contactFindMany%20%7B%0A%20%20%20%20firstName%0A%20%20%20%20lastName%0A%20%20%20%20tasksResponsible%28limit%3A2%2C%20sort%3ACREATED_DATE_ASC%29%20%7B%0A%20%20%20%20%20%20title%0A%20%20%20%20%20%20status%0A%20%20%20%20%20%20createdDate%0A%20%20%20%20%20%20comments%20%7B%20%23%20REST%20API%20does%20not%20support%20filtering%20%26%20sorting%20for%20comments%0A%20%20%20%20%20%20%20%20text%0A%20%20%20%20%20%20%20%20createdDate%0A%20%20%20%20%20%20%20%20author%20%7B%0A%20%20%20%20%20%20%20%20%20%20firstName%0A%20%20%20%20%20%20%20%20%20%20lastName%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D" width="100%" height="720px" />

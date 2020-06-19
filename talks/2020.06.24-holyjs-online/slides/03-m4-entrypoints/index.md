@@ -28,11 +28,13 @@
 
 -----
 
+### Сканирует папку и строит схему
+
 ![_](./modules1.drawio.svg) <!-- .element: style="max-width: 800px;" class="plain" -->
 
-TODO: улучшить графики
-
 -----
+
+### И AST в нем, чтоб его трансформировать
 
 ![_](./modules2.drawio.svg) <!-- .element: style="max-width: 800px;" class="plain" -->
 
