@@ -18,7 +18,7 @@
 
 -----
 
-### Types & fields are different ☝️
+### Types & fields are different ☝️ <!-- .element: class="orange" -->
 
 - GraphQL types
   - Entities

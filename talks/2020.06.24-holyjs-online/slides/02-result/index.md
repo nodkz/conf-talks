@@ -66,10 +66,9 @@
 
 ## В итоге, <br/>GraphQL получился таким: <!-- .element: class="orange" -->
 
-- 134 GraphQL-типа
-- 1002 поля и аргумента
-- 51 явная прямая связь между entity
-- 26 неявных обратных связей
+- 22 entity
+- 41 поле в Query
+- 65 полей в Mutation
 
 -----
 
@@ -83,11 +82,24 @@
 
 -----
 
+### Любые генераторы REST API в GraphQL <br/>выдадут RestQL (то что слева) <!-- .element: class="red" -->
+
 ![restql-vs-graphql](./restql-vs-graphql.png) <!-- .element: style="max-width: 1100px;" class="plain" -->
 
 -----
 
+### И только люди могут передать данные о связях для полноценного GraphQL (то что справа) <!-- .element: class="green" -->
+
 ![restql-vs-graphql](./restql-vs-graphql.png) <!-- .element: style="max-width: 1100px; filter: saturate(500);" class="plain" -->
+
+-----
+
+## Немного итоговых GraphQL цифр: <!-- .element: class="orange" -->
+
+- 134 GraphQL-типа
+- 1002 поля и аргумента
+- 51 явная прямая связь между entity
+- 26 неявных обратных связей
 
 -----
 
@@ -95,7 +107,11 @@
 
 -----
 
-### Например за один запрос можно получить (а-ля LEFT JOIN):
+## Ну если АПИ есть, пора бы что-то нехитрое запросить
+
+-----
+
+### За один запрос получим (а-ля LEFT JOIN):
 
 ![demo-query](./demo-query.drawio.svg) <!-- .element: style="max-width: 500px; class="plain" -->
 
