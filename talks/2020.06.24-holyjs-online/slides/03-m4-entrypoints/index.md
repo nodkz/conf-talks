@@ -34,16 +34,16 @@
 
 -----
 
-### И AST в нем, чтоб его трансформировать
+### И AST в нём, чтоб его трансформировать
 
 ![_](./modules2.drawio.svg) <!-- .element: style="max-width: 800px;" class="plain" -->
 
 -----
 
-### А еще это удобный способ работы со схемой: <!-- .element: class="green" -->
+### А ещё – это удобный способ работы со схемой: <!-- .element: class="green" -->
 
 - удобно смотреть схему через файлы <!-- .element: class="fragment" -->
-- легкий рефакторинг схемы <!-- .element: class="fragment" -->
+- лёгкий рефакторинг схемы <!-- .element: class="fragment" -->
 - удобный код ревью <!-- .element: class="fragment" -->
 - тестирование схемы по кускам <!-- .element: class="fragment" -->
 
@@ -53,7 +53,7 @@
 
 -----
 
-##### По завершению этого этапа (M4) <br/>получаем `RestQL` (графкуэль без связей)
+##### По завершении этого этапа (M4) <br/>получаем `RestQL` (графкуэль без связей)
 
 ![restql-query](../02-result/restql-query.png) <!-- .element: style="max-width: 800px;" class="plain" -->
 

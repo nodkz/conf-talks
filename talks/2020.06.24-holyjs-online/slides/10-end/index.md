@@ -4,9 +4,9 @@
 
 -----
 
-### Вопросы к Паше? <!-- .element: class="orange" -->
+#### Вопросы к Паше? <!-- .element: class="orange" -->
 
-<div style="font-size: 1.2em; font-weight: bold">@nodkz</div>
+<div style="font-size: 1em; font-weight: bold">@nodkz</div>
 
 <div>
   <a href="https://t.me/nodkz" target="_blank">
@@ -24,8 +24,9 @@
 
 <div style="font-size: 0.8em !important">
   Группа Telegram <a href="https://t.me/graphql_ru" target="_blank">https://t.me/graphql_ru</a>
-  <br />Эта презентация <a href="http://bit.ly/rest2graphql" target="_blank">http://bit.ly/rest2graphql</a>
   <br />Я пишу про GraphQL <a href="https://github.com/nodkz/conf-talks" target="_blank">https://github.com/nodkz/conf-talks</a>
+  <br />Эта презентация <a href="http://bit.ly/rest2graphql" target="_blank">http://bit.ly/rest2graphql</a>
+  <br />Репо с демо <a href="https://github.com/nodkz/wrike-graphql" target="_blank">https://github.com/nodkz/wrike-graphql</a>
 </div>
 
 ![Photo](../assets/nodkz-photo.jpg) <!-- .element: style="max-width: 400px; border: none" -->

@@ -2,7 +2,7 @@
 
 -----
 
-### FieldConfig > Резолвер > Relations
+### FieldConfig > Resolver > Relations
 
 -----
 
@@ -29,7 +29,7 @@ export function getRelationContactIds(
 
 -----
 
-### В нашем случаем, мы создаем Резолверы для создания Relations между Entity.
+### В нашем случае мы создаём Резолверы для создания Relations между Entity.
 
 -----
 
@@ -39,7 +39,7 @@ export function getRelationContactIds(
 
 -----
 
-### А еще ваши Relations могут содержать аргументы для фильтрации и сортировки
+### А ещё ваши Relations могут содержать аргументы для фильтрации и сортировки
 
 ```js
 export function getRelationTasksBySpaceId(
@@ -93,7 +93,7 @@ export function getRelationTasksBySpaceId(
 
 -----
 
-## "Обратные" Relations – это те которые используют доступные фильтры из REST API.
+## "Обратные" Relations – это те, которые используют доступные фильтры из REST API.
 
 -----
 
@@ -132,7 +132,7 @@ export function getRelationTasksBySpaceId(
 
 ### Но ценность в передачи знания о новых 25 связях между Entity.
 
-### А в большой системе их порой ой-как сложно найти.
+### А в большой системе их, порой, ой как сложно найти.
 
 -----
 

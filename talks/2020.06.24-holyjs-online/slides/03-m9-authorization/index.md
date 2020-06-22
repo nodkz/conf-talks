@@ -15,7 +15,7 @@
 
 -----
 
-### 1. На ApolloServer'е ложим `headers` в контекст
+### 1. На ApolloServer'е кладём `headers` в контекст
 
 ```ts
 const apolloServer = new ApolloServer({

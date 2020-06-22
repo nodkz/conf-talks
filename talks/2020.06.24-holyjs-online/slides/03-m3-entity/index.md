@@ -87,11 +87,11 @@ TaskTC.addFields({
 
 <br/>
 
-Это время без учета общих типов (M2)<br/> и связей между Entity (M5,M7). <!-- .element: class="gray fragment" -->
+Это время без учёта общих типов (M2)<br/> и связей между Entity (M5,M7). <!-- .element: class="gray fragment" -->
 
 -----
 
-#### Пример создания схемы из JSON ответа<br/>(быстро, дешево, сердито):
+#### Пример создания схемы из JSON ответа<br/>(быстро, дёшево, сердито):
 
 <a href="https://youtu.be/ar7-HXBYfnk?t=1788" target="_blank"><img width="600" alt="Screen Shot 2020-06-16 at 01 25 42" src="https://user-images.githubusercontent.com/1946920/84697762-86252280-af70-11ea-98d2-224fab7326db.png"></a>
 

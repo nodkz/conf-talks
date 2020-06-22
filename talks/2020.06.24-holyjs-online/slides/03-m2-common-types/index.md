@@ -23,7 +23,7 @@
 ### Что такое `graphql-compose`?
 
 - Это прокаченная тулза на NodeJS для написания <br/>GraphQL-схем с кучей сахара <!-- .element: class="fragment" -->
-- Это type registry, с возможность редактирования и клонирования типов для написания генераторов <br/>GraphQL-схем. <!-- .element: class="fragment" -->
+- Это type registry, с возможностью редактирования и клонирования типов для написания генераторов <br/>GraphQL-схем. <!-- .element: class="fragment" -->
 - Это и schema-first и code-first в одном флаконе <!-- .element: class="fragment" -->
 
 -----

@@ -50,13 +50,13 @@ const arrayDataPromise = dl.loadMany([2, 10, 15]);
 
 - Глобальный на сервер <span class="gray">(1 раз при старте сервера)</span>
 - Глобальный на операцию <span class="gray">(в рамках 1 http-запроса)</span>
-- Локальный на поле в запросе <span class="gray">(<span class="gray">(для конкретного 1го поля в 1ом запросе)</span>)</span>
+- Локальный на поле в запросе <span class="gray">(для конкретного 1го поля в 1ом запросе)</span>
 
 -----
 
 ### Дата-лоадеры в демо wrike-graphql <!-- .element: class="orange" -->
 
-- **0 глобальных на сервер** <span class="gray">(обычно жесткие справочники)</span>
+- **0 глобальных на сервер** <span class="gray">(обычно жёсткие справочники)</span>
 - **8 глобальных на операцию** <span class="gray">(записи возвращаются полностью, смело можно использовать глобально в рамках запроса)</span>
 - **4 fieldNode-specific** <span class="gray">(зависят от запрошенных полей в запросе)</span>
 
@@ -138,7 +138,7 @@ export function resolveOneViaDL(
 
 <span class="fragment" data-code-focus="5-9" />
 <span class="fragment" data-code-focus="3,6" />
-<span class="fragment" data-code-focus="2,8">и используем еще один генератор `getDataLoader()`</span>
+<span class="fragment" data-code-focus="2,8">и используем ещё один генератор `getDataLoader()`</span>
 
 -----
 
