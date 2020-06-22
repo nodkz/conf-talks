@@ -54,6 +54,16 @@
 
 -----
 
-## Ну что, погнали?!
+## Если вы новичок в GraphQL, <br/>то посмотрите выступление Ильи
+
+<a href="https://www.youtube.com/watch?v=_vjSZhnYhfI" target="_blank"><img width="600" alt="Screen Shot 2020-06-16 at 01 25 42" src="https://user-images.githubusercontent.com/1946920/85264390-7175ec80-b492-11ea-8638-f50a943ed47e.png" class="plain"></a>
+
+#### GraphQL в 2018 / Илья Климов / MYKOLAIV JS 2018
+
+<https://www.youtube.com/watch?v=_vjSZhnYhfI>
+
+-----
 
 ![lotus](./lotus.jpg) <!-- .element: style="max-width: 800px;" class="plain"  -->
+
+## Ну что, погнали?! <!-- .element: class="fragment" -->
