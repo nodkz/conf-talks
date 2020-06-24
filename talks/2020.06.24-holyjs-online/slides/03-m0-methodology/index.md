@@ -20,10 +20,10 @@
 
 ### Types & fields are different ☝️ <!-- .element: class="orange" -->
 
-- GraphQL types
+- <span class="green">GraphQL types</span>
   - Entities
   - Common types
-- GraphQL fields (FieldConfigs)
+- <span class="green">GraphQL fields (FieldConfigs)</span>
   - Entrypoints
   - Relations
   - DataLoaders

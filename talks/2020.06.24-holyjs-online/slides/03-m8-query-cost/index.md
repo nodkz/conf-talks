@@ -18,7 +18,7 @@
 
 - полученного запроса от клиента <!-- .element: class="fragment" -->
 - переданных переменных с запросом <!-- .element: class="fragment" -->
-- и простой логикой перемножения аргументов на вес полей или вес детей <!-- .element: class="fragment" -->
+- и простой логики перемножения аргументов на вес полей или вес детей <!-- .element: class="fragment" -->
 
 -----
 
@@ -37,32 +37,36 @@
 
 - Берём пакет [`graphql-query-complexity`](https://github.com/slicknode/graphql-query-complexity)
 - Создали плагин к аполло-серверу [`queryCostPlugin.ts`](https://github.com/nodkz/wrike-graphql/blob/master/src/queryCostPlugin.ts)
-- И создаём функции `complexity` по нашей схеме (Complexity Estimators)
+- И создаём функции `complexity` в полях нашей схемы (Complexity Estimators)
 
 -----
 
 ### Добавляем функции `complexity`
 
-- ко всем точкам входа в наш граф M4 (полям Query)
-- по желанию, можно добавить к мутациям.
-- к релейшенам M7, которые возвращают списки
+- ко всем точкам входа в наш граф M4 (полям Query) <!-- .element: class="fragment" -->
+- по желанию, можно добавить к мутациям <!-- .element: class="fragment" -->
+- к релейшенам M7, которые возвращают списки <!-- .element: class="fragment" -->
   
 -----
 
-### Находим "проблемы" в REST API Wrike
+### Находим "проблемы" в REST API Wrike <!-- .element: class="red" -->
 
 - плохо, что не везде есть лимиты на кол-во возвращаемых элементов
 
-(например в `Folders` нет лимита на кол-во возвращаемых данных. И чёрт его знает, сколько там может вернуться записей, поэтому тяжело спрогнозировать сложность вложенного запроса
+<br/><br/>
+
+<span class="fragment">Например в `Folders` нет лимита. И чёрт его знает, сколько там может вернуться элементов, поэтому тяжело спрогнозировать сложность вложенного запроса.</span>
 
 -----
 
-### Как workaround
+### Как workaround <!-- .element: class="orange" -->
 
 - если нет аргументов `limit` или `pageSize`
 - то ставим `extensions: { complexity: ({ childComplexity }) => childComplexity * 10 }`
 
-Cчитаем, что в списках в среднем возвращается 10 элементов.
+<br/><br/>
+
+Делаем допущение, что в списках в среднем возвращается 10 элементов. <!-- .element: class="red fragment" -->
 
 -----
 

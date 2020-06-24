@@ -2,16 +2,16 @@
 
 -----
 
-### Всё до безобразия просто
+### Всё до безобразия просто <!-- .element: class="green" -->
 
-- Пробрасываем Authorizaition заголовок, а также куки (на вырост) в контекст. <!-- .element: class="fragment" -->
+- Пробрасываем http-заголовки (Authorizaition, Cookie) из ApolloServer в контекст GraphQL. <!-- .element: class="fragment" -->
 - Затем этот контекст пробрасываем в axios, чтоб он мог их использовать в своих подзапросах. <!-- .element: class="fragment" -->
 
 -----
 
 ### Боль и печаль – пришлось отредактировать больше 220 файлов. <!-- .element: class="red" -->
 
-### Пробрасывайте сразу `headers` из запроса GraphQL в axios клиента.
+### Пробрасывайте сразу контекст до axios клиента! <!-- .element: class="fragment" -->
 
 -----
 
@@ -27,6 +27,7 @@ const apolloServer = new ApolloServer({
 });
 
 ```
+
 <span class="fragment" data-code-focus="3-6" />
 
 -----
@@ -39,7 +40,7 @@ export default {
   args: {
     ids: TaskID.NonNull.List.NonNull,
   },
-  resolve: (_, args, context, info) => {
+  resolve: (source, args, context, info) => {
     return taskFindByIds({ ids: args.ids, info }, context);
   },
 };

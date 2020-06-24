@@ -2,7 +2,7 @@
 
 -----
 
-### FieldConfig > Resolver > Relations
+## FieldConfig > Resolver > Relations
 
 -----
 
@@ -97,7 +97,7 @@ export function getRelationTasksBySpaceId(
 
 -----
 
-### Например, к entity `User` можно добавить поля
+### Например, к entity `Contact` <br/>можно добавить поля
 
 - tasksAuthored
 - tasksResponsible
@@ -128,11 +128,11 @@ export function getRelationTasksBySpaceId(
 
 -----
 
-### Особой разницы не видно.
+### Особой разницы не видно. <!-- .element: class="orange" -->
 
-### Но ценность в передачи знания о новых 25 связях между Entity.
+### НО огромная ценность в передачи знания клиентам об этих новых 25 связях между Entity. <!-- .element: class="green" -->
 
-### А в большой системе их, порой, ой как сложно найти.
+### Т.к. в большом REST API такие связи достаточно сложно найти.
 
 -----
 
