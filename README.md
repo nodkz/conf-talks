@@ -77,7 +77,7 @@ PS. Куча орфографических и грамматических ош
 
 Продолжительность 49 минут.
 
-<a href="https://youtu.be/5h7zX45YPuQ" target="_blank"><img src="https://user-images.githubusercontent.com/1946920/77333244-57baf100-6d4d-11ea-8190-4c5397d94d32.png" alt="ApolloClient 3 — прощаемся с Redux, REST API и Relay (Я 💛 Фронтенд 2020, Moscow 2020)" style="max-width: 480px" /></a>
+<a href="https://youtu.be/5h7zX45YPuQ" target="_blank"><img src="https://user-images.githubusercontent.com/1946920/77333244-57baf100-6d4d-11ea-8190-4c5397d94d32.png" alt="ApolloClient 3 — прощаемся с Redux, REST API и Relay (Я 💛 Фронтенд 2020, Moscow 2020)" style="width: 480px; max-width: 480px" width="480" /></a>
 
 ### GraphQL и как его боготворит академическая среда (HolyJS Moscow 2019)
 
