@@ -64,6 +64,6 @@
 
 -----
 
-![lotus](./lotus.jpg) <!-- .element: style="max-width: 800px;" class="plain"  -->
+![lotus](./lotus.jpg) <!-- .element: style="max-width: 700px;" class="plain"  -->
 
 ## Ну что, погнали?! <!-- .element: class="fragment" -->

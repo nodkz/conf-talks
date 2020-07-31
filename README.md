@@ -33,10 +33,10 @@ PS. Куча орфографических и грамматических ош
 - 7 апреля 2020, Санкт-Петербург, [Workshop GraphQL на сервере](https://holyjs-piter.ru/2020/spb/workshops/create-your-graphql-server-on-nodejs/) (🛫подтверждено)
 -->
 - 30-31 октября 2020, Киев, [JSFest](https://jsfest.com.ua/) (на этапе переговоров)
-- 22-26 июня 2020, Санкт-Петербург (онлайн), [HolyJS](https://holyjs-piter.ru/2020/spb/talks/26ewxf0eetneqysa49i6sh/) (24 июня, 17:15 GMT+3)
 
 ## Прошедшие мероприятия
 
+- 24 июня 2020, Санкт-Петербург, [HolyJS онлайн](https://holyjs-piter.ru/2020/spb/talks/26ewxf0eetneqysa49i6sh/)
 - 19 мая 2020, Онлайн, [Тяжелое утро с HolyJS #2](https://www.youtube.com/watch?v=ZIE2_c6MRZ0)
 - 29 февраля 2020, Москва, [Я❤️Фронтенд](https://yandex.ru/promo/yandex4developers/yalovefrontend2020#form)
 - 7 декабря 2019, Краснодар, [GDG Krasnodar DevFest 2019](https://www.meetup.com/gdgkrasnodar/events/264023548/)
@@ -50,15 +50,25 @@ PS. Куча орфографических и грамматических ош
 - 24 мая 2019, Санкт-Петербург, [HolyJS](https://holyjs-piter.ru/talks/5aijmcmhxyojks5vdbf5ct/)
 - 12 мая 2019, Киев, [Запись стрима на YouTube: Рассвет GraphQL](https://youtu.be/jd3BpKv7LZ8), Zlit Tech, InLight Studio
 - 11 мая 2019, Киев, Workshop [Apollo-client с фрагментами и статическим анализом](https://zlit.events/dawn-of-the-graphql/the-first-flight-of-apollo), Wix Office ([фото](https://photos.app.goo.gl/uYY1Fn6qoTMyqaA57)
-- [23 марта 2019](https://vk.com/@-178787432-varim-graphql-klient-so-staticheskim-analizom), Минск, воркшоп ([фото](https://www.facebook.com/pg/MinskJS/photos/?tab=album&album_id=2017956155174105
+- 23 марта 2019, Минск, [воркшоп в ивент-пространстве SPACE](https://vk.com/@-178787432-varim-graphql-klient-so-staticheskim-analizom) ([фото](https://www.facebook.com/pg/MinskJS/photos/?tab=album&album_id=2017956155174105
 ), [repo](https://github.com/nodkz/graphql-workshop-by))
-- [16 февраля 2019](https://www.mera.ru/career/calendar/graphql), Нижний Новгород, Mera.ru
-- [26 января 2019](https://graphql-course.ru/), Санкт-Петербург, GraphQL workshop – сервер, клиент и статические анализ ([repo](https://github.com/nodkz/graphql-workshop-ru))
-- [24 января 2019](https://habr.com/ru/company/wrike/blog/438124/), Санкт-Петербург, Wrike
-- [27 ноября 2018](https://habr.com/ru/post/430626/), Москва, Moscow GraphQL Meetup
-- [24 ноября 2018](https://2018.holyjs-moscow.ru/talks/5ulreiooe80eao6qwwkyyi/), Москва, HolyJS 2018
+- 16 февраля 2019, Нижний Новгород, [GraphQL митап](https://career.orioninc.ru/meetups/b01da9a8-898b-421b-8b43-7d27a827ff66) с Mera.ru
+- 26 января 2019, Санкт-Петербург, [GraphQL workshop](https://graphql-course.ru/) – сервер, клиент и статические анализ ([repo](https://github.com/nodkz/graphql-workshop-ru))
+- 24 января 2019, Санкт-Петербург, [GraphQL митап](https://habr.com/ru/company/wrike/blog/438124/) в Wrike
+- 27 ноября 2018, Москва, [Moscow GraphQL Meetup](https://habr.com/ru/post/430626/)
+- 24 ноября 2018, Москва, [HolyJS 2018](https://2018.holyjs-moscow.ru/talks/5ulreiooe80eao6qwwkyyi/)
 
 ## Видео моих выступлений
+
+### Оборачиваем существующее REST API в GraphQL (методология за 1000000 рублей), HolyJS 2020, Online
+
+А реально обернуть REST API в GraphQL? И как сделать R&D для этой технологии? Обычно обкатку технологии принято делать на TodoMVC – я так и поступил. Разобрал в докладе Entity, реляций между типами (провел аналогию с LEFT JOIN), решил проблемы N+1, QueryCost и Аутентификации. И посчитал, сколько времени уйдет на разработку такой GraphQL-прокси.
+[Ссылка на презентацию](http://bit.ly/rest2graphql).
+
+Продолжительность 74 минуты.
+
+<a href="https://youtu.be/RDBEfvZT1yQ" target="_blank"><img src="https://img.youtube.com/vi/RDBEfvZT1yQ/0.jpg" alt="Оборачиваем существующее REST API в GraphQL (методология за 1000000 рублей)
+" style="max-width: 480px" /></a>
 
 ### ApolloClient 3 — прощаемся с Redux, REST API и Relay (Я 💛 Фронтенд 2020, Moscow 2020)
 
