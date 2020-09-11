@@ -584,7 +584,7 @@ type Query {
 
 type ArticlePagination {
   # Array of objects.
-  items: [Article]!
+  items: [Article!]!
 
   # Information to aid in pagination.
   pageInfo: PaginationInfo!
