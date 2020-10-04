@@ -714,6 +714,36 @@ schemaComposer.Mutation.addNestedFields({
 
 *На данный момент невозможно. [Автор считает](https://github.com/MichalLytek/type-graphql/issues/64#issuecomment-383112672), что подход с вложенными мутациями нарушает семантику мутаций из-за возможности запукать их параллельно.*
 
+С помощью `@nestjs/graphql` code first:
+
+```typescript
+@ObjectType()
+export class ArticleMutations {
+  @Field()
+  like: boolean;
+
+  @Field()
+  logout: boolean;
+}
+
+@Resolver(() => ArticleMutations)
+export class ArticleMutationActionsResolver {
+  @ResolveField()
+  like(): boolean { /* resolver code */ }
+
+  @ResolveField()
+  logout(): boolean { /* resolver code */ }
+}
+
+@Resolver()
+export class ArticleMutationResolver {
+  @Mutation(() => ArticleMutations)
+  async article() {
+    return {}; // ✨✨✨ old proven magic
+  }
+}
+```
+
 Соответственно клиенты легко будут понимать и видеть по документации, какие именно методы доступны над "ресурсом/моделью" `article`. А их запросы к серверу будут иметь следующий вид:
 
 ```graphql
