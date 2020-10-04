@@ -33,7 +33,7 @@
     "jsonwebtoken": "^8.4.0",
     "nexus": "^0.9.11",
     "reflect-metadata": "^0.1.13",
-    "type-graphql": "^0.16.0"
+    "type-graphql": "^0.17.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
