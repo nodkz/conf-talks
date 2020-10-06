@@ -41,7 +41,7 @@
     - [6.6.1.](#rule-6.6.1) В ответе мутации возвращайте измененный ресурс и его `id`.
     - [6.6.2.](#rule-6.6.2) В ответе мутации возвращайте статус операции.
     - [6.6.3.](#rule-6.6.3) В ответе мутации возвращайте поле с типом `Query`.
-    - [6.6.4.](#rule-6.6.4) В ответе мутации возвращайте поле `errors` с типизированными пользовательскими ошибками.
+    - [6.6.4.](#rule-6.6.4) В ответе мутации возвращайте поле `error` с типизированными пользовательскими ошибками.
 - **7. Правила связей между типами (relationships)**
   - [7.1.](#rule-7.1) GraphQL-схема должна быть "волосатой"
 - **10. Прочие правила**
@@ -928,7 +928,7 @@ type Mutation {
 + }
 ```
 
-Важно отметить, что возвращаемые поля в вашем Payload-типе должны быть nullable (необязательными). Т.е. если вы будете возвращать ошибку например в поле `userErrors`, то вы не сможете гарантировать наличие данных в поле `record`. Этот момент может всплыть, когда фронтендеры начнут вас просить сделать эти поля обязательными, т.к. статический анализ заставляет их делать дополнительную проверку на наличие данных. Вы спокойно должны им сказать, что им необходимо делать проверку, ведь данные реально могут отсутствовать.
+Важно отметить, что возвращаемые поля в вашем Payload-типе должны быть nullable (необязательными). Т.е. если вы будете возвращать ошибку например в поле `error`, то вы не сможете гарантировать наличие данных в поле `record`. Этот момент может всплыть, когда фронтендеры начнут вас просить сделать эти поля обязательными, т.к. статический анализ заставляет их делать дополнительную проверку на наличие данных. Вы спокойно должны им сказать, что им необходимо делать проверку, ведь данные реально могут отсутствовать.
 
 ### <a name="rule-6.6.1"></a> 6.6.1. В ответе мутации возвращайте измененный ресурс и его `id`.
 
@@ -1096,134 +1096,103 @@ schemaComposer.Mutation.addFields({
 }});
 ```
 
-### <a name="rule-6.6.4"></a> 6.6.4. В ответе мутации возвращайте поле `errors` с типизированными пользовательскими ошибками.
+### <a name="rule-6.6.4"></a> 6.6.4. В ответе мутации возвращайте поле `error` с типизированной пользовательской ошибкой.
 
-В резолвере можно выбросить эксепшн, и тогда ошибка улетает на глобальный уровень, но так делать нельзя по следующим причинам:
+В резолвере можно выбросить эксепшн, и тогда ошибка улетает на глобальный уровень, и у этого подхода есть следующие проблемы:
 
-- ошибки глобального уровня используются для ошибок парсинга и других серверных ошибок
+- ошибки глобального уровня представляют собой массив и могут содержать как ошибки валидации GraphQL-запроса, так и ошибки выброшенные бизнес логикой
 - на клиентской стороне тяжело разобрать этот массив глобальных ошибок
-- клиент не знает какие ошибки могут возникнуть, они не типизированы и в схеме отсутствуют.
+- клиент не знает какие ошибки в бизнес-логике могут возникнуть
+- какие дополнительные поля может содержать тот или иной тип ошибки
+- ошибки не типизированы
+
+Эту проблему можно решить, если добавить поле `error` в Payload мутации, где вы сможете возвращать ошибку бизнес-логики. Т.е. если клиент запросил поле `error`, то вы отлавливаете ошибку в резолвере и просто возвращаете ее в виде обычного объекта. А если клиент не запросил поле `error`, то вы просто пробрасываете ошибку наверх, тогда она автоматически будет добавлена в массив глобальных ошибок в поле `errors` на самом верхнем уровне GraphQL-ответа. Т.е. клиент в любом случае получит ошибку из резолвера, только теперь у него есть выбор где ее получить – как обычно на верхнем уровне в массиве глобальных ошибок `errors`, либо получить типизированную ошибку в пэйлоаде мутации в поле `error`.
 
 ```diff
 type Mutation {
-  likePost(id: 1): LikePostPayload
+  createPost(title: String): CreatePostPayload
 }
 
-type LikePostPayload {
+type CreatePostPayload {
    record: Post
-+  errors: [LikePostProblems!]
++  error: ErrorInterface
 }
 ```
 
-Мутации должны возвращать пользовательские ошибки или ошибки бизнес-логики сразу в Payload'е мутации в поле `errors`. Все ошибки необходимо описать с суффиксом `Problem`. И для самой мутации завести Union-тип ошибок, где будут перечислены возможные пользовательские ошибки. Это позволит легко определять ошибки на клиентской стороне, сразу понимать что может пойти не так. И более того, позволит клиенту дозапросить дополнительные метаданные по ошибке.
-
-Для начала, необходимо создать интерфейс для ошибок и можно объявить пару глобальных ошибок. Интерфейс необходим, чтобы можно было считать текстовое сообщение в не зависимости от того, какая ошибка вернулась. А вот каждую конкретную ошибку уже можно расширить дополнительными значениями, например в ошибке `SpikeProtectionProblem` добавлено поле `wait`:
+При этом поле `error` должно быть описано интерфейсом `ErrorInterface`:
 
 ```graphql
-interface ProblemInterface {
-  message: String!
-}
-
-type AccessRightProblem implements ProblemInterface {
-  message: String!
-}
-
-type SpikeProtectionProblem implements ProblemInterface {
-  message: String!
-  # Timout in seconds when the next operation will be executed without errors
-  wait: Int!
-}
-
-type PostDoesNotExistsProblem implements ProblemInterface {
-  message: String!
-  postId: Int!
+interface ErrorInterface {
+  message: String
 }
 ```
 
-Ну а дальше можно описать нашу мутацию `likePost` с возвратом пользовательских ошибок:
+Это позволит вам возвращать разные типы ошибок, которые могут содержать дополнительные поля. Например мы будем возвращать `ValidatorError`, если при сохранении записи не прошла валидация значений; `MongoError` если произошла ошибка в базе данных; и в любом другом случае будем возвращать `RuntimeError`, если не смогли распознать ни один из конкретных типов ошибок описанных ранее:
 
 ```graphql
-type Mutation {
-  likePost(id: Int!): LikePostPayload
+type ValidatorError implements ErrorInterface {
+  message: String
+  """Source of the validation error from the model path"""
+  path: String
+  """Field value which occurs the validation error"""
+  value: JSON
 }
 
-union LikePostProblems = SpikeProtectionProblem | PostDoesNotExistsProblem;
-
-type LikePostPayload {
-  recordId: Int
-  # `record` is nullable! If there is an error we may return null for Post
-  record: Post
-  errors: [LikePostProblems!]
+type MongoError implements ErrorInterface {
+  """MongoDB error message"""
+  message: String
+  """MongoDB error code"""
+  code: Int
 }
-```
 
-Благодаря union-типу `LikePostProblems` теперь через интроспекцию фронтендеры знаю какие ошибки могут вернутся при вызове мутации `likePost`. К примеру, для такого запроса они для любого типа ошибки смогут считать название ошибки с поля `__typename`, а вот благодаря интерфейсу считать `message` из любого типа ошибки:
-
-```graphql
-mutation {
-  likePost(id: 666) {
-    errors {
-      __typename
-      ... on ProblemInterface {
-        message
-      }
-    }
-  }
+"""General type of error when no one of concrete error type are received"""
+type RuntimeError implements ErrorInterface {
+  """Error message"""
+  message: String
 }
 ```
 
-А если клиенты умные, то можно запросить дополнительные поля по необходимым по ошибкам:
+Но самое главное, когда вы возвращаете `error: ErrorInterface`, то вы предоставляете клиенту выбор того, насколько он детально хочет получить информацию об возможной ошибке. Можно просто получить сообщение об ошибке, не обращая внимания на доп поля, через следующий GraphQL-запрос:
 
 ```graphql
-mutation {
-  likePost(id: 666) {
-    recordId
+mutation CreatePost {
+  createPost(title: "How to return GraphQL errors?") {
     record {
+      id
       title
-      likes
     }
-    errors {
-      __typename
-      ... on ProblemInterface {
-        message
+    error {
+      message  # <-- Just give me a message, no matter what kind of error
+    }
+  }
+}
+```
+
+Ну а если клиент дотошный, и умеет обрабатывать разные типы ошибок, то он сможет написать следующий запрос:
+
+```graphql
+mutation CreatePost {
+  createPost(title: "How to return GraphQL errors?") {
+    record {
+      id
+      title
+    }
+    error {
+      message
+      __typename  # <--- Client will receive error type name
+      ...on ValidatorError { # <--- Request additional fields according to error type
+        path
+        value
       }
-      ... on SpikeProtectionProblem {
-        message
-        wait
-      }
-      ... on PostDoesNotExistsProblem {
-        message
-        postId
+      ...on MongoError {
+        code
       }
     }
   }
 }
 ```
 
-И получить ответ от сервера в таком виде:
-
-```js
-{
-  data: {
-    likePost: {
-      errors: [
-        {
-          __typename: 'PostDoesNotExistsProblem',
-          message: 'Post does not exists!',
-          postId: 666,
-        },
-        {
-          __typename: 'SpikeProtectionProblem',
-          message: 'Spike protection! Please retry later!',
-          wait: 20,
-        },
-      ],
-      record: { likes: 0, title: 'Post 666' },
-      recordId: 666,
-    },
-  },
-}
-```
+PS. Раньше в этом правиле [предлагалось использовать Union-типы и возвращать массив ошибок](./deprecated-6.6.4-v1.md), но практика показала, что их тяжело создавать бэкендерам, да и фронтендерам не особо удобно. Поэтому был проработан текущий упрощенный вариант, где используются только интерфейсы. И т.к. работа резолвера может быть прервана только одним исключением, то нет никакого смысла возвращать массив ошибок, как предлагалось ранее.
 
 ## 7. Правила связей между типами (relationships)**
 
