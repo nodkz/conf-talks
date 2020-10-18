@@ -22,6 +22,7 @@ PS. Куча орфографических и грамматических ош
 
 ### Другое
 
+- [GraphQL or No-GraphQL [EN] – хорошая статья про плюсы и минусы GraphQL](https://levelup.gitconnected.com/graphql-or-no-graphql-395c80edc3d)
 - [Swagger — прошлый век](./articles/swagger)
 - [Redux - бойлерплейт](./articles/redux)
 - [Разница в подходах `graphql-compose` и `Prisma`](./articles/graphql-compose/graphql-compose-vs-prisma.md)
@@ -32,7 +33,7 @@ PS. Куча орфографических и грамматических ош
 - 8 апреля 2020, Санкт-Петербург, [Workshop GraphQL на клиенте](https://holyjs-piter.ru/2020/spb/workshops/graphql-on-the-client-side-with-apolloclient3/) (🛫подтверждено)
 - 7 апреля 2020, Санкт-Петербург, [Workshop GraphQL на сервере](https://holyjs-piter.ru/2020/spb/workshops/create-your-graphql-server-on-nodejs/) (🛫подтверждено)
 -->
-- 30-31 октября 2020, Киев, [JSFest](https://jsfest.com.ua/) (на этапе переговоров)
+- 25-28 ноября 2020, Online, [HolyJS](https://holyjs-moscow.ru/2020/msk/talks/5xx2i0vcleyeatztadt6ap/)
 
 ## Прошедшие мероприятия
 
