@@ -5,28 +5,31 @@
   - А как было здорово лет 5 тому назад:
     - никаких билдов, влепил jquery плагин на страницу и поехали
     - сейчас с билдами боишься лишний скрипт подключить. Такое ощущение, что атрофировалось способность что-то подключать руками.
+  - Принцип: Разделяй и властвую
 - Что такое микрофронтенды?
-  - Разделяй и властвую
-  - Microservices is a widely used architecture pattern for designing backend systems. Microservice systems are composed of small independently deployed units, running on separate processes, and communicating with each other using a network interface.
-  - They promise low coupling, high cohesion, and strong composability, which is achieved by providing a high level of autonomy to teams. Some of the promised benefits of using microfrontends are simple decoupled codebases, independent deployment, autonomous teams [36], and better customer focus.
-  - An equivalent architecture pattern for the frontend has emerged called microfrontends. Как и микросервисы, они нацелены на обеспечение высокой автономии команды, но зрелость методов и технологий ниже, чем у микросервисов.
-  - ThoughtWorks, defines microfrontends as: “An architectural style where independently deliverable frontend applications are composed into a greater whole”
+  - Сперва взглянем на бекендерский аналог – microservices
+  - Микросервисы это широко распространенный архитектурный паттерн для разработки бэкендов. Микросервисные системы объединяют небольшие независимо разворачиваемые сервисы, которые запускаются в разных процессах (машинах) и комуницируют по сети.
+  - Микросервисы преследуют низкую связность компонентов системы между собой, что дает высокую автономность командам:
+    - разделенные кодовой базы и ответственности
+    - независимое развертывание
+    - лучшая ориентация на клиента
+  - Microfrontends – аналогичный архитектурный паттерн для фронтенда
+    - Как и микросервисы, они нацелены на обеспечение высокой автономии команд
+    - Но зрелость методов и технологий гораздо ниже, чем у микросервисов.
+  - Микрофронтенды – это архитектурный стиль, в котором независимо доставляемые клиентские компоненты в браузер объединяются в единое целое.
+  - A micro-frontend represents a business domain that is autonomous, is independently deliverable, and is owned by a team.
+  - Microfrontends are modelled to match organization structure.
 - Требования к микрофронтендам
-  - Microfrontend deployment autonomy
-    - Команда, внедряющая микрофронтенд, лучше всех знает, как следует использовать микрофронтенд, и должна иметь максимальную автономию. Они должны иметь возможность вносить любые требуемые обновления, даже если обновления нарушают работу текущих интерфейсных API. В настоящее время провайдерам необходимо синхронизировать аварийные обновления со всеми потребителями, что препятствует автономии команды.
-    - independent deployments is the most important aspect. The problems that microfrontends solve, are largely organizational problems, not technical problems. And we think that one of the biggest organizational problems that is solved, is [...] different parts of an organization, being able to act independently. Being able to release their code to production without getting approval from everyone else.
-    - For Joel, a prominent reason for using microfrontends is lower build times and easier deployments. Joel shared experiences where large frontend applications take an hour to build, which vastly prolongs the developer feedback loop. By dividing an application into smaller parts, the parts get independent build steps, which are all quicker to execute.
-  - Safe microfrontend consumption.
-    - It is impractical or even impossible for microfrontends to communicate via network, and they are always executed on the same thread. The DOM, which can be seen as a replacement for a datastore, is shared, which means that they are accessing and mutating the same datastore.
-    - Обновления микрофронтэнда публикуются для клиентов независимо от клиентских интерфейсов. Если обновление представляет измененный API или другое требование к макету, существует риск того, что приложение-потребитель сломается во время выполнения.
-  - Ownership of integration complexity
-    - При использовании микрофронтендов потребители управляют логикой интеграции для включения, а не провайдеры микрофронтендов. Насколько нам известно, эта взаимосвязь верна для всех существующих решений для микрофронтендов. Поскольку группа-поставщик обладает наибольшими знаниями предметной области, они должны нести ответственность за реализацию логики интеграции. Еще лучше, если логика интеграции будет реализована автоматически.
-    - A micro-frontend represents a business domain that is autonomous, is independently deliverable, and is owned by a team.
-    - Microfrontends are modelled to match organization structure.
-    - There is a clear consensus that microfrontends solve complexity problems that arise when there are too many developers working on the same frontend. Solving the scalability problems, can have other indirect positive consequences, like a higher software quality, fewer published bugs, and counterintuitively, higher performance.
-  - Версионирование
-    - Semantic versioning Semantic versioning is a versioning specification that allows consumers to know if a specific version is compatible with their consuming code [54]. Every version number consists of three positive integers denoted with the following format: MAJOR.MINOR.PATCH (e.g. 2.4.1) [54]. The version number is sometimes denoted as BREAKING.FEATURE.FIX to better convey the meaning of the numbers.
+  - независимый деплой микрофронтендов (наиболее важный аспект)
+    - Проблемы, которые решают микрофронтенды, в основном являются организационными, а не техническими. Такая проблема - это способность разных частей организации действовать независимо (автономия команд). Иметь возможность выпускать свой код в продакшен без одобрения остальных.
+  - сокращение времени сборки
+    - На сборку и автотесты больших интерфейсных приложений могут уходить часы, что значительно удлиняет цикл обратной связи с разработчиками. Разделив приложение на более мелкие части, мы можем радикально ускорить сборку и тесты.
+  - переиспользование общего кода
+    - для фронтенда важным ограничением является объем данных загруженных по сети, и чем он меньше тем лучше. В связи с этим мы максимально должны стараться переиспользовать общие модули и компоненты. Крайне важно придерживаться semantic versioning – BREAKING.FEATURE.FIX. И иметь механизм в микрофронтендах для анонсирования необходимых версий модулей и их загрузку в рантайме.
+  - безопасное выполнение микрофронтендов
+    - Микрофронтендов выполняются в браузере и работают в одном потоке. Модель DOM, которую можно рассматривать как замену хранилища данных, является общей, что означает, что они обращаются к одному и тому же хранилищу данных и изменяют его. И ошибка в одном микрофронтенде, может положить все клиентское приложение.
 - Выгода от использования микрофронтендов
+  - There is a clear consensus that microfrontends solve complexity problems that arise when there are too many developers working on the same frontend. Solving the scalability problems, can have other indirect positive consequences, like a higher software quality, fewer published bugs, and counterintuitively, higher performance.
   - Point of view 1
     - Independent deployability - Microfrontends can be independently deployable, which enables teams to be more independent.
     - Fault isolation - It can be easier to isolate faults to parts of an application, while the rest of the application works.
@@ -38,7 +41,8 @@
     - Team coordination - there are problems with coordinating multiple frontend teams.
     - Long feedback loop - The duration of compiling a frontend application is very long.
 - Существующие решения
-  - свой велосипед (обычно дорого – тесты, документация, bus factor)
+  - свой велосипед
+    - обычно дорого – тесты, документация, bus factor
     - синхронизация версий компонентов между приложениями
   - Linked Pages and SPAs
     - Microfrontends can be integrated on the server, on the client, or a combination of both [36]. The simplest server side integration is to serve different web pages on different endpoints [36]. All traditional tools and processes can be used to develop the separate pages, and the different microfrontends can be SPAs. This can be achieved with a web proxy to serve the different pages on a single domain address, which is visualized in Figure 3.4.1. Geers calls this technique Linked Pages if every page is a separate application, and Linked SPAs if some pages are grouped into one SPA [27]. When using Linked SPAs page navigation is hard when navigating between SPAs and soft when navigating internally in an SPA.
@@ -67,6 +71,10 @@
 - Стратегии использования Module Federation
   - Zackary suggests that anything that is shared across many microfrontends could be placed in the integration layer. Examples are user authentication and user data. Zackary usually places the website footer and navigation bar in the integration layer, as it is shared across the application.
   - State management. Michael, Joel, and Zackary all mentioned that it is important to consider what application state is shared between microfrontends and how it is shared. Global application state stores should be avoided, as it adds tight coupling between microfrontends. If two microfrontends share a lot of state, they should in many cases be merged into one microfrontend.
+- Стратегии реализации микрофронтендов
+  - тонкий шелл
+  - толстый шелл
+  - и еще 100500 других
 - Демо
   - как работает (неглубоко без кишков)
   - кто реализует и можно ли доверять

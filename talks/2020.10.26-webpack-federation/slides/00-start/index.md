@@ -3,17 +3,17 @@
     <td style="vertical-align: middle">
         <div style="vertical-align: text-top;">
         <h2>
-          <span>Микрофронтенды,</span>
+          <span class="orange">Микрофронтенды,</span>
           <br/>
           <span class="green">Module Federation,</span>
         <h2>
         <h3>
-          <span class="gray">Webpack 5</span>
+          <span>Webpack 5</span>
         </h3>
         <h4><a href="http://bit.ly/module-federation" target="_blank">http://bit.ly/module-federation</a></h4>
         <hr/>
         <h4>🇰🇿 Павел Черторогов</h4>
-        <h4>🇺🇸 Pablo Damnhorns</h4>
+        <h4>🇺🇸 Paul Damnhorns</h4>
         <h4><img src="../assets/logo/twitter.png" style="height: 70px;border: none;background: none;box-shadow: none;float: left;margin: 0 11px;position: relative;top: -11px;" /> <a href="https://twitter.com/nodkz" target="_blank">@nodkz</a></h4>
       </div>
     </td>
@@ -29,10 +29,8 @@
 ## Коротко о себе
 
 - В веб-разработке с 2001 года (ужос 19 лет мучений) 🙀
-- С нуля до продакшена вывел 9 продуктов ✈️ <!-- .element: class="fragment" -->
 - Фронтендер и бэкендер в одном флаконе 💑 <!-- .element: class="fragment" -->
-- Сделал более 15 докладов про GraphQL 💃 <!-- .element: class="fragment" -->
-- Провожу двухдневные воркшопы про GraphQL 💪 <!-- .element: class="fragment" -->
+- С нуля до продакшена вывел 9 продуктов ✈️ <!-- .element: class="fragment" -->
 
 -----
 
@@ -54,16 +52,10 @@
 
 -----
 
-## Если вы новичок в GraphQL, <br/>то посмотрите выступление Ильи
+## Обычно я рассказываю про GraphQL <!-- .element: class="green" -->
 
-<a href="https://www.youtube.com/watch?v=_vjSZhnYhfI" target="_blank"><img width="600" alt="Screen Shot 2020-06-16 at 01 25 42" src="https://user-images.githubusercontent.com/1946920/85264390-7175ec80-b492-11ea-8638-f50a943ed47e.png" class="plain"></a>
-
-#### GraphQL в 2018 / Илья Климов / MYKOLAIV JS 2018
-
-<https://www.youtube.com/watch?v=_vjSZhnYhfI>
+### Но я не смог пройти мимо инструмента, <br/> который встряхнет индустрию веб разработки <!-- .element: class="fragment" -->
 
 -----
 
-![lotus](./lotus.jpg) <!-- .element: style="max-width: 700px;" class="plain"  -->
-
-## Ну что, погнали?! <!-- .element: class="fragment" -->
+# Module Federation <!-- .element: class="orange" -->

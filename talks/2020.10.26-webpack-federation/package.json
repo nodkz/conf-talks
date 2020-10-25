@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "name": "nodkz-reveal-talk",
+  "private": true,
+  "description": "Some talk",
+  "scripts": {
+    "start": "cd reveal.js && yarn && cd .. && ./reveal.js/node_modules/.bin/grunt --gruntfile ./reveal.js/Gruntfile.js serve --root=../"
+  },
+  "author": {
+    "name": "Pavel Chertorogov",
+    "email": "pavel.chertorogov@gmail.com"
+  },
+  "license": "CC-BY-NC-4.0"
+}
