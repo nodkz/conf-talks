@@ -19,53 +19,57 @@
   - Микрофронтенды – это архитектурный стиль, в котором независимо доставляемые клиентские компоненты в браузер объединяются в единое целое.
   - A micro-frontend represents a business domain that is autonomous, is independently deliverable, and is owned by a team.
   - Microfrontends are modelled to match organization structure.
-- Требования к микрофронтендам
-  - независимый деплой микрофронтендов (наиболее важный аспект)
-    - Проблемы, которые решают микрофронтенды, в основном являются организационными, а не техническими. Такая проблема - это способность разных частей организации действовать независимо (автономия команд). Иметь возможность выпускать свой код в продакшен без одобрения остальных.
+- Что дают микрофронтенды?
+  - Упрощение координации задач - команды более сфокусированы на своих предметных областях, четкая зона ответственности.
+  - Возможность независимого развертывания - позволяет командам быть более автономными
+  - Сокращение цикла поставки - более быстрая сборка и тесты. Как нового функционала, так и исправления ошибок.
+  - Снижение сложности - отдельные части меньше и легче для понимания, чем большой сложный монолит.
+  - Изоляция ошибок - может быть проще изолировать сбои в отдельных частях приложения, пока остальная часть приложения работает.
+  - Фокус на предметной области и эффективность
+- Технические требования к микрофронтендам
+  - автономность команд и независимый деплой микрофронтендов (наиболее важный аспект)
+    - Проблемы, которые решают микрофронтенды, в основном являются организационными, а не техническими. Такая проблема - это способность разных частей организации действовать независимо. Иметь возможность выпускать свой код в продакшен без одобрения остальных.
   - сокращение времени сборки
     - На сборку и автотесты больших интерфейсных приложений могут уходить часы, что значительно удлиняет цикл обратной связи с разработчиками. Разделив приложение на более мелкие части, мы можем радикально ускорить сборку и тесты.
   - переиспользование общего кода
-    - для фронтенда важным ограничением является объем данных загруженных по сети, и чем он меньше тем лучше. В связи с этим мы максимально должны стараться переиспользовать общие модули и компоненты. Крайне важно придерживаться semantic versioning – BREAKING.FEATURE.FIX. И иметь механизм в микрофронтендах для анонсирования необходимых версий модулей и их загрузку в рантайме.
+    - для фронтенда важным ограничением является объем данных загруженных по сети, и чем он меньше тем лучше. Частая болячка микрофронтендов дублирование библиотек и кода фреймворков в их бандлах. В связи с этим мы максимально должны стараться переиспользовать общие модули и компоненты. Крайне важно придерживаться semantic versioning – BREAKING.FEATURE.FIX. И иметь механизм в микрофронтендах для анонсирования необходимых версий модулей и их загрузку в рантайме.
+    - Болячки микрофронтендов
   - безопасное выполнение микрофронтендов
     - Микрофронтендов выполняются в браузере и работают в одном потоке. Модель DOM, которую можно рассматривать как замену хранилища данных, является общей, что означает, что они обращаются к одному и тому же хранилищу данных и изменяют его. И ошибка в одном микрофронтенде, может положить все клиентское приложение.
-- Выгода от использования микрофронтендов
-  - There is a clear consensus that microfrontends solve complexity problems that arise when there are too many developers working on the same frontend. Solving the scalability problems, can have other indirect positive consequences, like a higher software quality, fewer published bugs, and counterintuitively, higher performance.
-  - Point of view 1
-    - Independent deployability - Microfrontends can be independently deployable, which enables teams to be more independent.
-    - Fault isolation - It can be easier to isolate faults to parts of an application, while the rest of the application works.
-    - Easier development - Microfrontends are smaller and easier to work with than monoliths.
-    - Live support - It can be easier and quicker to do hotfixes. This is a consequence of fault isolation, where it is easy to know which part of the application is breaking, and therefore easier to find the cause than in a monolith.
-  - Point of view 2
-    - Scalability - There are more than 50 developers working on the same frontend application.
-    - Complexity - The application is very complex. Dividing a complex application enforces loose coupling between the microfrontends. Moreover the separate parts are smaller and easier to understand than a large complex monolith.
-    - Team coordination - there are problems with coordinating multiple frontend teams.
-    - Long feedback loop - The duration of compiling a frontend application is very long.
+  - SSR – возможность генерации HTML-код страницы для поисковиков
+  - Возможность управлять одним микрофронтендом из другого – к примеру, в sidebar'e показывать пункты меню, которые задаются в другом микросервисе
 - Существующие решения
   - свой велосипед
-    - обычно дорого – тесты, документация, bus factor
-    - синхронизация версий компонентов между приложениями
+    - обычно дорого – R&D, тесты, документация, bus factor
+  - Server-Side Fragment Composition
+    - Также известно под словами transclusion, Server Side Includes. Применяется на бэкенде. Когда веб-сервер собирает html-страницу из разных кусков (сервисов) в единую html страницу. Очень древняя технология.
+    - Nginx SSI
+    - Zalando Tailor – is a layout service that uses streams to compose a web page from fragment services.
+    - слабо-применима к современным SPA-приложениям
+  - Iframes
+    - transclusion который работает на клиенте. Который позволяет собирать html страницу из других html страниц. Появился как стандарт в HTML 4.01 (1998 год).
+    - zoid (ифреймы могут общаться через postMessage)
+    - боль с модальными окнами, и управлением лейаута
+    - проблема с SEO для поисковиков
+    - проблема с перформансом (одни и те же библиотеки загружаются несколько раз)
+  - Web Components
+    - Гораздо более новым веб-стандартом являются веб-компоненты. Они позволяют определять и регистрировать динамические настраиваемые элементы в инкапсулированной области.
+    - Самая большая проблема с SSR, т.к web components сильно завязаны на DOM API
+    - Поможет инкапсулировать компонент, но не поможет сделать большое SPA приложение
+    - По мне чутка поумневший iframe не более того.
   - Linked Pages and SPAs
     - Microfrontends can be integrated on the server, on the client, or a combination of both [36]. The simplest server side integration is to serve different web pages on different endpoints [36]. All traditional tools and processes can be used to develop the separate pages, and the different microfrontends can be SPAs. This can be achieved with a web proxy to serve the different pages on a single domain address, which is visualized in Figure 3.4.1. Geers calls this technique Linked Pages if every page is a separate application, and Linked SPAs if some pages are grouped into one SPA [27]. When using Linked SPAs page navigation is hard when navigating between SPAs and soft when navigating internally in an SPA.
-  - Server-Side Fragment Composition 
-    - Server-side composition can also be used to serve page fragments. This is sometimes called transclusion, and can be done by using technologies like Server Side Includes [25], Edge Side Includes, Zalando Tailor, or Podium [27, ch. 4]. Similar technologies exist for XML transclusion as well [35]. Note that as pages just are large fragments, these technologies can also be used to divide an application on a page level.
-    - Zalando Interface Framework (ZIF)
-  - Iframes
-    - All existing client side integration methods can be used for fragment composition, and therefore page composition. The most naive client side in- tegration method is using iframes, which is a web-native standard [27, ch. 2]. Iframes were introduced with the HTML 4.01 standard in 1998 [55], when web was still an early technology, which is why there are drawbacks to using them on a modern web application. The most notable trade-offs are performance overhead, accessibility problems, search engine optimization problems, and the lack of layout control [27, ch. 2].
-    - zoid (боль с модальными окнами, одни и те же библиотеки загружаются несколько раз)
-  - Web Components 
-    - A much newer web-native standard is web components, which in practice is a suite of four web technology standards [43]. They allow dynamic custom elements to be defined and registered, in an encapsulated scope [43]. They are used by Google on large products like Youtube to include highly interactive elements [62]. The largest issue is that web components can not be server side rendered, as they have to be run in a browser at the client.
-  - Unified SPAs
-    - One of the most popular and extensive frameworks is single-spa [58]. It is a shell application that includes applications developed using other frameworks [58]. It behaves like a thin orchestration layer that handles routing and micro front end composition. Geers calls this kind of framework a Unified SPA, as it wraps other SPAs into one cohesive application [27]. Single-spa requires the root application to be written as a single-spa application, which implies a considerable migration cost to existing applications [58].
-    - single-spa (погружаемся в systemjs и мапперы, что-то костылим с подгрузкой ассетов css, fonts, images)
-    - SystemJS
+    - next.js Multi Zones
+  - single-spa
+    - Один из самых популярных фреймворков на данный момент для SPA. Это приложение-оболочка, которое включает приложения, разработанные с использованием других фреймворков. Он ведет себя как тонкий слой оркестровки, который согласно URL запускает тот или иной микрофронтенд, "выключая" предыдущий.
+    - погружаемся в systemjs и мапперы, что-то костылим с подгрузкой ассетов css, fonts, images
+    - проблема с переиспользованием кода, хотя lazy loading по роуту страницы позволяет сократить первоначальную загрузку
   - Module Federation
     - Module Federation is an addition to the web bundler Webpack that allows an application to consist of more than one deployment unit [37, 67]. The extension allows encapsulated compiled deployment units to expose functionality and consume functionality from other deployment units [37, 67]. This way separate deployment units can share dependencies and depend on each other. The composition is done at run-time, which facilitates independent deployments.
     - Federated modules could have a large impact on microfrontends, as it allows developers to write applications as if they are monolithic, when they in practice are distributed over multiple projects. There is a potential for frameworks to emerge that are built on top of the functionality of module federation.
+    - Module federation aims to enable microfrontends to share common code in an easy manner. In projects where module federation is used, there should be a very small impact to bundle sizes, as code duplication is avoided by enabling easy sharing.
     - module federation в webpack 5 (вот она рыба моей мечты. зарелизели в октябре 2020)
-- Болячки микрофронтендов
-  - A common misconception about microfrontends is that they always provide worse UX than monoliths. The reasoning is based on code duplication. Every microfrontend shares large parts of code, like the framework code, and therefore the total bundle size of a web-page becomes much larger.
-  - Joel has a similar contribution with single-spa, which is not about reducing total code size but aims at reducing initial code size by lazy loading resources.
-  - Module federation aims to enable microfrontends to share common code in an easy manner. In projects where module federation is used, there should be a very small impact to bundle sizes, as code duplication is avoided by enabling easy sharing.
+    - не все паттерны и стратегии еще выработаны. Нам дали мяч, а вот с правилами игры пока не все ясно.
 - История Module Federation
   - Zackary Jackson author of flagship feature for Webpack 5, module federation
 - Стратегии использования Module Federation
