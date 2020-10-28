@@ -39,53 +39,69 @@
   - SSR – возможность генерации HTML-код страницы для поисковиков
   - Возможность управлять одним микрофронтендом из другого – к примеру, в sidebar'e показывать пункты меню, которые задаются в другом микросервисе
 - Существующие решения
-  - свой велосипед
-    - обычно дорого – R&D, тесты, документация, bus factor
-  - Server-Side Fragment Composition
+  - Server-Side Fragment Composition (на сервере)
     - Также известно под словами transclusion, Server Side Includes. Применяется на бэкенде. Когда веб-сервер собирает html-страницу из разных кусков (сервисов) в единую html страницу. Очень древняя технология.
     - Nginx SSI
     - Zalando Tailor – is a layout service that uses streams to compose a web page from fragment services.
     - слабо-применима к современным SPA-приложениям
-  - Iframes
+  - Iframes (на клиенте)
     - transclusion который работает на клиенте. Который позволяет собирать html страницу из других html страниц. Появился как стандарт в HTML 4.01 (1998 год).
     - zoid (ифреймы могут общаться через postMessage)
     - боль с модальными окнами, и управлением лейаута
     - проблема с SEO для поисковиков
     - проблема с перформансом (одни и те же библиотеки загружаются несколько раз)
-  - Web Components
-    - Гораздо более новым веб-стандартом являются веб-компоненты. Они позволяют определять и регистрировать динамические настраиваемые элементы в инкапсулированной области.
+  - Web Components (на клиенте)
+    - Гораздо более новым веб-стандартом являются веб-компоненты (2011-2013). Они позволяют определять и регистрировать динамические настраиваемые элементы в инкапсулированной области.
     - Самая большая проблема с SSR, т.к web components сильно завязаны на DOM API
     - Поможет инкапсулировать компонент, но не поможет сделать большое SPA приложение
     - По мне чутка поумневший iframe не более того.
-  - Linked Pages and SPAs
-    - Microfrontends can be integrated on the server, on the client, or a combination of both [36]. The simplest server side integration is to serve different web pages on different endpoints [36]. All traditional tools and processes can be used to develop the separate pages, and the different microfrontends can be SPAs. This can be achieved with a web proxy to serve the different pages on a single domain address, which is visualized in Figure 3.4.1. Geers calls this technique Linked Pages if every page is a separate application, and Linked SPAs if some pages are grouped into one SPA [27]. When using Linked SPAs page navigation is hard when navigating between SPAs and soft when navigating internally in an SPA.
-    - next.js Multi Zones
-  - single-spa
+  - next.js Multi Zones (на сервере) (Linked Pages & SPAs)
+    - Подход при котором load-балансировщик согласно адреса страницы отдает то или иное SPA-приложение.
+    - При таком подходе переход между приложениями будет "дорогим" для пользователя. Но роутинг внутри SPA-приложения будет дешевым и быстрым. Так же разработчики вольны выбирать любые средства разработки, для них разработка практически никак не усложняется.
+  - single-spa (на клиенте)
     - Один из самых популярных фреймворков на данный момент для SPA. Это приложение-оболочка, которое включает приложения, разработанные с использованием других фреймворков. Он ведет себя как тонкий слой оркестровки, который согласно URL запускает тот или иной микрофронтенд, "выключая" предыдущий.
     - погружаемся в systemjs и мапперы, что-то костылим с подгрузкой ассетов css, fonts, images
     - проблема с переиспользованием кода, хотя lazy loading по роуту страницы позволяет сократить первоначальную загрузку
   - Module Federation
-    - Module Federation is an addition to the web bundler Webpack that allows an application to consist of more than one deployment unit [37, 67]. The extension allows encapsulated compiled deployment units to expose functionality and consume functionality from other deployment units [37, 67]. This way separate deployment units can share dependencies and depend on each other. The composition is done at run-time, which facilitates independent deployments.
-    - Federated modules could have a large impact on microfrontends, as it allows developers to write applications as if they are monolithic, when they in practice are distributed over multiple projects. There is a potential for frameworks to emerge that are built on top of the functionality of module federation.
-    - Module federation aims to enable microfrontends to share common code in an easy manner. In projects where module federation is used, there should be a very small impact to bundle sizes, as code duplication is avoided by enabling easy sharing.
-    - module federation в webpack 5 (вот она рыба моей мечты. зарелизели в октябре 2020)
-    - не все паттерны и стратегии еще выработаны. Нам дали мяч, а вот с правилами игры пока не все ясно.
-- История Module Federation
-  - Zackary Jackson author of flagship feature for Webpack 5, module federation
-- Стратегии использования Module Federation
-  - Zackary suggests that anything that is shared across many microfrontends could be placed in the integration layer. Examples are user authentication and user data. Zackary usually places the website footer and navigation bar in the integration layer, as it is shared across the application.
-  - State management. Michael, Joel, and Zackary all mentioned that it is important to consider what application state is shared between microfrontends and how it is shared. Global application state stores should be avoided, as it adds tight coupling between microfrontends. If two microfrontends share a lot of state, they should in many cases be merged into one microfrontend.
-- Стратегии реализации микрофронтендов
-  - тонкий шелл
-  - толстый шелл
-  - и еще 100500 других
+    - Новая киллер фича в Webpack 5. Анонсирована Zack Jackson в [декабре 2019 года](https://levelup.gitconnected.com/micro-frontend-architecture-dynamic-import-chunks-from-another-webpack-bundle-at-runtime-1132d8cb6051). Позволяет подключать модули из другой webpack-сборки, которая расположена на другом хосте. Если в systemjs вы вынуждены вручную собирать import maps, то с Module Federation это происходит автоматически под капотом. 
+  - свой велосипед
+    - обычно дорого – R&D, тесты, документация, bus factor
+    - нужно опенсорсить, чтоб сократить косты на R&D
+    - хорошо если на systemjs, еще лучше если на Module Federation
+  - Таблица соответствия подходов тех. требованиям
+- Module Federation
+  - Zack Jackson author of module federation (ссылка на твиттер, ссылка на сайт).
+  - Анонсирована в декабре 2019 как сторонний плагин; зарелизили в октябре 2020 как core-плагин
+  - Webpack plugin that imports chunks from other Webpack bundles at runtime. To put it plainly, I want to merge two Webpack manifests at runtime and have them work together as if it was compiled as one SPA from the start.
+  - Many webpack builds to act as one when in the browser, without context as build time
+  - Все что может сбандлить Webpack (css, images, fonts) может быть зашарено между микрофронтендами.
+  - Отдельные единицы развертывания могут иметь общие зависимости и зависеть друг от друга. Композиция выполняется во время выполнения, что облегчает независимое развертывание.
+  - Объединенные модули могут иметь большое влияние на микрофронтенды, поскольку они позволяют разработчикам писать приложения, как если бы они были монолитными, тогда как на практике они распределяются по нескольким проектам.
+  - Module federation нацелен на то, чтобы микрофронты могли легко совместно использовать общий код. Дублирование кода предотвращается за счет упрощения совместного использования.
+  - module federation в webpack 5 (вот она рыба моей мечты)
+  - The goals
+    - No page refreshes when routing to another MFE, multiple apps should route as one SPA would
+    - Don’t redownload vendor code that is already provided by another Webpack build on the page. (Don’t bundle multiple copies of the same dependency)
+    - Each MFE should be completely standalone and have no centralized dependency. I don’t want to share code by managing Webpack externals, or commons vendor chunks.
+    - Frontend resources should have the ability to be evergreen, not requiring a consumer to re-install.
+    - I should not need to redeploy the whole fleet because of a change to a shared component or something managed by another team (such as navigation, I don’t want to redeploy my all whenever they push a new update)
+    - Orchestration should be completely managed in user-land, allowing dynamic adaptations based on what JavaScript bundles are loaded on a page. There should be no remote logic or calls required beyond adding static JavaScript like the bundles themselves.
 - Демо
   - как работает (неглубоко без кишков)
   - кто реализует и можно ли доверять
   - где посмотреть больше демок
   - будут ли проблемы со сборкой, хэшами, ошибки в рантайме
+- Стратегии использования Module Federation
+  - State management. У каждого приложения должно быть своим. Глобальный стейт будет нарушать инкапсуляцию микросервисов. Если два микрофронтенда имеют много чего общего в стейте – скорее всего их следует объединить в один микрофронтенд.
+  - тонкий шелл (уровне интеграции). Всё что является общим для многих микрофронтендов, можно разместить на уровне интеграции. Например, хедер, футер меню.
+  - толстый шелл
+  - и еще 100500 других
+- Минусы Module Federation
+  - это вебпак (ссылку на твит про ангела и демона) Ежики плачут, но продолжают есть кактус.
+  - все еще новая технология. Но точно будет развиваться и набирать популярность.
+  - не все паттерны и стратегии еще выработаны. Нам дали мяч, а вот с правилами игры пока не все ясно. Ждем адаптацию фреймворков, таких как next.js
+  - SSR есть, но он tricky и я до него еще не добрался
 - Что дальше:
-  - Microfrontends is still a new technology. All interviewees mentioned expectations for the technology to mature and grow in popularity. They also expect new patterns and best practices to emerge.
-  - Zackary expects tools to emerge from module federation. Module federation is a low level construct, and will become more powerful when it is used to create tools built using it. Zackary expects frontend frameworks to use it to compose shared assets.
-  - Ждем Next.js 10, но уже сейчас можно клеить микрофронтенды.
+  - React 17
+  - Ждем Next.js 11, но уже сейчас можно клеить микрофронтенды.
   - Выход с докладом на весну 2021: apollo federation, webpack module federation, russian federation – как сделать так, чтобы все федерации работали как часы?!
