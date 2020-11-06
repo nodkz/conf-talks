@@ -1,3 +1,4 @@
+- Про module federation буду рассказывать минут через 20 ищите слайд X.Y. А пока немного теории, предыстории для общего понимания.
 - Проблемы большого фронтенда:
   - фронтенд большой, и несколько команд его пилят
   - разделение ответственности (кто за что отвечает)
@@ -63,31 +64,47 @@
     - погружаемся в systemjs и мапперы, что-то костылим с подгрузкой ассетов css, fonts, images
     - проблема с переиспользованием кода, хотя lazy loading по роуту страницы позволяет сократить первоначальную загрузку
   - Module Federation
-    - Новая киллер фича в Webpack 5. Анонсирована Zack Jackson в [декабре 2019 года](https://levelup.gitconnected.com/micro-frontend-architecture-dynamic-import-chunks-from-another-webpack-bundle-at-runtime-1132d8cb6051). Позволяет подключать модули из другой webpack-сборки, которая расположена на другом хосте. Если в systemjs вы вынуждены вручную собирать import maps, то с Module Federation это происходит автоматически под капотом. 
+    - Новая киллер фича в Webpack 5.
+    - Впервые озвучена Zack Jackson в [декабре 2018 github issue](https://github.com/webpack/webpack/issues/8524) ![first draft](https://user-images.githubusercontent.com/25274700/50267904-b7557e80-03dd-11e9-833a-88a0cb145b38.png)
+    - Впервые анонсирована в виде статьи в [октябре 2019 года](https://medium.com/@ScriptedAlchemy/micro-fe-architecture-webpack-5-module-federation-and-custom-startup-code-9cb3fcd066c). Позволяет подключать модули из другой webpack-сборки, которая расположена на другом хосте. Если в systemjs вы вынуждены вручную собирать import maps, то с Module Federation это происходит автоматически под капотом. 
   - свой велосипед
     - обычно дорого – R&D, тесты, документация, bus factor
     - нужно опенсорсить, чтоб сократить косты на R&D
     - хорошо если на systemjs, еще лучше если на Module Federation
   - Таблица соответствия подходов тех. требованиям
 - Module Federation
-  - Zack Jackson author of module federation (ссылка на твиттер, ссылка на сайт).
-  - Анонсирована в декабре 2019 как сторонний плагин; зарелизили в октябре 2020 как core-плагин
+  - MF is a type of JavaScript architecture which invented and prototyped by Zack Jackson (ссылка на твиттер, ссылка на сайт).
+  - Для MF начал ресерч и разработку в 2017mid
+  - История
+    - Это "адское" обсуждение в 389 комментов, 61 участник с 7 февраля по 7 октября 2020 [issue 10352](https://github.com/webpack/webpack/issues/10352)
+    - Анонсирована в октябре 2019 как сторонний плагин
+    - It was co-authored into Webpack 5 by myself (Zack Jackson) and Marais Rossouw with lots of guidance, pair-programming, and assistance from Tobias Koppers. <https://medium.com/swlh/webpack-5-module-federation-a-game-changer-to-javascript-architecture-bcdd30e02669>
+    - Зарелизили в октябре 2020 как core-плагин
+  - Terminology
+    - A host (consumers): a Webpack build that is initialized first during a page load (when the onLoad event is triggered)
+    - A remote (consumable): another Webpack build, where part of it is being consumed by a “host”
+    - Bidirectional-hosts: when a bundle or Webpack build can work as a host or as a remote. Either consuming other applications or being consumed by others — at runtime
+  - Module federation allows a JavaScript application to dynamically load code from another application — in the process, sharing dependencies, if an application consuming a federated module does not have a dependency needed by the federated code — Webpack will download the missing dependency from that federated build origin.
   - Webpack plugin that imports chunks from other Webpack bundles at runtime. To put it plainly, I want to merge two Webpack manifests at runtime and have them work together as if it was compiled as one SPA from the start.
-  - Many webpack builds to act as one when in the browser, without context as build time
+  - Many webpack builds to act as one when in the browser, without context as build time. Better than DLLPlugin
+  - Federated code can always load its dependencies but will attempt to use the consumers’ dependencies before downloading more payload. (Сперва посмотрит реакт у себя, прежде чем его скачивать с remote-host)
   - Все что может сбандлить Webpack (css, images, fonts) может быть зашарено между микрофронтендами.
   - Отдельные единицы развертывания могут иметь общие зависимости и зависеть друг от друга. Композиция выполняется во время выполнения, что облегчает независимое развертывание.
   - Объединенные модули могут иметь большое влияние на микрофронтенды, поскольку они позволяют разработчикам писать приложения, как если бы они были монолитными, тогда как на практике они распределяются по нескольким проектам.
   - Module federation нацелен на то, чтобы микрофронты могли легко совместно использовать общий код. Дублирование кода предотвращается за счет упрощения совместного использования.
   - module federation в webpack 5 (вот она рыба моей мечты)
-  - The goals
+  - The goals <https://levelup.gitconnected.com/micro-frontend-architecture-dynamic-import-chunks-from-another-webpack-bundle-at-runtime-1132d8cb6051>
     - No page refreshes when routing to another MFE, multiple apps should route as one SPA would
-    - Don’t redownload vendor code that is already provided by another Webpack build on the page. (Don’t bundle multiple copies of the same dependency)
+    - Don’t redownload vendor code that is already provided by another Webpack build on the page. (Don’t bundle multiple copies of the same dependency). So it’s just as efficient as if it was one large Webpack build, with code splitting.
     - Each MFE should be completely standalone and have no centralized dependency. I don’t want to share code by managing Webpack externals, or commons vendor chunks.
     - Frontend resources should have the ability to be evergreen, not requiring a consumer to re-install.
     - I should not need to redeploy the whole fleet because of a change to a shared component or something managed by another team (such as navigation, I don’t want to redeploy my all whenever they push a new update)
     - Orchestration should be completely managed in user-land, allowing dynamic adaptations based on what JavaScript bundles are loaded on a page. There should be no remote logic or calls required beyond adding static JavaScript like the bundles themselves.
+  - SSR This project works client-side, but server-side is harder.
+    - For ssr, we have taught webpack to work like browser on server side. Enabling chunks to be streamed over internal networks. Not limited to disk only or depend on getting html from separate servers
+  - It’s important to note that this system is designed so that each completely standalone build/app can be in its own repository, deployed independently, and run as its own independent SPA.
 - Демо
-  - как работает (неглубоко без кишков)
+  - как работает (неглубоко без кишков, можно план демки взять здесь https://medium.com/swlh/webpack-5-module-federation-a-game-changer-to-javascript-architecture-bcdd30e02669)
   - кто реализует и можно ли доверять
   - где посмотреть больше демок
   - будут ли проблемы со сборкой, хэшами, ошибки в рантайме
@@ -104,4 +121,5 @@
 - Что дальше:
   - React 17
   - Ждем Next.js 11, но уже сейчас можно клеить микрофронтенды.
+  - 
   - Выход с докладом на весну 2021: apollo federation, webpack module federation, russian federation – как сделать так, чтобы все федерации работали как часы?!
