@@ -3,7 +3,7 @@
     <td style="vertical-align: middle">
         <div style="vertical-align: text-top;">
         <h2>
-          <span class="orange">Микрофронтенды,</span>
+          <span class="orange">Революция в микрофронтендах,</span>
           <br/>
           <span class="green">Module Federation,</span>
         <h2>

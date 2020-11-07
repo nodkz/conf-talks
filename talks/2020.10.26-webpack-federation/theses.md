@@ -1,3 +1,5 @@
+- Сперва короткое Демо, чтоб заинтриговать темой
+  - A short and sweet guide to using Module Federation on two independently deployed web apps, so that they can work like a monolith.
 - Про module federation буду рассказывать минут через 20 ищите слайд X.Y. А пока немного теории, предыстории для общего понимания.
 - Проблемы большого фронтенда:
   - фронтенд большой, и несколько команд его пилят
@@ -80,10 +82,14 @@
     - Анонсирована в октябре 2019 как сторонний плагин
     - It was co-authored into Webpack 5 by myself (Zack Jackson) and Marais Rossouw with lots of guidance, pair-programming, and assistance from Tobias Koppers. <https://medium.com/swlh/webpack-5-module-federation-a-game-changer-to-javascript-architecture-bcdd30e02669>
     - Зарелизили в октябре 2020 как core-плагин
+    - Tobias (Founder of Webpack) has helped visualize part of the beta.17 upgrade, which is what most of this article is based on. As always — The investment from Tobias has been a major factor in the ability to refine this system and make substantial changes to Webpack core to support this technology
   - Terminology
     - A host (consumers): a Webpack build that is initialized first during a page load (when the onLoad event is triggered)
     - A remote (consumable): another Webpack build, where part of it is being consumed by a “host”
-    - Bidirectional-hosts: when a bundle or Webpack build can work as a host or as a remote. Either consuming other applications or being consumed by others — at runtime
+    - Bidirectional hosts: when a bundle or Webpack build can work as a host or as a remote. Either consuming other applications or being consumed by others — at runtime
+    - Omnidirectional hosts: when bundle operates as both host and remote at the same time
+    - Exposed modules – модули которые будут доступны другим приложением для импорта
+    - Shared module – модули которые могут быть общими для всем приложений (vendor eg React)
   - Module federation allows a JavaScript application to dynamically load code from another application — in the process, sharing dependencies, if an application consuming a federated module does not have a dependency needed by the federated code — Webpack will download the missing dependency from that federated build origin.
   - Webpack plugin that imports chunks from other Webpack bundles at runtime. To put it plainly, I want to merge two Webpack manifests at runtime and have them work together as if it was compiled as one SPA from the start.
   - Many webpack builds to act as one when in the browser, without context as build time. Better than DLLPlugin
@@ -102,9 +108,13 @@
     - Orchestration should be completely managed in user-land, allowing dynamic adaptations based on what JavaScript bundles are loaded on a page. There should be no remote logic or calls required beyond adding static JavaScript like the bundles themselves.
   - SSR This project works client-side, but server-side is harder.
     - For ssr, we have taught webpack to work like browser on server side. Enabling chunks to be streamed over internal networks. Not limited to disk only or depend on getting html from separate servers
+    - We have designed this to be Universal Module Federation works in any environment. Server-side rendering federated code is completely possible. Just have server builds use a commonjs library target. There are various ways to achieve federated SSR. S3 Streaming, ESI, automate an npm publish to consume server variants. I plan to use a commonly shared file volume or async S3 streaming to stream files across the filesystem. Enabling the server to require federated code just like it happens in the browser. Using fs instead of http to load federated code.
   - It’s important to note that this system is designed so that each completely standalone build/app can be in its own repository, deployed independently, and run as its own independent SPA.
 - Демо
   - как работает (неглубоко без кишков, можно план демки взять здесь https://medium.com/swlh/webpack-5-module-federation-a-game-changer-to-javascript-architecture-bcdd30e02669)
+  - Webpack конфиг
+    - по настройке webpack конфига можно почитать тут https://medium.com/dev-genius/module-federation-advanced-api-inwebpack-5-0-0-beta-17-71cd4d42e534
+    - For requiredVersion: ^, ~, >= and exact matching is allowed. Complex ranges are not supported as it would require a significant amount of runtime code to cover that logic.
   - кто реализует и можно ли доверять
   - где посмотреть больше демок
   - будут ли проблемы со сборкой, хэшами, ошибки в рантайме
@@ -118,8 +128,15 @@
   - все еще новая технология. Но точно будет развиваться и набирать популярность.
   - не все паттерны и стратегии еще выработаны. Нам дали мяч, а вот с правилами игры пока не все ясно. Ждем адаптацию фреймворков, таких как next.js
   - SSR есть, но он tricky и я до него еще не добрался
+  - В руках мастера может превратиться в черную дыру node_modules
+  - С тестированием пока все сложно, если поменяете интерфейс exposed модуля, то ваше приложение сломается точно так же как если бы вы поменяли схему своего REST API
 - Что дальше:
   - React 17
   - Ждем Next.js 11, но уже сейчас можно клеить микрофронтенды.
-  - 
   - Выход с докладом на весну 2021: apollo federation, webpack module federation, russian federation – как сделать так, чтобы все федерации работали как часы?!
+- Links
+  - [Webpack 5 Module Federation - Zack Jackson 12 окт. 2020](https://www.youtube.com/watch?v=-ei6RqZilYI)
+  - <https://medium.com/@ScriptedAlchemy>
+  - <https://module-federation.github.io/>
+  - <https://www.youtube.com/results?search_query=module+federation> Zack, Tobias, Jack Herrington
+  - [Реакт хук для загрузки внешнего хоста](https://medium.com/@ScriptedAlchemy/webpack-5-module-federation-stitching-two-simple-bundles-together-fe4e6a069716)

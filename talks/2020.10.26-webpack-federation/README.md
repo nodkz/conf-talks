@@ -1,4 +1,4 @@
-# Микрофронтенды, Module Federation, Webpack 5
+# Революция в микрофронтендах, Module Federation, Webpack 5
 
 Презентация доступна по следующим ссылкам:
 - [темная тема](https://nodkz.github.io/conf-talks/talks/2020.10.26-webpack-federation/index.html)
