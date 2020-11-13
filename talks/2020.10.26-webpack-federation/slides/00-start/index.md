@@ -58,4 +58,25 @@
 
 -----
 
-# Module Federation <!-- .element: class="orange" -->
+## Module Federation <!-- .element: class="orange" -->
+
+-----
+
+### Что будет в докладе?
+
+- 1. Проблемы большого фронтенда
+- 2. Что такое микрофронтенды?
+- 3. Существующие решения
+- 4. Описание Module Federation
+- 5. Архитектура Module Federation
+- 6. Демо
+- 7. Минусы Module Federation
+- 8. Будущее NextJS
+- 9. Полезные ссылки
+
+-----
+
+TODO:
+- Сперва короткое Демо, чтоб заинтриговать темой
+  - A short and sweet guide to using Module Federation on two independently deployed web apps, so that they can work like a monolith.
+  - Про module federation буду рассказывать минут через 20 ищите слайд X.Y. А пока немного теории, предыстории для общего понимания.
