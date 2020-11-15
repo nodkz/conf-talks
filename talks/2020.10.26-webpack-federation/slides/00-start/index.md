@@ -54,29 +54,34 @@
 
 ## Обычно я рассказываю про GraphQL <!-- .element: class="green" -->
 
-### Но я не смог пройти мимо инструмента, <br/> который встряхнет индустрию веб разработки <!-- .element: class="fragment" -->
+-----
+
+### Но не смог пройти мимо инструмента, <br/> который встряхнет индустрию веб разработки –
+
+# Module Federation <!-- .element: class="orange fragment" -->
 
 -----
 
-## Module Federation <!-- .element: class="orange" -->
+### Что будет в докладе? <!-- .element: class="green" -->
+
+1. Проблемы большого фронтенда <!-- .element: class="fragment" -->
+2. Что такое микрофронтенды? <!-- .element: class="fragment" -->
+3. Существующие решения <!-- .element: class="fragment" -->
+4. Описание Module Federation <!-- .element: class="fragment" -->
+5. Архитектура Module Federation <!-- .element: class="fragment" -->
+6. Демо <!-- .element: class="fragment" -->
+7. Минусы Module Federation <!-- .element: class="fragment" -->
+8. Будущее NextJS <!-- .element: class="fragment" -->
+9. Полезные ссылки <!-- .element: class="fragment" -->
 
 -----
 
-### Что будет в докладе?
+## Сперва короткое Демо, <br/>чтобы заинтриговать <!-- .element: class="green" -->
 
-- 1. Проблемы большого фронтенда
-- 2. Что такое микрофронтенды?
-- 3. Существующие решения
-- 4. Описание Module Federation
-- 5. Архитектура Module Federation
-- 6. Демо
-- 7. Минусы Module Federation
-- 8. Будущее NextJS
-- 9. Полезные ссылки
+### Пример двух независимо разрабатываемых приложений, которые работают в браузере как монолит.
 
 -----
 
-TODO:
-- Сперва короткое Демо, чтоб заинтриговать темой
-  - A short and sweet guide to using Module Federation on two independently deployed web apps, so that they can work like a monolith.
-  - Про module federation буду рассказывать минут через 20 ищите слайд X.Y. А пока немного теории, предыстории для общего понимания.
+## Про Module Federation буду рассказывать минут через 20, <br/>ищите слайд 6.1 <!-- .element: class="orange" -->
+  
+### А пока немного теории и предыстории <br/>для общего понимания. <!-- .element: class="gray" -->
