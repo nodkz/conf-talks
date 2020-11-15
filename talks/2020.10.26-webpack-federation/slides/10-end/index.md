@@ -24,7 +24,7 @@
 
 <div style="font-size: 0.8em !important">
   <br />Эта презентация <a href="http://bit.ly/module-federation" target="_blank"></a>
-  <br />Репо с демо <a href="https://github.com/nodkz/TODO:" target="_blank">https://github.com/nodkz/TODO:</a>
+  <br />Репо с демо <a href="https://github.com/nodkz/module-federation-demo" target="_blank">https://github.com/nodkz/module-federation-demo</a>
 </div>
 
 ![Photo](../assets/nodkz-photo.jpg) <!-- .element: style="max-width: 400px; border: none" -->

@@ -1,8 +1,13 @@
 # 4. Описание Module Federation
 
+-----
+
 - MF is a type of JavaScript architecture which invented and prototyped by Zack Jackson (ссылка на твиттер, ссылка на сайт).
-- Для MF начал ресерч и разработку в 2017mid
+
 - История
+  - Для MF начал ресерч и разработку в 2017mid
+  - Впервые озвучена Zack Jackson в [декабре 2018 github issue](https://github.com/webpack/webpack/issues/8524) 
+  - Впервые анонсирована в виде статьи в [октябре 2019 года](https://medium.com/@ScriptedAlchemy/micro-fe-architecture-webpack-5-module-federation-and-custom-startup-code-9cb3fcd066c). 
   - Это "адское" обсуждение в 389 комментов, 61 участник с 7 февраля по 7 октября 2020 [issue 10352](https://github.com/webpack/webpack/issues/10352)
   - Анонсирована в октябре 2019 как сторонний плагин
   - It was co-authored into Webpack 5 by myself (Zack Jackson) and Marais Rossouw with lots of guidance, pair-programming, and assistance from Tobias Koppers. <https://medium.com/swlh/webpack-5-module-federation-a-game-changer-to-javascript-architecture-bcdd30e02669>
