@@ -2,34 +2,109 @@
 
 -----
 
-- MF is a type of JavaScript architecture which invented and prototyped by Zack Jackson (ссылка на твиттер, ссылка на сайт).
+### Module Federation invented and prototyped <br/>by <span class="orange">Zack Jackson</span>
 
-- История
-  - Для MF начал ресерч и разработку в 2017mid
-  - Впервые озвучена Zack Jackson в [декабре 2018 github issue](https://github.com/webpack/webpack/issues/8524) 
-  - Впервые анонсирована в виде статьи в [октябре 2019 года](https://medium.com/@ScriptedAlchemy/micro-fe-architecture-webpack-5-module-federation-and-custom-startup-code-9cb3fcd066c). 
-  - Это "адское" обсуждение в 389 комментов, 61 участник с 7 февраля по 7 октября 2020 [issue 10352](https://github.com/webpack/webpack/issues/10352)
-  - Анонсирована в октябре 2019 как сторонний плагин
-  - It was co-authored into Webpack 5 by myself (Zack Jackson) and Marais Rossouw with lots of guidance, pair-programming, and assistance from Tobias Koppers. <https://medium.com/swlh/webpack-5-module-federation-a-game-changer-to-javascript-architecture-bcdd30e02669>
-  - Зарелизили в октябре 2020 как core-плагин
-  - Tobias (Founder of Webpack) has helped visualize part of the beta.17 upgrade, which is what most of this article is based on. As always — The investment from Tobias has been a major factor in the ability to refine this system and make substantial changes to Webpack core to support this technology
-- Module federation allows a JavaScript application to dynamically load code from another application — in the process, sharing dependencies, if an application consuming a federated module does not have a dependency needed by the federated code — Webpack will download the missing dependency from that federated build origin.
-- Webpack plugin that imports chunks from other Webpack bundles at runtime. To put it plainly, I want to merge two Webpack manifests at runtime and have them work together as if it was compiled as one SPA from the start.
-- Many webpack builds to act as one when in the browser, without context as build time. Better than DLLPlugin
-- Federated code can always load its dependencies but will attempt to use the consumers’ dependencies before downloading more payload. (Сперва посмотрит реакт у себя, прежде чем его скачивать с remote-host)
-- Все что может сбандлить Webpack (css, images, fonts) может быть зашарено между микрофронтендами.
-- Отдельные единицы развертывания могут иметь общие зависимости и зависеть друг от друга. Композиция выполняется во время выполнения, что облегчает независимое развертывание.
-- Объединенные модули могут иметь большое влияние на микрофронтенды, поскольку они позволяют разработчикам писать приложения, как если бы они были монолитными, тогда как на практике они распределяются по нескольким проектам.
-- Module federation нацелен на то, чтобы микрофронты могли легко совместно использовать общий код. Дублирование кода предотвращается за счет упрощения совместного использования.
-- module federation в webpack 5 (вот она рыба моей мечты)
-- The goals <https://levelup.gitconnected.com/micro-frontend-architecture-dynamic-import-chunks-from-another-webpack-bundle-at-runtime-1132d8cb6051>
-  - No page refreshes when routing to another MFE, multiple apps should route as one SPA would
-  - Don’t redownload vendor code that is already provided by another Webpack build on the page. (Don’t bundle multiple copies of the same dependency). So it’s just as efficient as if it was one large Webpack build, with code splitting.
-  - Each MFE should be completely standalone and have no centralized dependency. I don’t want to share code by managing Webpack externals, or commons vendor chunks.
-  - Frontend resources should have the ability to be evergreen, not requiring a consumer to re-install.
-  - I should not need to redeploy the whole fleet because of a change to a shared component or something managed by another team (such as navigation, I don’t want to redeploy my all whenever they push a new update)
-  - Orchestration should be completely managed in user-land, allowing dynamic adaptations based on what JavaScript bundles are loaded on a page. There should be no remote logic or calls required beyond adding static JavaScript like the bundles themselves.
-- SSR This project works client-side, but server-side is harder.
-  - For ssr, we have taught webpack to work like browser on server side. Enabling chunks to be streamed over internal networks. Not limited to disk only or depend on getting html from separate servers
-  - We have designed this to be Universal Module Federation works in any environment. Server-side rendering federated code is completely possible. Just have server builds use a commonjs library target. There are various ways to achieve federated SSR. S3 Streaming, ESI, automate an npm publish to consume server variants. I plan to use a commonly shared file volume or async S3 streaming to stream files across the filesystem. Enabling the server to require federated code just like it happens in the browser. Using fs instead of http to load federated code.
-- It’s important to note that this system is designed so that each completely standalone build/app can be in its own repository, deployed independently, and run as its own independent SPA.
+![zack](./zack-real.png) <!-- .element: class="plain" style="background-color: white" width="800" -->
+
+-----
+
+<https://twitter.com/scriptedalchemy>
+
+![zack-twitter](./zack-twitter.png) <!-- .element: class="plain" style="background-color: white" width="700" -->
+
+-----
+
+## История появления <!-- .element: class="green" -->
+
+- Ресерч и прототипирование началось в середине 2017
+- Первое обсуждение в декабре 2018 [github issue #8524](https://github.com/webpack/webpack/issues/8524)
+- Первый анонс в виде статьи в [октябре 2019 года, medium](https://medium.com/@ScriptedAlchemy/micro-fe-architecture-webpack-5-module-federation-and-custom-startup-code-9cb3fcd066c)
+- Это "адское" обсуждение в 389 комментов, 61 участник с 7 февраля по 7 октября 2020 [issue #10352](https://github.com/webpack/webpack/issues/10352)
+- Зарелизили в октябре 2020 как [core-плагин](https://webpack.js.org/concepts/module-federation/) к Webpack 5
+
+-----
+
+### MF was co-authored into Webpack 5 <br/>by <span class="orange">Zack Jackson</span> and <span class="orange">Marais Rossouw</span><br/> with lots of guidance, pair-programming, <br/>and assistance from <span class="orange">Tobias Koppers</span>. 
+
+<https://medium.com/swlh/webpack-5-module-federation-a-game-changer-to-javascript-architecture-bcdd30e02669>
+
+-----
+
+#### Знаете почему Webpack 5 так долго релизился?<br/><br/> <!-- .element: class="red" -->
+
+### The investment from <span class="orange">Tobias</span> has been a major factor in the ability to refine this system and <br/><span class="orange">make substantial changes to Webpack core</span><br/> to support this technology
+
+-----
+
+## Module federation позволяет одному Webpack-приложению <span class="green">динамически</span> подгружать код из другого Webpack-приложения.
+
+-----
+
+## MF это webpack-plugin, который позволяет импортировать chunk'и из стороннего webpack bundle <span class="green">в рантайме</span>.
+
+-----
+
+## Если DLLPlugin делает это при билде, то MF в рантайме.
+
+-----
+
+## Грубо говоря, MF <span class="green">позволяет смерджить в рантайме два Webpack manifest'а</span>. И заставить их работать вместе, как будто вы их скомпилировали с самого начала.
+
+-----
+
+## Все что может сбандлить Webpack <br/><span class="green">(css, images, fonts, ...)</span></br> может быть зашарено между микрофронтендами.
+
+-----
+
+## MF может <span class="green">шарить</span> между собой <span class="green">общие зависимости</span>, если совпадает semver.
+
+<br/>
+
+К примеру если React уже загружен, то он не будет повторно грузиться со стороннего webpack приложения.
+
+-----
+
+## MF могут быть развернуты на разных доменах и <span class="green">деплоиться независимо</span>.
+
+-----
+
+## "Сборка" происходит <span class="green">на лету</span> при запуске приложения в браузере.
+
+-----
+
+## The concept goals <!-- .element: class="orange" --> from [Webpack docs](https://webpack.js.org/concepts/module-federation/#concept-goals)
+
+[![webpack-mf-goals](./webpack-mf-goals.png) <!-- .element: width="700" class="plain" -->](https://webpack.js.org/concepts/module-federation/#concept-goals)
+
+-----
+
+## The goals of MF by Zack Jackson <!-- .element: class="orange" --> ([link](https://levelup.gitconnected.com/micro-frontend-architecture-dynamic-import-chunks-from-another-webpack-bundle-at-runtime-1132d8cb6051))
+
+- Нет перезагрузкам страниц при переходе между MFE <!-- .element: class="fragment" -->
+- Не грузить vendor code, который уже предоставлен другой Webpack-сборкой (например React) <!-- .element: class="fragment" -->
+- Каждый MFE может быть standalone (без внешних зависимостей). <!-- .element: class="fragment" -->
+- Не нужно пересобирать основное приложение, если поменялся shared-модуль (например навигация) <!-- .element: class="fragment" -->
+- Оркестрация должна происходить на стороне пользователя, позволяя загружать чанки без "умного сервера" (чтоб спокойно раздаваться с CDN и не только). <!-- .element: class="fragment" -->
+
+-----
+
+## Про Server Side Rendering <!-- .element: class="orange" -->
+
+- Module Federation спроектирован как Universal (works in any environment).
+- Server-side rendering federated code is completely possible.
+- Для SSR можно научить Webpack, чтоб он работал как браузер, только на сервере. Чтоб можно было чанки грузить по внутренней сети.
+  - server builds должны использовать `target: commonjs`
+  - для загрузки можно использовать `fs` вместо `http`
+  - чанки можно шарить через S3 Streaming, ESI или по старинке через npm
+
+-----
+
+## RECAP важных вещей <!-- .element: class="orange" -->
+
+- у каждого микрофронтенда может быть свой репозиторий <!-- .element: class="fragment" -->
+- независимые билды и деплои <!-- .element: class="fragment" -->
+- микрофронтенд может быть запущен как standalone SPA <!-- .element: class="fragment" -->
+- браузере все работает как монолит <!-- .element: class="fragment" -->
+
+Note:
+It’s important to note that this system is designed so that each completely standalone build/app can be in its own repository, deployed independently, and run as its own independent SPA.

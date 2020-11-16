@@ -24,6 +24,49 @@
 
 -----
 
+TODO: remoteEntry.js
+
+```
+new ModuleFederationPlugin({
+      name: 'remote5002',
+      // вспомнить почему
+      library: { type: 'var', name: 'remote5002' },
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Button': './src/expose/Button.tsx',
+        './customCalc': './src/expose/customCalc.ts',
+      },
+      shared: {
+        react: {
+          requiredVersion: '17.0.1',
+          singleton: true,
+        },
+      },
+    })
+```
+
+-----
+
+scope explanation
+
+```
+globalScope.init({
+  react: {
+    '16-branch': {
+      get: () => Promise.resolve().then(() => () => require('react')),
+    },
+  },
+});
+```
+
+-----
+
+TODO: https://github.com/webpack/webpack/blob/master/lib/container/ModuleFederationPlugin.js
+
+TODO: find video
+
+-----
+
 ## Advice
 
 - State management. У каждого приложения должно быть своим. Глобальный стейт будет нарушать инкапсуляцию микросервисов. Если два микрофронтенда имеют много чего общего в стейте – скорее всего их следует объединить в один микрофронтенд.
