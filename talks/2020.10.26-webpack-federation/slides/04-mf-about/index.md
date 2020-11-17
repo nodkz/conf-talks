@@ -16,6 +16,12 @@
 
 ## История появления <!-- .element: class="green" -->
 
+![zack-twitter](./mid2017.png) <!-- .element: class="plain" style="background-color: white" width="1000" -->
+
+-----
+
+## История появления <!-- .element: class="green" -->
+
 - Ресерч и прототипирование началось в середине 2017
 - Первое обсуждение в декабре 2018 [github issue #8524](https://github.com/webpack/webpack/issues/8524)
 - Первый анонс в виде статьи в [октябре 2019 года, medium](https://medium.com/@ScriptedAlchemy/micro-fe-architecture-webpack-5-module-federation-and-custom-startup-code-9cb3fcd066c)

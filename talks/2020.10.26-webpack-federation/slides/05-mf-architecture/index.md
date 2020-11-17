@@ -2,25 +2,35 @@
 
 -----
 
-![first draft](https://user-images.githubusercontent.com/25274700/50267904-b7557e80-03dd-11e9-833a-88a0cb145b38.png) <!-- .element: class="plain" style="background-color: white" width="700" -->
+#### Первая диаграмма MF (дек 2018) <br/> <https://github.com/webpack/webpack/issues/8524>
 
-<https://github.com/webpack/webpack/issues/8524>
-
------
-
-## Terminology
-
-- A host (consumers): a Webpack build that is initialized first during a page load (when the onLoad event is triggered)
-- A remote (consumable): another Webpack build, where part of it is being consumed by a “host”
-- Bidirectional hosts: when a bundle or Webpack build can work as a host or as a remote. Either consuming other applications or being consumed by others — at runtime
-- Omnidirectional hosts: when bundle operates as both host and remote at the same time
+![first draft](./diagram-2018.png) <!-- .element: class="plain" style="background-color: white" width="700" -->
 
 -----
 
-## Terminology
+### Одна из последних диаграмм
 
-- Exposed modules – модули которые будут доступны другим приложением для импорта
-- Shared module – модули которые могут быть общими для всем приложений (vendor eg React)
+![2020](./diagram-2020.png) <!-- .element: class="plain" style="background-color: white" width="1200" -->
+
+-----
+
+## Terminology <!-- .element: class="orange" -->
+
+- <!-- .element: class="fragment" --><span class="green">Host (consumers)</span> – бандл который первый инициализировался во время загрузки страницы <span class="gray">(корень)</span>
+- <!-- .element: class="fragment" --><span class="green">Remote (consumable)</span> – другой бандл, чьи некоторые части может импортировать "host" <span class="gray">(лист)</span>
+- <!-- .element: class="fragment" --><span class="green">Bidirectional host</span> – бандл, который может быть или "host", или "remote" <span class="gray">(корень или лист)</span>
+- <!-- .element: class="fragment" --><span class="green">Omnidirectional host</span> – бандл, который одновременно может быть и "host", и "remote" <span class="gray">(внутренний узел)</span>
+
+-----
+
+## Terminology <!-- .element: class="orange" -->
+
+- <!-- .element: class="fragment" --><span class="green">Exposed modules</span> – модули которые будут доступны другим приложением для импорта
+- <!-- .element: class="fragment" --><span class="green">Shared module</span> – модули которые могут быть общими для всего приложения (vendor eg React)
+
+-----
+
+## Моя схема MF
 
 -----
 
@@ -28,21 +38,21 @@ TODO: remoteEntry.js
 
 ```
 new ModuleFederationPlugin({
-      name: 'remote5002',
-      // вспомнить почему
-      library: { type: 'var', name: 'remote5002' },
-      filename: 'remoteEntry.js',
-      exposes: {
-        './Button': './src/expose/Button.tsx',
-        './customCalc': './src/expose/customCalc.ts',
-      },
-      shared: {
-        react: {
-          requiredVersion: '17.0.1',
-          singleton: true,
-        },
-      },
-    })
+  name: 'remote5002',
+  // вспомнить почему
+  library: { type: 'var', name: 'remote5002' },
+  filename: 'remoteEntry.js',
+  exposes: {
+    './Button': './src/expose/Button.tsx',
+    './customCalc': './src/expose/customCalc.ts',
+  },
+  shared: {
+    react: {
+      requiredVersion: '17.0.1',
+      singleton: true,
+    },
+  },
+})
 ```
 
 -----
@@ -67,6 +77,9 @@ TODO: find video
 
 -----
 
-## Advice
+### Practical advice <!-- .element: class="green" -->
 
-- State management. У каждого приложения должно быть своим. Глобальный стейт будет нарушать инкапсуляцию микросервисов. Если два микрофронтенда имеют много чего общего в стейте – скорее всего их следует объединить в один микрофронтенд.
+## <b class="orange">State manager у каждого приложения должен быть своим.</b>
+
+- <!-- .element: class="fragment" --> Глобальный стейт будет нарушать инкапсуляцию микросервисов.
+- <!-- .element: class="fragment" --> Если два микрофронтенда имеют много чего общего в стейте – скорее всего их следует объединить в один микрофронтенд. 
