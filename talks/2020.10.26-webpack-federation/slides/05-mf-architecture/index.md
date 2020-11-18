@@ -8,9 +8,12 @@
 
 -----
 
-### Одна из последних диаграмм (by Zack)
+### Одна из последних диаграмм
 
 ![2020](./diagram-2020.png) <!-- .element: class="plain" style="background-color: white" width="1200" -->
+
+<https://youtu.be/gmUm7CTsNhk> by Tobias Koppers
+<https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5.md>
 
 -----
 
@@ -23,6 +26,12 @@
 
 -----
 
+![host-remote-by-sokra](./host-remote-by-sokra.png) <!-- .element: class="plain" style="background-color: white" width="800" -->
+
+Diagram by Tobias Koppers
+
+-----
+
 ## Terminology <!-- .element: class="orange" -->
 
 - <!-- .element: class="fragment" --><span class="green">Exposed modules</span> – модули которые будут доступны другим приложением для импорта
@@ -32,7 +41,17 @@
 
 ## Мой взгляд на то, как работает MF
 
-![how it works](./diagram.drawio.svg)
+![how it works](./diagram.drawio.svg) <!-- .element: class="plain" style="background-color: white" width="800" -->
+
+-----
+
+## Много подробностей и диаграмм от Tobias Koppers
+
+<https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5.md>
+
+-----
+
+[![mf-plugin-by-sokra](./mf-plugin-by-sokra.png)](https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5/28.png) <!-- .element: class="plain" style="background-color: white" width="800" -->
 
 -----
 

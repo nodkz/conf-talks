@@ -73,3 +73,15 @@
 -----
 
 ## Microfrontends are modelled to match organization structure. <!-- .element: class="green" -->
+
+-----
+
+## microservices VS microfrontends <!-- .element: class="orange" -->
+
+- В разработке сильно похожи <!-- .element: class="green fragment" -->
+  - разные репки, CI/CD, разные команды <!-- .element: class="fragment fragment" -->
+- В рантайме совсем не похожи <!-- .element: class="red fragment" -->
+  - общий event loop <!-- .element: class="fragment" -->
+  - общий DOM c событиями <!-- .element: class="fragment" -->
+  - общая адресная строка <!-- .element: class="fragment" -->
+  - общие globals (window) <!-- .element: class="fragment" -->
