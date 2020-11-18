@@ -8,7 +8,7 @@
 
 -----
 
-### Одна из последних диаграмм
+### Одна из последних диаграмм (by Zack)
 
 ![2020](./diagram-2020.png) <!-- .element: class="plain" style="background-color: white" width="1200" -->
 
@@ -30,11 +30,13 @@
 
 -----
 
-## Моя схема MF
+## Мой взгляд на то, как работает MF
+
+![how it works](./diagram.drawio.svg)
 
 -----
 
-TODO: remoteEntry.js
+TODO remoteEntry.js
 
 ```
 new ModuleFederationPlugin({
@@ -57,7 +59,7 @@ new ModuleFederationPlugin({
 
 -----
 
-scope explanation
+TODO scope explanation
 
 ```
 globalScope.init({
@@ -71,9 +73,9 @@ globalScope.init({
 
 -----
 
-TODO: https://github.com/webpack/webpack/blob/master/lib/container/ModuleFederationPlugin.js
+TODO https://github.com/webpack/webpack/blob/master/lib/container/ModuleFederationPlugin.js
 
-TODO: find video
+TODO find video
 
 -----
 
