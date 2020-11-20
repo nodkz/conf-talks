@@ -39,62 +39,137 @@ Diagram by Tobias Koppers
 
 -----
 
-## Мой взгляд на то, как работает MF
-
-![how it works](./diagram.drawio.svg) <!-- .element: class="plain" style="background-color: white" width="800" -->
+![how it works](./diagram.drawio.svg) <!-- .element: class="plain" style="background-color: white" width="900" -->
 
 -----
 
-## Много подробностей и диаграмм от Tobias Koppers
+## Scope explanation
+
+```js
+// <script src="//site2.com/remoteEntry.js" /> ~7kb
+// init global var with some name, e.g. site2scope
+
+site2scope.init({
+  react: {
+    '17.0.1': {
+      get: () => Promise.resolve().then(() => () => require('react')),
+    },
+  },
+});
+
+const asyncModule = site2scope.get('./Button');
+
+// const RemoteButton = React.lazy(() => asyncModule);
+// <React.Suspense fallback="...">
+//   <RemoteButton />
+// </React.Suspense>
+
+```
+
+-----
+
+## Много подробностей и диаграмм <br/>от Tobias Koppers
 
 <https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5.md>
 
 -----
 
-[![mf-plugin-by-sokra](./mf-plugin-by-sokra.png)](https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5/28.png) <!-- .element: class="plain" style="background-color: white" width="800" -->
+video: <https://youtu.be/HDRIvks0yyk>
+
+src: [webpack/lib/container/ModuleFederationPlugin.js](https://github.com/webpack/webpack/blob/master/lib/container/ModuleFederationPlugin.js)
+
+```js
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra and Zackary Jackson @ScriptedAlchemy
+*/
+
+"use strict";
+
+const { validate } = require("schema-utils");
+const schema = require("../../schemas/plugins/container/ModuleFederationPlugin.json");
+const SharePlugin = require("../sharing/SharePlugin");
+const ContainerPlugin = require("./ContainerPlugin");
+const ContainerReferencePlugin = require("./ContainerReferencePlugin");
+
+/** @typedef {import("../../declarations/plugins/container/ModuleFederationPlugin").ExternalsType} ExternalsType */
+/** @typedef {import("../../declarations/plugins/container/ModuleFederationPlugin").ModuleFederationPluginOptions} ModuleFederationPluginOptions */
+/** @typedef {import("../../declarations/plugins/container/ModuleFederationPlugin").Shared} Shared */
+/** @typedef {import("../Compiler")} Compiler */
+
+class ModuleFederationPlugin {
+	/**
+	 * @param {ModuleFederationPluginOptions} options options
+	 */
+	constructor(options) {
+		validate(schema, options, { name: "Module Federation Plugin" });
+
+		this._options = options;
+	}
+
+	/**
+	 * Apply the plugin
+	 * @param {Compiler} compiler the compiler instance
+	 * @returns {void}
+	 */
+	apply(compiler) {
+		const { _options: options } = this;
+		const library = options.library || { type: "var", name: options.name };
+		const remoteType =
+			options.remoteType ||
+			(options.library &&
+			schema.definitions.ExternalsType.enum.includes(options.library.type)
+				? /** @type {ExternalsType} */ (options.library.type)
+				: "script");
+		if (
+			library &&
+			!compiler.options.output.enabledLibraryTypes.includes(library.type)
+		) {
+			compiler.options.output.enabledLibraryTypes.push(library.type);
+		}
+		compiler.hooks.afterPlugins.tap("ModuleFederationPlugin", () => {
+			if (
+				options.exposes &&
+				(Array.isArray(options.exposes)
+					? options.exposes.length > 0
+					: Object.keys(options.exposes).length > 0)
+			) {
+				new ContainerPlugin({
+					name: options.name,
+					library,
+					filename: options.filename,
+					exposes: options.exposes
+				}).apply(compiler);
+			}
+			if (
+				options.remotes &&
+				(Array.isArray(options.remotes)
+					? options.remotes.length > 0
+					: Object.keys(options.remotes).length > 0)
+			) {
+				new ContainerReferencePlugin({
+					remoteType,
+					remotes: options.remotes
+				}).apply(compiler);
+			}
+			if (options.shared) {
+				new SharePlugin({
+					shared: options.shared,
+					shareScope: options.shareScope
+				}).apply(compiler);
+			}
+		});
+	}
+}
+
+module.exports = ModuleFederationPlugin;
+
+```
 
 -----
 
-TODO remoteEntry.js
+[![mf-plugin-by-sokra](./mf-plugin-by-sokra.png)<!-- .element: class="plain" style="background-color: white" width="1000" -->](https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5/28.png)
 
-```
-new ModuleFederationPlugin({
-  name: 'remote5002',
-  // вспомнить почему
-  library: { type: 'var', name: 'remote5002' },
-  filename: 'remoteEntry.js',
-  exposes: {
-    './Button': './src/expose/Button.tsx',
-    './customCalc': './src/expose/customCalc.ts',
-  },
-  shared: {
-    react: {
-      requiredVersion: '17.0.1',
-      singleton: true,
-    },
-  },
-})
-```
-
------
-
-TODO scope explanation
-
-```
-globalScope.init({
-  react: {
-    '16-branch': {
-      get: () => Promise.resolve().then(() => () => require('react')),
-    },
-  },
-});
-```
-
------
-
-TODO https://github.com/webpack/webpack/blob/master/lib/container/ModuleFederationPlugin.js
-
-TODO find video
 
 -----
 
@@ -103,4 +178,16 @@ TODO find video
 ## <b class="orange">State manager у каждого приложения должен быть своим.</b>
 
 - <!-- .element: class="fragment" --> Глобальный стейт будет нарушать инкапсуляцию микросервисов.
-- <!-- .element: class="fragment" --> Если два микрофронтенда имеют много чего общего в стейте – скорее всего их следует объединить в один микрофронтенд. 
+- <!-- .element: class="fragment" --> Если два микрофронтенда имеют много чего общего в стейте – скорее всего их следует объединить в один микрофронтенд.
+
+-----
+
+## One more thing
+
+## Module Federation Dashboard <!-- .element: class="green fragment" -->
+
+-----
+
+![mf-dashboard](./mf-dashboard.png)<!-- .element: class="plain" style="background-color: white" width="1000" -->
+
+<https://www.npmjs.com/package/@module-federation/dashboard-plugin>
