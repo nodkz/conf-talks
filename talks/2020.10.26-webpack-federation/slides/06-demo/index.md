@@ -6,7 +6,7 @@
 
 ```ts
 new ModuleFederationPlugin({
-  // name: 'host5001',
+  name: 'host5001',
   // library: { type: 'var', name: 'host5001' },
   // filename: 'remoteEntry.js',
   remotes: {

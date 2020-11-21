@@ -182,7 +182,7 @@ module.exports = ModuleFederationPlugin;
 
 -----
 
-## One more thing
+## One More Thing
 
 ## Module Federation Dashboard <!-- .element: class="green fragment" -->
 
