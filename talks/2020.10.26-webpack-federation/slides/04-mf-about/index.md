@@ -58,7 +58,7 @@
 
 -----
 
-## Все что может сбандлить Webpack <br/><span class="green">(css, images, fonts, ...)</span></br> может быть зашарено между микрофронтендами.
+## Все что может сбандлить Webpack <br/><span class="green">(css, images, fonts, ...)</span></br> с MF может быть зашарено между микрофронтендами.
 
 -----
 
@@ -110,7 +110,7 @@
 - у каждого микрофронтенда может быть свой репозиторий <!-- .element: class="fragment" -->
 - независимые билды и деплои <!-- .element: class="fragment" -->
 - микрофронтенд может быть запущен как standalone SPA <!-- .element: class="fragment" -->
-- браузере все работает как монолит <!-- .element: class="fragment" -->
+- в браузере всё работает как монолит <!-- .element: class="fragment" -->
 
 Note:
 It’s important to note that this system is designed so that each completely standalone build/app can be in its own repository, deployed independently, and run as its own independent SPA.

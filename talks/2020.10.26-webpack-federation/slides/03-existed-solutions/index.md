@@ -46,11 +46,11 @@
 ## single-spa <!-- .element: class="orange" -->
 
 - Один из самых популярных фреймворков на данный момент для SPA (since 2016). <!-- .element: class="fragment" -->
-- Он ведет себя как тонкий слой оркестровки, который согласно URL запускает тот или иной микрофронтенд, "выключая" предыдущий. <!-- .element: class="fragment" -->
+- Тонкий слой оркестровки, который согласно URL запускает тот или иной микрофронтенд, "выключая" предыдущий. <!-- .element: class="fragment" -->
 - Клеим что хотим – React, Angular, Vue, Svelte <!-- .element: class="fragment green" -->
 - Погружаемся в systemjs и мапперы, что-то костылим с подгрузкой ассетов css, fonts, images <!-- .element: class="fragment red" -->
 - Одни и те же библиотеки загружаются несколько раз, хотя lazy loading по URL облегчает жизнь <!-- .element: class="fragment red" -->
-- Вложить один микрофронтенд в другой уже не через single-spa <!-- .element: class="fragment red" -->
+- Вложить один микрофронтенд в другой уже вне single-spa <!-- .element: class="fragment red" -->
 
 -----
 
@@ -63,7 +63,7 @@
 
 ## Tobias Koppers' research <https://youtu.be/gmUm7CTsNhk>
 
-![sokra-research](./sokra-research.png) <!-- .element: class="plain" style="background-color: white" width="800" -->
+![sokra-research](./sokra-research.png) <!-- .element: class="plain" style="background-color: white" width="600" -->
 
 -----
 

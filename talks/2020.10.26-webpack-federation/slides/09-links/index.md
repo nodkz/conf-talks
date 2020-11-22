@@ -13,7 +13,7 @@
 ## Посмотреть видео
 
 - <https://www.youtube.com/results?search_query=module+federation> – видео от Zack Jackson, Tobias, Jack Herrington
-- [Webpack 5 Module Federation - Zack Jackson 12 окт. 2020](https://www.youtube.com/watch?v=-ei6RqZilYI)
+- [Webpack 5 Module Federation – Zack Jackson 12 окт. 2020](https://www.youtube.com/watch?v=-ei6RqZilYI)
 
 -----
 

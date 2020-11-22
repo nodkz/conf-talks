@@ -23,7 +23,7 @@
 </div>
 
 <div style="font-size: 0.8em !important">
-  <br />Эта презентация <a href="http://bit.ly/module-federation" target="_blank"></a>
+  <br />Эта презентация <a href="http://bit.ly/module-federation" target="_blank">http://bit.ly/module-federation</a>
   <br />Репо с демо <a href="https://github.com/nodkz/module-federation-demo" target="_blank">https://github.com/nodkz/module-federation-demo</a>
 </div>
 
