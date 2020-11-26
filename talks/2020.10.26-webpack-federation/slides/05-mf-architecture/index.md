@@ -35,7 +35,7 @@ Diagram by Tobias Koppers
 ## Terminology <!-- .element: class="orange" -->
 
 - <!-- .element: class="fragment" --><span class="green">Exposed modules</span> – модули которые будут доступны другим приложением для импорта
-- <!-- .element: class="fragment" --><span class="green">Shared module</span> – модули которые могут быть общими для всего приложения (vendor eg React)
+- <!-- .element: class="fragment" --><span class="green">Shared modules</span> – модули которые могут быть общими для всего приложения (vendor eg React)
 
 -----
 
