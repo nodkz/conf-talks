@@ -187,6 +187,6 @@ module.exports = ModuleFederationPlugin;
 
 -----
 
-![mf-dashboard](./mf-dashboard.png)<!-- .element: class="plain" style="background-color: white" width="1000" -->
+![mf-dashboard](./mf-dashboard.png)<!-- .element: class="plain" style="background-color: white" width="800" -->
 
 <https://www.npmjs.com/package/@module-federation/dashboard-plugin>
