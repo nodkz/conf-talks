@@ -525,8 +525,8 @@ enum ArticleSort {
 ```graphql
 type Query {
   articles(
+    skip: Int,
     limit: Int! = 20
-    skip: Int
   ): [Article]
 }
 ```
