@@ -5,7 +5,7 @@
         <h2>
           <span class="orange">А нужен ли нам GraphQL?</span>
         <h2>
-        <h4><a href="http://bit.ly/do-we-need-graphql" target="_blank">http://bit.ly/do-we-need-graphql</a></h4>
+        <h4><a href="http://bit.ly/do-we-need-graphql?" target="_blank">http://bit.ly/do-we-need-graphql?</a></h4>
         <hr/>
         <h4>🇰🇿 Павел Черторогов</h4>
         <h4>🇺🇸 Paul Damnhorns</h4>
