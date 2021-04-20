@@ -23,7 +23,7 @@
 </div>
 
 <div style="font-size: 0.8em !important">
-  <br />Эта презентация <a href="http://bit.ly/do-we-need-graphql" target="_blank">http://bit.ly/do-we-need-graphql</a>
+  <br />Эта презентация <a href="http://bit.ly/do-we-need-graphql?" target="_blank">http://bit.ly/do-we-need-graphql?</a>
 </div>
 
 ![Photo](../assets/nodkz-photo.jpg) <!-- .element: style="max-width: 400px; border: none" -->
