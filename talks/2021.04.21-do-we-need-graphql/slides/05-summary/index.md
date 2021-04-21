@@ -16,4 +16,10 @@
 
 -----
 
+<a href="https://youtu.be/XVK4h5ybuxs" target="_blank"><img class="plain" src="./screw-and-nail.png" alt="ЕКТ. Разрушители легенд. Эпизод 1. Забить шуруп или закрутить гвоздь?" style="width: 890px" /></a>
+
+<https://youtu.be/XVK4h5ybuxs>
+
+-----
+
 ## За 5 лет работы с GraphQL, <br/>я пока в нем не разочаровался!

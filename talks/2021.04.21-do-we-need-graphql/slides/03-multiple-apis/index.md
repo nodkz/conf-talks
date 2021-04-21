@@ -26,7 +26,7 @@
 
 ## Аналитикам и data-сайнтистам <br/>подавай возможность писа́ть <br/>SQL с LEFT JOIN'ами 
 
-### здесь Graphql может выступить прекрасной альтернативой <!-- .element: class="fragment green" -->
+### здесь GraphQL может выступить прекрасной альтернативой <!-- .element: class="fragment green" -->
 
 ### <span class="fragment gray">и [Jora](https://github.com/discoveryjs/jora) c [DiscoveryJS](https://github.com/discoveryjs/discovery) им сильно помогут</span>
 
@@ -43,3 +43,12 @@
 -----
 
 ## <div class="green">«Просто <span class="gray">человеку</span> нужно дать так, чтобы <span class="gray">ему</span> было удобно брать»</div>
+
+-----
+
+### Видео для вашего (Application/Solution) Architect
+
+- [Формируем картину GraphQL-мира (TechTrain 2019)](https://www.youtube.com/watch?v=kMARjBBe4FM)
+- [GraphQL-фрагменты на клиенте: История появления, ошибки использования (HolyJS Moscow 2019)](https://www.youtube.com/watch?v=0bpZiMVJh14)
+- [ApolloClient или Relay с фрагментами, «волосатый» GraphQL (HolyJS Piter 2019)](https://youtu.be/VdoPraj0QqU)
+- [ApolloClient 3 — прощаемся с Redux, REST API и Relay (Я 💛 Фронтенд 2020, Moscow 2020)](https://youtu.be/5h7zX45YPuQ)

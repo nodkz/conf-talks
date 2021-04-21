@@ -23,6 +23,8 @@
 </div>
 
 <div style="font-size: 0.8em !important">
+  Группа Telegram <a href="https://t.me/graphql_ru" target="_blank">https://t.me/graphql_ru</a>
+  <br />Я пишу про GraphQL <a href="https://github.com/nodkz/conf-talks" target="_blank">https://github.com/nodkz/conf-talks</a>
   <br />Эта презентация <a href="http://bit.ly/do-we-need-graphql?" target="_blank">http://bit.ly/do-we-need-graphql?</a>
 </div>
 
