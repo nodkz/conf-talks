@@ -33,10 +33,11 @@ PS. Куча орфографических и грамматических ош
 - 8 апреля 2020, Санкт-Петербург, [Workshop GraphQL на клиенте](https://holyjs-piter.ru/2020/spb/workshops/graphql-on-the-client-side-with-apolloclient3/) (🛫подтверждено)
 - 7 апреля 2020, Санкт-Петербург, [Workshop GraphQL на сервере](https://holyjs-piter.ru/2020/spb/workshops/create-your-graphql-server-on-nodejs/) (🛫подтверждено)
 -->
-- 20-23 апреля 2021, Online, [HolyJS](https://holyjs-piter.ru/2021/spb/talks/2p1h40vvmegpfqutj8ji4h/)
+- 12 июля 2021, Online, [Podlodka Frontend Crew](https://podlodka.io/fecrew)
 
 ## Прошедшие мероприятия
 
+- 20-23 апреля 2021, Online, [HolyJS](https://holyjs-piter.ru/2021/spb/talks/2p1h40vvmegpfqutj8ji4h/)
 - 25-28 ноября 2020, Online, [HolyJS](https://holyjs-moscow.ru/2020/msk/talks/5xx2i0vcleyeatztadt6ap/)
 - 24 июня 2020, Санкт-Петербург, [HolyJS онлайн](https://holyjs-piter.ru/2020/spb/talks/26ewxf0eetneqysa49i6sh/)
 - 19 мая 2020, Онлайн, [Тяжелое утро с HolyJS #2](https://www.youtube.com/watch?v=ZIE2_c6MRZ0)
