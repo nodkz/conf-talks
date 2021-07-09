@@ -62,9 +62,9 @@
 
 ## Мульён микросервисов со своими эндпоинтами <!-- .element: class="green" -->
 
-- Когда список ендпоинтов начинает идти на сотни, то знание о них и связях между ними можно заложить в GraphQL. <!-- .element: class="fragment" -->
-- Зачем мучить бедных фронтендеров безумным пластом знаний, учить их тому как устроена наша бэкендерская кухня, которая постоянно меняется. И документация постоянно устаревает. <!-- .element: class="fragment" -->
-- У GraphQL один endpoint <!-- .element: class="fragment" -->
+- когда список ендпоинтов начинает идти на сотни, то знание о них и связях между ними можно заложить в GraphQL. <!-- .element: class="fragment" -->
+- зачем мучить бедных фронтендеров безумным пластом знаний и учить их тому, как устроена наша бэкендерская кухня, которая постоянно меняется?! Ещё и документация постоянно устаревает. <!-- .element: class="fragment" -->
+- у GraphQL один endpoint <!-- .element: class="fragment" -->
 
 -----
 
@@ -141,13 +141,13 @@
   
 <ul>
   <li class="fragment">
-    <a href="https://www.graphql-code-generator.com/">graphql-codegen</a> генерирует typescript дефинишены согласно GraphQL-запросов (любое неправильное употребление полей можно будет отловить на билде приложения)
+    <a href="https://www.graphql-code-generator.com/">graphql-codegen</a> генерирует TypeScript дефинишены согласно GraphQL-запросам (любое неправильное употребление полей можно будет отловить на этапе билда приложения)
   </li>
   <li class="fragment">
     <a href="https://graphql-inspector.com/">graphql-inspector</a> может отлавливать breaking changes в GraphQL-схемах со стороны бэкенда
   </li>
   <li class="fragment">
-    <a href="https://github.com/apollographql/eslint-plugin-graphql">eslint-plugin-graphql</a> или <a href="https://github.com/dotansimha/graphql-eslint">graphql-eslint</a> со стороны клиентского приложения может проверять корректность GraphQL-запросов согласно GraphQL-схемы и активных eslint правил
+    <a href="https://github.com/apollographql/eslint-plugin-graphql">eslint-plugin-graphql</a> или <a href="https://github.com/dotansimha/graphql-eslint">graphql-eslint</a> со стороны клиентского приложения может проверять корректность GraphQL-запросов согласно GraphQL-схеме и активным eslint-правилам
   </li>
 </ul>
 
@@ -201,7 +201,7 @@
   
 - часто удобно для всяких админок и дашбордов на клиентских приложениях <!-- .element: class="fragment" -->
 - клиенты могут самостоятельно писать сложные выборки данных, которые позволил бэкендер в GraphQL-схеме <!-- .element: class="fragment" -->
-- когда много разработчиков, нужен какой-то инструмент для хранения знаний о DataDomain, удобный язык общения, жесткий контракт, стабильная спецификация. <!-- .element: class="fragment" -->
+- когда много разработчиков, нужен какой-то инструмент для хранения знаний о DataDomain, нужен удобный язык общения, жесткий контракт и стабильная спецификация. <!-- .element: class="fragment" -->
 - и даже на бэкенде сервисы могут общаются через GraphQL, если нужны сложные "управляемые" выборки <!-- .element: class="fragment" -->
 
 -----
