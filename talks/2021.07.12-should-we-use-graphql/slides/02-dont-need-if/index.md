@@ -102,7 +102,7 @@
 
 -----
 
-![03-auth.png](./03-auth.png) <!-- .element: class="plain" -->
+![03-auth.png](./03-auth.png) <!-- .element: class="plain" width="800" -->
 
 <https://www.wgcgllc.com/netsuite_sso/>
 
@@ -146,7 +146,7 @@
 
 -----
 
-![04-cpu-network-memory.png](./04-cpu-network-memory.png) <!-- .element: class="plain" -->
+![04-cpu-network-memory.png](./04-cpu-network-memory.png) <!-- .element: class="plain" width="800" -->
 
 <https://blog.q42.nl/graphql-keep-alive-4379fe1a8b58/>
 

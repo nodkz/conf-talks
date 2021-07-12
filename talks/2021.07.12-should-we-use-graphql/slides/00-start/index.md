@@ -48,3 +48,15 @@
 ### (казахстанской хостинговой компании)<br/>строим облачный хостинг <br/>и консоль к нему на GraphQL 👌
 
 ![ps-logo](https://user-images.githubusercontent.com/1946920/57164502-21634300-6e16-11e9-8c45-6d10fe9dea4e.jpg) <!-- .element: style="max-width: 1000px;" class="plain"  -->
+
+-----
+
+# Ищем в ps.kz
+
+## JS/TS Fullstack developer <!-- .element: class="orange" -->
+
+### NodeJS, TypeScript, React, GraphQL
+
+### Location: Almaty, KZ
+
+### Telegram: @nodkz
