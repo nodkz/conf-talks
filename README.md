@@ -80,7 +80,7 @@ GraphQL не нужен, если:
 
 Продолжительность 92 минуты.
 
-<a href="hhttps://www.youtube.com/watch?v=O8a6DJxA4Q4" target="_blank"><img src="https://img.youtube.com/vi/O8a6DJxA4Q4/0.jpg" alt="В каких проектах стоит использовать GraphQL, а в каких нет?" style="max-width: 480px" /></a>
+<a href="https://www.youtube.com/watch?v=O8a6DJxA4Q4" target="_blank"><img src="https://img.youtube.com/vi/O8a6DJxA4Q4/0.jpg" alt="В каких проектах стоит использовать GraphQL, а в каких нет?" style="max-width: 480px" /></a>
 
 ### Круглый стол: Особенности протоколов, 4 апреля 2021, Podlodka Backend Crew, сезон #1
 
