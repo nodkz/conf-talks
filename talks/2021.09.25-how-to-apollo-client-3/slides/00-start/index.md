@@ -3,13 +3,11 @@
     <td style="vertical-align: middle">
         <div style="vertical-align: text-top;">
         <h2>
-          <span class="">В каких проектах</span>
+          <span class="green">Докручиваем ApolloClient</span>
           <br/>
-          <span class="green">стоит использовать GraphQL,</span>
-          <br/>
-          <span class="red">а в каких нет?</span>
+          <span class="green">до энтерпрайзной разработки</span>
         <h2>
-        <h4><a href="https://bit.ly/should-we-use-graphql?" target="_blank">https://bit.ly/should-we-use-graphql?</a></h4>
+        <h4><a href="https://bit.ly/apollo-client-enterprise" target="_blank">https://bit.ly/apollo-client-enterprise</a></h4>
         <hr/>
         <h4>🇰🇿 Павел Черторогов</h4>
         <h4>🇺🇸 Paul Damnhorns</h4>
@@ -48,15 +46,3 @@
 ### (казахстанской хостинговой компании)<br/>строим облачный хостинг <br/>и консоль к нему на GraphQL 👌
 
 ![ps-logo](https://user-images.githubusercontent.com/1946920/57164502-21634300-6e16-11e9-8c45-6d10fe9dea4e.jpg) <!-- .element: style="max-width: 1000px;" class="plain"  -->
-
------
-
-# Ищем в ps.kz
-
-## JS/TS Fullstack developer <!-- .element: class="orange" -->
-
-### NodeJS, TypeScript, React, GraphQL
-
-### Location: Almaty, KZ
-
-### Telegram: @nodkz

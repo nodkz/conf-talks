@@ -25,7 +25,7 @@
 <div style="font-size: 0.8em !important">
   Группа Telegram <a href="https://t.me/graphql_ru" target="_blank">https://t.me/graphql_ru</a>
   <br />Я пишу про GraphQL <a href="https://github.com/nodkz/conf-talks" target="_blank">https://github.com/nodkz/conf-talks</a>
-  <br />Эта презентация <a href="https://bit.ly/should-we-use-graphql?" target="_blank">https://bit.ly/should-we-use-graphql?</a>
+  <br />Эта презентация <a href="https://bit.ly/apollo-client-enterprise" target="_blank">https://bit.ly/apollo-client-enterprise</a>
 </div>
 
 ![Photo](../assets/nodkz-photo.jpg) <!-- .element: style="max-width: 400px; border: none" -->

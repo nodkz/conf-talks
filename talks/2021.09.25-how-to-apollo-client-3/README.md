@@ -1,4 +1,4 @@
-# Как использовать ApolloClient 3?
+# Докручиваем ApolloClient до интерпрайзной разработки
 
 Презентация доступна по следующим ссылкам:
 - [темная тема](https://nodkz.github.io/conf-talks/talks/2021.09.25-how-to-apollo-client-3/index.html)
