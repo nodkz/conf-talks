@@ -8,11 +8,19 @@
 
 ## О чем сегодня говорим
 
-Об одном стейт-менеджере для SPA-приложений <!-- .element: class="fragment green" -->
+Об одном стейт-менеджере для SPA-приложения<br/>с подтяжкой его до энтерпрайза<!-- .element: class="fragment green" -->
 
 -----
 
-## Какие проблемы решаем
+## Что такое энтерпрайз?
+
+### Это колхоз, бюрократия и смузи в одном флаконе! <!-- .element: class="fragment red" -->
+
+## Плановость, Стабильность, Надежность. <!-- .element: class="fragment green" -->
+
+-----
+
+## Какие проблемы будем решать с ApolloClient?
 
 Запрос и отображение данных с сервера, <br/>полученных через GraphQL <!-- .element: class="fragment green" -->
 
@@ -33,4 +41,4 @@
 - сравнить с тем, как вы сейчас работает <!-- .element: class="fragment orange" -->
 - и за час сделать вывод <!-- .element: class="fragment orange" -->
   - хотим также <!-- .element: class="fragment green" style="padding-top: 20px;" -->
-  - ну нафиг такой зоопарк <!-- .element: class="fragment red" -->
+  - ну нафиг такой колхоз <!-- .element: class="fragment red" -->
