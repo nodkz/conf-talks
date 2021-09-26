@@ -16,7 +16,11 @@
 
 ### Это колхоз, бюрократия и смузи в одном флаконе! <!-- .element: class="fragment red" -->
 
-## Плановость, Стабильность, Надежность. <!-- .element: class="fragment green" -->
+-----
+
+## enterprise – a large project, especially one that is difficult
+
+## Общие правила, Надежность, Контроль, Управление сложностью. <!-- .element: class="fragment green" -->
 
 -----
 
