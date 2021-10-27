@@ -30,10 +30,10 @@ PS. Куча орфографических и грамматических ош
 ## Предстоящие выступления (в планах)
 
 - 2 ноября 2021, Online, [HolyJS](https://holyjs-moscow.ru/en/)
-- 25 сентября 2021, Online, [404fest](https://2021.404fest.ru/)
 
 ## Прошедшие мероприятия
 
+- 25 сентября 2021, Online, [404fest](https://2021.404fest.ru/)
 - 12 июля 2021, Online, [Podlodka Frontend Crew, сезон #2](https://podlodka.io/)
 - 20-23 апреля 2021, Online, [HolyJS](https://holyjs-piter.ru/2021/spb/talks/2p1h40vvmegpfqutj8ji4h/)
 - 4 апреля 2021, Online, [Podlodka Backend Crew, сезон #1](https://podlodka.io/)
