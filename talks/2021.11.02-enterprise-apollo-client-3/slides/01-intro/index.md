@@ -18,7 +18,7 @@
 
 -----
 
-## enterprise – a large project, especially one that is difficult
+## <span class="red">enterprise</span> – an organization that involves many people and that is often difficult
 
 -----
 

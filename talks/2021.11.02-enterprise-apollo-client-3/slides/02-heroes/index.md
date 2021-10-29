@@ -20,12 +20,12 @@
 ## Is GraphQL enterprise ready? <!-- .element: class="red" -->
 
 - GraphQL Foundation under Linux Foundation <!-- .element: class="fragment" -->
-- Stable spec <!-- .element: class="fragment" -->
-- FAANG, Github, PayPal, KLM и тысячи других<!-- .element: class="fragment" -->
+- Stable spec (Oct 26, 2021) <!-- .element: class="fragment" -->
+- MAANG, Github, PayPal, KLM и тысячи других<!-- .element: class="fragment" -->
 
 -----
 
-Я сейчас консультирую софтверную компанию для энергетического и индустриального секторов.
+Я сейчас консультирую софтверную компанию для энергетического и нефтяного секторов.
 
 И там GraphQL уже используют. <!-- .element: class="fragment orange" -->
 
@@ -45,7 +45,7 @@
 
 -----
 
-[17 августа](https://www.apollographql.com/blog/announcement/apollo-raises-130m-to-pioneer-the-graph-for-app-developers/)
+[17 августа 2021](https://www.apollographql.com/blog/announcement/apollo-raises-130m-to-pioneer-the-graph-for-app-developers/)
 
 ### Apollo raises $130M, now valued at over $1.5B 🦄
 
@@ -114,7 +114,7 @@ JavaScript на стероидах, дает возможность провод
 
 ### и по моим скромным оценкам с потолка, <!-- .element: class="gray" -->
 
-### ускоряет CodeReview минимум на 80%. <!-- .element: class="orange" -->
+### ускоряет CodeReview минимум на 80% <!-- .element: class="orange" -->
 
 -----
 
