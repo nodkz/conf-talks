@@ -40,7 +40,7 @@
 
 ## Ваша задача
 
-- сравнить с тем, как вы сейчас работает <!-- .element: class="fragment orange" -->
+- сравнить с тем, как вы сейчас работаете <!-- .element: class="fragment orange" -->
 - и за час сделать вывод <!-- .element: class="fragment orange" -->
   - хотим также <!-- .element: class="fragment green" style="padding-top: 20px;" -->
   - ну нафиг такой колхоз <!-- .element: class="fragment red" -->

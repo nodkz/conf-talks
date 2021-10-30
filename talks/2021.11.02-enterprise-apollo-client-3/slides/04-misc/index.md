@@ -21,11 +21,31 @@
 #### Думал, что на этой презентации покажу, а нет, не успели <br>(Q4 2021 / Q1 2022) <!-- .element: class="gray" -->
 
 -----
-## @client директива – зло. <!-- .element: class="red" -->
+
+### graphql-helix + envelope 🔥 <!-- .element: class="orange" -->
+
+#### @defer, @stream, @oneOf <br/>OpenTelemetry, PersistedQuery, Cache, Jit, ...
+
+<a href="https://youtu.be/d_GBgH-L5c4" target="_blank"><img width="500" alt="" src="https://img.youtube.com/vi/d_GBgH-L5c4/0.jpg" class="plain"></a>
+
+<https://youtu.be/d_GBgH-L5c4>
+
+-----
+## AC3: @client директива – зло. <!-- .element: class="red" -->
 
 Не смешивайте локальное состояние с серверным.
 
 Оно работает, но поддерживать такой код сложно.
+
+AC3 Reactive variables – я бы брал из какого-то другого пакета.<br/> A что если завтра откажемся от AC3?!. <!-- .element: class="red fragment" -->
+
+-----
+
+## Что с тестированием? <!-- .element: class="orange" -->
+
+### Делайте e2e. Дороговато, но надежно.
+
+Cypress (sorry-cypress), playwright и др.<!-- .element: class="gray" -->
 
 -----
 ## Обратите внимание
