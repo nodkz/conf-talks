@@ -31,13 +31,15 @@
 <https://youtu.be/d_GBgH-L5c4>
 
 -----
-## AC3: @client директива – зло. <!-- .element: class="red" -->
+## @client директива в AC3 – зло. <!-- .element: class="red" -->
 
 Не смешивайте локальное состояние с серверным.
 
 Оно работает, но поддерживать такой код сложно.
 
-AC3 Reactive variables – я бы брал из какого-то другого пакета.<br/> A что если завтра откажемся от AC3?!. <!-- .element: class="red fragment" -->
+Reactive variables из AC3 – я бы брал из другого пакета. <!-- .element: class="red fragment" -->
+
+## A что если завтра откажемся от AC3?! <!-- .element: class="orange fragment" -->
 
 -----
 

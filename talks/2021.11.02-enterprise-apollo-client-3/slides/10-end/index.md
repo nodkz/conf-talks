@@ -6,7 +6,10 @@
 
 #### Вопросы к Паше? <!-- .element: class="orange" -->
 
-<div style="font-size: 1em; font-weight: bold">@nodkz</div>
+<div style="font-size: 1em; font-weight: bold; margin: 0 auto; display: inline-block;">
+  <span class="green">@nodkz</span>
+  <span style="font-size: 0.6em; line-height: 2.2; display: block; float: right; margin: 0 auto;">&nbsp; – подписывайтесь в Твиттере на новости</span>
+</div>
 
 <div>
   <a href="https://t.me/nodkz" target="_blank">

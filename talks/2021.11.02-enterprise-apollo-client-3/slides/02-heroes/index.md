@@ -97,6 +97,14 @@ JavaScript на стероидах, дает возможность провод
 
 -----
 
+![lotus](./lotus.jpg) <!-- .element: style="max-width: 700px;" class="plain"  -->
+
+-----
+
+![mustang](./mustang.jpg) <!-- .element: style="max-width: 700px;" class="plain"  -->
+
+-----
+
 ## Eslint <!-- .element: class="green" -->
 
 проверяет код в проекте на соответствие code style.
