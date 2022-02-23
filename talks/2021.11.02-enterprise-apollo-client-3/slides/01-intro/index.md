@@ -2,7 +2,7 @@
 ## Для кого доклад
 
 - для фронтенд разработчиков <!-- .element: class="fragment green" -->
-- солюшн архитекторов <!-- .element: class="fragment orange" -->
+- солюшн/аппликейшн архитекторов <!-- .element: class="fragment orange" -->
 
 -----
 

@@ -1,0 +1,174 @@
+<mxfile host="65bd71144e">
+    <diagram id="ty2qS1FRlp-UwoPSLcYj" name="Page-1">
+        <mxGraphModel dx="3077" dy="2613" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="800" pageHeight="600" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="37" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="770" y="330" width="170" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#E7FCE5;" parent="1" vertex="1">
+                    <mxGeometry x="42.5" y="-40" width="467.5" height="600" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="105" y="50" width="385" height="420" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="540" y="-40" width="220" height="490" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="170" width="200" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="REQ" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="30" y="-50" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="&lt;span&gt;&lt;b&gt;execute&lt;/b&gt;&lt;br&gt;(call functions)&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="230" y="320" width="150" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="prepareContext" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="575" y="90" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="&lt;b&gt;validate&lt;/b&gt;&lt;br&gt;(AST checks according to&amp;nbsp;Schema)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="230" y="260" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="RES" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="390" y="530" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="validateResponce" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="390" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="" style="edgeStyle=none;html=1;" parent="1" source="8" target="10" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="" style="edgeStyle=none;html=1;" parent="1" source="8" target="10" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="&lt;b&gt;Эффективность&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="225" y="-390" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="&lt;b&gt;Разработка&lt;/b&gt;&lt;br&gt;(сколько времени и денег тратим на людей)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="125" y="-300" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="&lt;b&gt;Рантайм&lt;/b&gt;&lt;br&gt;(сколько денег тратим на железо и отказоустойчивость)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="-300" width="180" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="&lt;span&gt;execute&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="550" y="310" width="150" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="&lt;span&gt;execute&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="320" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="&lt;span&gt;execute&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="570" y="330" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="&lt;span&gt;execute&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="580" y="340" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="&lt;span&gt;resolvers&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="590" y="350" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="graphql-js" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="225" y="170" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="" style="shape=flexArrow;endArrow=classic;html=1;startArrow=block;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="380" y="350" as="sourcePoint"/>
+                        <mxPoint x="540" y="350" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="20" value="" style="shape=flexArrow;endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.141;entryY=-0.258;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="2" target="18" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="190" y="120" as="sourcePoint"/>
+                        <mxPoint x="220" y="140" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="21" value="&lt;b&gt;parse&lt;/b&gt;&lt;br&gt;(AST from &lt;br&gt;Operation)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="230" y="200" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="&lt;b&gt;GraphQL Schema&lt;/b&gt;&lt;b&gt;&lt;br&gt;&lt;br&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="570" y="210" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="&lt;span&gt;Types&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="230" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="" style="shape=flexArrow;endArrow=classic;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=block;" parent="1" target="25" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="380" y="284.5" as="sourcePoint"/>
+                        <mxPoint x="450" y="284.5" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="27" value="" style="shape=flexArrow;endArrow=classic;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="390" y="451" as="sourcePoint"/>
+                        <mxPoint x="440" y="530" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="28" value="&lt;b&gt;init user context&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="330" y="90" width="130" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="Apollo Server Core" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="220" y="60" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="Apollo Server + Express (Apollo Studio)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="260" y="-20" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="middlewares" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="90" width="130" height="50" as="geometry"/>
+                </mxCell>
+                <UserObject label="либо graphql-helix и envelop" link="https://graphql-compose.herokuapp.com/" id="35">
+                    <mxCell style="text;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                        <mxGeometry x="265" width="240" height="30" as="geometry"/>
+                    </mxCell>
+                </UserObject>
+                <mxCell id="36" value="&lt;span&gt;resolvers&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="780" y="350" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="wrapResolve" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="835" y="330" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="&lt;span&gt;resolvers(ARGS): TYPE {&lt;br&gt;&amp;nbsp; ...logic&lt;br&gt;}&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="1080" y="130" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="&lt;span&gt;resolvers(args.query): TYPE_JSON {&lt;br&gt;&amp;nbsp; return db.query(args.query);&lt;br&gt;}&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="1080" y="285" width="210" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="&lt;span&gt;resolvers(SKU, tags): TYPE {&lt;br&gt;&amp;nbsp; return db.query(&quot;SELECT ... WHERE sku LIKE `{esc(&lt;/span&gt;args.SKU&lt;span&gt;)}%`&quot;);&lt;br&gt;}&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="1070" y="390" width="390" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="GraphQL это простой маппер / вызывальщик функций.&lt;br&gt;И если графкуэль схема используется только для описания интерфейса этих функций, то это правильное использование." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1050" y="70" width="340" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="- А можно ли кастомные запросы выполнять, которые прислал клиент?&lt;br&gt;- Можно! Самый простой и небезопасный вариант - мы взяли запрос от клиента и выполнили его над базой, надеясь что никто никогда не вызовет DROP/REMOVE" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1050" y="190" width="340" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="- Но можно сделать резолвер чуть умнее, который меньше дает свободы и более жестко ограничивает входящие аргументы." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1050" y="340" width="340" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="" style="edgeStyle=none;html=1;" parent="1" source="48" target="8" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="&lt;b&gt;Cutting Edge&lt;/b&gt;&lt;br&gt;интересующий фактор" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="225" y="-470" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="" style="endArrow=classic;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" parent="1" source="8" target="9" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="320" y="-310" as="sourcePoint"/>
+                        <mxPoint x="370" y="-360" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="68" value="" style="shape=flexArrow;endArrow=classic;html=1;startArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="28" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="390" y="120.5" as="sourcePoint"/>
+                        <mxPoint x="570" y="115" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="69" value="&lt;meta charset=&quot;utf-8&quot;&gt;&lt;b style=&quot;color: rgb(0, 0, 0); font-size: 12px; font-style: normal; letter-spacing: normal; text-align: center; text-indent: 0px; text-transform: none; word-spacing: 0px; font-family: helvetica; background-color: rgb(248, 249, 250);&quot;&gt;Your codebase&lt;/b&gt;" style="text;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="610" y="-30" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="70" value="- Как работают middleware?&lt;br&gt;- Просто оборачивают ваши резолверы" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="780" y="260" width="210" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
