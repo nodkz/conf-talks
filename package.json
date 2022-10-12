@@ -23,7 +23,7 @@
   "homepage": "https://github.com/nodkz/conf-talks#readme",
   "dependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
-    "apollo-server": "^2.14.2",
+    "apollo-server": "^2.25.4",
     "dataloader": "^1.4.0",
     "dedent": "^0.7.0",
     "graphql": "14.0.2",
